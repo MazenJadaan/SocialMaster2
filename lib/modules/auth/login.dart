@@ -67,6 +67,7 @@ class _LoginState extends State<Login> {
                   height: 200,
 
                 ),
+                const Spacer(),
                 MyTextFormField(
                   obscureText: false,
                   hint: 'enter your user name',
@@ -80,7 +81,7 @@ class _LoginState extends State<Login> {
                   inputType: TextInputType.emailAddress,
                   validate: emptyValidate,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 MyTextFormField(
                   label: 'Password',
                   hint: 'enter your password',
@@ -178,17 +179,17 @@ class _LoginState extends State<Login> {
                 const SizedBox(height: 10),
 
 
-                   CircleAvatar(
-                     backgroundColor: AppTheme.colors.purple,
+                CircleAvatar(
+                  backgroundColor: AppTheme.colors.purple,
 
-                    radius: 25,
-                    child: IconButton(
-                        color: Colors.white,
-                        icon: FaIcon(FontAwesomeIcons.google),
-                        onPressed: signIn),
-                  ),
+                  radius: 25,
+                  child: IconButton(
+                      color: Colors.white,
+                      icon: FaIcon(FontAwesomeIcons.google),
+                      onPressed: signIn),
+                ),
 
-                const Spacer(),
+
 
                 const SizedBox(
                   height: 20,
@@ -210,12 +211,12 @@ class _LoginState extends State<Login> {
   }
 
   Future signIn() async {
-    final user= await GoogleSignInApi.login();
-     // if(user == null){
-     //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sign in Failed')));
-     // }else {
-     //   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Login(),
-     //   ));
-     // }
+    final user = await GoogleSignInApi.login();
+    // if(user == null){
+    //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sign in Failed')));
+    // }else {
+    //   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Login(),
+    //   ));
+    // }
   }
 }
