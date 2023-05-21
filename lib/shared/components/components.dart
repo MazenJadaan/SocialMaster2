@@ -16,34 +16,35 @@ Widget MyTextFormField({
 }) =>
     Padding(
       padding: const EdgeInsets.all(10),
-      child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        child: TextFormField(
-          controller: controller,
-          obscureText: obscureText,
-          keyboardType: inputType,
-          validator: validate,
-          maxLines: maxlines,
-          obscuringCharacter: '*',
-          decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: TextStyle(color: AppTheme.colors.darkPurple),
-            label: Text(
-              label,
-              style: TextStyle(color: AppTheme.colors.purple),
-            ),
-            border: InputBorder.none,
-            filled: true,
-            fillColor: const Color(0x40917fb3),
-            prefix: prefixIcon,
-            suffixIcon: MaterialButton(
-              onPressed: suffixOnPressed,
-              child: suffixIcon,
+        child: Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          child: TextFormField(
+            controller: controller,
+            obscureText: obscureText,
+            keyboardType: inputType,
+            validator: validate,
+            maxLines: maxlines,
+            obscuringCharacter: '*',
+            decoration: InputDecoration(
+              hintText: hint,
+              hintStyle: TextStyle(color: AppTheme.colors.darkPurple),
+              label: Text(
+                label,
+                style: TextStyle(color: AppTheme.colors.purple),
+              ),
+              border: InputBorder.none,
+              filled: true,
+              fillColor: const Color(0x40917fb3),
+              prefix: prefixIcon,
+              suffixIcon: MaterialButton(
+                onPressed: suffixOnPressed,
+                child: suffixIcon,
+              ),
             ),
           ),
         ),
-      ),
+      
     );
 
 Widget MyMaterialButton({

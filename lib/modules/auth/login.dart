@@ -22,19 +22,16 @@ class _LoginState extends State<Login> {
     var formKey = GlobalKey<FormState>();
     //
     return Container(
+      decoration: BoxDecoration(
+
+      ),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         body: Container(
           decoration: const BoxDecoration(
-            // gradient: LinearGradient(
-            //   begin: Alignment.center,
-            //   end: Alignment.bottomCenter,
-            //   colors: [
-            //     AppTheme.colors.lightPurple,
-            //     AppTheme.colors.purple,
-            //   ],
-            // ),
+            image:DecorationImage(image: AssetImage("assets/images/test.png"),fit: BoxFit.cover),
+
             color: Colors.white,
           ),
           alignment: AlignmentDirectional.topCenter,
@@ -57,21 +54,17 @@ class _LoginState extends State<Login> {
                 const SizedBox(
                   height: 20,
                 ),
-                // Image(image: AssetImage("assets/images/logo.png"),
-                //   width: 160,
-                //    height: 100,
-                //
-                // ),
+
                 const Image(
-                  image: AssetImage("assets/images/man (1).png"),
+                  image: AssetImage("assets/images/monitoring.png"),
                   width: 200,
-                  height: 200,
+                  height: 180,
                 ),
-                const Spacer(),
+                // const Spacer(),
                 MyTextFormField(
                   obscureText: false,
-                  hint: 'enter your user name',
-                  label: 'user name',
+                  hint: 'enter your E-mail',
+                  label: 'E-mail',
                   suffixOnPressed: () {},
                   prefixIcon: Icon(
                     Icons.email_outlined,
@@ -81,7 +74,7 @@ class _LoginState extends State<Login> {
                   inputType: TextInputType.emailAddress,
                   validate: emptyValidate,
                 ),
-                const SizedBox(height: 10),
+                // const SizedBox(height: 10),
                 MyTextFormField(
                   label: 'Password',
                   hint: 'enter your password',
@@ -120,7 +113,7 @@ class _LoginState extends State<Login> {
                 // ),
                 MyMaterialButton(
                   width: 240,
-                  text: 'Confirm',
+                  text: 'Login',
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       Navigator.of(context)
@@ -158,19 +151,19 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 100,
+                      width: 120,
                       height: 1,
                       color: AppTheme.colors.purple,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Text(
                         "OR",
                         style: TextStyle(color: AppTheme.colors.purple),
                       ),
                     ),
                     Container(
-                      width: 100,
+                      width: 120,
                       height: 1,
                       color: AppTheme.colors.purple,
                     ),
