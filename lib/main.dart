@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
       title: 'Social Master',
       theme: ThemeData(
 
-       // primarySwatch: Colors.purple,
-      ),
+          // primarySwatch: Colors.purple,
+          ),
       home: Login(),
     );
   }

@@ -26,18 +26,16 @@ Widget MyTextFormField({
           validator: validate,
           maxLines: maxlines,
           obscuringCharacter: '*',
-
           decoration: InputDecoration(
-
             hintText: hint,
             hintStyle: TextStyle(color: AppTheme.colors.darkPurple),
             label: Text(
               label,
-              style:  TextStyle(color: AppTheme.colors.purple),
+              style: TextStyle(color: AppTheme.colors.purple),
             ),
             border: InputBorder.none,
             filled: true,
-            fillColor: Color(0x50917fb3),
+            fillColor: const Color(0x40917fb3),
             prefix: prefixIcon,
             suffixIcon: MaterialButton(
               onPressed: suffixOnPressed,
@@ -56,25 +54,23 @@ Widget MyMaterialButton({
   GlobalKey? key = null,
 }) =>
     MaterialButton(
-      onPressed: onPressed,
-      child: Container(
-        alignment: AlignmentDirectional.center,
-        width: width,
-        height: height,
-
-        key: key,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: AppTheme.colors.purple,
-        ),
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        child: Text(
-          text,
-          style:  TextStyle(
+        onPressed: onPressed,
+        child: Container(
+          alignment: AlignmentDirectional.center,
+          width: width,
+          height: height,
+          key: key,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: AppTheme.colors.purple,
+          ),
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          child: Text(
+            text,
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Colors.white,
-        ),
-      ),
-      )
-    );
+            ),
+          ),
+        ));

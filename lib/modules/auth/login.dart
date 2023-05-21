@@ -26,7 +26,7 @@ class _LoginState extends State<Login> {
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             // gradient: LinearGradient(
             //   begin: Alignment.center,
             //   end: Alignment.bottomCenter,
@@ -62,10 +62,10 @@ class _LoginState extends State<Login> {
                 //    height: 100,
                 //
                 // ),
-                Image(image: AssetImage("assets/images/man (1).png"),
+                const Image(
+                  image: AssetImage("assets/images/man (1).png"),
                   width: 200,
                   height: 200,
-
                 ),
                 const Spacer(),
                 MyTextFormField(
@@ -163,7 +163,7 @@ class _LoginState extends State<Login> {
                       color: AppTheme.colors.purple,
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         "OR",
                         style: TextStyle(color: AppTheme.colors.purple),
@@ -178,18 +178,14 @@ class _LoginState extends State<Login> {
                 ),
                 const SizedBox(height: 10),
 
-
                 CircleAvatar(
                   backgroundColor: AppTheme.colors.purple,
-
                   radius: 25,
                   child: IconButton(
                       color: Colors.white,
-                      icon: FaIcon(FontAwesomeIcons.google),
+                      icon: const FaIcon(FontAwesomeIcons.google),
                       onPressed: signIn),
                 ),
-
-
 
                 const SizedBox(
                   height: 20,

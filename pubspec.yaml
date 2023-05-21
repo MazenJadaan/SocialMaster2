@@ -37,17 +37,26 @@ dependencies:
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^10.4.0
   google_sign_in: ^6.1.0
+  flutter_lints: ^2.0.1
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_launcher_icons: "^0.13.1"
+  flutter_native_splash: ^2.2.19
+
 
 flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/images/small_logo.png"
+
+flutter_native_splash:
+  color: "#ffe2ee"
+  image: assets/images/full_logo.png
+  android_gravity: center
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
