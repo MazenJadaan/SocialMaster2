@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
+
 Widget MyTextFormField({
   required Function() suffixOnPressed,
   required TextEditingController controller,
@@ -55,7 +56,6 @@ Widget SmallTextFormField({
   inputType = TextInputType.name,
   required String label,
   Icon? prefixIcon = null,
-
   GlobalKey? key = null,
   bool obscureText = false,
   String? hint = null,
