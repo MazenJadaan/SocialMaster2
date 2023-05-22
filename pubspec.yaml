@@ -54,7 +54,7 @@ flutter_launcher_icons:
   image_path: "assets/images/small_logo.png"
 
 flutter_native_splash:
-  color: "#ffe2ee"
+  color: "#ffffff"
   image: assets/images/full_logo.png
   android_gravity: center
 
