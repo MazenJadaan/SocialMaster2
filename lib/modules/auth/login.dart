@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:social_master/models/obscure.dart';
+import 'package:social_master/models/obscure_model.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
 import '../../shared/components/components.dart';
@@ -19,7 +19,7 @@ class Login extends StatelessWidget {
     var formKey = GlobalKey<FormState>();
     //
     return ChangeNotifierProvider(
-      create: (context) => Obscure_Model(),
+      create: (context) => ObscureModel(),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
@@ -70,12 +70,11 @@ class Login extends StatelessWidget {
                   validate: emptyValidate,
                 ),
 
-                Consumer<Obscure_Model>(builder: (context, model, child) {
+                Consumer<ObscureModel>(builder: (context, model, child) {
                   return MyTextFormField(
                     label: 'Password',
                     hint: 'enter your password',
-                    suffixIcon: Icon(Icons.remove_red_eye_outlined,
-                        color: AppTheme.colors.purple),
+                    suffixIcon: model.icon1,
                     suffixOnPressed: () {
                       model.dosomething1();
                     },
@@ -99,7 +98,7 @@ class Login extends StatelessWidget {
                           _check = !_check;
                         }),
                     Text(
-                      'remmeber me?',
+                      'remember me?',
                       style: TextStyle(color: AppTheme.colors.purple),
                     )
                   ],
