@@ -21,166 +21,168 @@ class _LoginState extends State<Login> {
     var formKey = GlobalKey<FormState>();
     //
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.transparent,
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/images/test.png"), fit: BoxFit.cover),
-          color: Colors.white,
-        ),
-        alignment: AlignmentDirectional.topCenter,
-        child: ChangeNotifierProvider(
-          create: (context) => ObscureModel(),
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 40,
-                ),
-                Text(
-                  'LOGIN',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: AppTheme.colors.purple,
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.transparent,
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image:AssetImage("assets/images/test.png"), fit: BoxFit.cover),
+            color: Colors.white,
+          ),
+          alignment: AlignmentDirectional.topCenter,
+          child: ChangeNotifierProvider(
+            create: (context) => ObscureModel(),
+            child: Form(
+              key: formKey,
+              child: SingleChildScrollView(
+                child: Column(
+                children: [
+                  const SizedBox(
+                    height: 40,
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
+                  Text(
+                    'LOGIN',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: AppTheme.colors.purple,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
 
-                const Image(
-                  image: AssetImage("assets/images/monitoring.png"),
-                  width: 200,
-                  height: 180,
-                ),
-                // const Spacer(),
-                MyTextFormField(
-                  obscureText: false,
-                  hint: 'enter your E-mail',
-                  label: 'E-mail',
-                  suffixOnPressed: () {},
-                  prefixIcon: Icon(
-                    Icons.email_outlined,
-                    color: AppTheme.colors.purple,
+                  const Image(
+                    image: AssetImage("assets/images/monitoring.png"),
+                    width: 200,
+                    height: 180,
                   ),
-                  controller: _emailController,
-                  inputType: TextInputType.emailAddress,
-                  validate: emptyValidate,
-                ),
-                // const SizedBox(height: 10),
-                Consumer<ObscureModel>(builder: (context, model, child) {
-                  return MyTextFormField(
-                    label: 'Password',
-                    hint: 'enter your password',
-                    suffixIcon: Icon(Icons.remove_red_eye_outlined,
-                        color: AppTheme.colors.purple),
-                    suffixOnPressed: () {
-                      model.dosomething1();
-                    },
+                  // const Spacer(),
+                  MyTextFormField(
+                    obscureText: false,
+                    hint: 'enter your E-mail',
+                    label: 'E-mail',
+                    suffixOnPressed: () {},
                     prefixIcon: Icon(
-                      Icons.vpn_key_rounded,
+                      Icons.email_outlined,
                       color: AppTheme.colors.purple,
                     ),
-                    controller: _passwordController,
+                    controller: _emailController,
                     inputType: TextInputType.emailAddress,
-                    obscureText: model.obscure1,
                     validate: emptyValidate,
-                  );
-                }),
+                  ),
+                  // const SizedBox(height: 10),
+                  Consumer<ObscureModel>(builder: (context, model, child) {
+                    return MyTextFormField(
+                      label: 'Password',
+                      hint: 'enter your password',
+                      suffixIcon: Icon(Icons.remove_red_eye_outlined,
+                          color: AppTheme.colors.purple),
+                      suffixOnPressed: () {
+                        model.dosomething1();
+                      },
+                      prefixIcon: Icon(
+                        Icons.vpn_key_rounded,
+                        color: AppTheme.colors.purple,
+                      ),
+                      controller: _passwordController,
+                      inputType: TextInputType.emailAddress,
+                      obscureText: model.obscure1,
+                      validate: emptyValidate,
+                    );
+                  }),
 
-                Row(
-                  children: [
-                    Checkbox(
-                        value: _check,
-                        // activeColor:Colors.white ,
-                        onChanged: (not) {
-                          _check = !_check;
-                        }),
-                    Text(
-                      'remember me?',
-                      style: TextStyle(color: AppTheme.colors.purple),
-                    )
-                  ],
-                ),
-                // const SizedBox(
-                //   height: 10,
-                // ),
-                MyMaterialButton(
-                  width: 240,
-                  text: 'Login',
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return Login();
-                      }));
-                    }
-                  },
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "don't have an account?",
-                      style: TextStyle(color: AppTheme.colors.purple),
-                    ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (context) {
-                            return Login();
-                          }));
-                        },
-                        child: Text(
-                          'register',
-                          style: TextStyle(
-                            color: AppTheme.colors.purple,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ))
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 120,
-                      height: 1,
-                      color: AppTheme.colors.purple,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Text(
-                        "OR",
+                  Row(
+                    children: [
+                      Checkbox(
+                          value: _check,
+                          // activeColor:Colors.white ,
+                          onChanged: (not) {
+                            _check = !_check;
+                          }),
+                      Text(
+                        'remember me?',
+                        style: TextStyle(color: AppTheme.colors.purple),
+                      )
+                    ],
+                  ),
+                  // const SizedBox(
+                  //   height: 10,
+                  // ),
+                  MyMaterialButton(
+                    width: 240,
+                    text: 'Login',
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return Login();
+                        }));
+                      }
+                    },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "don't have an account?",
                         style: TextStyle(color: AppTheme.colors.purple),
                       ),
-                    ),
-                    Container(
-                      width: 120,
-                      height: 1,
-                      color: AppTheme.colors.purple,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (context) {
+                              return Login();
+                            }));
+                          },
+                          child: Text(
+                            'register',
+                            style: TextStyle(
+                              color: AppTheme.colors.purple,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ))
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 120,
+                        height: 1,
+                        color: AppTheme.colors.purple,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Text(
+                          "OR",
+                          style: TextStyle(color: AppTheme.colors.purple),
+                        ),
+                      ),
+                      Container(
+                        width: 120,
+                        height: 1,
+                        color: AppTheme.colors.purple,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
 
-                CircleAvatar(
-                  backgroundColor: AppTheme.colors.purple,
-                  radius: 25,
-                  child: IconButton(
-                      color: Colors.white,
-                      icon: const FaIcon(FontAwesomeIcons.google),
-                      onPressed: signIn),
-                ),
+                  CircleAvatar(
+                    backgroundColor: AppTheme.colors.purple,
+                    radius: 25,
+                    child: IconButton(
+                        color: Colors.white,
+                        icon: const FaIcon(FontAwesomeIcons.google),
+                        onPressed: signIn),
+                  ),
 
-                const SizedBox(
-                  height: 20,
-                ),
-              ],
+                  const SizedBox(
+                    height: 20,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
