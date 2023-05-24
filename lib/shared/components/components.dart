@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
+
 Widget MyTextFormField({
   required Function() suffixOnPressed,
   required TextEditingController controller,
@@ -20,6 +21,7 @@ Widget MyTextFormField({
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: TextFormField(
+
             controller: controller,
             obscureText: obscureText,
             keyboardType: inputType,
@@ -46,6 +48,51 @@ Widget MyTextFormField({
         ),
       
     );
+
+Widget SmallTextFormField({
+
+  required TextEditingController controller,
+  required String? Function(String? string) validate,
+  inputType = TextInputType.name,
+  required String label,
+  Icon? prefixIcon = null,
+  GlobalKey? key = null,
+  bool obscureText = false,
+  String? hint = null,
+  int maxlines = 1,
+}) =>
+    Padding(
+      padding: const EdgeInsets.all(10),
+      child: Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: TextFormField(
+
+          controller: controller,
+          obscureText: obscureText,
+          keyboardType: inputType,
+          validator: validate,
+          maxLines: maxlines,
+          obscuringCharacter: '*',
+          decoration: InputDecoration(
+            hintText: hint,
+            hintStyle: TextStyle(color: AppTheme.colors.darkPurple),
+            label: Text(
+              label,
+              style: TextStyle(color: AppTheme.colors.purple),
+            ),
+            border: InputBorder.none,
+            filled: true,
+            fillColor: const Color(0x40917fb3),
+            prefix: prefixIcon,
+
+          ),
+        ),
+      ),
+
+    );
+
+
 
 Widget MyMaterialButton({
   required String text,
