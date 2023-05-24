@@ -46,7 +46,6 @@ class _LoginState extends State<Login> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
-                    fontFamily: 'Pacifico',
                     color: AppTheme.colors.purple,
                   ),
                 ),
