@@ -6,7 +6,7 @@ import 'package:social_master/modules/auth/welcome.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
 
-import 'modules/auth/Signup.dart';
+import 'modules/auth/signup.dart';
 
 
 
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           // primarySwatch: Colors.purple,
           ),
 
-      home: Login(),
+      home: const Signup(),
 
 
     );

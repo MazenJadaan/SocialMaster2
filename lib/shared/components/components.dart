@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
 
@@ -9,14 +10,14 @@ Widget MyTextFormField({
   inputType = TextInputType.name,
   required String label,
   Icon? prefixIcon = null,
-  Icon? suffixIcon = null,
+  FaIcon? suffixIcon = null,
   GlobalKey? key = null,
   bool obscureText = false,
   String? hint = null,
   int maxlines = 1,
 }) =>
     Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.only(left: 10,right: 10,top: 6,bottom: 6),
         child: Container(
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
           clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -40,6 +41,7 @@ Widget MyTextFormField({
               fillColor: const Color(0x40917fb3),
               prefix: prefixIcon,
               suffixIcon: MaterialButton(
+                minWidth: 1,
                 onPressed: suffixOnPressed,
                 child: suffixIcon,
               ),
@@ -62,7 +64,7 @@ Widget SmallTextFormField({
   int maxlines = 1,
 }) =>
     Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
         clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -76,10 +78,10 @@ Widget SmallTextFormField({
           obscuringCharacter: '*',
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: TextStyle(color: AppTheme.colors.darkPurple),
+            hintStyle: TextStyle(color: AppTheme.colors.darkPurple,fontSize: 8),
             label: Text(
               label,
-              style: TextStyle(color: AppTheme.colors.purple),
+              style: TextStyle(color: AppTheme.colors.purple,),
             ),
             border: InputBorder.none,
             filled: true,
@@ -99,6 +101,7 @@ Widget MyMaterialButton({
   required Function() onPressed,
   double width = 120.0,
   double height = 40.0,
+  double fontSize = 24,
   GlobalKey? key = null,
 }) =>
     MaterialButton(
@@ -108,6 +111,7 @@ Widget MyMaterialButton({
           width: width,
           height: height,
           key: key,
+
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: AppTheme.colors.purple,
@@ -115,11 +119,11 @@ Widget MyMaterialButton({
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: Text(
             text,
-            style: const TextStyle(
-              fontSize: 24,
+            style:  TextStyle(
+              fontSize: fontSize,
               fontWeight: FontWeight.bold,
               color: Colors.white,
-              fontFamily: 'Pangolin'
+
             ),
           ),
         ));
