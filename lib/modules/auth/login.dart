@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/models/obscure_model.dart';
 import 'package:social_master/shared/styles/colors.dart';
-
 import '../../shared/components/components.dart';
 import '../../shared/network/api/google_signin_api.dart';
 
