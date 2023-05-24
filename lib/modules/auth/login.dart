@@ -1,31 +1,36 @@
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
-import 'package:social_master/models/obscure_model.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/api/google_signin_api.dart';
 
-class Login extends StatelessWidget {
-  Login({Key? key}) : super(key: key);
+class Login extends StatefulWidget {
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
+  bool _obscureText = true;
   bool _check = false;
 
   @override
   Widget build(BuildContext context) {
     var formKey = GlobalKey<FormState>();
     //
-    return ChangeNotifierProvider(
-      create: (context) => ObscureModel(),
+    return Container(
+      decoration: BoxDecoration(
+
+      ),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         body: Container(
           decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/test.png"), fit: BoxFit.cover),
+            image:DecorationImage(image: AssetImage("assets/images/test.png"),fit: BoxFit.cover),
+
             color: Colors.white,
           ),
           alignment: AlignmentDirectional.topCenter,
@@ -57,8 +62,8 @@ class Login extends StatelessWidget {
                 // const Spacer(),
                 MyTextFormField(
                   obscureText: false,
-                  hint: 'E-mail or Phone Number',
-                  label: 'E-mail or Phone Number',
+                  hint: 'enter your E-mail',
+                  label: 'E-mail',
                   suffixOnPressed: () {},
                   prefixIcon: Icon(
                     Icons.email_outlined,
@@ -68,36 +73,36 @@ class Login extends StatelessWidget {
                   inputType: TextInputType.emailAddress,
                   validate: emptyValidate,
                 ),
-
-                Consumer<ObscureModel>(builder: (context, model, child) {
-                  return MyTextFormField(
-                    label: 'Password',
-                    hint: 'enter your password',
-                    suffixIcon: model.icon1,
-                    suffixOnPressed: () {
-                      model.dosomething1();
-                    },
-                    prefixIcon: Icon(
-                      Icons.vpn_key_rounded,
-                      color: AppTheme.colors.purple,
-                    ),
-                    controller: _passwordController,
-                    inputType: TextInputType.emailAddress,
-                    obscureText: model.obscure1,
-                    validate: emptyValidate,
-                  );
-                }),
+                // const SizedBox(height: 10),
+                MyTextFormField(
+                  label: 'Password',
+                  hint: 'enter your password',
+                  suffixIcon: Icon(Icons.remove_red_eye_outlined,
+                      color: AppTheme.colors.purple),
+                  suffixOnPressed: () {
+                    _obscureText = !_obscureText;
+                    setState(() {});
+                  },
+                  prefixIcon: Icon(
+                    Icons.vpn_key_rounded,
+                    color: AppTheme.colors.purple,
+                  ),
+                  controller: _passwordController,
+                  inputType: TextInputType.emailAddress,
+                  obscureText: _obscureText,
+                  validate: emptyValidate,
+                ),
                 Row(
                   children: [
                     Checkbox(
                         value: _check,
                         // activeColor:Colors.white ,
                         onChanged: (not) {
-                          // ***** provider state managment missing
                           _check = !_check;
+                          setState(() {});
                         }),
                     Text(
-                      'remember me?',
+                      'remmeber me?',
                       style: TextStyle(color: AppTheme.colors.purple),
                     )
                   ],

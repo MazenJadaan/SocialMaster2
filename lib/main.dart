@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:social_master/modules/auth/login.dart';
 
+import 'package:social_master/modules/auth/welcome.dart';
+import 'package:social_master/shared/styles/colors.dart';
+
+
 import 'modules/auth/Signup.dart';
+
 
 
 void main() {
@@ -22,7 +27,10 @@ class MyApp extends StatelessWidget {
 
           // primarySwatch: Colors.purple,
           ),
-      home: Signup(),
+
+      home: welcome(),
+
+
     );
   }
 }
