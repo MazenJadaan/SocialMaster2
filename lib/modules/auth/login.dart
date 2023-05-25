@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:social_master/models/obscure_model.dart';
 import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/shared/styles/colors.dart';
+import '../../models/validate.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/api/google_signin_api.dart';
 
@@ -72,7 +73,7 @@ class _LoginState extends State<Login> {
                     ),
                     controller: _emailController,
                     inputType: TextInputType.emailAddress,
-                    validate: emptyValidate,
+                    validate: Validate.emptyValidate,
                   ),
                   Consumer<ObscureModel>(builder: (context, model, child) {
                     return MyTextFormField(
@@ -89,7 +90,7 @@ class _LoginState extends State<Login> {
                       controller: _passwordController,
                       inputType: TextInputType.emailAddress,
                       obscureText: model.obscure1,
-                      validate: emptyValidate,
+                      validate: Validate.passwordValidate,
                     );
                   }),
 
@@ -187,13 +188,6 @@ class _LoginState extends State<Login> {
     );
   }
 
-  String? emptyValidate(String? value) {
-    if (value!.isEmpty) {
-      return "can't be empty";
-    } else {
-      return null;
-    }
-  }
 
   Future signIn() async {
     final user = await GoogleSignInApi.login();
