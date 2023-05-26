@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:social_master/modules/auth/login.dart';
 
 import 'package:social_master/modules/auth/welcome.dart';
+import 'package:social_master/modules/welcome/welcome_view_page.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
 
@@ -25,10 +26,11 @@ class MyApp extends StatelessWidget {
       title: 'Social Master',
       theme: ThemeData(
 
+
           // primarySwatch: Colors.purple,
           ),
 
-      home: const Login(),
+      home: const WelcomePage(),
 
 
     );

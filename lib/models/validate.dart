@@ -7,7 +7,10 @@ class Validate {
     }
   }
   static String? passwordValidate(String? value) {
-    if (value!.length < 8) {
+    if(value!.isEmpty){
+      return "can't be empty";
+    }
+    if (value.length < 8) {
       return "Password must be 8 characters or more";
     } else {
       return null;

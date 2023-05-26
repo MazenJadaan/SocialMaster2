@@ -19,7 +19,9 @@ class _SignupState extends State<Signup> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  final _phoneNumberController = TextEditingController();
+
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +61,27 @@ class _SignupState extends State<Signup> {
                     width: 200,
                     height: 180,
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 178,
+                        child: SmallTextFormField(
+                          controller: _firstNameController,
+                          validate: Validate.emptyValidate,
+                          label: "first name",
+                        ),
+                      ),
+                      Container(
+                        width: 178,
+                        child: SmallTextFormField(
+                            controller: _lastNameController,
+                            validate: Validate.emptyValidate,
+                            label: "last name"),
+                      ),
+                    ],
+                  ),
+
                   MyTextFormField(
                       prefixIcon: Icon(
                         Icons.email_outlined,
@@ -67,20 +90,13 @@ class _SignupState extends State<Signup> {
                       suffixOnPressed: () {},
                       controller: _emailController,
                       validate: Validate.emptyValidate,
-                      label: "E-mail"),
-                  MyTextFormField(
-                      suffixOnPressed: () {},
-                      prefixIcon: Icon(
-                        Icons.phone,
-                        color: AppTheme.colors.purple,
-                      ),
-                      controller: _phoneNumberController,
-                      validate: Validate.emptyValidate,
-                      label: "Phone Number"),
+                      label: "E-mail",
+                  inputType: TextInputType.emailAddress),
+
                   Consumer<ObscureModel>(builder: (context, model, child) {
                     return MyTextFormField(
                       controller: _passwordController,
-                      validate: Validate.emptyValidate,
+                      validate: Validate.passwordValidate,
                       label: "Password",
                       hint: 'enter your password',
                       obscureText: model.obscure2,
@@ -105,7 +121,7 @@ class _SignupState extends State<Signup> {
                           model.dosomething3();
                         },
                         controller: _confirmPasswordController,
-                        validate: Validate.emptyValidate,
+                        validate: Validate.passwordValidate,
                         obscureText: model.obscure3,
                         label: "Confirm Password");
                   }),
@@ -117,7 +133,7 @@ class _SignupState extends State<Signup> {
                       if (formKey.currentState!.validate()) {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
-                          return Login();
+                          return const Login();
                         }));
                       }
                     },
@@ -133,7 +149,7 @@ class _SignupState extends State<Signup> {
                           onPressed: () {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (context) {
-                              return Login();
+                              return const Login();
                             }));
                           },
                           child: Text(

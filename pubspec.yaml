@@ -39,6 +39,7 @@ dependencies:
   google_sign_in: ^6.1.0
   flutter_lints: ^2.0.1
   provider: ^6.0.5
+  smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -83,10 +84,13 @@ flutter:
   fonts:
     - family: Pangolin
       fonts:
-        - asset: fonts/Pangolin-Regular.ttf
+        - asset: assets/fonts/Pangolin-Regular.ttf
     - family: DancingScript
       fonts:
-        - asset: fonts/DancingScript-VariableFont_wght.ttf
+        - asset: assets/fonts/DancingScript-VariableFont_wght.ttf
+    - family: SignikaNegative
+      fonts:
+        - asset: assets/fonts/SignikaNegative-VariableFont_wght.ttf
 
 
   #

@@ -7,39 +7,29 @@ import '../../shared/components/components.dart';
 import '../../shared/styles/colors.dart';
 
 class Signup_Details extends StatelessWidget {
-  const Signup_Details({Key? key}) : super(key: key);
+   Signup_Details({Key? key}) : super(key: key);
+  final _phoneNumberController = TextEditingController();
+  var dropDownValue;
 
   @override
   Widget build(BuildContext context) {
-    final _firstNameController = TextEditingController();
-    final _lastNameController = TextEditingController();
-    var dropDownValue;
+
+
     DateTime date = DateTime.now();
 
     return Scaffold(
       body:   Container(
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 178,
-                  child: SmallTextFormField(
-                    controller: _firstNameController,
-                    validate: Validate.emptyValidate,
-                    label: "first name",
-                  ),
+            MyTextFormField(
+                suffixOnPressed: () {},
+                prefixIcon: Icon(
+                  Icons.phone,
+                  color: AppTheme.colors.purple,
                 ),
-                Container(
-                  width: 178,
-                  child: SmallTextFormField(
-                      controller: _lastNameController,
-                      validate: Validate.emptyValidate,
-                      label: "last name"),
-                ),
-              ],
-            ),
+                controller: _phoneNumberController,
+                validate: Validate.emptyValidate,
+                label: "Phone Number"),
 
             Row(
               children: [
