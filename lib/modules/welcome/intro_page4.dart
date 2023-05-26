@@ -11,7 +11,7 @@ class IntroPage4 extends StatelessWidget {
             image: DecorationImage(
                 image: AssetImage("assets/images/background.png"),
                 fit: BoxFit.cover)),
-        child: Center(child: Text("page 3")),
+        child: Center(child: Text("page 4")),
 
       ),
     );
