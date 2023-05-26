@@ -25,8 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Social Master',
       theme: ThemeData(
-
-
+        primaryColor: AppTheme.colors.purple,
           // primarySwatch: Colors.purple,
           ),
 
