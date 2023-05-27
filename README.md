@@ -1,6 +1,7 @@
-# social_master
+# Social Master
 
-A new Flutter project.
+Social media application using flutter and laravel
+
 
 ## Getting Started
 
