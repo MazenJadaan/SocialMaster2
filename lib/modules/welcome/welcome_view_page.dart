@@ -57,7 +57,6 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ),
                 SmoothPageIndicator(
-
                     controller: _pageController,
                     count: 4,
                     effect: const ExpandingDotsEffect()),

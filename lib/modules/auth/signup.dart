@@ -147,10 +147,7 @@ class _SignupState extends State<Signup> {
                       ),
                       TextButton(
                           onPressed: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (context) {
-                              return const Login();
-                            }));
+                            Navigator.of(context).pop();
                           },
                           child: Text(
                             'login',
