@@ -32,7 +32,7 @@ class IntroPage4 extends StatelessWidget {
                         color: AppTheme.colors.darkPurple),
                   ),
                   Text(
-                    "لسا ما قررنا شو بدنا نحط هون",
+                    "لسا ما قررنا شو بدنا نحط هون?خير ان شالله قرر بسرعة",
                     style: TextStyle(
                         fontFamily: 'SignikaNegative',
                         fontWeight: FontWeight.bold,
