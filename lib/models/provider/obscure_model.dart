@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../shared/styles/colors.dart';
+import '../../shared/styles/colors.dart';
 
 class ObscureModel extends ChangeNotifier {
   bool obscure1 = true;

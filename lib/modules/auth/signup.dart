@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/shared/components/components.dart';
 import '../../models/validate.dart';
 import '../../shared/styles/colors.dart';
-import 'package:social_master/models/obscure_model.dart';
+import 'package:social_master/models/provider/obscure_model.dart';
 
 import 'login.dart';
 
-class Signup extends StatefulWidget {
-  const Signup({Key? key}) : super(key: key);
+class Signup extends StatelessWidget {
+  Signup({Key? key}) : super(key: key);
 
-  @override
-  State<Signup> createState() => _SignupState();
-}
-
-class _SignupState extends State<Signup> {
   final _emailController = TextEditingController();
+
   final _passwordController = TextEditingController();
+
   final _confirmPasswordController = TextEditingController();
 
   final _firstNameController = TextEditingController();
+
   final _lastNameController = TextEditingController();
 
   @override
@@ -65,7 +64,7 @@ class _SignupState extends State<Signup> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: 178,
+                        width: 180,
                         child: SmallTextFormField(
                           controller: _firstNameController,
                           validate: Validate.emptyValidate,
@@ -73,7 +72,7 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                       Container(
-                        width: 178,
+                        width: 180,
                         child: SmallTextFormField(
                             controller: _lastNameController,
                             validate: Validate.emptyValidate,
@@ -128,12 +127,12 @@ class _SignupState extends State<Signup> {
                   const SizedBox(height: 5),
                   MyMaterialButton(
                     width: 240,
-                    text: 'Login',
+                    text: 'Signup',
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
-                          return const Login();
+                          return  SignupDetails();
                         }));
                       }
                     },
@@ -197,5 +196,4 @@ class _SignupState extends State<Signup> {
       ),
     );
   }
-
 }

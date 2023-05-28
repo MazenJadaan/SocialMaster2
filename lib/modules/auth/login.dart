@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:social_master/models/obscure_model.dart';
+import 'package:social_master/models/provider/obscure_model.dart';
 import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../../models/validate.dart';
@@ -37,6 +37,7 @@ class _LoginState extends State<Login> {
           child: ChangeNotifierProvider(
             create: (context) => ObscureModel(),
             child: Form(
+              autovalidateMode: AutovalidateMode.always,
               key: formKey,
               child: SingleChildScrollView(
                 child: Column(
@@ -132,7 +133,7 @@ class _LoginState extends State<Login> {
                           onPressed: () {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (context) {
-                              return const Signup();
+                              return  Signup();
                             }));
                           },
                           child: Text(

@@ -85,7 +85,7 @@ Widget SmallTextFormField({
             ),
             border: InputBorder.none,
             filled: true,
-            fillColor: const Color(0x40917fb3),
+            fillColor: AppTheme.colors.opacityPurple,
             prefix: prefixIcon,
 
           ),
@@ -113,7 +113,7 @@ Widget MyMaterialButton({
           key: key,
 
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(100),
             color: AppTheme.colors.purple,
           ),
           clipBehavior: Clip.antiAliasWithSaveLayer,
