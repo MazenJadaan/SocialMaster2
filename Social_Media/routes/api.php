@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Auth\GoogleController;
-use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Models\User;
 use App\Models\User_profile;
 use Illuminate\Http\Request;
