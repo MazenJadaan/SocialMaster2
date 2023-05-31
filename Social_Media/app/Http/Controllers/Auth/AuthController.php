@@ -6,8 +6,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\ResetCodePassword;
 use App\Models\User;
+use App\Models\User_profile;
 use App\Traits\ApiResponseTrait;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -21,13 +24,37 @@ class AuthController extends Controller
             'last_name' => 'required|max:125',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:8',
-            'phone_num' => 'required|numeric|unique:users',
-            'gender'=>'required|in:female,male',
-            'birthdate'=>'required|date'
+
+
         ]);
         $user = User::create($data);
+       $user->user_profile()->create([]);
        $token = $user->createToken('User Api Token')->accessToken;
     return  $this -> ApiResponse([ 'user' => $user, 'token' => $token],'Account created successfully',200);
+    }
+
+    public  function complete_register(Request $request){
+        $data = $request->validate([
+            'phone_num' => 'required|numeric|unique:users',
+            'gender'=>'required',
+            'birthdate'=>'required|date',
+            'profile_photo'=>'image']);
+
+         $user_id = Auth::id();
+         $user = User::where('id',$user_id)->first();
+         $user->update(['phone_num'=>$request['phone_num']
+             ,'gender'=>$request['gender'],
+             'birthdate'=>$request['birthdate'],
+             ]);
+
+         if($request->profile_photo){
+             $imageName = time().'.'.$request->profile_photo->extension();
+             $request->profile_photo->storeAs('images/profile_picture', $imageName);
+             $name_path='storage/app/images/profile_picture/'.$imageName;
+            $user->user_profile()->update(['profile_photo'=>$name_path]);
+         }
+
+         return $this->ApiResponse(null,'complete information its succesful',200);
     }
 
 

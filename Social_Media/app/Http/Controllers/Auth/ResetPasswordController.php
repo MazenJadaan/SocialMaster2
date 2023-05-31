@@ -60,7 +60,7 @@ class ResetPasswordController extends Controller
     }
 
 
-    public function update_password(Request $request)
+    public function reset_password(Request $request)
     {
         $data =   $request->validate([
             'email' => 'required|email|exists:users',

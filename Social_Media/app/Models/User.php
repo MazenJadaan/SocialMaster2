@@ -19,6 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'first_name',
         'last_name',
         'email',
@@ -50,12 +51,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /////////// setter and getter of model /////////////
     public  function  setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
     }
     public function setGenderAttribute($value)
     {
-        if($value == 'female')
+        if($value== 'female')
         $this->attributes['gender'] = 0;
         elseif($value == 'male')
             $this->attributes['gender'] = 1;
@@ -71,6 +75,14 @@ class User extends Authenticatable
     {
         $this->attributes['birthdate'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
     }
+    /////////// setter and getter of model /////////////
+    ///
+    ///
+    //////////  Relationship //////////////////
 
+    public function user_profile(){
+       return  $this->hasOne(User_profile::class);
+    }
 
+//////////  Relationship //////////////////
 }
