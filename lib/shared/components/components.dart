@@ -23,6 +23,7 @@ Widget MyTextFormField({
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: TextFormField(
 
+            textAlignVertical: TextAlignVertical.top,
             controller: controller,
             obscureText: obscureText,
             keyboardType: inputType,

@@ -37,6 +37,7 @@ class Signup extends StatelessWidget {
         child: ChangeNotifierProvider(
           create: (context) => ObscureModel(),
           child: Form(
+            autovalidateMode: AutovalidateMode.always,
             key: formKey,
             child: SingleChildScrollView(
               child: Column(

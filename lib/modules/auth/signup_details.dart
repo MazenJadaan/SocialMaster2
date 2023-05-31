@@ -1,3 +1,4 @@
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:social_master/models/validate.dart';
 
 import '../../shared/components/components.dart';
 import '../../shared/styles/colors.dart';
+import '../app/home.dart';
 
 class SignupDetails extends StatefulWidget {
   const SignupDetails({Key? key}) : super(key: key);
@@ -20,7 +22,9 @@ class SignupDetails extends StatefulWidget {
 
 class _SignupDetailsState extends State<SignupDetails> {
   final _phoneNumberController = TextEditingController();
+  DateTime date = DateTime.now();
   File? image;
+  bool? test;
   final ImagePicker picker = ImagePicker();
 
   Future uploadImage() async {
@@ -36,10 +40,10 @@ class _SignupDetailsState extends State<SignupDetails> {
     }
   }
 
-  DateTime date = DateTime.now();
-
   @override
   Widget build(BuildContext context) {
+    var formKey = GlobalKey<FormState>();
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -51,6 +55,8 @@ class _SignupDetailsState extends State<SignupDetails> {
         ),
       ),
       body: Form(
+        autovalidateMode: AutovalidateMode.always,
+        key: formKey,
         child: Column(
           children: [
             const SizedBox(
@@ -121,17 +127,25 @@ class _SignupDetailsState extends State<SignupDetails> {
               ],
             ),
             const SizedBox(height: 10),
-            MyTextFormField(
-                suffixOnPressed: () {},
-                prefixIcon: Icon(
-                  Icons.phone,
-                  color: AppTheme.colors.purple,
-                ),
-                controller: _phoneNumberController,
-                validate: Validate.emptyValidate,
-                label: "Phone Number",
-            inputType: TextInputType.number),
-            const SizedBox(height: 5,),
+
+
+                  MyTextFormField(
+
+                      suffixOnPressed: () {},
+                      prefixIcon: Icon(
+                        Icons.phone,
+                        color: AppTheme.colors.purple,
+                      ),
+                      controller: _phoneNumberController,
+                      validate: Validate.emptyValidate,
+                      label: "Phone Number",
+                      inputType: TextInputType.number),
+
+
+
+            const SizedBox(
+              height: 5,
+            ),
             Row(
               children: const [
                 SizedBox(
@@ -206,30 +220,31 @@ class _SignupDetailsState extends State<SignupDetails> {
                 ),
               ),
             ),
-        const SizedBox(height: 10,),
-        Row(
-          children: const [
-            SizedBox(
-              width: 10,
+            const SizedBox(
+              height: 10,
             ),
-            Text(
-              "Select your birthday:",
-              style: TextStyle(fontFamily: 'SignikaNegative', fontSize: 16),
-            ),]),
-            const SizedBox(height: 10,),
-
+            Row(children: const [
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                "Select your birthday:",
+                style: TextStyle(fontFamily: 'SignikaNegative', fontSize: 16),
+              ),
+            ]),
+            const SizedBox(
+              height: 10,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Container(
-                decoration:  BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
                   color: AppTheme.colors.opacityPurple,
                 ),
                 height: 65,
                 child: Row(
-
                   children: [
-
                     MyMaterialButton(
                         text: 'Select birthday',
                         height: 50,
@@ -239,31 +254,41 @@ class _SignupDetailsState extends State<SignupDetails> {
                           DateTime? newDate = await showDatePicker(
                             context: context,
                             initialDate: DateTime(2001, 7, 30),
-                            firstDate: DateTime(1930),
-                            lastDate: DateTime(date.year + 1),
+                            firstDate: DateTime(1950),
+                            lastDate: DateTime(2005),
                           );
                           if (newDate == null) return;
                           date = newDate;
                           setState(() {});
                         }),
-                    const SizedBox(width: 20,),
+                    const SizedBox(
+                      width: 20,
+                    ),
                     Text(
                       '${date.day}/${date.month}/${date.year}',
-                      style:  TextStyle(fontSize: 24,
-                      color: AppTheme.colors.darkPurple),
+                      style: TextStyle(
+                          fontSize: 24, color: AppTheme.colors.darkPurple),
                     ),
                   ],
                 ),
               ),
             ),
-           const Spacer(),
+            const Spacer(),
             MyMaterialButton(
-                width: 150,
+                width: 170,
                 height: 50,
-
-                text: "Continue", onPressed: (){}),
-
-            const SizedBox(height: 30,),
+                text: "Continue",
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return const Home();
+                    }));
+                  }
+                }),
+            const SizedBox(
+              height: 30,
+            ),
           ],
         ),
       ),

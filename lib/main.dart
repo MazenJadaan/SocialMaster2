@@ -28,11 +28,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: AppBarTheme(color:AppTheme.colors.purple ),
         primaryColor: AppTheme.colors.purple,
+          primarySwatch: Colors.purple,
 
           // primarySwatch: Colors.purple,
           ),
 
-      home: SignupDetails(),
+      home: const WelcomePage (),
 
 
     );
