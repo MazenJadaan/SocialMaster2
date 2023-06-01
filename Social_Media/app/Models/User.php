@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use App\Models\Comment;
+use App\Models\User_profile;
+use App\Models\like;
 
 class User extends Authenticatable
 {
@@ -82,6 +85,18 @@ class User extends Authenticatable
 
     public function user_profile(){
        return  $this->hasOne(User_profile::class);
+    }
+
+    public function comment(){
+        return $this->hasMany(Comment::class);
+    }
+
+    public function like () {
+        return $this->hasMany(Like::class);
+    }
+
+    public function owner () {
+        return $this->hasMany(like::class);
     }
 
 //////////  Relationship //////////////////
