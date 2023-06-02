@@ -8,6 +8,7 @@ import 'package:social_master/modules/welcome/welcome_view_page.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
 
+import 'modules/app/home.dart';
 import 'modules/auth/signup.dart';
 
 
@@ -28,12 +29,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: AppBarTheme(color:AppTheme.colors.purple ),
         primaryColor: AppTheme.colors.purple,
-          primarySwatch: Colors.purple,
-
+          primarySwatch: Colors.deepPurple,
           // primarySwatch: Colors.purple,
           ),
 
-      home: const WelcomePage (),
+      home: const Home(),
 
 
     );
