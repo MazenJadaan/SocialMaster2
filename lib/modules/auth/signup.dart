@@ -62,18 +62,16 @@ class Signup extends StatelessWidget {
                     height: 180,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 180,
+                      Expanded(
                         child: SmallTextFormField(
                           controller: _firstNameController,
                           validate: Validate.emptyValidate,
                           label: "first name",
                         ),
                       ),
-                      Container(
-                        width: 180,
+                      Expanded(
                         child: SmallTextFormField(
                             controller: _lastNameController,
                             validate: Validate.emptyValidate,

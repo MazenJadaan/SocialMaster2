@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -127,22 +126,16 @@ class _SignupDetailsState extends State<SignupDetails> {
               ],
             ),
             const SizedBox(height: 10),
-
-
-                  MyTextFormField(
-
-                      suffixOnPressed: () {},
-                      prefixIcon: Icon(
-                        Icons.phone,
-                        color: AppTheme.colors.purple,
-                      ),
-                      controller: _phoneNumberController,
-                      validate: Validate.emptyValidate,
-                      label: "Phone Number",
-                      inputType: TextInputType.number),
-
-
-
+            MyTextFormField(
+                suffixOnPressed: () {},
+                prefixIcon: Icon(
+                  Icons.phone,
+                  color: AppTheme.colors.purple,
+                ),
+                controller: _phoneNumberController,
+                validate: Validate.emptyValidate,
+                label: "Phone Number",
+                inputType: TextInputType.number),
             const SizedBox(
               height: 5,
             ),
@@ -255,19 +248,63 @@ class _SignupDetailsState extends State<SignupDetails> {
                             context: context,
                             initialDate: DateTime(2001, 7, 30),
                             firstDate: DateTime(1950),
-                            lastDate: DateTime(2005),
+                            lastDate: DateTime(2010),
                           );
                           if (newDate == null) return;
                           date = newDate;
                           setState(() {});
                         }),
-                    const SizedBox(
-                      width: 20,
+
+                    const Text('d:'),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: AppTheme.colors.opacityPurple,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Text(
+                          '${date.day}',
+                          style: TextStyle(
+                              fontSize: 24, color: AppTheme.colors.darkPurple),
+                        ),
+                      ),
                     ),
-                    Text(
-                      '${date.day}/${date.month}/${date.year}',
-                      style: TextStyle(
-                          fontSize: 24, color: AppTheme.colors.darkPurple),
+                    const SizedBox(
+                      width: 7,
+                    ),
+                    const Text('m:'),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: AppTheme.colors.opacityPurple,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Text(
+                          '${date.month}',
+                          style: TextStyle(
+                              fontSize: 24, color: AppTheme.colors.darkPurple),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 7,
+                    ),
+                    const Text('y:'),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: AppTheme.colors.opacityPurple,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Text(
+                          '${date.year}',
+                          style: TextStyle(
+                              fontSize: 24, color: AppTheme.colors.darkPurple),
+                        ),
+                      ),
                     ),
                   ],
                 ),

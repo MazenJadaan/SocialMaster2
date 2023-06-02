@@ -3,7 +3,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:social_master/modules/auth/login.dart';
 import 'package:social_master/modules/welcome/intro_page1.dart';
 import 'package:social_master/modules/welcome/intro_page2.dart';
-import 'package:social_master/modules/welcome/intro_page4.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
 import 'intro_page3.dart';
@@ -18,17 +17,16 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<WelcomePage> {
   PageController _pageController = PageController();
   bool onLastPage = false;
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
       body: Stack(
         children: [
           PageView(
             onPageChanged: (index) {
               setState(() {
-                onLastPage = (index == 3);
+                onLastPage = (index == 2);
               });
             },
             controller: _pageController,
@@ -36,11 +34,10 @@ class _WelcomePageState extends State<WelcomePage> {
               IntroPage1(),
               IntroPage2(),
               IntroPage3(),
-              IntroPage4(),
             ],
           ),
           Container(
-            alignment: const Alignment(0, 0.87),
+            alignment: const Alignment(0, 0.85),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -50,28 +47,34 @@ class _WelcomePageState extends State<WelcomePage> {
                   },
                   child: Text(
                     'Skip',
-                    style:
-                        TextStyle(fontSize: 20, color: AppTheme.colors.purple,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'SignikaNegative',),
+                    style: TextStyle(
+                      fontSize: 19,
+                      color: AppTheme.colors.purple,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'SignikaNegative',
+                    ),
                   ),
                 ),
                 SmoothPageIndicator(
                     controller: _pageController,
-                    count: 4,
+                    count: 3,
                     effect: const ExpandingDotsEffect()),
                 onLastPage
                     ? GestureDetector(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => const Login()));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Login()));
                         },
                         child: Text(
                           'Done',
                           style: TextStyle(
-                              fontSize: 20, color: AppTheme.colors.purple,
+                            fontSize: 19,
+                            color: AppTheme.colors.purple,
                             fontFamily: 'SignikaNegative',
-                            fontWeight: FontWeight.w600,),
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       )
                     : GestureDetector(
@@ -83,9 +86,11 @@ class _WelcomePageState extends State<WelcomePage> {
                         child: Text(
                           'Next',
                           style: TextStyle(
-                              fontSize: 20, color: AppTheme.colors.purple,
+                            fontSize: 19,
+                            color: AppTheme.colors.purple,
                             fontFamily: 'SignikaNegative',
-                            fontWeight: FontWeight.w600,),
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
               ],
