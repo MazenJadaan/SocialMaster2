@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/shared/components/components.dart';
-import '../../models/validate.dart';
+import '../../models/validate/validate.dart';
 import '../../shared/styles/colors.dart';
 import 'package:social_master/models/provider/obscure_model.dart';
 
