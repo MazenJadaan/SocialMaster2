@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:social_master/models/provider/obscure_model.dart';
 import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/shared/styles/colors.dart';
-import '../../models/validate.dart';
+import '../../models/validate/validate.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/api/google_signin_api.dart';
 

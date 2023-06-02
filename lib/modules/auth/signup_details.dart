@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/models/provider/ismale.dart';
-import 'package:social_master/models/validate.dart';
+import 'package:social_master/models/validate/validate.dart';
 
 import '../../shared/components/components.dart';
 import '../../shared/styles/colors.dart';
