@@ -148,7 +148,7 @@ class Signup extends StatelessWidget {
                             Navigator.of(context).pop();
                           },
                           child: Text(
-                            'login',
+                            'Login',
                             style: TextStyle(
                               color: AppTheme.colors.purple,
                               fontWeight: FontWeight.bold,

@@ -95,20 +95,21 @@ class _LoginState extends State<Login> {
                     );
                   }),
 
-                  Row(
-                    children: [
-                      Checkbox(
-                          value: _check,
-                          // activeColor:Colors.white ,
-                          onChanged: (not) {
-                            _check = !_check;
-                          }),
-                      Text(
-                        'remember me?',
-                        style: TextStyle(color: AppTheme.colors.purple),
-                      )
-                    ],
-                  ),
+                
+                      Row(
+                        children: [
+                          SizedBox(width: 10,),
+                          TextButton(
+                            onPressed: (){},
+                            child: Text(
+                              'forget password?',
+                              style: TextStyle(color: AppTheme.colors.purple,
+                                fontWeight: FontWeight.bold,),
+                            ),
+                          ),
+                        ],
+                      ),
+                 
 
                   MyMaterialButton(
                     width: 240,
@@ -137,7 +138,7 @@ class _LoginState extends State<Login> {
                             }));
                           },
                           child: Text(
-                            'register',
+                            'Signup',
                             style: TextStyle(
                               color: AppTheme.colors.purple,
                               fontWeight: FontWeight.bold,
