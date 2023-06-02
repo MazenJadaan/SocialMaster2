@@ -13,4 +13,12 @@ class userfollowers extends Model
         'user_id',
         'user_profile_id'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function userProfile(){
+        return $this->belongsTo(User_profile::class,'user_profile_id');
+    }
 }

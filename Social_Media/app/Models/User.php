@@ -84,19 +84,43 @@ class User extends Authenticatable
     //////////  Relationship //////////////////
 
     public function user_profile(){
-       return  $this->hasOne(User_profile::class);
+        return  $this->hasOne(User_profile::class);
+    }
+
+    public function post(){
+        return $this->hasMany(Post::class);
     }
 
     public function comment(){
         return $this->hasMany(Comment::class);
     }
 
-    public function like () {
+    public function like (){
         return $this->hasMany(Like::class);
     }
 
-    public function owner () {
+    public function owner (){
         return $this->hasMany(like::class);
+    }
+
+    public function savePost(){
+        return $this->hasMany(Savepost::class);
+    }
+
+    public function payedPost(){
+        return $this->hasMany(payedposts::class);
+    }
+
+    public function sharePost() {
+        return $this->hasMany(sharepost::class);
+    }
+
+    public function userFollower(){
+        return $this->hasMany(userfollowers::class);
+    }
+
+    public function story(){
+        return $this->hasMany(Story::class);
     }
 
 //////////  Relationship //////////////////

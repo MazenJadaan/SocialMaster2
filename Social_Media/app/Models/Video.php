@@ -13,4 +13,8 @@ class video extends Model
         'post_id',
         'video_path'
     ];
+
+    public function post() {
+        return $this->belongsTo(Post::class,'post_id');
+    }
 }

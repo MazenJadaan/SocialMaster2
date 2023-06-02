@@ -25,9 +25,25 @@ class User_profile extends Model
     ];
 
     ////////////// Relatioship ///////////////
-public  function user(){
-    return $this->belongsTo(User::class);
-}
+    public  function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function userFollower(){
+        return $this->hasMany(userfollowers::class);
+    }
+
+    public function story(){
+        return $this->hasMany(story::class);
+    }
+
+    public function officailAccount(){
+        return $this->hasOne(officialaccounts::class);
+    }
+
+    public function post(){
+        return $this->hasMany(Post::class);
+    }
     /// //////////  Relationship //////////////////
 
 }

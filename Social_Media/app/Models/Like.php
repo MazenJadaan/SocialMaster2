@@ -15,15 +15,15 @@ class like extends Model
         'post_owner'
     ];
 
-    public function user () {
+    public function user (){
         return $this->belongsTo(User::class,'user_id');
     }
 
-    public function postOwner() {
+    public function postOwner(){
         return $this->belongsTo(User::class,'post_owner');
     }
 
-    public function post() {
+    public function post(){
         return $this->belongsTo(Post::class,'post_id');
     }
 

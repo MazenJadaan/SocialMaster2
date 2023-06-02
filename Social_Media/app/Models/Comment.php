@@ -17,7 +17,15 @@ class comment extends Model
         'post_owner'
     ];
 
-    public function user () {
-        return $this->belongsTo('User','user_id') ;
+    public function user(){
+        return $this->belongsTo(User::class,'user_id') ;
+    }
+
+    public function post(){
+        return $this->belongsTo(Post::class,'post_id');
+    }
+
+    public function postOwner(){
+        return $this->belongsTo(User::class,'post_owner');
     }
 }

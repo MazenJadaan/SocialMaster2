@@ -12,4 +12,8 @@ class officialaccounts extends Model
     protected $fillable =[
         'user_profile_id',
     ];
+
+    public function userProfile(){
+        return $this->belongsTo(User_profile::class,'user_profile_id');
+    }
 }

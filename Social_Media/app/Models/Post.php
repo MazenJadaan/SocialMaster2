@@ -17,7 +17,39 @@ class post extends Model
         'post_date'
     ];
 
-    public function like () {
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function like (){
         return $this->hasMany(like::class);
+    }
+
+    public function comment(){
+        return $this->hasMany(Comment::class);
+    }
+
+    public function savePost(){
+        return $this->hasMany(Savepost::class);
+    }
+
+    public function payedPost(){
+        return $this->hasOne(payedposts::class);
+    }
+
+    public function photo(){
+        return $this->hasMany(Photo::class);
+    }
+
+    public function sharePost(){
+        return $this->hasMany(sharepost::class);
+    }
+
+    public function video(){
+        return $this->hasMany(Video::class);
+    }
+
+    public function userProfile(){
+        return $this->hasMany(User_profile::class);
     }
 }
