@@ -47,12 +47,12 @@ class AuthController extends Controller
              'birthdate'=>$request['birthdate'],
              ]);
 
-         if($request->profile_photo){
-             $imageName = time().'.'.$request->profile_photo->extension();
-             $request->profile_photo->storeAs('images/profile_picture', $imageName);
-             $name_path='storage/app/images/profile_picture/'.$imageName;
+        if($request->profile_photo){
+            $imageName = time().'.'.$request->profile_photo->extension();
+            $request->profile_photo->storeAs('images/profile_picture', $imageName);
+            $name_path='storage/app/images/profile_picture/'.$imageName;
             $user->user_profile()->update(['profile_photo'=>$name_path]);
-         }
+        }
 
          return $this->ApiResponse(null,'complete information its succesful',200);
     }

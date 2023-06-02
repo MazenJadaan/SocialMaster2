@@ -1,0 +1,984 @@
+{
+	"info": {
+		"_postman_id": "0ec54554-343f-4259-8724-4076a6bbad54",
+		"name": "Social_Media",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24636428"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "mazen",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "ra3i",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "mazen@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "mazen123",
+									"type": "text"
+								},
+								{
+									"key": "password confirmation",
+									"value": "mazen123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "first_name",
+											"value": "mazen",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "ra3i",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "mazen@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "mazen123",
+											"type": "text"
+										},
+										{
+											"key": "password confirmation",
+											"value": "mazen123",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Jun 2023 07:24:29 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Jun 2023 07:24:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"user\": {\n            \"first_name\": \"mazen\",\n            \"last_name\": \"ra3i\",\n            \"email\": \"mazen@gmail.com\",\n            \"updated_at\": \"2023-06-02T07:24:29.000000Z\",\n            \"created_at\": \"2023-06-02T07:24:29.000000Z\",\n            \"id\": 2\n        },\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZmQ4ZDNjMWJjYmExMzJiZmFlMzJkMmI4YTIwYzM4NGU0NDA4YjdlYjQyNTczZjNlYmFjNjhiY2ZhNmQ1MTg0MTNjOTg1OTlkYjM5YWRkZTQiLCJpYXQiOjE2ODU2OTA2NjkuNjE3NjMxLCJuYmYiOjE2ODU2OTA2NjkuNjE3NjM2LCJleHAiOjE3MTczMTMwNjkuNjEwMzQ5LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.ak0RIaXJW2MKlccYrs6xpWvL7DA6bBpBrpePMywewH2cyhXDnhIBSm_tskcXeVM_FCJ1GloJLz3-4Gkjo80PWinP8Bmb_Wb5ZZSko07mLG3a73awZYl-qWZhmwoCnqSTZcHcUvm7vXBANtKpLqpAmW6uy2k-_XLmbGhToOrFvgaTOg6p-SOr2_OovJiQEuu1rHc9QNXI-vIn8-lwOvddfPEY98exZRBhy8a__GlMkns2rtEfsuOXQ9LOpbcQuTJYtNoyMh4XLtUH3Vjy6MTBYbnVL9vWi_ibO-x8WOBZA4RaEl3rT6p6tV7lsF7t6L_X5bRjdj2hpbjc1GjZ56XvilIGsrfqoPcHnj-5RCzUu-aXVjV-jTEP7MBFygCtBreNPF-876bOgfR79wybvUf1hwjj5dmWmfusLNlyLDjlavXvbDeJXyO4X1WhGGPR1oQE5G3_w0GkHKsi7g31wLqiDoetxYUAPK9e0VNJkTrEmLJfqHDLLGocVkSV762BMezGnHR3LpWp1LqzfBd5Fe5Ovy7c8XdoWZsNIxGesp4CQYXmC-Mh48RAey493prnJr_D4L3I4Nhr38Ue29ohu-kFiCqWDsI4FhU5qsAb3GwEPAPEWE2VJ8WOdNQ_czEz3CSGmQqXchbc52kRXTjtBRHdyFH6rHGkSwSRUrtZ7t6mG5M\"\n    },\n    \"message\": \"Account created successfully\",\n    \"status\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "complete register information",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTc2NmM5MjlmNzczM2JjNjk2OTQxNGY3ZmM1YTg1YzM4MjM1NWZlODYxNDRiZjljMTVhYmY5ZGQ4N2Y5NDczMmNiOTliYjQ5ZWJkN2VjODAiLCJpYXQiOjE2ODUzNjI2NjEuMDczMDIxLCJuYmYiOjE2ODUzNjI2NjEuMDczMDI2LCJleHAiOjE3MTY5ODUwNjEuMDY3MTYyLCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.YP7ptznWY33mUMCuLQFXOrVK4Ig4IGvwAPchGSgdUGkrFwBak56c5h8hmDTOALToVM-fyumpukmTHNH27DGlYGK9xj9Sx1jhvoTgNhOOrTZ-Nv-FOev4VI4-ilLDpfK0tKTLsQ2IhJ4rjT_ovs98fAhTZ7tTVr6yFheYL6kSqdzUlrHCkrwwlMOI3RSajSiKXwHSwdF2laQsjfCqHo3XucH4HAhtSsP1tDl9BSZ56A2UBBeY2dLTmT91KR6nSdH26VYjEMHwZm0l3NLW-J8Qu-eoxZHaxjc76AuvLFwRI8C3oJ_otPLFmByzY2_gKA871bMi4LdjGqXcx6hWRVvD_wl2C-SRqKOi-cLiOWzaxXaqbEQnHL5jwgJtSzuONK7p7fKEGC1JSmCBHEKP3zukiAQdhHGi_3EH2k9q-sRyxZYoFIgw8P1f8RN07mG-UHFBdiIN8ktYBFJB9OJKd9DRevT4pBigA_1L2erp40rdTm6PJaoQstOZ071t_KY1wzj7abe6k-CkckQk2B6c0Yza9SvVI8ssKXQzvP7iZJYc2TyZ-vQHIXjXW8GejkPhDFicLBiyD9TSs4NYmC_lHKkdMVOBv8geL3BiYZc0oWa66qIYC12b6FKS_ZFy_L3mVKi5U2uIF0Vs300x2T8aB2w0oPJoiKRmxRPl8PiaXbBd7es",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone_num",
+									"value": "0947672246",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "text"
+								},
+								{
+									"key": "birthdate",
+									"value": "1/2/2002",
+									"type": "text"
+								},
+								{
+									"key": "profile_photo",
+									"type": "file",
+									"src": "/C:/Users/ASUS/Desktop/backgrounds/wp5156508-wallpaper-hd-4k.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/complete_register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"complete_register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "complete register information",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "phone_num",
+											"value": "0955612518",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "male",
+											"type": "text"
+										},
+										{
+											"key": "birthdate",
+											"value": "1/10/2001",
+											"type": "text"
+										},
+										{
+											"key": "profile_photo",
+											"type": "file",
+											"src": "/C:/Users/ASUS/Desktop/backgrounds/syrian national team/R (2).jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/complete_register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"complete_register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Jun 2023 07:25:33 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Jun 2023 07:25:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"complete information its succesful\",\n    \"status\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "loginuser",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "emailORmobile",
+											"value": "0955612518",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "mazen123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Jun 2023 07:28:07 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Jun 2023 07:28:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"user\": {\n            \"id\": 2,\n            \"first_name\": \"mazen\",\n            \"last_name\": \"ra3i\",\n            \"email\": \"mazen@gmail.com\",\n            \"email_verified_at\": null,\n            \"phone_num\": \"0955612518\",\n            \"gender\": \"male\",\n            \"birthdate\": \"2001-10-01\",\n            \"provider_name\": null,\n            \"provider_id\": null,\n            \"google_access_token_json\": null,\n            \"created_at\": \"2023-06-02T07:24:29.000000Z\",\n            \"updated_at\": \"2023-06-02T07:25:33.000000Z\"\n        },\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzY3OTliYTk3MmU1ODc1OWE5MzBiOTcxYWMxYzhiNTM4OWFkMWQ3M2NmZDE5MDM1YzIwNzJhZWM1OTM1ZjU2YWY4M2VhM2I0NjYyMjkzYzAiLCJpYXQiOjE2ODU2OTA4ODcuNTM0MzY3LCJuYmYiOjE2ODU2OTA4ODcuNTM0MzcyLCJleHAiOjE3MTczMTMyODcuNTIyMTQ2LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.oTcgC-Yw93HHx3yNih9y0gcPr284sm_iU3DC2ieR5bUgnjEVVNCG4Zw4JkNSTdiJsNT-iR1CBvaRJV95ZveBHNMekxn99ybM1CznyCh2mRFC96eldedyJeOAmQjixdFaGNm6fZGECqxvVV-q6-M28LCnD0JyAoWs8zB5POaZVNYeGuIolZVlN54Pfske98wbsd92h_TRIRHFD7i1YULIVkRlaD6QTp5OwOdrtqftEqTF-rL9ZP_s3I96SsN5fwCtPkDwpkjONs2XXoCrkJJMh5satgi0ppRHUlF4pnIQySTqlEDbOx3Pl1n69ANx2KVUsqZgXtddWjjWyRLsZe22JoqbhfDHRV8qZP_zUQMK0K2O7ZVb_oykG8vC5qoDfxwT_XFqjzwpfQhrza7NIIFG6lwNWnf6cLrSwlsaBYEM70la_hLimL8fQEYVauh3JIWKw5O4_0aUVbUHwebih89gLbB6xUzv7tLBhVbIxRwtoI5aA0McbOvsTXTjYEF2n4PNOBnlkirqL4IkuBjdxFbAovfpmYgu2VB0IJG0Iz1MfpAiVTVNc5fFDQ5aIqu2zSbtE1WxdIZvhH-Ys_V51r_tRafNQNzU9DL1repRS_OASYoaAHXNPep7EfxdLw1XIPZIeMDdlcrb-hOOTCy7jQ0TgxFFx0Etxw0-fAbcKfxzV40\"\n    },\n    \"message\": \"login successfully\",\n    \"status\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "logout user",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "logout user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Jun 2023 07:31:54 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Jun 2023 07:31:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully logged out\"\n}"
+						}
+					]
+				},
+				{
+					"name": "forgot password step 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/forget-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forget-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "forgot password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/forget-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"forget-password"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "check the sending code step2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "122696",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/code-check",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"code-check"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "check the sending code",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "code",
+											"value": "122696",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/code-check",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"code-check"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "update the password step 3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "mike.bing2027@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "alaa12345",
+									"type": "text"
+								},
+								{
+									"key": "password confirmation",
+									"value": "alaa12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/update-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"update-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update the password step 3",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "mike.bing2027@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "alaa12345",
+											"type": "text"
+										},
+										{
+											"key": "password confirmation",
+											"value": "alaa12345",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/update-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"update-password"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 May 2023 15:59:14 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 May 2023 15:59:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The selected email is invalid.\",\n    \"errors\": {\n        \"email\": [\n            \"The selected email is invalid.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "login google step 1",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/google/login/url",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"google",
+										"login",
+										"url"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 May 2023 07:54:46 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 May 2023 07:54:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "\"https://accounts.google.com/o/oauth2/v2/auth?response_type=code&access_type=offline&client_id=1075797348149-60goa2qkg4chsl83i0ftmll1sh3ue5un.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Foauth.html&state&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata.readonly&approval_prompt=force&include_granted_scopes=true\""
+						}
+					]
+				},
+				{
+					"name": "login google step 2",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "auth_code",
+											"value": "4%2F0AbUR2VPRryHY7K7HvBZ7e9cp04dMpmBzINFlsoMXZrp6ESrun3jR2g5V-0wSr92KvAMfFA",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/google/auth/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"google",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 May 2023 08:31:52 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 May 2023 08:31:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZmVhNzUwOWQxOWIyMDAwY2M1Zjc5ZTdmMDYwMDVjMWRkMGM4MDA1YmUyMWFhNWM0YzgzY2JlNjgzZTQzODJmYmQ1ZDY1OGJmOTYwNjJmMzkiLCJpYXQiOjE2ODQ4MzA3MTIuODE0MjYyLCJuYmYiOjE2ODQ4MzA3MTIuODE0MjY2LCJleHAiOjE3MTY0NTMxMTIuODA4NDY3LCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.cBGqiLIx3dn5CVU3EUeYtj7_Olbx5syp1WTqN3OEaJMOqDqUexzcUyoL0nn7JIcCHg9YBNNThTLV5ABM8GAUNUlP4Z34EagTJXhKuUBOBygsjT93MPzEFyfeEMCauNnzcl4qbEJuaUiFfN6wBVhUmOi6RQbYsXrUE4a12IOao4INfPvsD-iceFPoyoKn2aNV-brl4Ftl9ndBbLq6gNsn3HZeFlvKDLLCSp2VPqckDuLEEh2qbHgwNRb-B3w_UEFYI3NpSjEmZ6NT6yZshHqPJ8XnRJ4W6m6wF7xmFKCoynKsBv9FArmNiODidfP7mJTE1yiHbDePYxyZqRKEPVk5BA7MRpPp9OrbJCh3Obzrvv6FZVJDnbvAvz7iH488C5wAtd70mJzDOCjv_fJSYQUxq8IpDRHSLqvD2qgZ_PKtutwAIQRU6DQATF1uzhiKQloVT3cfsWh8OUPJouS6wI-wRlMHyEx0EuYJ3RT5WkU2OinJHe0WWQvsbWXy9oid5AWAa-sovKGZ1UI32Pc5xDkLz2DvfvNEQR0Laz7Nfl_9jH8NT68xbqtzPdHRo7C9uS-_n29AMZKShrYgQP6ocOJCUWLvI6ihQelc0BvNQm_PR7PX4S1QgfRTWjV4G2lUm4hLCf3JyndMqyFiSVAAAf6IJvjKQeHHbovI3gqrW3h-z44\",\n    {\n        \"provider_id\": \"109424510901861525623\",\n        \"provider_name\": \"google\",\n        \"google_access_token_json\": \"{\\\"access_token\\\":\\\"ya29.a0AWY7CkmnAAd40LQvQ3C-TfPiL5-BmG7xcFtlNyvPI1_7alClaW8N8hDCPIOpFEX-SuLK6q7xD8qMD3_a25SUIVWqDhtAGpoLVr9nWoUp_RAFoqDDOnJsNDsJNV4pJGIDV3u-BJePVkQmiiucbTvSlKShTTzxaCgYKAewSARESFQG1tDrpIvvmPv2-WvTBg1lRd1bsfw0163\\\",\\\"expires_in\\\":3599,\\\"refresh_token\\\":\\\"1\\\\/\\\\/0eLOU9_4QVB2lCgYIARAAGA4SNwF-L9Ir__PDNC29Ay85TKYhlXJC8W--TsWOJrtqr-YBknuylPT0NqzLaEfCr6iYHUCKpwVvnUA\\\",\\\"scope\\\":\\\"openid https:\\\\/\\\\/www.googleapis.com\\\\/auth\\\\/drive.metadata.readonly https:\\\\/\\\\/www.googleapis.com\\\\/auth\\\\/userinfo.profile https:\\\\/\\\\/www.googleapis.com\\\\/auth\\\\/userinfo.email\\\",\\\"token_type\\\":\\\"Bearer\\\",\\\"id_token\\\":\\\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkOWE1ZWY1YjEyNjIzYzkxNjcxYTcwOTNjYjMyMzMzM2NkMDdkMDkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIxMDc1Nzk3MzQ4MTQ5LTYwZ29hMnFrZzRjaHNsODNpMGZ0bWxsMXNoM3VlNXVuLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMTA3NTc5NzM0ODE0OS02MGdvYTJxa2c0Y2hzbDgzaTBmdG1sbDFzaDN1ZTV1bi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjEwOTQyNDUxMDkwMTg2MTUyNTYyMyIsImVtYWlsIjoieGFsYWF4LjIwMjBAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJkT1YzWnExSjBhYmthUXpZTnhkdjVnIiwibmFtZSI6IjNsYTIgU3lyaWFuIFBlcyBzcG9ydCIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BR05teXhiZ2lONXJsUXRSb09zcmFEbEZJNDBPRnI3djVRRHFwOWE4UW5NUj1zOTYtYyIsImdpdmVuX25hbWUiOiIzbGEyIFN5cmlhbiIsImZhbWlseV9uYW1lIjoiUGVzIHNwb3J0IiwibG9jYWxlIjoiYXIiLCJpYXQiOjE2ODQ4MzEwMTMsImV4cCI6MTY4NDgzNDYxM30.ewpbwX_L10U8-Ho-x3ypXxtX81WAcnG1PBVbSAm8YEYxJwz44kXdZlm5YzHayNCQBO3fV_WSD2BUW6As8U5Pyg58Kby_Sy8ztv7kFZ31u_D-1N2ZlOIj1nViMJcswMNBLXXv6QZF5w93KEN4kRu3JrUnNqYKNoBWUiuGUYG2LMtkgzBIDW4t7GCKeC0XzdxayR6w5gtsXkl0Y8iWYEwKcVb477qJvD8wP3kVy7kusmUCH6GdeoBaIVVb62lRqyJcWGsJgjD3yvqizPQZl6CMFRE8ulIDhoUBzszeidRHhItM5T1S6WC7iagvzM7fxZHGyCJxO6_HfU8HJMDk_1hm2Q\\\",\\\"created\\\":1684830709}\",\n        \"first_name\": \"3la2 Syrian Pes sport\",\n        \"email\": \"xalaax.2020@gmail.com\",\n        \"updated_at\": \"2023-05-23T08:31:52.000000Z\",\n        \"created_at\": \"2023-05-23T08:31:52.000000Z\",\n        \"id\": 6\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}

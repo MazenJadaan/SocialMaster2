@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Models\User;
 use App\Models\User_profile;
