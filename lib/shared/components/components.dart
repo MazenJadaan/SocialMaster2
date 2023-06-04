@@ -1,7 +1,8 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/shared/styles/colors.dart';
-
 
 Widget MyTextFormField({
   required Function() suffixOnPressed,
@@ -17,43 +18,40 @@ Widget MyTextFormField({
   int maxlines = 1,
 }) =>
     Padding(
-      padding: const EdgeInsets.only(left: 10,right: 10,top: 6,bottom: 6),
-        child: Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          child: TextFormField(
-
-            textAlignVertical: TextAlignVertical.top,
-            controller: controller,
-            obscureText: obscureText,
-            keyboardType: inputType,
-            validator: validate,
-            maxLines: maxlines,
-            obscuringCharacter: '*',
-            decoration: InputDecoration(
-              hintText: hint,
-              hintStyle: TextStyle(color: AppTheme.colors.darkPurple),
-              label: Text(
-                label,
-                style: TextStyle(color: AppTheme.colors.purple),
-              ),
-              border: InputBorder.none,
-              filled: true,
-              fillColor: const Color(0x40917fb3),
-              prefix: prefixIcon,
-              suffixIcon: MaterialButton(
-                minWidth: 1,
-                onPressed: suffixOnPressed,
-                child: suffixIcon,
-              ),
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 6, bottom: 6),
+      child: Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: TextFormField(
+          textAlignVertical: TextAlignVertical.top,
+          controller: controller,
+          obscureText: obscureText,
+          keyboardType: inputType,
+          validator: validate,
+          maxLines: maxlines,
+          obscuringCharacter: '*',
+          decoration: InputDecoration(
+            hintText: hint,
+            hintStyle: TextStyle(color: AppTheme.colors.darkPurple),
+            label: Text(
+              label,
+              style: TextStyle(color: AppTheme.colors.purple),
+            ),
+            border: InputBorder.none,
+            filled: true,
+            fillColor: const Color(0x40917fb3),
+            prefix: prefixIcon,
+            suffixIcon: MaterialButton(
+              minWidth: 1,
+              onPressed: suffixOnPressed,
+              child: suffixIcon,
             ),
           ),
         ),
-      
+      ),
     );
 
 Widget SmallTextFormField({
-
   required TextEditingController controller,
   required String? Function(String? string) validate,
   inputType = TextInputType.name,
@@ -65,12 +63,11 @@ Widget SmallTextFormField({
   int maxlines = 1,
 }) =>
     Padding(
-      padding: const EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: TextFormField(
-
           controller: controller,
           obscureText: obscureText,
           keyboardType: inputType,
@@ -79,23 +76,22 @@ Widget SmallTextFormField({
           obscuringCharacter: '*',
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: TextStyle(color: AppTheme.colors.darkPurple,fontSize: 8),
+            hintStyle:
+                TextStyle(color: AppTheme.colors.darkPurple, fontSize: 8),
             label: Text(
               label,
-              style: TextStyle(color: AppTheme.colors.purple,),
+              style: TextStyle(
+                color: AppTheme.colors.purple,
+              ),
             ),
             border: InputBorder.none,
             filled: true,
             fillColor: AppTheme.colors.opacityPurple,
             prefix: prefixIcon,
-
           ),
         ),
       ),
-
     );
-
-
 
 Widget MyMaterialButton({
   required String text,
@@ -112,7 +108,6 @@ Widget MyMaterialButton({
           width: width,
           height: height,
           key: key,
-
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100),
             color: AppTheme.colors.purple,
@@ -120,11 +115,10 @@ Widget MyMaterialButton({
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: Text(
             text,
-            style:  TextStyle(
+            style: TextStyle(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
               color: Colors.white,
-
             ),
           ),
         ));

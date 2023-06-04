@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:social_master/modules/home_page_tabs/tab1.dart';
-import 'package:social_master/modules/home_page_tabs/tab2.dart';
+
 import 'package:social_master/shared/styles/colors.dart';
+
+import '../home_page_tabs/tab1.dart';
+import '../home_page_tabs/tab2.dart';
 
 class Home_Page extends StatelessWidget {
   const Home_Page({Key? key}) : super(key: key);
