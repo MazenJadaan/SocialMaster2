@@ -18,7 +18,7 @@ Widget ImagePost({
   int shares = 0,
 }) =>
     Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 5),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -37,7 +37,7 @@ Widget ImagePost({
                     onTap: profile,
                     child: CircleAvatar(
                       backgroundColor: Colors.transparent,
-                      radius: 25,
+                      radius: 22,
                       child: ClipOval(
                         child: Image(
                             width: 80,
@@ -62,6 +62,7 @@ Widget ImagePost({
                     child: const FaIcon(
                       FontAwesomeIcons.solidBookmark,
                       color: Colors.white,
+                      size: 19,
                     ),
                   ),
                   const SizedBox(
@@ -70,12 +71,6 @@ Widget ImagePost({
                 ],
               ),
             ),
-
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 30.0,right: 30.0),
-            //   child: Container(color: AppTheme.colors.darkPurple,height: 1,width: double.infinity,),
-            // ),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(caption,
@@ -85,15 +80,15 @@ Widget ImagePost({
                   )),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5.0),
               child: Stack(
-                alignment: AlignmentDirectional.bottomEnd,
+                alignment: AlignmentDirectional.bottomCenter,
                 children: [
                   Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: Colors.white,
+
                     ),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child: Image(
@@ -134,7 +129,7 @@ Widget ImagePost({
                                       fontFamily: 'SignikaNegative',
                                       fontSize: 16,
                                       color: Colors.white,
-                                      fontWeight: FontWeight.bold)),
+                                      )),
                               const SizedBox(
                                 width: 18,
                               ),
@@ -152,7 +147,7 @@ Widget ImagePost({
                                       fontFamily: 'SignikaNegative',
                                       fontSize: 16,
                                       color: Colors.white,
-                                      fontWeight: FontWeight.bold)),
+                                      )),
                               const Spacer(),
                               GestureDetector(
                                 onTap: shareFunc,
@@ -169,7 +164,7 @@ Widget ImagePost({
                                       fontFamily: 'SignikaNegative',
                                       fontSize: 16,
                                       color: Colors.white,
-                                      fontWeight: FontWeight.bold)),
+                                     )),
                               const SizedBox(
                                 width: 5.0,
                               ),

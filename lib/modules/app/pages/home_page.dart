@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:social_master/shared/styles/colors.dart';
-
 import '../home_page_tabs/tab1.dart';
 import '../home_page_tabs/tab2.dart';
 
@@ -13,6 +10,7 @@ class Home_Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
         body: DefaultTabController(
           length: 2,
           child: NestedScrollView(
@@ -23,20 +21,20 @@ class Home_Page extends StatelessWidget {
                   floating: true,
                   elevation: 0.0,
                   pinned: true,
-                 leading: IconButton(
-                   icon: const FaIcon(FontAwesomeIcons.bars),
-                   onPressed: () {},
-                 ),
+                  leading: IconButton(
+                    icon: const FaIcon(FontAwesomeIcons.bars),
+                    onPressed: () {},
+                  ),
                   title: const Center(
                     child: Image(
-                        height: 30,
-                        image: AssetImage('assets/images/logo_name.png'),
-                      ),
+                      height: 30,
+                      image: AssetImage('assets/images/logo_name.png'),
+                    ),
                   ),
-
                   actions: const [
-                  SizedBox(width: 40,),
-
+                    SizedBox(
+                      width: 40,
+                    ),
                   ],
                   bottom: TabBar(
                     dividerColor: Colors.white,
@@ -56,17 +54,19 @@ class Home_Page extends StatelessWidget {
                 ),
               ];
             },
-            body: const TabBarView(children: [
+            body:  TabBarView(children: [
+
               Tab1(),
               Tab2(),
             ]),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          elevation: 0.0,
-          backgroundColor: AppTheme.colors.purple,
-          onPressed: () {},
-          child: const FaIcon(FontAwesomeIcons.plus),
-        ));
+        // floatingActionButton: FloatingActionButton(
+        //   elevation: 0.0,
+        //   backgroundColor: AppTheme.colors.purple,
+        //   onPressed: () {},
+        //   child: const FaIcon(FontAwesomeIcons.plus),
+        // ),
+      );
   }
 }

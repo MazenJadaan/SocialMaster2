@@ -18,55 +18,53 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int index = 2;
-  GlobalKey<CurvedNavigationBarState> _bottomKey = GlobalKey();
+  GlobalKey<CurvedNavigationBarState> bottomNavigationKey = GlobalKey();
   final screens = const [
     Search_Page(),
     Chat_Page(),
     Home_Page(),
-    Profile_Page(),
     Notifications_Page(),
+    Profile_Page(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: screens[index],
-        bottomNavigationBar: CurvedNavigationBar(
-          animationDuration: const Duration(milliseconds: 400),
-          color: AppTheme.colors.purple,
-          backgroundColor: Colors.transparent,
-
-          items: const [
-            FaIcon(
-              FontAwesomeIcons.magnifyingGlass,
-              color: Colors.white,
-            ),
-            FaIcon(
-              FontAwesomeIcons.message,
-              color: Colors.white,
-            ),
-            FaIcon(
-              FontAwesomeIcons.house,
-              color: Colors.white,
-            ),
-            FaIcon(
-              FontAwesomeIcons.user,
-              color: Colors.white,
-            ),
-            FaIcon(
-              FontAwesomeIcons.bell,
-              color: Colors.white,
-            ),
-          ],
-          index: index,
-          onTap: (index) {
-            this.index = index;
-            setState(() {});
-          },
-          height: 50,
-        ),
-
-         // extendBody: true,
+      extendBody: true,
+      body: screens[index],
+      bottomNavigationBar: CurvedNavigationBar(
+        animationDuration: const Duration(milliseconds: 400),
+        color: AppTheme.colors.purple,
+        backgroundColor: Colors.transparent,
+        items: const [
+          FaIcon(
+            FontAwesomeIcons.magnifyingGlass,
+            color: Colors.white,
+          ),
+          FaIcon(
+            FontAwesomeIcons.message,
+            color: Colors.white,
+          ),
+          FaIcon(
+            FontAwesomeIcons.house,
+            color: Colors.white,
+          ),
+          FaIcon(
+            FontAwesomeIcons.bell,
+            color: Colors.white,
+          ),
+          FaIcon(
+            FontAwesomeIcons.user,
+            color: Colors.white,
+          ),
+        ],
+        index: index,
+        onTap: (index) {
+          this.index = index;
+          setState(() {});
+        },
+        height: 50,
+      ),
 
 
     );
