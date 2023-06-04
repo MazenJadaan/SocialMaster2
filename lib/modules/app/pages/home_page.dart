@@ -33,7 +33,7 @@ class Home_Page extends StatelessWidget {
                   ),
                   actions: const [
                     SizedBox(
-                      width: 40,
+                      width: 55,
                     ),
                   ],
                   bottom: TabBar(
