@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/modules/app/home.dart';
 import 'package:social_master/modules/auth/signup_details.dart';
@@ -8,6 +9,7 @@ import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
 
 
+import '../../models/connection/register.dart';
 import '../../provider/obscure_model.dart';
 import '../../shared/styles/colors.dart';
 
@@ -17,35 +19,18 @@ import 'login.dart';
 
 class Signup extends StatelessWidget {
   Signup({Key? key}) : super(key: key);
-  static Future<bool> register(
-      {required String first,
-        required String email,
-        required String password,
-        required String password_confirmation,
-        required String last,
-        required BuildContext context}) async {
-    var url = Uri.parse('${AppSetting.baseUrl}api/expert/register');
-    var response = await http.post(url, body: {
-      "first_name": first,
-      "last_name": last,
-      "email": email,
-      "password": password,
-      "password_confirmation": password_confirmation,
-    });
 
-    print(response.statusCode);
-     print(response.body);
-    var decodedRespon = jsonDecode(response.body);
-    print(decodedRespon['data']['token']);
-    AppSetting.token = decodedRespon["data"]['token'];
-
+  Future<RegisterResponse?> login(RegisterParams params) async {
+    var url = Uri.parse("${AppSetting.baseUrl}api/register");
+    var response = await http.post(url, body: params.toJson());
+    var data = json.decode(response.body);
     if (response.statusCode == 200) {
-      return true;
-
-    } else {
-      return false;
+      RegisterResponse loginResponse = RegisterResponse.fromJson(data);
+      return loginResponse;
     }
+    return null;
   }
+
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
@@ -156,25 +141,24 @@ class Signup extends StatelessWidget {
                     text: 'Signup',
                     onPressed: () async {
                       if (formKey.currentState!.validate()) {
-                        bool res = await register(
-                            context: context,
-                            first: _firstNameController.text,
-                            last: _lastNameController.text,
+                        final RegisterResponse? loginResponse = await login(
+                          RegisterParams(
                             email: _emailController.text,
+                            firstName: _firstNameController.text,
+                            lastName: _lastNameController.text,
                             password: _passwordController.text,
-                            password_confirmation:
-                                _confirmPasswordController.text);
-                        if (res) {
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(builder: (context) => Home()),
-                              (route) => false);
+                            passwordConfirmation: _confirmPasswordController.text
+                          ),
+                        );
+                        if (loginResponse != null) {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return const Home();
+                          }));
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content:
-                                  Text('شو حبيب وين فايت بهالعجقة !!!!!')));
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(SnackBar(content: Text('Failed')));
                         }
-
                       }
                     },
                   ),
