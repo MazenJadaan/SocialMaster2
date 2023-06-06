@@ -4,6 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/validate/validate.dart';
 import '../styles/colors.dart';
+
+
 TextEditingController _commentController =TextEditingController();
 Widget ImagePost({
 

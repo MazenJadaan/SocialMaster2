@@ -16,6 +16,7 @@ class Tab1 extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
+
             ImagePost(
                 comments: 13,
                 likes: 99,
