@@ -1,9 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:social_master/shared/components/components.dart';
+import 'package:social_master/shared/validate/validate.dart';
 import '../styles/colors.dart';
-
+TextEditingController _commentController =TextEditingController();
 Widget ImagePost({
+
   Function()? saveFunc,
   Function()? likeFunc,
   Function()? commentFunc,
@@ -11,6 +14,7 @@ Widget ImagePost({
   Function()? profile,
   String? userImage,
   String? image,
+  String date = "30/7/2001",
   String caption = "",
   String userName = "hahaha",
   int likes = 0,
@@ -18,7 +22,7 @@ Widget ImagePost({
   int shares = 0,
 }) =>
     Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -50,12 +54,23 @@ Widget ImagePost({
                   const SizedBox(
                     width: 10,
                   ),
-                  Text(userName,
-                      style: TextStyle(
-                          fontFamily: 'SignikaNegative',
-                          fontSize: 17,
-                          color: AppTheme.colors.darkPurple,
-                          fontWeight: FontWeight.bold)),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(userName,
+                          style: TextStyle(
+                              fontFamily: 'SignikaNegative',
+                              fontSize: 17,
+                              color: AppTheme.colors.darkPurple,
+                              fontWeight: FontWeight.bold)),
+                      Text(date,
+                          style: TextStyle(
+                            fontFamily: 'SignikaNegative',
+                            fontSize: 13,
+                            color: AppTheme.colors.darkPurple,
+                          )),
+                    ],
+                  ),
                   const Spacer(),
                   GestureDetector(
                     onTap: saveFunc,
@@ -88,7 +103,6 @@ Widget ImagePost({
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-
                     ),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child: Image(
@@ -119,17 +133,17 @@ Widget ImagePost({
                               GestureDetector(
                                 onTap: likeFunc,
                                 child: const FaIcon(FontAwesomeIcons.solidHeart,
-                                    color: Colors.white),
+                                    size: 19, color: Colors.white),
                               ),
                               const SizedBox(
                                 width: 8,
                               ),
                               Text("$likes",
                                   style: const TextStyle(
-                                      fontFamily: 'SignikaNegative',
-                                      fontSize: 16,
-                                      color: Colors.white,
-                                      )),
+                                    fontFamily: 'SignikaNegative',
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                  )),
                               const SizedBox(
                                 width: 18,
                               ),
@@ -137,6 +151,7 @@ Widget ImagePost({
                                 onTap: commentFunc,
                                 child: const FaIcon(
                                     FontAwesomeIcons.solidCommentDots,
+                                    size: 19,
                                     color: Colors.white),
                               ),
                               const SizedBox(
@@ -144,15 +159,16 @@ Widget ImagePost({
                               ),
                               Text("$comments",
                                   style: const TextStyle(
-                                      fontFamily: 'SignikaNegative',
-                                      fontSize: 16,
-                                      color: Colors.white,
-                                      )),
+                                    fontFamily: 'SignikaNegative',
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                  )),
                               const Spacer(),
                               GestureDetector(
                                 onTap: shareFunc,
                                 child: const FaIcon(
                                   FontAwesomeIcons.share,
+                                  size: 19,
                                   color: Colors.white,
                                 ),
                               ),
@@ -161,10 +177,10 @@ Widget ImagePost({
                               ),
                               Text("$shares",
                                   style: const TextStyle(
-                                      fontFamily: 'SignikaNegative',
-                                      fontSize: 16,
-                                      color: Colors.white,
-                                     )),
+                                    fontFamily: 'SignikaNegative',
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                  )),
                               const SizedBox(
                                 width: 5.0,
                               ),
@@ -177,6 +193,7 @@ Widget ImagePost({
                 ],
               ),
             ),
+            // Comment(controller: _commentController, hint: 'write a comment'),
           ],
         ),
       ),

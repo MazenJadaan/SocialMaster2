@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:social_master/models/provider/obscure_model.dart';
+
 import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/shared/styles/colors.dart';
-import '../../models/validate/validate.dart';
+
+import '../../provider/obscure_model.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/api/google_signin_api.dart';
+import '../../shared/validate/validate.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

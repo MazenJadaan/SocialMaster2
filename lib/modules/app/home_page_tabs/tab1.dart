@@ -21,7 +21,7 @@ class Tab1 extends StatelessWidget {
                 likes: 99,
                 shares: 6,
                 userName: 'Mohamad Alraie',
-                caption: "this is my last war",
+                caption: "this is my last war 🪓🪓🗡🗡⚔",
                 userImage:
                     "https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg",
                 image:

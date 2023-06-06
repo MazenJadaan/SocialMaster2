@@ -1,15 +1,13 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:social_master/models/provider/ismale.dart';
-import 'package:social_master/models/validate/validate.dart';
-
+import '../../provider/ismale.dart';
 import '../../shared/components/components.dart';
 import '../../shared/styles/colors.dart';
+import '../../shared/validate/validate.dart';
 import '../app/home.dart';
 
 class SignupDetails extends StatefulWidget {

@@ -47,14 +47,16 @@ class Home_Page extends StatelessWidget {
                     tabs: const [
                       Tab(text: "For you"),
                       Tab(
-                        text: "follow",
+                        text: "Following",
                       )
                     ],
                   ),
                 ),
               ];
             },
-            body:  TabBarView(children: [
+            body:  TabBarView(
+                physics: BouncingScrollPhysics(),
+                children: [
 
               Tab1(),
               Tab2(),
