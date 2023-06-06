@@ -1,12 +1,16 @@
+import 'dart:convert' as convert;
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:social_master/models/provider/obscure_model.dart';
 import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/shared/styles/colors.dart';
-import '../../models/validate/validate.dart';
+import 'package:http/http.dart' as http;
+import '../../provider/obscure_model.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/api/google_signin_api.dart';
+import '../../shared/validate/validate.dart';
+import '../app/home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -16,31 +20,52 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool _check = false;
+
+  Future login() async {
+    var url = Uri.parse("http://192.168.200.54/api/login");
+    var response = await http.post(url, body: {
+      "emailORmobile": _emailController.text,
+      "password": _passwordController.text
+    });
+    var data = convert.json.decode(response.body);
+    if (data.statuscode == 200) {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return const Home();
+      }));
+    } else {
+      print('ttfhgvhjj hjbhj n');
+      // Fluttertoast.showToast(msg: 'wwww wwww www error',
+      // gravity: ToastGravity.CENTER,
+      // );
+    }
+  }
+
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
-  bool _check = false;
 
   @override
   Widget build(BuildContext context) {
     var formKey = GlobalKey<FormState>();
     //
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.transparent,
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image:AssetImage("assets/images/background.png"), fit: BoxFit.cover),
-            color: Colors.white,
-          ),
-          alignment: AlignmentDirectional.topCenter,
-          child: ChangeNotifierProvider(
-            create: (context) => ObscureModel(),
-            child: Form(
-              autovalidateMode: AutovalidateMode.always,
-              key: formKey,
-              child: SingleChildScrollView(
-                child: Column(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.transparent,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/background.png"),
+              fit: BoxFit.cover),
+          color: Colors.white,
+        ),
+        alignment: AlignmentDirectional.topCenter,
+        child: ChangeNotifierProvider(
+          create: (context) => ObscureModel(),
+          child: Form(
+            autovalidateMode: AutovalidateMode.always,
+            key: formKey,
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
                   const SizedBox(
                     height: 40,
@@ -67,7 +92,6 @@ class _LoginState extends State<Login> {
                     obscureText: false,
                     label: 'E-mail or phone number',
                     suffixOnPressed: () {},
-
                     prefixIcon: Icon(
                       Icons.email_outlined,
                       color: AppTheme.colors.purple,
@@ -95,31 +119,30 @@ class _LoginState extends State<Login> {
                     );
                   }),
 
-                
-                      Row(
-                        children: [
-                          SizedBox(width: 10,),
-                          TextButton(
-                            onPressed: (){},
-                            child: Text(
-                              'forget password?',
-                              style: TextStyle(color: AppTheme.colors.purple,
-                                fontWeight: FontWeight.bold,),
-                            ),
-                          ),
-                        ],
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 10,
                       ),
-                 
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'forget password?',
+                          style: TextStyle(
+                            color: AppTheme.colors.purple,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
 
                   MyMaterialButton(
                     width: 240,
                     text: 'Login',
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return const Login();
-                        }));
+                        login();
                       }
                     },
                   ),
@@ -134,7 +157,7 @@ class _LoginState extends State<Login> {
                           onPressed: () {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (context) {
-                              return  Signup();
+                              return Signup();
                             }));
                           },
                           child: Text(
@@ -189,7 +212,6 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-
 
   Future signIn() async {
     final user = await GoogleSignInApi.login();

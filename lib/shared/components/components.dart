@@ -5,17 +5,17 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
 Widget MyTextFormField({
-  required Function() suffixOnPressed,
+  required final Function() suffixOnPressed,
   required TextEditingController controller,
-  required String? Function(String? string) validate,
-  inputType = TextInputType.name,
-  required String label,
-  Icon? prefixIcon = null,
+  required final String? Function(String? string) validate,
+  final inputType = TextInputType.name,
+  required final String label,
+  final Icon? prefixIcon = null,
   FaIcon? suffixIcon = null,
   GlobalKey? key = null,
   bool obscureText = false,
-  String? hint = null,
-  int maxlines = 1,
+  final String? hint = null,
+  final int maxlines = 1,
 }) =>
     Padding(
       padding: const EdgeInsets.only(left: 10, right: 10, top: 6, bottom: 6),
@@ -53,14 +53,14 @@ Widget MyTextFormField({
 
 Widget SmallTextFormField({
   required TextEditingController controller,
-  required String? Function(String? string) validate,
-  inputType = TextInputType.name,
-  required String label,
+   final String? Function(String? string)? validate,
+  final  inputType = TextInputType.name,
+  required final String label,
   Icon? prefixIcon = null,
   GlobalKey? key = null,
   bool obscureText = false,
-  String? hint = null,
-  int maxlines = 1,
+  final String? hint = null,
+  final int maxlines = 1,
 }) =>
     Padding(
       padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
@@ -93,13 +93,15 @@ Widget SmallTextFormField({
       ),
     );
 
+
+
 Widget MyMaterialButton({
-  required String text,
-  required Function() onPressed,
-  double width = 120.0,
-  double height = 40.0,
-  double fontSize = 24,
-  GlobalKey? key = null,
+  required final String text,
+  required final Function() onPressed,
+  final double width = 120.0,
+  final double height = 40.0,
+  final double fontSize = 24,
+   GlobalKey? key = null,
 }) =>
     MaterialButton(
         onPressed: onPressed,
