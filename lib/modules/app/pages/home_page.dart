@@ -25,11 +25,15 @@ class Home_Page extends StatelessWidget {
                     icon: const FaIcon(FontAwesomeIcons.bars),
                     onPressed: () {},
                   ),
-                  title: const Center(
-                    child: Image(
-                      height: 30,
-                      image: AssetImage('assets/images/logo_name.png'),
-                    ),
+                  title:  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Master",style: TextStyle(fontSize: 40,fontFamily: 'Cairo',color: Colors.black),),
+                        SizedBox(width: 8,),
+                        Icon(Icons.phone_in_talk)
+                      ],
+                    )
                   ),
                   actions: const [
                     SizedBox(
@@ -43,7 +47,7 @@ class Home_Page extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 17),
                     indicatorWeight: 3,
-                    indicatorColor: AppTheme.colors.darkPurple,
+                    indicatorColor: AppTheme.colors.purple,
                     tabs: const [
                       Tab(text: "For you"),
                       Tab(
