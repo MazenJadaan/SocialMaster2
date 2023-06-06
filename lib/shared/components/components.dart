@@ -95,45 +95,6 @@ Widget SmallTextFormField({
 
 
 
-Widget Comment({
-  required TextEditingController controller,
-
-  final  inputType = TextInputType.name,
-  required final String hint,
-  Icon? prefixIcon = null,
-  GlobalKey? key = null,
-  bool obscureText = false,
-
-  final int maxlines = 1,
-}) =>
-    Padding(
-      padding: const EdgeInsets.only(left: 30, right: 30, top: 5, bottom: 5),
-      child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        child: TextFormField(
-          controller: controller,
-          obscureText: obscureText,
-          keyboardType: inputType,
-          maxLines: maxlines,
-          obscuringCharacter: '*',
-          decoration: InputDecoration(
-            hintText: hint,
-            hintStyle:
-            TextStyle(color: AppTheme.colors.darkPurple, fontSize: 16),
-
-            // border: InputBorder.none,
-            filled: false,
-            fillColor: AppTheme.colors.opacityPurple,
-            prefix: prefixIcon,
-          ),
-        ),
-      ),
-    );
-
-
-
-
 Widget MyMaterialButton({
   required final String text,
   required final Function() onPressed,

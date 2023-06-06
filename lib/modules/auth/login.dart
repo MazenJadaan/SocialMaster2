@@ -20,8 +20,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final _passwordController = TextEditingController();
-  final _emailController = TextEditingController();
   bool _check = false;
 
   Future login() async {
@@ -35,15 +33,16 @@ class _LoginState extends State<Login> {
       Navigator.of(context).push(MaterialPageRoute(builder: (context) {
         return const Home();
       }));
-    }
-    else {
+    } else {
       print('ttfhgvhjj hjbhj n');
       // Fluttertoast.showToast(msg: 'wwww wwww www error',
       // gravity: ToastGravity.CENTER,
       // );
     }
-    }
+  }
 
+  final _passwordController = TextEditingController();
+  final _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

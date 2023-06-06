@@ -10,7 +10,7 @@ class Home_Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
         body: DefaultTabController(
           length: 2,
           child: NestedScrollView(
@@ -28,10 +28,11 @@ class Home_Page extends StatelessWidget {
                   title:  Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Master",style: TextStyle(fontSize: 40,fontFamily: 'Cairo',color: Colors.black),),
+                      children: const [
+                        Image(image: AssetImage('assets/images/logo_name.png',),width: 125),
+                        //Text("Master",style: TextStyle(fontSize: 40,fontFamily: 'Cairo',color: Colors.black),),
                         SizedBox(width: 8,),
-                        Icon(Icons.phone_in_talk)
+                        //Icon(Icons.phone_in_talk)
                       ],
                     )
                   ),
@@ -58,21 +59,20 @@ class Home_Page extends StatelessWidget {
                 ),
               ];
             },
-            body:  TabBarView(
+            body:  const TabBarView(
                 physics: BouncingScrollPhysics(),
                 children: [
-
               Tab1(),
               Tab2(),
             ]),
           ),
         ),
-        // floatingActionButton: FloatingActionButton(
-        //   elevation: 0.0,
-        //   backgroundColor: AppTheme.colors.purple,
-        //   onPressed: () {},
-        //   child: const FaIcon(FontAwesomeIcons.plus),
-        // ),
+        floatingActionButton: FloatingActionButton(
+          elevation: 0.0,
+          backgroundColor: AppTheme.colors.purple,
+          onPressed: () {},
+          child: const FaIcon(FontAwesomeIcons.plus),
+        ),
       );
   }
 }
