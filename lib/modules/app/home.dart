@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
           height: 50,
         ),
 
-         // extendBody: true,
+         extendBody: true,
 
 
     );

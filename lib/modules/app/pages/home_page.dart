@@ -30,7 +30,8 @@ class Home_Page extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("Master",style: TextStyle(fontSize: 40,fontFamily: 'Cairo',color: Colors.black),),
-
+                        SizedBox(width: 8,),
+                        Icon(Icons.phone_in_talk)
                       ],
                     )
                   ),
