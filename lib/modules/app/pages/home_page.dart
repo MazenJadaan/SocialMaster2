@@ -26,14 +26,7 @@ class Home_Page extends StatelessWidget {
                     onPressed: () {},
                   ),
                   title:  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Master",style: TextStyle(fontSize: 40,fontFamily: 'Cairo',color: Colors.black),),
-                        SizedBox(width: 8,),
-                        Icon(Icons.phone_in_talk)
-                      ],
-                    )
+                    child: Text("Master",style: TextStyle(fontSize: 40,fontFamily: 'DancingScript',color: Colors.black),)
                   ),
                   actions: const [
                     SizedBox(
