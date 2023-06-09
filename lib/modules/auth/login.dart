@@ -1,16 +1,18 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
+import 'package:social_master/modules/auth/reset_password/reset_password.dart';
 import 'package:social_master/modules/auth/signup.dart';
-import 'package:social_master/shared/network/constant/constant.dart';
 import 'package:social_master/shared/styles/colors.dart';
+import 'package:http/http.dart' as http;
 import '../../models/connection/login.dart';
 import '../../provider/obscure_model.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/api/google_signin_api.dart';
+import '../../shared/network/constant/constant.dart';
 import '../../shared/validate/validate.dart';
 import '../app/home.dart';
 
@@ -22,10 +24,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final _passwordController = TextEditingController();
-  final _emailController = TextEditingController();
-  bool _check = false;
-
   Future<LoginResponse?> login(LoginParams params) async {
     var url = Uri.parse("${AppSetting.baseUrl}api/login");
     var response = await http.post(url, body: params.toJson());
@@ -36,10 +34,13 @@ class _LoginState extends State<Login> {
     }
     return null;
   }
-  var formKey = GlobalKey<FormState>();
+
+  final _passwordController = TextEditingController();
+  final _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    var formKey = GlobalKey<FormState>();
     //
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -114,11 +115,14 @@ class _LoginState extends State<Login> {
 
                   Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Reset1()));
+                        },
                         child: Text(
                           'forget password?',
                           style: TextStyle(
@@ -147,13 +151,14 @@ class _LoginState extends State<Login> {
                             return const Home();
                           }));
                         } else {
-                          //ScaffoldMessenger.of(context)
-                            //  .showSnackBar(SnackBar(content: Text('Failed')));
+                          // ScaffoldMessenger.of(context).showSnackBar(
+                          //     const SnackBar(content: Text('Failed')));
                           Fluttertoast.showToast(msg: "Email or Pass is Wrong !",gravity: ToastGravity.BOTTOM,toastLength: Toast.LENGTH_SHORT,backgroundColor: Colors.pink,timeInSecForIosWeb: 2,fontSize: 18);
                         }
                       }
                     },
                   ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
