@@ -1,6 +1,5 @@
 import 'dart:convert' as convert;
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/modules/auth/signup.dart';
@@ -121,7 +120,7 @@ class _LoginState extends State<Login> {
 
                   Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       TextButton(

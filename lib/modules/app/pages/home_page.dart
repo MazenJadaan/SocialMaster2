@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:social_master/modules/app/pages/navbar.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../home_page_tabs/tab1.dart';
 import '../home_page_tabs/tab2.dart';
@@ -10,7 +10,7 @@ class Home_Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+     drawer: const NavBar(),
         body: DefaultTabController(
           length: 2,
           child: NestedScrollView(
@@ -21,10 +21,6 @@ class Home_Page extends StatelessWidget {
                   floating: true,
                   elevation: 0.0,
                   pinned: true,
-                  leading: IconButton(
-                    icon: const FaIcon(FontAwesomeIcons.bars),
-                    onPressed: () {},
-                  ),
                   title: const Center(
                     child: Image(
                       height: 30,
@@ -47,14 +43,14 @@ class Home_Page extends StatelessWidget {
                     tabs: const [
                       Tab(text: "For you"),
                       Tab(
-                        text: "follow",
+                        text: "Follow",
                       )
                     ],
                   ),
                 ),
               ];
             },
-            body:  TabBarView(children: [
+            body:  const TabBarView(children: [
 
               Tab1(),
               Tab2(),
