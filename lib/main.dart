@@ -6,6 +6,7 @@ import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/modules/welcome/welcome_view_page.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import 'modules/app/home.dart';
+import 'modules/auth/reset_password/reset_password_code.dart';
 import 'modules/auth/signup.dart';
 
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
           // primarySwatch: Colors.purple,
           ),
 
-      home:WelcomePage(),
+      home:const Login(),
 
 
     );

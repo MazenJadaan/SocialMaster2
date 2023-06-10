@@ -1,11 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:social_master/modules/app/home.dart';
+import '../../../models/connection/reset_password.dart';
 import '../../../provider/obscure_model.dart';
 import '../../../shared/components/components.dart';
+import '../../../shared/network/constant/constant.dart';
 import '../../../shared/styles/colors.dart';
 import '../../../shared/validate/validate.dart';
-import '../../app/home.dart';
+import 'package:http/http.dart' as http;
 
 class Reset3 extends StatelessWidget {
   final String _email;
@@ -13,23 +17,40 @@ class Reset3 extends StatelessWidget {
   Reset3(this._email, {super.key});
 
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+
+
+
+  Future<SetNewResponse?> SetNewPassword(SetNewParams params) async {
+    var url = Uri.parse("${AppSetting.baseUrl}api/update-password");
+    var response = await http.post(url, body: params.toJson());
+    var data = json.decode(response.body);
+    if (response.statusCode == 200) {
+      SetNewResponse setNewResponse = SetNewResponse.fromJson(data);
+      return setNewResponse;
+    }else {
+      return null;
+    }
+  }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
     var formKey = GlobalKey<FormState>();
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: AppTheme.colors.purple,
         title: Center(
           child: Text('Reset your Password',
               style: TextStyle(
-                fontFamily: 'SignikaNegative',
-                fontSize: 20,
-                color: AppTheme.colors.darkPurple,
-              )),
+                  fontFamily: 'SignikaNegative',
+                  fontSize: 20,
+                  color: AppTheme.colors.darkPurple,
+                  fontWeight: FontWeight.bold)),
         ),
         actions: const [
           SizedBox(
@@ -44,7 +65,7 @@ class Reset3 extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: 80,
+                height: 50,
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -55,7 +76,9 @@ class Reset3 extends StatelessWidget {
                       color: AppTheme.colors.darkPurple,
                     )),
               ),
-              SizedBox(height: 25,),
+              SizedBox(
+                height: 25,
+              ),
               Consumer<ObscureModel>(builder: (context, model, child) {
                 return MyTextFormField(
                   controller: _passwordController,
@@ -73,7 +96,9 @@ class Reset3 extends StatelessWidget {
                   ),
                 );
               }),
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 5,
+              ),
               Consumer<ObscureModel>(builder: (context, model, child) {
                 return MyTextFormField(
                     prefixIcon: Icon(
@@ -89,14 +114,32 @@ class Reset3 extends StatelessWidget {
                     obscureText: model.obscure3,
                     label: "Confirm Password");
               }),
-            const Spacer(),
+              const Spacer(),
               MyMaterialButton(
                 width: 240,
                 text: 'Confirm',
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {}
-                },
+                onPressed: () async{
+                  if (formKey.currentState!.validate()) {
+                    final SetNewResponse? setNewResponse = await SetNewPassword(
+                      SetNewParams(
+                        email: _email,
+                        password: _passwordController.text,
+                        passwordConfirmation: _confirmPasswordController.text
+                      ),
+                    );
+                    if (setNewResponse != null) {
 
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Home()));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Failed')));
+                      // Fluttertoast.showToast(msg: "Email or Pass is Wrong !",gravity: ToastGravity.BOTTOM,toastLength: Toast.LENGTH_SHORT,backgroundColor: Colors.pink,timeInSecForIosWeb: 2,fontSize: 18);
+                    }
+
+
+                  }
+                },
               ),
               const SizedBox(height: 50),
             ],
