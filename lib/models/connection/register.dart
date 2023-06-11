@@ -30,6 +30,8 @@ class RegisterParams {
     return data;
   }
 }
+
+
 class RegisterResponse {
   Data? data;
   String? message;
