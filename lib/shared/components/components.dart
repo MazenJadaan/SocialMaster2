@@ -121,6 +121,7 @@ Widget MyMaterialButton({
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
               color: Colors.white,
+              fontFamily: 'signkaNegative'
             ),
           ),
         ));

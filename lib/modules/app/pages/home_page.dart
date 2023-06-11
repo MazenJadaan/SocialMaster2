@@ -17,7 +17,7 @@ class Home_Page extends StatelessWidget {
             headerSliverBuilder: (context, value) {
               return [
                 SliverAppBar(
-                  backgroundColor: AppTheme.colors.purple,
+                  backgroundColor: Color(0xff917fb3),
                   floating: true,
                   elevation: 0.0,
                   pinned: true,
@@ -26,7 +26,7 @@ class Home_Page extends StatelessWidget {
                     onPressed: () {},
                   ),
                   title:  Center(
-                    child: Text("Master",style: TextStyle(fontSize: 40,fontFamily: 'DancingScript',color: Colors.black),)
+                    child: Text("Master",style: TextStyle(fontSize: 40,fontFamily: 'DancingScript',color: Colors.white),)
                   ),
                   actions: const [
                     SizedBox(

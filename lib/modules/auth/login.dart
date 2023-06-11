@@ -146,10 +146,10 @@ class _LoginState extends State<Login> {
                           ),
                         );
                         if (loginResponse != null) {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (context) {
-                            return const Home();
-                          }));
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (context) => Home()),
+                                  (route) => false);
                         } else {
                           // ScaffoldMessenger.of(context).showSnackBar(
                           //     const SnackBar(content: Text('Failed')));

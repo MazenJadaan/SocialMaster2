@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:social_master/modules/auth/login.dart';
 import 'package:social_master/modules/auth/reset_password/reset_password.dart';
 import 'package:social_master/modules/auth/signup_details.dart';

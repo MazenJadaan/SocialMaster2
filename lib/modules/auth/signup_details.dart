@@ -1,14 +1,22 @@
+// ignore_for_file: unused_local_variable
+
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:social_master/modules/auth/login.dart';
+import '../../models/connection/register.dart';
 import '../../provider/ismale.dart';
 import '../../shared/components/components.dart';
+import '../../shared/network/constant/constant.dart';
 import '../../shared/styles/colors.dart';
 import '../../shared/validate/validate.dart';
 import '../app/home.dart';
+import 'package:http/http.dart' as http;
 
 class SignupDetails extends StatefulWidget {
   const SignupDetails({Key? key}) : super(key: key);
@@ -19,9 +27,60 @@ class SignupDetails extends StatefulWidget {
 
 class _SignupDetailsState extends State<SignupDetails> {
   final _phoneNumberController = TextEditingController();
+
   DateTime date = DateTime.now();
   File? image;
-  bool? test;
+  static Future<bool> SignupDetails(
+      {required String phone_num,
+      required String gender,
+      required String birthdate,
+      required String profile_photo
+      }) async {
+    print(phone_num);
+    print(gender);
+    print(birthdate);
+    print(profile_photo);
+
+    //create multipart request for POST or PATCH method
+    var request = http.MultipartRequest(
+        "POST", Uri.parse("${AppSetting.baseUrl}api/complete_register"));
+    //add text fields
+    request.fields["phone_num"] = phone_num;
+    request.fields["gender"] = gender;
+    request.fields["birthdate"] = birthdate;
+    request.headers["Authorization"] = "Bearer ${AppSetting.token}";
+    print(AppSetting.token);
+    //create multipart using filepath, string or bytes
+    var pic = await http.MultipartFile.fromPath("profile_photo", profile_photo);
+    //add multipart to request
+    request.files.add(pic);
+    var response = await request.send();
+    //Get the response from the server
+    var responseData = await response.stream.toBytes();
+    print(response);
+    var responseString = String.fromCharCodes(responseData);
+   print(responseString);
+    final json = jsonDecode(responseString);
+    if (response.statusCode == 200) {
+      return true;
+
+    } else {
+      return false;
+    }
+  }
+
+  // Future<SignupDetilesresponse?> login(SignupDetilesParams params) async {
+  //   var url = Uri.parse("${AppSetting.baseUrl}api/login");
+  //   var response = await http.post(url, body: params.toJson());
+  //   var data = json.decode(response.body);
+  //   if (response.statusCode == 200) {
+  //     SignupDetilesresponse loginResponse =
+  //         SignupDetilesresponse.fromJson(data);
+  //     return loginResponse;
+  //   }
+  //   return null;
+  // }
+
   final ImagePicker picker = ImagePicker();
 
   Future uploadImage() async {
@@ -37,19 +96,33 @@ class _SignupDetailsState extends State<SignupDetails> {
     }
   }
 
+  late int selectedRadio;
+  @override
+  @override
+  void initState() {
+    super.initState();
+    selectedRadio = 0;
+  }
+
+  setSelectedRadio(int val) {
+    setState(() {
+      selectedRadio = val;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var formKey = GlobalKey<FormState>();
 
     return Scaffold(
+
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Center(
-          child: Image(
-            height: 30,
-            image: AssetImage('assets/images/logo_name.png'),
-          ),
-        ),
+            child: Text(
+          "Master",
+          style: TextStyle(),
+        )),
       ),
       body: Form(
         autovalidateMode: AutovalidateMode.always,
@@ -64,6 +137,10 @@ class _SignupDetailsState extends State<SignupDetails> {
                 SizedBox(
                   width: 10,
                 ),
+                Icon(Icons.account_box),
+                SizedBox(
+                  width: 5,
+                ),
                 Text(
                   "Complete your details to Sign up:",
                   style: TextStyle(fontFamily: 'SignikaNegative', fontSize: 16),
@@ -71,7 +148,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               ],
             ),
             const SizedBox(
-              height: 20,
+              height: 5,
             ),
             Stack(
               alignment: AlignmentDirectional.bottomEnd,
@@ -135,12 +212,16 @@ class _SignupDetailsState extends State<SignupDetails> {
                 label: "Phone Number",
                 inputType: TextInputType.number),
             const SizedBox(
-              height: 5,
+              height: 10,
             ),
             Row(
               children: const [
                 SizedBox(
                   width: 10,
+                ),
+                Icon(Icons.person),
+                SizedBox(
+                  width: 5,
                 ),
                 Text(
                   "Select your gender:",
@@ -151,66 +232,38 @@ class _SignupDetailsState extends State<SignupDetails> {
             const SizedBox(
               height: 10,
             ),
-            ChangeNotifierProvider(
-              create: (context) => IsMale(),
-              child: Consumer<IsMale>(
-                builder: (context, model, child) => Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+            RadioListTile(
+                title: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: GestureDetector(
-                        onTap: () {
-                          model.isMale = true;
-                          model.dosomething();
-                        },
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: 160,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            color: model.maleColor,
-                          ),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          child: Text(
-                            'male',
-                            style: TextStyle(
-                              color: model.maleTextColor,
-                              fontSize: 22,
-                            ),
-                          ),
-                        ),
-                      ),
+                    Text(
+                      'Male',
+                      style: TextStyle(fontSize: 30, fontFamily: 'Pangolin'),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: GestureDetector(
-                        onTap: () {
-                          model.isMale = false;
-                          model.dosomething();
-                        },
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: 160,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            color: model.femaleColor,
-                          ),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          child: Text('female',
-                              style: TextStyle(
-                                color: model.femaleTextColor,
-                                fontSize: 22,
-                              )),
-                        ),
-                      ),
-                    ),
+                    Icon(Icons.man)
                   ],
                 ),
-              ),
-            ),
+                activeColor: Colors.blue,
+                value: 1,
+                groupValue: selectedRadio,
+                onChanged: (val) {
+                  setSelectedRadio(val!);
+                }),
+            RadioListTile(
+                title: Row(
+                  children: [
+                    Text(
+                      'Female',
+                      style: TextStyle(fontSize: 30, fontFamily: 'Pangolin'),
+                    ),
+                    Icon(Icons.woman)
+                  ],
+                ),
+                activeColor: Colors.red,
+                value: 2,
+                groupValue: selectedRadio,
+                onChanged: (val) {
+                  setSelectedRadio(val!);
+                }),
             const SizedBox(
               height: 10,
             ),
@@ -218,13 +271,15 @@ class _SignupDetailsState extends State<SignupDetails> {
               SizedBox(
                 width: 10,
               ),
+              Icon(Icons.calendar_month),
+              SizedBox(width: 5),
               Text(
                 "Select your birthday:",
                 style: TextStyle(fontFamily: 'SignikaNegative', fontSize: 16),
               ),
             ]),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -252,7 +307,6 @@ class _SignupDetailsState extends State<SignupDetails> {
                           date = newDate;
                           setState(() {});
                         }),
-
                     const Text('d:'),
                     Container(
                       decoration: BoxDecoration(
@@ -310,15 +364,50 @@ class _SignupDetailsState extends State<SignupDetails> {
             ),
             const Spacer(),
             MyMaterialButton(
-                width: 170,
+                width: 240,
                 height: 50,
-                text: "Continue",
-                onPressed: () {
+                text: "Done",
+                onPressed: () async {
                   if (formKey.currentState!.validate()) {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return const Home();
-                    }));
+                    // if (fromkey2.currentState.validate()) {
+                    bool res = await SignupDetails(
+                      phone_num: _phoneNumberController.text,
+                      gender: selectedRadio == 1 ? "male" : "female",
+                      profile_photo: image!.path,
+                      birthdate:'${date.month}/${date.day}/${date.year}',
+                    );
+
+                    if (res) {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => Home()),
+                          (route) => false);
+                    } else {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text('Failed')));
+                    }
+
+                    // final SignupDetilesresponse? loginResponse = await SignupDetails(
+                    //   SignupDetilesParams(
+                    //       phone_num: _phoneNumberController.text,
+                    //       gender: selectedRadio == 1 ? "male": "female",
+                    //     profilePhoto: image.path,
+                    //   ),
+                    // );
+                    // if (loginResponse != null) {
+                    //   Navigator.of(context)
+                    //       .push(MaterialPageRoute(builder: (context) {
+                    //     return const Home();
+                    //   }));
+                    // } else {
+                    //   Fluttertoast.showToast(
+                    //       msg: "Email or Pass is Wrong !",
+                    //       gravity: ToastGravity.BOTTOM,
+                    //       toastLength: Toast.LENGTH_SHORT,
+                    //       backgroundColor: Colors.pink,
+                    //       timeInSecForIosWeb: 2,
+                    //       fontSize: 18);
+                    // }
                   }
                 }),
             const SizedBox(

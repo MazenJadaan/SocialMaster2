@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
+import 'package:social_master/models/connection/login.dart';
 import 'package:social_master/modules/app/home.dart';
 import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/shared/components/components.dart';
@@ -151,13 +153,14 @@ class Signup extends StatelessWidget {
                           ),
                         );
                         if (loginResponse != null) {
+                          print(loginResponse.data?.token);
+                          AppSetting.token=loginResponse.data?.token??"";
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (context) {
-                            return const Home();
+                            return const  SignupDetails();
                           }));
                         } else {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(SnackBar(content: Text('Failed')));
+                          Fluttertoast.showToast(msg: "any Text Faild",gravity: ToastGravity.BOTTOM,toastLength: Toast.LENGTH_SHORT,backgroundColor: Colors.pink,timeInSecForIosWeb: 2,fontSize: 18);
                         }
                       }
                     },
