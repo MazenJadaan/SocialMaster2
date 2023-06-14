@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:social_master/modules/app/pages/navbar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../home_page_tabs/tab1.dart';
 import '../home_page_tabs/tab2.dart';
@@ -10,7 +10,7 @@ class Home_Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     drawer: const NavBar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
         body: DefaultTabController(
           length: 2,
           child: NestedScrollView(
@@ -21,11 +21,20 @@ class Home_Page extends StatelessWidget {
                   floating: true,
                   elevation: 0.0,
                   pinned: true,
-                  title: const Center(
-                    child: Image(
-                      height: 30,
-                      image: AssetImage('assets/images/logo_name.png'),
-                    ),
+                  leading: IconButton(
+                    icon: const FaIcon(FontAwesomeIcons.bars),
+                    onPressed: () {},
+                  ),
+                  title:  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Image(image: AssetImage('assets/images/logo_name.png',),width: 125),
+                        //Text("Master",style: TextStyle(fontSize: 40,fontFamily: 'Cairo',color: Colors.black),),
+                        SizedBox(width: 8,),
+                        //Icon(Icons.phone_in_talk)
+                      ],
+                    )
                   ),
                   actions: const [
                     SizedBox(
@@ -39,30 +48,31 @@ class Home_Page extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 17),
                     indicatorWeight: 3,
-                    indicatorColor: AppTheme.colors.darkPurple,
+                    indicatorColor: AppTheme.colors.purple,
                     tabs: const [
                       Tab(text: "For you"),
                       Tab(
-                        text: "Follow",
+                        text: "Following",
                       )
                     ],
                   ),
                 ),
               ];
             },
-            body:  const TabBarView(children: [
-
+            body:  const TabBarView(
+                physics: BouncingScrollPhysics(),
+                children: [
               Tab1(),
               Tab2(),
             ]),
           ),
         ),
-        // floatingActionButton: FloatingActionButton(
-        //   elevation: 0.0,
-        //   backgroundColor: AppTheme.colors.purple,
-        //   onPressed: () {},
-        //   child: const FaIcon(FontAwesomeIcons.plus),
-        // ),
+        floatingActionButton: FloatingActionButton(
+          elevation: 0.0,
+          backgroundColor: AppTheme.colors.purple,
+          onPressed: () {},
+          child: const FaIcon(FontAwesomeIcons.plus),
+        ),
       );
   }
 }

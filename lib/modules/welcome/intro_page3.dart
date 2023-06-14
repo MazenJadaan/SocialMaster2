@@ -18,7 +18,7 @@ class IntroPage3 extends StatelessWidget {
             const SizedBox(
               height: 60,
             ),
-            Row(),
+             Row(),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Column(

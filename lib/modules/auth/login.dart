@@ -1,13 +1,16 @@
-import 'dart:convert' as convert;
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:social_master/modules/auth/reset_password/reset_password.dart';
 import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import 'package:http/http.dart' as http;
+import '../../models/connection/login.dart';
 import '../../provider/obscure_model.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/api/google_signin_api.dart';
+import '../../shared/network/constant/constant.dart';
 import '../../shared/validate/validate.dart';
 import '../app/home.dart';
 
@@ -19,25 +22,15 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  bool _check = false;
-
-  Future login() async {
-    var url = Uri.parse("http://192.168.200.54/api/login");
-    var response = await http.post(url, body: {
-      "emailORmobile": _emailController.text,
-      "password": _passwordController.text
-    });
-    var data = convert.json.decode(response.body);
-    if (data.statuscode == 200) {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        return const Home();
-      }));
-    } else {
-      print('ttfhgvhjj hjbhj n');
-      // Fluttertoast.showToast(msg: 'wwww wwww www error',
-      // gravity: ToastGravity.CENTER,
-      // );
+  Future<LoginResponse?> login(LoginParams params) async {
+    var url = Uri.parse("${AppSetting.baseUrl}api/login");
+    var response = await http.post(url, body: params.toJson());
+    var data = json.decode(response.body);
+    if (response.statusCode == 200) {
+      LoginResponse loginResponse = LoginResponse.fromJson(data);
+      return loginResponse;
     }
+    return null;
   }
 
   final _passwordController = TextEditingController();
@@ -124,7 +117,10 @@ class _LoginState extends State<Login> {
                         width: 10,
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Reset1()));
+                        },
                         child: Text(
                           'forget password?',
                           style: TextStyle(
@@ -139,12 +135,28 @@ class _LoginState extends State<Login> {
                   MyMaterialButton(
                     width: 240,
                     text: 'Login',
-                    onPressed: () {
+                    onPressed: () async {
                       if (formKey.currentState!.validate()) {
-                        login();
+                        final LoginResponse? loginResponse = await login(
+                          LoginParams(
+                            emailORmobile: _emailController.text,
+                            password: _passwordController.text,
+                          ),
+                        );
+                        if (loginResponse != null) {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (context) => Home()),
+                                  (route) => false);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Failed')));
+                          // Fluttertoast.showToast(msg: "Email or Pass is Wrong !",gravity: ToastGravity.BOTTOM,toastLength: Toast.LENGTH_SHORT,backgroundColor: Colors.pink,timeInSecForIosWeb: 2,fontSize: 18);
+                        }
                       }
                     },
                   ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
