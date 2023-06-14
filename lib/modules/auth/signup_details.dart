@@ -39,7 +39,6 @@ class _SignupDetailsState extends State<SignupDetails> {
     print(phone_num);
     print(gender);
     print(birthdate);
-    print(profile_photo);
 
     //create multipart request for POST or PATCH method
     var request = http.MultipartRequest(
