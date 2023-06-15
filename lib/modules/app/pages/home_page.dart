@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/shared/styles/colors.dart';
-import '../home_page_tabs/tab1.dart';
-import '../home_page_tabs/tab2.dart';
+import '../home_page_content/tab1.dart';
+import '../home_page_content/tab2.dart';
+import '../navigations.dart';
 
-class Home_Page extends StatelessWidget {
-  const Home_Page({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
+
         body: DefaultTabController(
           length: 2,
           child: NestedScrollView(
+            physics: const BouncingScrollPhysics(),
             headerSliverBuilder: (context, value) {
               return [
                 SliverAppBar(
@@ -23,12 +25,14 @@ class Home_Page extends StatelessWidget {
                   pinned: true,
                   leading: IconButton(
                     icon: const FaIcon(FontAwesomeIcons.bars),
-                    onPressed: () {},
+                    onPressed: () {
+
+                    },
                   ),
-                  title:  Center(
+                  title:  const Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Image(image: AssetImage('assets/images/logo_name.png',),width: 125),
                         //Text("Master",style: TextStyle(fontSize: 40,fontFamily: 'Cairo',color: Colors.black),),
                         SizedBox(width: 8,),
@@ -36,10 +40,14 @@ class Home_Page extends StatelessWidget {
                       ],
                     )
                   ),
-                  actions: const [
-                    SizedBox(
-                      width: 55,
+                  actions:  [
+                  IconButton(
+                    onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Navigations()));},
+                    icon: const FaIcon(
+                      FontAwesomeIcons.bell,
+                      color: Colors.white,
                     ),
+                  ),
                   ],
                   bottom: TabBar(
                     dividerColor: Colors.white,
@@ -67,12 +75,7 @@ class Home_Page extends StatelessWidget {
             ]),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          elevation: 0.0,
-          backgroundColor: AppTheme.colors.purple,
-          onPressed: () {},
-          child: const FaIcon(FontAwesomeIcons.plus),
-        ),
+
       );
   }
 }

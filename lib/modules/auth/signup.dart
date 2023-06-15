@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +9,6 @@ import 'package:social_master/modules/app/home.dart';
 import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
-
 
 import '../../models/connection/register.dart';
 import '../../provider/obscure_model.dart';
@@ -145,22 +144,28 @@ class Signup extends StatelessWidget {
                       if (formKey.currentState!.validate()) {
                         final RegisterResponse? loginResponse = await login(
                           RegisterParams(
-                            email: _emailController.text,
-                            firstName: _firstNameController.text,
-                            lastName: _lastNameController.text,
-                            password: _passwordController.text,
-                            passwordConfirmation: _confirmPasswordController.text
-                          ),
+                              email: _emailController.text,
+                              firstName: _firstNameController.text,
+                              lastName: _lastNameController.text,
+                              password: _passwordController.text,
+                              passwordConfirmation:
+                                  _confirmPasswordController.text),
                         );
                         if (loginResponse != null) {
                           print(loginResponse.data?.token);
-                          AppSetting.token=loginResponse.data?.token??"";
+                          AppSetting.token = loginResponse.data?.token ?? "";
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (context) {
-                            return const  SignupDetails();
+                            return const SignupDetails();
                           }));
                         } else {
-                          Fluttertoast.showToast(msg: "any Text Faild",gravity: ToastGravity.BOTTOM,toastLength: Toast.LENGTH_SHORT,backgroundColor: Colors.pink,timeInSecForIosWeb: 2,fontSize: 18);
+                          // Fluttertoast.showToast(
+                          //     msg: "any Text Faild",
+                          //     gravity: ToastGravity.BOTTOM,
+                          //     toastLength: Toast.LENGTH_SHORT,
+                          //     backgroundColor: Colors.pink,
+                          //     timeInSecForIosWeb: 2,
+                          //     fontSize: 18);
                         }
                       }
                     },

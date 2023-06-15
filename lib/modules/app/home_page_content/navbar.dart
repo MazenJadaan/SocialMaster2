@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:social_master/modules/app/pages/profile_page.dart';
 
-import 'favorite_page.dart';
+import '../favorite_page.dart';
 
 class NavBar extends StatelessWidget {
-   const NavBar({super.key});
+    NavBar({super.key});
 
-  final screens = const [
-    Profile_Page(),
-    Favorite_Page(),
+  final screens =  [
+    ProfilePage(),
+    FavoritePage(),
   ];
 
   get index => 2;

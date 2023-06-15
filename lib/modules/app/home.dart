@@ -19,12 +19,13 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int index = 2;
   GlobalKey<CurvedNavigationBarState> _bottomKey = GlobalKey();
-  final screens = const [
-    Search_Page(),
-    Chat_Page(),
-    Home_Page(),
-    Profile_Page(),
-    Notifications_Page(),
+  final screens = [
+    SearchPage(),
+    SeePage(),
+    HomePage(),
+    ProfilePage(),
+    ChatPage(),
+
   ];
 
   @override
@@ -39,10 +40,11 @@ class _HomeState extends State<Home> {
           items: const [
             FaIcon(
               FontAwesomeIcons.magnifyingGlass,
+
               color: Colors.white,
             ),
             FaIcon(
-              FontAwesomeIcons.message,
+              FontAwesomeIcons.video,
               color: Colors.white,
             ),
             FaIcon(
@@ -50,13 +52,14 @@ class _HomeState extends State<Home> {
               color: Colors.white,
             ),
             FaIcon(
-              FontAwesomeIcons.user,
+              FontAwesomeIcons.solidUser,
               color: Colors.white,
             ),
             FaIcon(
-              FontAwesomeIcons.bell,
+              FontAwesomeIcons.solidMessage,
               color: Colors.white,
             ),
+
           ],
           index: index,
           onTap: (index) {

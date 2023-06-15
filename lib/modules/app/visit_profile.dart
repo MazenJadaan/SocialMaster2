@@ -1,31 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:social_master/shared/components/components.dart';
-import 'package:social_master/shared/styles/colors.dart';
+import '../../shared/components/components.dart';
+import '../../shared/components/post_component.dart';
+import '../../shared/styles/colors.dart';
 
-import '../../../shared/components/post_component.dart';
-
-class ProfilePage extends StatelessWidget {
-  ProfilePage({Key? key}) : super(key: key);
-
-  final ImagePicker picker = ImagePicker();
-
-  Future uploadImage() async {
-    try {
-      final pickedImage = await picker.pickImage(source: ImageSource.gallery);
-      if (pickedImage == null) return;
-      // if (pickedImage != null) {
-      final image2 = File(pickedImage.path);
-      // setState(() {});
-      var image = image2;
-    } on PlatformException catch (e) {
-      print('Failed to upload image $e');
-    }
-  }
+class VisitProfile extends StatelessWidget {
+  const VisitProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,26 +32,8 @@ class ProfilePage extends StatelessWidget {
                         ),
                         const SizedBox(
                           height: 30,
-                        ),
+                        )
                       ],
-                    ),
-                    Positioned(
-                      top: 40,
-                      right: 10,
-                      child: CircleAvatar(
-                        backgroundColor: AppTheme.colors.purple,
-                        radius: 16,
-                        child: IconButton(
-                            color: Colors.white,
-                            icon: const FaIcon(
-                              FontAwesomeIcons.pencil,
-                              size: 17,
-                            ),
-                            onPressed: () {
-                              uploadImage();
-                              // setState(() {});
-                            }),
-                      ),
                     ),
                     Container(
                       width: double.infinity,
@@ -84,20 +45,16 @@ class ProfilePage extends StatelessWidget {
                         color: Color(0xffdfdbe9),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        uploadImage();
-                        // setState(() {});
-                      },
-                      child: Stack(
-                        alignment: AlignmentDirectional.bottomEnd,
-                        children: [CircleAvatar(
-                          radius: 59,
-                          backgroundColor: AppTheme.colors.purple,
-                          child: const CircleAvatar(
-                            backgroundColor: Colors.transparent,
-                            radius: 55,
-                            child: ClipOval(
+
+                      CircleAvatar(
+                        radius: 59,
+                        backgroundColor: AppTheme.colors.purple,
+                        child: const CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          radius: 55,
+                          child: ClipOval(
+                            child: Hero(
+                              tag: 'profile_1',
                               child: Image(
                                   width: 200,
                                   height: 200,
@@ -107,22 +64,7 @@ class ProfilePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                          CircleAvatar(
-                            backgroundColor: AppTheme.colors.purple,
-                            radius: 16,
-                            child: IconButton(
-                                color: Colors.white,
-                                icon: const FaIcon(
-                                  FontAwesomeIcons.pencil,
-                                  size: 17,
-                                ),
-                                onPressed: () {
-                                  uploadImage();
-                                  // setState(() {});
-                                }),
-                          ),
-                      ],
-                      ),
+
                     ),
 
                     //following and followers
@@ -172,6 +114,18 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ],
                     ),
+                    Positioned(
+                        left: 10,
+                        top: 40,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Icon(
+                            Icons.arrow_back_rounded,
+                            color: Colors.white,
+                          ),
+                        )),
                   ],
                 ),
               ),
@@ -200,11 +154,18 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              MyMaterialButton(
-                  text: 'Edit profile details',width: double.infinity, onPressed: () {}, fontSize: 18),
-              MyMaterialButton(
-                  text: 'Create a new post',width: double.infinity, onPressed: () {}, fontSize: 18),
-
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MyMaterialButton(
+                      text: 'Follow', onPressed: () {}, fontSize: 18),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  MyMaterialButton(
+                      text: 'Message', onPressed: () {}, fontSize: 18),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 32.0, vertical: 10.0),
@@ -214,7 +175,7 @@ class ProfilePage extends StatelessWidget {
                   color: AppTheme.colors.purple,
                 ),
               ),
-              MyOwnPost(
+              Post(
                   comments: 13,
                   likes: 99,
                   shares: 6,

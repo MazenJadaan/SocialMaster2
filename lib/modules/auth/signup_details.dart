@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -30,12 +30,12 @@ class _SignupDetailsState extends State<SignupDetails> {
 
   DateTime date = DateTime.now();
   File? image;
+
   static Future<bool> SignupDetails(
       {required String phone_num,
       required String gender,
       required String birthdate,
-      required String profile_photo
-      }) async {
+      required String profile_photo}) async {
     print(phone_num);
     print(gender);
     print(birthdate);
@@ -58,11 +58,10 @@ class _SignupDetailsState extends State<SignupDetails> {
     var responseData = await response.stream.toBytes();
     print(response);
     var responseString = String.fromCharCodes(responseData);
-   print(responseString);
+    print(responseString);
     final json = jsonDecode(responseString);
     if (response.statusCode == 200) {
       return true;
-
     } else {
       return false;
     }
@@ -96,7 +95,7 @@ class _SignupDetailsState extends State<SignupDetails> {
   }
 
   late int selectedRadio;
-  @override
+
   @override
   void initState() {
     super.initState();
@@ -114,7 +113,6 @@ class _SignupDetailsState extends State<SignupDetails> {
     var formKey = GlobalKey<FormState>();
 
     return Scaffold(
-
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Center(
@@ -131,8 +129,8 @@ class _SignupDetailsState extends State<SignupDetails> {
             const SizedBox(
               height: 10,
             ),
-            Row(
-              children: const [
+            const Row(
+              children: [
                 SizedBox(
                   width: 10,
                 ),
@@ -213,8 +211,8 @@ class _SignupDetailsState extends State<SignupDetails> {
             const SizedBox(
               height: 10,
             ),
-            Row(
-              children: const [
+            const Row(
+              children: [
                 SizedBox(
                   width: 10,
                 ),
@@ -232,7 +230,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               height: 10,
             ),
             RadioListTile(
-                title: Row(
+                title: const Row(
                   children: [
                     Text(
                       'Male',
@@ -248,7 +246,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                   setSelectedRadio(val!);
                 }),
             RadioListTile(
-                title: Row(
+                title: const Row(
                   children: [
                     Text(
                       'Female',
@@ -266,7 +264,7 @@ class _SignupDetailsState extends State<SignupDetails> {
             const SizedBox(
               height: 10,
             ),
-            Row(children: const [
+            const Row(children: [
               SizedBox(
                 width: 10,
               ),
@@ -373,17 +371,17 @@ class _SignupDetailsState extends State<SignupDetails> {
                       phone_num: _phoneNumberController.text,
                       gender: selectedRadio == 1 ? "male" : "female",
                       profile_photo: image!.path,
-                      birthdate:'${date.month}/${date.day}/${date.year}',
+                      birthdate: '${date.month}/${date.day}/${date.year}',
                     );
 
                     if (res) {
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (context) => Home()),
+                          MaterialPageRoute(builder: (context) => const Home()),
                           (route) => false);
                     } else {
                       ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text('Failed')));
+                          .showSnackBar(const SnackBar(content: Text('Failed')));
                     }
 
                     // final SignupDetilesresponse? loginResponse = await SignupDetails(

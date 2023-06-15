@@ -13,17 +13,17 @@ import 'package:flutter/material.dart';
 
 
 
-class Chat_Page extends StatefulWidget {
+class ChatPage extends StatefulWidget {
 
   static const String screenRoute='Chat_Page';
 
-  const Chat_Page({Key? key}) : super(key: key);
+  const ChatPage({Key? key}) : super(key: key);
 
   @override
-  State<Chat_Page> createState() => _Chat_PageState();
+  State<ChatPage> createState() => _ChatPageState();
 }
 
-class _Chat_PageState extends State<Chat_Page> {
+class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

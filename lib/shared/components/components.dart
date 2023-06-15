@@ -118,10 +118,11 @@ Widget MyMaterialButton({
           child: Text(
             text,
             style: TextStyle(
+              fontFamily: 'SignikaNegative',
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
               color: Colors.white,
-              fontFamily: 'signkaNegative'
+
             ),
           ),
         ));

@@ -1,14 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:social_master/shared/components/components.dart';
-import 'package:social_master/shared/validate/validate.dart';
 import '../styles/colors.dart';
 
-
-TextEditingController _commentController =TextEditingController();
-Widget ImagePost({
-
+Widget Post({
   Function()? saveFunc,
   Function()? likeFunc,
   Function()? commentFunc,
@@ -19,6 +14,7 @@ Widget ImagePost({
   String date = "30/7/2001",
   String caption = "",
   String userName = "hahaha",
+  String heroTag = '',
   int likes = 0,
   int comments = 0,
   int shares = 0,
@@ -39,17 +35,21 @@ Widget ImagePost({
                   left: 15.0, right: 8.0, top: 8.0, bottom: 5.0),
               child: Row(
                 children: [
+                  //profile image
                   GestureDetector(
                     onTap: profile,
                     child: CircleAvatar(
                       backgroundColor: Colors.transparent,
                       radius: 22,
                       child: ClipOval(
-                        child: Image(
-                            width: 80,
-                            height: 80,
-                            image: NetworkImage('$userImage'),
-                            fit: BoxFit.cover),
+                        child: Hero(
+                          tag: heroTag,
+                          child: Image(
+                              width: 80,
+                              height: 80,
+                              image: NetworkImage('$userImage'),
+                              fit: BoxFit.cover),
+                        ),
                       ),
                     ),
                   ),
@@ -169,7 +169,7 @@ Widget ImagePost({
                               GestureDetector(
                                 onTap: shareFunc,
                                 child: const FaIcon(
-                                  FontAwesomeIcons.share,
+                                  FontAwesomeIcons.solidPaperPlane,
                                   size: 19,
                                   color: Colors.white,
                                 ),
@@ -196,6 +196,213 @@ Widget ImagePost({
               ),
             ),
             // Comment(controller: _commentController, hint: 'write a comment'),
+          ],
+        ),
+      ),
+    );
+
+
+
+
+
+
+
+
+Widget MyOwnPost({
+  Function()? saveFunc,
+  Function()? likeFunc,
+  Function()? commentFunc,
+  Function()? shareFunc,
+  Function()? settingFunc,
+  String? userImage,
+  String? image,
+  String date = "30/7/2001",
+  String caption = "",
+  String userName = "hahaha",
+  int likes = 0,
+  int comments = 0,
+  int shares = 0,
+}) =>
+    Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: AppTheme.colors.opacityPurple,
+          borderRadius: BorderRadius.circular(35),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 15.0, right: 8.0, top: 8.0, bottom: 5.0),
+              child: Row(
+                children: [
+                  //profile image
+                   CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      radius: 22,
+                      child: ClipOval(
+                        child: Image(
+                              width: 80,
+                              height: 80,
+                              image: NetworkImage('$userImage'),
+                              fit: BoxFit.cover),
+                      ),
+                    ),
+
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(userName,
+                          style: TextStyle(
+                              fontFamily: 'SignikaNegative',
+                              fontSize: 17,
+                              color: AppTheme.colors.darkPurple,
+                              fontWeight: FontWeight.bold)),
+                      Text(date,
+                          style: TextStyle(
+                            fontFamily: 'SignikaNegative',
+                            fontSize: 13,
+                            color: AppTheme.colors.darkPurple,
+                          )),
+                    ],
+                  ),
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: saveFunc,
+                    child: const FaIcon(
+                      FontAwesomeIcons.solidBookmark,
+                      color: Colors.white,
+                      size: 19,
+                    ),
+                  ),
+                  const SizedBox(width: 16,),
+                  GestureDetector(
+                    onTap: settingFunc,
+                    child: const FaIcon(
+                      FontAwesomeIcons.ellipsisVertical,
+                      color: Colors.white,
+                      size: 19,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Text(caption,
+                  style: const TextStyle(
+                    fontFamily: 'SignikaNegative',
+                    fontSize: 15,
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Stack(
+                alignment: AlignmentDirectional.bottomCenter,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: Image(
+                      image: NetworkImage('$image'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                        bottomRight: Radius.circular(30),
+                        bottomLeft: Radius.circular(30)),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 3, sigmaY: 2),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(30),
+                              bottomRight: Radius.circular(30)),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 14.0, right: 14.0, bottom: 5.0, top: 4.0),
+                          child: Row(
+                            children: [
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              GestureDetector(
+                                onTap: likeFunc,
+                                child: const FaIcon(FontAwesomeIcons.solidHeart,
+                                    size: 19, color: Colors.white),
+                              ),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              Text("$likes",
+                                  style: const TextStyle(
+                                    fontFamily: 'SignikaNegative',
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                  )),
+                              const SizedBox(
+                                width: 18,
+                              ),
+                              GestureDetector(
+                                onTap: commentFunc,
+                                child: const FaIcon(
+                                    FontAwesomeIcons.solidCommentDots,
+                                    size: 19,
+                                    color: Colors.white),
+                              ),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              Text("$comments",
+                                  style: const TextStyle(
+                                    fontFamily: 'SignikaNegative',
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                  )),
+                              const Spacer(),
+                              GestureDetector(
+                                onTap: shareFunc,
+                                child: const FaIcon(
+                                  FontAwesomeIcons.solidPaperPlane,
+                                  size: 19,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              Text("$shares",
+                                  style: const TextStyle(
+                                    fontFamily: 'SignikaNegative',
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                  )),
+                              const SizedBox(
+                                width: 5.0,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
