@@ -57,7 +57,7 @@ class ProfilePage extends StatelessWidget {
                       ],
                     ),
                     Positioned(
-                      top: 40,
+                      bottom: 70,
                       right: 10,
                       child: CircleAvatar(
                         backgroundColor: AppTheme.colors.purple,
