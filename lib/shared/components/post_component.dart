@@ -1,24 +1,14 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:social_master/models/postmodel.dart';
+import 'package:social_master/modules/app/visit_profile.dart';
+
 import '../styles/colors.dart';
 
-Widget Post({
-  Function()? saveFunc,
-  Function()? likeFunc,
-  Function()? commentFunc,
-  Function()? shareFunc,
-  Function()? profile,
-  String? userImage,
-  String? image,
-  String date = "30/7/2001",
-  String caption = "",
-  String userName = "hahaha",
-  String heroTag = '',
-  int likes = 0,
-  int comments = 0,
-  int shares = 0,
-}) =>
+
+Widget postBuilder({required PostModel model, context}) =>
     Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
       child: Container(
@@ -37,35 +27,33 @@ Widget Post({
                 children: [
                   //profile image
                   GestureDetector(
-                    onTap: profile,
+                    onTap: () {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>VisitProfile()));},
                     child: CircleAvatar(
                       backgroundColor: Colors.transparent,
                       radius: 22,
                       child: ClipOval(
-                        child: Hero(
-                          tag: heroTag,
-                          child: Image(
-                              width: 80,
-                              height: 80,
-                              image: NetworkImage('$userImage'),
-                              fit: BoxFit.cover),
-                        ),
+                        child: Image(
+                            width: 80,
+                            height: 80,
+                            image: NetworkImage('${model.userImage}'),
+                            fit: BoxFit.cover),
                       ),
                     ),
                   ),
+
                   const SizedBox(
                     width: 10,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(userName,
+                      Text(model.userName,
                           style: TextStyle(
                               fontFamily: 'SignikaNegative',
                               fontSize: 17,
                               color: AppTheme.colors.darkPurple,
                               fontWeight: FontWeight.bold)),
-                      Text(date,
+                      Text(model.date,
                           style: TextStyle(
                             fontFamily: 'SignikaNegative',
                             fontSize: 13,
@@ -74,14 +62,15 @@ Widget Post({
                     ],
                   ),
                   const Spacer(),
+                  //save post
                   GestureDetector(
-                    onTap: saveFunc,
-                    child: const FaIcon(
-                      FontAwesomeIcons.solidBookmark,
-                      color: Colors.white,
-                      size: 19,
-                    ),
+                      onTap: () {},
+                      child: const FaIcon(FontAwesomeIcons.solidBookmark,
+                          color: Colors.white, size: 19),
+
                   ),
+
+
                   const SizedBox(
                     width: 25,
                   ),
@@ -90,7 +79,7 @@ Widget Post({
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Text(caption,
+              child: Text(model.caption,
                   style: const TextStyle(
                     fontFamily: 'SignikaNegative',
                     fontSize: 15,
@@ -108,7 +97,7 @@ Widget Post({
                     ),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child: Image(
-                      image: NetworkImage('$image'),
+                      image: NetworkImage('${model.image}'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -117,7 +106,7 @@ Widget Post({
                         bottomRight: Radius.circular(30),
                         bottomLeft: Radius.circular(30)),
                     child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 3, sigmaY: 2),
+                      filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
                       child: Container(
                         decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
@@ -126,21 +115,27 @@ Widget Post({
                         ),
                         child: Padding(
                           padding: const EdgeInsets.only(
-                              left: 14.0, right: 14.0, bottom: 5.0, top: 4.0),
+                              left: 14.0,
+                              right: 14.0,
+                              bottom: 5.0,
+                              top: 4.0),
                           child: Row(
                             children: [
                               const SizedBox(
                                 width: 5,
                               ),
+
                               GestureDetector(
-                                onTap: likeFunc,
-                                child: const FaIcon(FontAwesomeIcons.solidHeart,
-                                    size: 19, color: Colors.white),
+                                onTap: (){},
+                                child: const FaIcon(
+                                    FontAwesomeIcons.solidHeart,
+                                    size: 19,
+                                    color: Colors.white),
                               ),
                               const SizedBox(
                                 width: 8,
                               ),
-                              Text("$likes",
+                              Text("${model.likes}",
                                   style: const TextStyle(
                                     fontFamily: 'SignikaNegative',
                                     fontSize: 15,
@@ -150,7 +145,7 @@ Widget Post({
                                 width: 18,
                               ),
                               GestureDetector(
-                                onTap: commentFunc,
+                                onTap: (){},
                                 child: const FaIcon(
                                     FontAwesomeIcons.solidCommentDots,
                                     size: 19,
@@ -159,7 +154,7 @@ Widget Post({
                               const SizedBox(
                                 width: 8,
                               ),
-                              Text("$comments",
+                              Text("${model.comments}",
                                   style: const TextStyle(
                                     fontFamily: 'SignikaNegative',
                                     fontSize: 15,
@@ -167,7 +162,7 @@ Widget Post({
                                   )),
                               const Spacer(),
                               GestureDetector(
-                                onTap: shareFunc,
+                                onTap: (){},
                                 child: const FaIcon(
                                   FontAwesomeIcons.solidPaperPlane,
                                   size: 19,
@@ -177,7 +172,7 @@ Widget Post({
                               const SizedBox(
                                 width: 8,
                               ),
-                              Text("$shares",
+                              Text("${model.shares}",
                                   style: const TextStyle(
                                     fontFamily: 'SignikaNegative',
                                     fontSize: 15,
@@ -204,25 +199,7 @@ Widget Post({
 
 
 
-
-
-
-
-Widget MyOwnPost({
-  Function()? saveFunc,
-  Function()? likeFunc,
-  Function()? commentFunc,
-  Function()? shareFunc,
-  Function()? settingFunc,
-  String? userImage,
-  String? image,
-  String date = "30/7/2001",
-  String caption = "",
-  String userName = "hahaha",
-  int likes = 0,
-  int comments = 0,
-  int shares = 0,
-}) =>
+Widget myPostBuilder({required MyPostModel model,required context}) =>
     Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
       child: Container(
@@ -240,17 +217,17 @@ Widget MyOwnPost({
               child: Row(
                 children: [
                   //profile image
-                   CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      radius: 22,
-                      child: ClipOval(
-                        child: Image(
-                              width: 80,
-                              height: 80,
-                              image: NetworkImage('$userImage'),
-                              fit: BoxFit.cover),
-                      ),
+                  CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    radius: 22,
+                    child: ClipOval(
+                      child: Image(
+                          width: 80,
+                          height: 80,
+                          image: NetworkImage('${model.userImage}'),
+                          fit: BoxFit.cover),
                     ),
+                  ),
 
                   const SizedBox(
                     width: 10,
@@ -258,13 +235,13 @@ Widget MyOwnPost({
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(userName,
+                      Text(model.userName,
                           style: TextStyle(
                               fontFamily: 'SignikaNegative',
                               fontSize: 17,
                               color: AppTheme.colors.darkPurple,
                               fontWeight: FontWeight.bold)),
-                      Text(date,
+                      Text(model.date,
                           style: TextStyle(
                             fontFamily: 'SignikaNegative',
                             fontSize: 13,
@@ -274,21 +251,48 @@ Widget MyOwnPost({
                   ),
                   const Spacer(),
                   GestureDetector(
-                    onTap: saveFunc,
+                    onTap: (){},
                     child: const FaIcon(
                       FontAwesomeIcons.solidBookmark,
                       color: Colors.white,
                       size: 19,
                     ),
                   ),
-                  const SizedBox(width: 16,),
-                  GestureDetector(
-                    onTap: settingFunc,
-                    child: const FaIcon(
-                      FontAwesomeIcons.ellipsisVertical,
-                      color: Colors.white,
-                      size: 19,
-                    ),
+
+                  PopupMenuButton(
+                    color: Colors.white,
+                    itemBuilder: (context) =>  [
+                      PopupMenuItem(
+                        onTap: (){print('edit');},
+                        child: const Row(
+                          children: [
+                            FaIcon(FontAwesomeIcons.pen),
+                            SizedBox(width: 8,),
+                            Text('edit post'),
+                          ],
+                        ),
+                      ),
+                      PopupMenuItem(
+                        onTap: (){print('delete');},
+                        child: const Row(
+                          children: [
+                            FaIcon(FontAwesomeIcons.trash),
+                            SizedBox(width: 8,),
+                            Text('delete post'),
+                          ],
+                        ),
+                      ),
+                      PopupMenuItem(
+                        onTap: (){print('promotion');},
+                        child: const Row(
+                          children: [
+                            FaIcon(FontAwesomeIcons.dollarSign),
+                            SizedBox(width: 8,),
+                            Text('post promotion'),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     width: 20,
@@ -298,7 +302,7 @@ Widget MyOwnPost({
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Text(caption,
+              child: Text(model.caption,
                   style: const TextStyle(
                     fontFamily: 'SignikaNegative',
                     fontSize: 15,
@@ -316,7 +320,7 @@ Widget MyOwnPost({
                     ),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child: Image(
-                      image: NetworkImage('$image'),
+                      image: NetworkImage('${model.image}'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -341,14 +345,16 @@ Widget MyOwnPost({
                                 width: 5,
                               ),
                               GestureDetector(
-                                onTap: likeFunc,
-                                child: const FaIcon(FontAwesomeIcons.solidHeart,
-                                    size: 19, color: Colors.white),
+                                onTap: (){},
+                                child: const FaIcon(
+                                    FontAwesomeIcons.solidHeart,
+                                    size: 19,
+                                    color: Colors.white),
                               ),
                               const SizedBox(
                                 width: 8,
                               ),
-                              Text("$likes",
+                              Text("${model.likes}",
                                   style: const TextStyle(
                                     fontFamily: 'SignikaNegative',
                                     fontSize: 15,
@@ -358,7 +364,7 @@ Widget MyOwnPost({
                                 width: 18,
                               ),
                               GestureDetector(
-                                onTap: commentFunc,
+                                onTap: (){},
                                 child: const FaIcon(
                                     FontAwesomeIcons.solidCommentDots,
                                     size: 19,
@@ -367,7 +373,7 @@ Widget MyOwnPost({
                               const SizedBox(
                                 width: 8,
                               ),
-                              Text("$comments",
+                              Text("${model.comments}",
                                   style: const TextStyle(
                                     fontFamily: 'SignikaNegative',
                                     fontSize: 15,
@@ -375,7 +381,7 @@ Widget MyOwnPost({
                                   )),
                               const Spacer(),
                               GestureDetector(
-                                onTap: shareFunc,
+                                onTap: (){},
                                 child: const FaIcon(
                                   FontAwesomeIcons.solidPaperPlane,
                                   size: 19,
@@ -385,7 +391,7 @@ Widget MyOwnPost({
                               const SizedBox(
                                 width: 8,
                               ),
-                              Text("$shares",
+                              Text("${model.shares}",
                                   style: const TextStyle(
                                     fontFamily: 'SignikaNegative',
                                     fontSize: 15,

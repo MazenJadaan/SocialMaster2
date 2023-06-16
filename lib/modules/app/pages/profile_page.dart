@@ -1,16 +1,75 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:social_master/models/postmodel.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/styles/colors.dart';
-
 import '../../../shared/components/post_component.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({Key? key}) : super(key: key);
+
+  List<MyPostModel> myPosts = [
+    MyPostModel(
+      likes: 400,
+      comments: 12,
+      shares: 3,
+      caption: 'caption',
+      date: '30/12/2019',
+      userName: 'Habibi wallah',
+      image:
+      'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+      userImage:
+      'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
+    ),
+    MyPostModel(
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        userImage:
+        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+    MyPostModel(
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        userImage:
+        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+    MyPostModel(
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        userImage:
+        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+    MyPostModel(
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        userImage:
+        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+  ];
 
   final ImagePicker picker = ImagePicker();
 
@@ -27,10 +86,14 @@ class ProfilePage extends StatelessWidget {
     }
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+
         child: Container(
           color: AppTheme.colors.opacityPurple,
           child: Column(
@@ -87,26 +150,27 @@ class ProfilePage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         uploadImage();
-                        // setState(() {});
+                         // setState(() {});
                       },
                       child: Stack(
                         alignment: AlignmentDirectional.bottomEnd,
-                        children: [CircleAvatar(
-                          radius: 59,
-                          backgroundColor: AppTheme.colors.purple,
-                          child: const CircleAvatar(
-                            backgroundColor: Colors.transparent,
-                            radius: 55,
-                            child: ClipOval(
-                              child: Image(
-                                  width: 200,
-                                  height: 200,
-                                  image: NetworkImage(
-                                      'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'),
-                                  fit: BoxFit.cover),
+                        children: [
+                          CircleAvatar(
+                            radius: 59,
+                            backgroundColor: AppTheme.colors.purple,
+                            child: const CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              radius: 55,
+                              child: ClipOval(
+                                child: Image(
+                                    width: 200,
+                                    height: 200,
+                                    image: NetworkImage(
+                                        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'),
+                                    fit: BoxFit.cover),
+                              ),
                             ),
                           ),
-                        ),
                           CircleAvatar(
                             backgroundColor: AppTheme.colors.purple,
                             radius: 16,
@@ -121,7 +185,7 @@ class ProfilePage extends StatelessWidget {
                                   // setState(() {});
                                 }),
                           ),
-                      ],
+                        ],
                       ),
                     ),
 
@@ -201,30 +265,31 @@ class ProfilePage extends StatelessWidget {
                 height: 8,
               ),
               MyMaterialButton(
-                  text: 'Edit profile details',width: double.infinity, onPressed: () {}, fontSize: 18),
+                  text: 'Edit profile details',
+                  width: double.infinity,
+                  onPressed: () {},
+                  fontSize: 18),
               MyMaterialButton(
-                  text: 'Create a new post',width: double.infinity, onPressed: () {}, fontSize: 18),
-
+                  text: 'Create a new post',
+                  width: double.infinity,
+                  onPressed: () {},
+                  fontSize: 18),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 32.0, vertical: 10.0),
+                padding: const EdgeInsets.symmetric(horizontal: 32.0,vertical: 10.0,),
                 child: Container(
                   width: double.infinity,
                   height: 1,
                   color: AppTheme.colors.purple,
                 ),
               ),
-              MyOwnPost(
-                  comments: 13,
-                  likes: 99,
-                  shares: 6,
-                  userName: 'Mohamad Alraie',
-                  caption:
-                      "wake up to reality nothing ever goes as planned in this cursed world the more you live the more you realize that the only things that truly exist in this reality are merely pain suffering and futility.",
-                  userImage:
-                      "https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg",
-                  image:
-                      "https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg"),
+              ListView.builder(
+                padding: const EdgeInsets.all(0.0),
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: myPosts.length,
+                itemBuilder: (context, i) => myPostBuilder(model: myPosts[i],context: context),
+              ),
               const SizedBox(
                 height: 55,
               ),

@@ -1,10 +1,70 @@
 import 'package:flutter/material.dart';
+import '../../models/postmodel.dart';
 import '../../shared/components/components.dart';
 import '../../shared/components/post_component.dart';
 import '../../shared/styles/colors.dart';
 
 class VisitProfile extends StatelessWidget {
-  const VisitProfile({Key? key}) : super(key: key);
+   VisitProfile({Key? key}) : super(key: key);
+
+  List<PostModel> posts = [
+    PostModel(
+      likes: 400,
+      comments: 12,
+      shares: 3,
+      caption: 'caption',
+      date: '30/12/2019',
+      userName: 'Habibi wallah',
+      image:
+      'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+      userImage:
+      'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
+    ),
+    PostModel(
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        userImage:
+        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+    PostModel(
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        userImage:
+        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+    PostModel(
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        userImage:
+        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+    PostModel(
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        userImage:
+        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -46,25 +106,21 @@ class VisitProfile extends StatelessWidget {
                       ),
                     ),
 
-                      CircleAvatar(
-                        radius: 59,
-                        backgroundColor: AppTheme.colors.purple,
-                        child: const CircleAvatar(
+                    CircleAvatar(
+                      radius: 59,
+                      backgroundColor: AppTheme.colors.purple,
+                      child: const CircleAvatar(
                           backgroundColor: Colors.transparent,
                           radius: 55,
                           child: ClipOval(
-                            child: Hero(
-                              tag: 'profile_1',
-                              child: Image(
-                                  width: 200,
-                                  height: 200,
-                                  image: NetworkImage(
-                                      'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'),
-                                  fit: BoxFit.cover),
-                            ),
-                          ),
+                            child: Image(
+                                width: 200,
+                                height: 200,
+                                image: NetworkImage(
+                                    'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'),
+                                fit: BoxFit.cover),
                         ),
-
+                      ),
                     ),
 
                     //following and followers
@@ -175,17 +231,14 @@ class VisitProfile extends StatelessWidget {
                   color: AppTheme.colors.purple,
                 ),
               ),
-              Post(
-                  comments: 13,
-                  likes: 99,
-                  shares: 6,
-                  userName: 'Mohamad Alraie',
-                  caption:
-                      "wake up to reality nothing ever goes as planned in this cursed world the more you live the more you realize that the only things that truly exist in this reality are merely pain suffering and futility.",
-                  userImage:
-                      "https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg",
-                  image:
-                      "https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg"),
+              ListView.builder(
+                padding: const EdgeInsets.all(0.0),
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: posts.length,
+                itemBuilder: (context, i) => postBuilder(model: posts[i],context: context),
+              ),
               const SizedBox(
                 height: 55,
               ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Tab2 extends StatelessWidget {
-  const Tab2({Key? key}) : super(key: key);
-
+   Tab2(this.scrollController,{Key? key}) : super(key: key);
+  ScrollController scrollController;
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

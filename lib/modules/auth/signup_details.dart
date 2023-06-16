@@ -1,5 +1,3 @@
-// ignore_for_file: unused_local_variable
-
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -7,10 +5,6 @@ import 'package:flutter/services.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:provider/provider.dart';
-import 'package:social_master/modules/auth/login.dart';
-import '../../models/connection/register.dart';
-import '../../provider/ismale.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/constant/constant.dart';
 import '../../shared/styles/colors.dart';

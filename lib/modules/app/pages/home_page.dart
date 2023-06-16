@@ -6,15 +6,15 @@ import '../home_page_content/tab2.dart';
 import '../navigations.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+  HomePage({Key? key}) : super(key: key);
+  ScrollController sc =ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         body: DefaultTabController(
           length: 2,
           child: NestedScrollView(
+            controller: sc ,
             physics: const BouncingScrollPhysics(),
             headerSliverBuilder: (context, value) {
               return [
@@ -59,19 +59,17 @@ class HomePage extends StatelessWidget {
                     indicatorColor: AppTheme.colors.purple,
                     tabs: const [
                       Tab(text: "For you"),
-                      Tab(
-                        text: "Following",
-                      )
+                      Tab(text: "Following",)
                     ],
                   ),
                 ),
               ];
             },
-            body:  const TabBarView(
+            body:  TabBarView(
                 physics: BouncingScrollPhysics(),
                 children: [
-              Tab1(),
-              Tab2(),
+              Tab1(sc),
+              Tab2(sc),
             ]),
           ),
         ),
