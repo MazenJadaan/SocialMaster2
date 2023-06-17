@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('place_stay')->nullable();
             $table->string('place_born')->nullable();
             $table->text('bio')->nullable();
-            $table->string('cover_photo')->nullable();
+            $table->string('cover_photo')->default('storage/app/images/cover_picture/Fw79JsNXwAEHNTq.jfif');
             $table->string('profile_photo')->default('storage/app/images/profile_picture/default_photo.png');
             $table->bigInteger('followers_number')->default(0);
             $table->enum('state',['single','engaged','married','in_relationship'])->nullable();

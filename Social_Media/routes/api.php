@@ -6,7 +6,9 @@ use App\Models\User;
 use App\Models\User_profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
- use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserProfile;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,24 +28,44 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:api')->group(function () {
     Route::get('logout', [AuthController::class, 'logout']);
-    Route::post('/complete_register', [AuthController::class,'complete_register']);
+
+    Route::post('/complete_register', [AuthController::class, 'complete_register']);
+
+    Route::post('addProfileInformations', [UserProfile::class, 'addInformations']);
+
+    Route::post('updateProfileInformations', [UserProfile::class, 'updateInformations']);
+
+    Route::post('updateProfilePicture', [UserProfile::class, 'editProfilePhoto']);
+
+    Route::post('updateProfileCover', [UserProfile::class, 'editCoverPhoto']);
+
+    Route::post('followProfile/{id}', [UserProfile::class, 'follow']);
+
+    Route::get('showProfile/{id}', [UserProfile::class, 'showProfile']);
+
+    Route::delete('unFollow/{id}', [UserProfile::class, 'unFollow']);
+
+    Route::Post('makeProfileOfficial/{id}', [UserProfile::class, 'makeProfileOfficial']);
+
+    Route::get('searchUsers', [SearchController::class, 'searchIntoUsers']);
+
+    Route::get('searchPosts', [SearchController::class, 'searchIntoPosts']);
 });
 
 
- //////////////// authenctication /////////////////
-Route::post('/register', [AuthController::class,'register']);
-Route::post('/login', [AuthController::class,'login']);
+//////////////// authenctication /////////////////
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::post('/login', [AuthController::class, 'login']);
 
 
 
 //////////////// with google /////////////////////
-Route::get('google/login/url', [GoogleAuthController::class,'getAuthUrl']);
-Route::post('google/auth/login', [GoogleAuthController::class,'PostLoginByGoogle']);
+Route::get('google/login/url', [GoogleAuthController::class, 'getAuthUrl']);
+Route::post('google/auth/login', [GoogleAuthController::class, 'PostLoginByGoogle']);
 
 
 ///////////  reset password  ////////////////////
- Route::post('forget-password', [ResetPasswordController::class,'forgot_Password']);
-Route::post('code-check',[ResetPasswordController::class,'check_code']);
-Route::post ('update-password', [ResetPasswordController::class,'reset_password']);
-
-
+Route::post('forget-password', [ResetPasswordController::class, 'forgot_Password']);
+Route::post('code-check', [ResetPasswordController::class, 'check_code']);
+Route::post('update-password', [ResetPasswordController::class, 'reset_password']);
