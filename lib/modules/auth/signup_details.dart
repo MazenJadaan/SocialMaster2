@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../models/connection/register.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/constant/constant.dart';
 import '../../shared/styles/colors.dart';
@@ -25,7 +26,7 @@ class _SignupDetailsState extends State<SignupDetails> {
   DateTime date = DateTime.now();
   File? image;
 
-  static Future<bool> SignupDetails(
+  static Future<bool> signupDetails(
       {required String phone_num,
       required String gender,
       required String birthdate,
@@ -61,13 +62,13 @@ class _SignupDetailsState extends State<SignupDetails> {
     }
   }
 
-  // Future<SignupDetilesresponse?> login(SignupDetilesParams params) async {
+  // Future<SignupDetailsResponse?> login(SignupDetailsParams params) async {
   //   var url = Uri.parse("${AppSetting.baseUrl}api/login");
   //   var response = await http.post(url, body: params.toJson());
   //   var data = json.decode(response.body);
   //   if (response.statusCode == 200) {
-  //     SignupDetilesresponse loginResponse =
-  //         SignupDetilesresponse.fromJson(data);
+  //     SignupDetailsResponse loginResponse =
+  //     SignupDetailsResponse.fromJson(data);
   //     return loginResponse;
   //   }
   //   return null;
@@ -361,7 +362,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
                     // if (fromkey2.currentState.validate()) {
-                    bool res = await SignupDetails(
+                    bool res = await signupDetails(
                       phone_num: _phoneNumberController.text,
                       gender: selectedRadio == 1 ? "male" : "female",
                       profile_photo: image!.path,

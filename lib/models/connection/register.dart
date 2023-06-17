@@ -116,16 +116,16 @@ class User {
 
 ////////////////////////////////
 
-class SignupDetilesParams {
+class SignupDetailsParams {
   String? phone_num;
   String? gender;
   String? birthdate;
   String? profilePhoto;
 
-  SignupDetilesParams(
+  SignupDetailsParams(
       {this.phone_num, this.gender, this.birthdate, this.profilePhoto});
 
-  SignupDetilesParams.fromJson(Map<String, dynamic> json) {
+  SignupDetailsParams.fromJson(Map<String, dynamic> json) {
     phone_num = json['phone_num'];
     gender = json['gender'];
     birthdate = json['birthdate'];
@@ -141,14 +141,14 @@ class SignupDetilesParams {
     return data;
   }
 }
-class SignupDetilesresponse {
+class SignupDetailsResponse {
   Null? data;
   String? message;
   int? status;
 
-  SignupDetilesresponse({this.data, this.message, this.status});
+  SignupDetailsResponse({this.data, this.message, this.status});
 
-  SignupDetilesresponse.fromJson(Map<String, dynamic> json) {
+  SignupDetailsResponse.fromJson(Map<String, dynamic> json) {
     data = json['data'];
     message = json['message'];
     status = json['status'];

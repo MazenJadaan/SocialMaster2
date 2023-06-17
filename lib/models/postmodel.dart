@@ -1,8 +1,12 @@
 
 
-class PostModel {
+
+
+import 'package:flutter/material.dart';
+
+class PostModel extends ChangeNotifier {
   String? userImage;
-  String? image;
+  String? image='';
   String date = "30/7/2001";
   String caption = "";
   String userName = "Anonymous";
@@ -24,9 +28,10 @@ class PostModel {
 
 
 
+
 class MyPostModel {
   String? userImage;
-  String? image;
+  String? image='';
   String date = "30/7/2001";
   String caption = "";
   String userName = "Anonymous";

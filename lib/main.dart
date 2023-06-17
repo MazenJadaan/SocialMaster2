@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(color:AppTheme.colors.purple ),
         primaryColor: AppTheme.colors.purple,
           primarySwatch: Colors.deepPurple,
-          // primarySwatch: Colors.purple,
           ),
 
       home: const Home(),
