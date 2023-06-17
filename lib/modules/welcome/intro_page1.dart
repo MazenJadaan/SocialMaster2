@@ -47,10 +47,10 @@ class IntroPage1 extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
+            const SizedBox(
                 height: 220,
                 width: 300,
-                child: const Image(image: AssetImage('assets/images/full_logo.png'))),
+                child: Image(image: AssetImage('assets/images/full_logo.png'))),
             const SizedBox(height: 50,),
             const Padding(
               padding: EdgeInsets.only(left: 20,right: 10),

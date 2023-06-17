@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
-Widget MyTextFormField({
+Widget myTextFormField({
   required final Function() suffixOnPressed,
   required TextEditingController controller,
   required final String? Function(String? string) validate,
   final inputType = TextInputType.name,
   required final String label,
-  final Icon? prefixIcon = null,
-  FaIcon? suffixIcon = null,
-  GlobalKey? key = null,
+  final Icon? prefixIcon,
+  FaIcon? suffixIcon,
+  GlobalKey? key,
   bool obscureText = false,
-  final String? hint = null,
+  final String? hint,
   final int maxlines = 1,
 }) =>
     Padding(
@@ -51,15 +51,15 @@ Widget MyTextFormField({
       ),
     );
 
-Widget SmallTextFormField({
+Widget smallTextFormField({
   required TextEditingController controller,
    final String? Function(String? string)? validate,
   final  inputType = TextInputType.name,
   required final String label,
-  Icon? prefixIcon = null,
-  GlobalKey? key = null,
+  Icon? prefixIcon,
+  GlobalKey? key,
   bool obscureText = false,
-  final String? hint = null,
+  final String? hint,
   final int maxlines = 1,
 }) =>
     Padding(
@@ -95,13 +95,13 @@ Widget SmallTextFormField({
 
 
 
-Widget MyMaterialButton({
+Widget myMaterialButton({
   required final String text,
   required final Function() onPressed,
   final double width = 120.0,
   final double height = 40.0,
   final double fontSize = 24,
-   GlobalKey? key = null,
+   GlobalKey? key,
 }) =>
     MaterialButton(
         onPressed: onPressed,

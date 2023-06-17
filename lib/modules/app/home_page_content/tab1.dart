@@ -4,8 +4,8 @@ import '../../../models/postmodel.dart';
 import '../../../shared/components/post_component.dart';
 
 class Tab1 extends StatelessWidget {
-  Tab1(this.scrollController,{ Key? key}) : super(key: key);
-  ScrollController scrollController;
+  Tab1( this.scrollController,{ Key? key}) : super(key: key);
+   ScrollController scrollController;
   List<PostModel> posts = [
     PostModel(
         likes: 400,
@@ -71,18 +71,18 @@ class Tab1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             ListView.builder(
               padding: const EdgeInsets.all(0.0),
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
               itemCount: posts.length,
               itemBuilder: (context, i) => postBuilder(model: posts[i],context: context),
             ),
-            OutlinedButton(onPressed: (){scrollController.animateTo(0,duration: Duration(milliseconds: 400), curve: Curves.easeIn);}, child: Text('back to the Top',style: TextStyle(color: AppTheme.colors.purple),)),
+            OutlinedButton(onPressed: (){scrollController.animateTo(0,duration: const Duration(milliseconds: 500), curve: Curves.easeIn);}, child: Text('back to the Top',style: TextStyle(color: AppTheme.colors.purple),)),
             const SizedBox(
               height: 55,
             ),

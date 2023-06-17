@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../models/connection/register.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/constant/constant.dart';
 import '../../shared/styles/colors.dart';
@@ -193,7 +192,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               ],
             ),
             const SizedBox(height: 10),
-            MyTextFormField(
+            myTextFormField(
                 suffixOnPressed: () {},
                 prefixIcon: Icon(
                   Icons.phone,
@@ -283,7 +282,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                 height: 65,
                 child: Row(
                   children: [
-                    MyMaterialButton(
+                    myMaterialButton(
                         text: 'Select birthday',
                         height: 50,
                         width: 145,
@@ -355,7 +354,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               ),
             ),
             const Spacer(),
-            MyMaterialButton(
+            myMaterialButton(
                 width: 240,
                 height: 50,
                 text: "Done",

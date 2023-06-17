@@ -213,12 +213,12 @@ class VisitProfile extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  MyMaterialButton(
+                  myMaterialButton(
                       text: 'Follow', onPressed: () {}, fontSize: 18),
                   const SizedBox(
                     width: 20,
                   ),
-                  MyMaterialButton(
+                  myMaterialButton(
                       text: 'Message', onPressed: () {}, fontSize: 18),
                 ],
               ),

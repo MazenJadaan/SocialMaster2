@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:social_master/modules/auth/reset_password/reset_password_set_new.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/validate/validate.dart';
@@ -70,7 +69,7 @@ class Reset2 extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            MyTextFormField(
+            myTextFormField(
                 suffixOnPressed: () {},
                 controller: _codeController,
                 inputType: TextInputType.number,
@@ -80,7 +79,7 @@ class Reset2 extends StatelessWidget {
               height: 10,
             ),
             const Spacer(),
-            MyMaterialButton(
+            myMaterialButton(
               width: 250,
               text: "Confirm Code",
               onPressed: () async {

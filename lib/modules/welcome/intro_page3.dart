@@ -18,7 +18,7 @@ class IntroPage3 extends StatelessWidget {
             const SizedBox(
               height: 60,
             ),
-             Row(),
+             const Row(),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Column(
@@ -45,11 +45,11 @@ class IntroPage3 extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Container(
+            const SizedBox(
                 height: 280,
                 width: 260,
                 child:
-                const Image(
+                Image(
                     image: AssetImage('assets/images/mobile-phone.png'))),
             const SizedBox(
               height: 80,

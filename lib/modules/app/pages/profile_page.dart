@@ -13,64 +13,7 @@ import '../../../shared/components/post_component.dart';
 class ProfilePage extends StatelessWidget {
   ProfilePage({Key? key}) : super(key: key);
 
-  List<MyPostModel> myPosts = [
-    MyPostModel(
-      likes: 400,
-      comments: 12,
-      shares: 3,
-      caption: 'caption',
-      date: '30/12/2019',
-      userName: 'Habibi wallah',
-      image:
-      'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-      userImage:
-      'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
-    ),
-    MyPostModel(
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userName: 'Habibi wallah',
-        image:
-        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-    MyPostModel(
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userName: 'Habibi wallah',
-        image:
-        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-    MyPostModel(
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userName: 'Habibi wallah',
-        image:
-        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-    MyPostModel(
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userName: 'Habibi wallah',
-        image:
-        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-  ];
+
 
   final ImagePicker picker = ImagePicker();
 
@@ -85,7 +28,7 @@ class ProfilePage extends StatelessWidget {
   }
 
 
-  UserModel user = UserModel(
+UserModel user = UserModel(
     name: 'mohamad',
     caption: 'habibi come to lebanon',
     followers: 500,
@@ -343,12 +286,12 @@ class ProfilePage extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                MyMaterialButton(
+                myMaterialButton(
                     text: 'Edit profile details',
                     width: double.infinity,
                     onPressed: () {},
                     fontSize: 18),
-                MyMaterialButton(
+                myMaterialButton(
                     text: 'Create a new post',
                     width: double.infinity,
                     onPressed: () {},
@@ -366,7 +309,7 @@ class ProfilePage extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
-                  itemCount: myPosts.length,
+                  itemCount: user.myPosts.length,
                   itemBuilder: (context, i) => myPostBuilder(model: user.myPosts[i],context: context),
                 ),
                 const SizedBox(

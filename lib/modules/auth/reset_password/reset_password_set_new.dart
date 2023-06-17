@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/modules/app/home.dart';
@@ -21,7 +20,7 @@ class Reset3 extends StatelessWidget {
 
 
 
-  Future<SetNewResponse?> SetNewPassword(SetNewParams params) async {
+  Future<SetNewResponse?> setNewPassword(SetNewParams params) async {
     var url = Uri.parse("${AppSetting.baseUrl}api/update-password");
     var response = await http.post(url, body: params.toJson());
     var data = json.decode(response.body);
@@ -76,11 +75,11 @@ class Reset3 extends StatelessWidget {
                       color: AppTheme.colors.darkPurple,
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Consumer<ObscureModel>(builder: (context, model, child) {
-                return MyTextFormField(
+                return myTextFormField(
                   controller: _passwordController,
                   validate: Validate.passwordValidate,
                   label: "Password",
@@ -96,11 +95,11 @@ class Reset3 extends StatelessWidget {
                   ),
                 );
               }),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Consumer<ObscureModel>(builder: (context, model, child) {
-                return MyTextFormField(
+                return myTextFormField(
                     prefixIcon: Icon(
                       Icons.vpn_key_rounded,
                       color: AppTheme.colors.purple,
@@ -115,12 +114,12 @@ class Reset3 extends StatelessWidget {
                     label: "Confirm Password");
               }),
               const Spacer(),
-              MyMaterialButton(
+              myMaterialButton(
                 width: 240,
                 text: 'Confirm',
                 onPressed: () async{
                   if (formKey.currentState!.validate()) {
-                    final SetNewResponse? setNewResponse = await SetNewPassword(
+                    final SetNewResponse? setNewResponse = await setNewPassword(
                       SetNewParams(
                         email: _email,
                         password: _passwordController.text,

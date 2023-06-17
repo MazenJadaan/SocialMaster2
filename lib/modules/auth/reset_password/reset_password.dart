@@ -75,7 +75,7 @@ class Reset1 extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            MyTextFormField(
+            myTextFormField(
                 suffixOnPressed: () {},
                 prefixIcon: Icon(
                   Icons.email_outlined,
@@ -86,7 +86,7 @@ class Reset1 extends StatelessWidget {
                 validate: Validate.emptyValidate,
                 label: "E-mail"),
             const Spacer(),
-            MyMaterialButton(
+            myMaterialButton(
                 width: 250,
                 text: "Send Code",
                 onPressed: () async {

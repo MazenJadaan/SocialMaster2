@@ -80,7 +80,7 @@ class _LoginState extends State<Login> {
                     height: 180,
                   ),
                   // const Spacer(),
-                  MyTextFormField(
+                  myTextFormField(
                     obscureText: false,
                     label: 'E-mail or phone number',
                     suffixOnPressed: () {},
@@ -93,7 +93,7 @@ class _LoginState extends State<Login> {
                     validate: Validate.emptyValidate,
                   ),
                   Consumer<ObscureModel>(builder: (context, model, child) {
-                    return MyTextFormField(
+                    return myTextFormField(
                       label: 'Password',
                       hint: 'enter your password',
                       suffixIcon: model.icon1,
@@ -132,7 +132,7 @@ class _LoginState extends State<Login> {
                     ],
                   ),
 
-                  MyMaterialButton(
+                  myMaterialButton(
                     width: 240,
                     text: 'Login',
                     onPressed: () async {

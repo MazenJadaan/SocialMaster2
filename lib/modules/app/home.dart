@@ -18,7 +18,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int index = 2;
-  GlobalKey<CurvedNavigationBarState> _bottomKey = GlobalKey();
   final screens = [
     SearchPage(),
     SeePage(),
