@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/models/connection/login.dart';
 import 'package:social_master/modules/app/home.dart';
@@ -72,11 +73,14 @@ class Signup extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Image(
-                    image: AssetImage("assets/images/monitoring (2).png"),
-                    width: 200,
-                    height: 180,
-                  ),
+                  Container(height: 200,
+                      width: 200,
+                      child: Lottie.asset("assets/images/signani.json")),
+                  // const Image(
+                  //   image: AssetImage("assets/images/monitoring (2).png"),
+                  //   width: 200,
+                  //   height: 180,
+                  // ),
                   Row(
                     children: [
                       Expanded(
