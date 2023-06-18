@@ -29,7 +29,7 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple,
-        title: const Row(
+        title:  Row(
           children: [
             // Image.asset('images/small_logo.png',height: 25,),
             // const  SizedBox(width: 10,),

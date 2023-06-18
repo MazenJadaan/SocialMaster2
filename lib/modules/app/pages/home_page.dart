@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
 
                     },
                   ),
-                  title:  const Center(
+                  title:   Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

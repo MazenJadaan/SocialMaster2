@@ -13,6 +13,7 @@ import '../../shared/network/api/google_signin_api.dart';
 import '../../shared/network/constant/constant.dart';
 import '../../shared/validate/validate.dart';
 import '../app/home.dart';
+import 'package:lottie/lottie.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -22,7 +23,11 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
   Future<LoginResponse?> login(LoginParams params) async {
+    showDialog(context: context, builder: (context){
+      return Center(child: CircularProgressIndicator());
+    });
     var url = Uri.parse("${AppSetting.baseUrl}api/login");
     var response = await http.post(url, body: params.toJson());
     var data = json.decode(response.body);
@@ -71,14 +76,14 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 1,
                   ),
-
-                  const Image(
-                    image: AssetImage("assets/images/monitoring.png"),
-                    width: 200,
-                    height: 180,
-                  ),
+                 Lottie.asset("assets/images/welcomeani.json"),
+                  // const Image(
+                  //   image: AssetImage("assets/images/monitoring.png"),
+                  //   width: 200,
+                  //   height: 180,
+                  // ),
                   // const Spacer(),
                   myTextFormField(
                     obscureText: false,
@@ -147,7 +152,7 @@ class _LoginState extends State<Login> {
                           Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(builder: (context) => Home()),
-                                  (route) => false);
+                              (route) => false);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Failed')));

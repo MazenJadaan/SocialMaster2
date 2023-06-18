@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../shared/components/components.dart';
@@ -33,6 +33,7 @@ class _SignupDetailsState extends State<SignupDetails> {
     print(phone_num);
     print(gender);
     print(birthdate);
+    print(profile_photo);
 
     //create multipart request for POST or PATCH method
     var request = http.MultipartRequest(
@@ -123,7 +124,7 @@ class _SignupDetailsState extends State<SignupDetails> {
             const SizedBox(
               height: 10,
             ),
-            const Row(
+             Row(
               children: [
                 SizedBox(
                   width: 10,
@@ -205,7 +206,7 @@ class _SignupDetailsState extends State<SignupDetails> {
             const SizedBox(
               height: 10,
             ),
-            const Row(
+             Row(
               children: [
                 SizedBox(
                   width: 10,
@@ -224,7 +225,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               height: 10,
             ),
             RadioListTile(
-                title: const Row(
+                title:  Row(
                   children: [
                     Text(
                       'Male',
@@ -240,7 +241,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                   setSelectedRadio(val!);
                 }),
             RadioListTile(
-                title: const Row(
+                title:  Row(
                   children: [
                     Text(
                       'Female',
@@ -258,7 +259,7 @@ class _SignupDetailsState extends State<SignupDetails> {
             const SizedBox(
               height: 10,
             ),
-            const Row(children: [
+             Row(children: [
               SizedBox(
                 width: 10,
               ),

@@ -264,7 +264,7 @@ Widget myPostBuilder({required MyPostModel model,required context}) =>
                     itemBuilder: (context) =>  [
                       PopupMenuItem(
                         onTap: (){print('edit');},
-                        child: const Row(
+                        child:  Row(
                           children: [
                             FaIcon(FontAwesomeIcons.pen),
                             SizedBox(width: 8,),
@@ -274,7 +274,7 @@ Widget myPostBuilder({required MyPostModel model,required context}) =>
                       ),
                       PopupMenuItem(
                         onTap: (){print('delete');},
-                        child: const Row(
+                        child:  Row(
                           children: [
                             FaIcon(FontAwesomeIcons.trash),
                             SizedBox(width: 8,),
@@ -284,7 +284,7 @@ Widget myPostBuilder({required MyPostModel model,required context}) =>
                       ),
                       PopupMenuItem(
                         onTap: (){print('promotion');},
-                        child: const Row(
+                        child:  Row(
                           children: [
                             FaIcon(FontAwesomeIcons.dollarSign),
                             SizedBox(width: 8,),
