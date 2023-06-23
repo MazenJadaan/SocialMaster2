@@ -2,22 +2,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:http/http.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:social_master/models/connection/login.dart';
-import 'package:social_master/modules/app/home.dart';
 import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
-
 import '../../models/connection/register.dart';
 import '../../provider/obscure_model.dart';
 import '../../shared/styles/colors.dart';
-
 import 'package:http/http.dart' as http;
 import '../../shared/validate/validate.dart';
-import 'login.dart';
 
 class Signup extends StatelessWidget {
   Signup({Key? key}) : super(key: key);

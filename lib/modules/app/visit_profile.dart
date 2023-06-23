@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../models/postmodel.dart';
+
+import '../../models/usermodel.dart';
 import '../../shared/components/components.dart';
 import '../../shared/components/post_component.dart';
 import '../../shared/styles/colors.dart';
@@ -7,65 +10,48 @@ import '../../shared/styles/colors.dart';
 class VisitProfile extends StatelessWidget {
    VisitProfile({Key? key}) : super(key: key);
 
-  List<PostModel> posts = [
-    PostModel(
-      likes: 400,
-      comments: 12,
-      shares: 3,
-      caption: 'caption',
-      date: '30/12/2019',
-      userName: 'Habibi wallah',
-      image:
-      'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-      userImage:
-      'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
-    ),
-    PostModel(
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userName: 'Habibi wallah',
-        image:
-        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-    PostModel(
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userName: 'Habibi wallah',
-        image:
-        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-    PostModel(
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userName: 'Habibi wallah',
-        image:
-        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-    PostModel(
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userName: 'Habibi wallah',
-        image:
-        'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-  ];
 
+   OtherUserModel user = OtherUserModel(
+     name: 'mohamad',
+     caption: 'habibi come to lebanon',
+     followers: 500,
+     following: 1200,
+     birthDate: '12/5/2001',
+     isMale: 'male',
+     phoneNumber: '0945587900',
+     backgroundImage: 'https://img.freepik.com/free-vector/night-ocean-landscape-full-moon-stars-shine_107791-7397.jpg',
+
+     profileImage: 'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+     posts: [
+       PostModel(
+         isSaved: false,
+         isLiked: false,
+         likes: 400,
+         comments: 12,
+         shares: 3,
+         caption: 'caption',
+         date: '30/12/2019',
+         userName: 'Habibi wallah',
+         image:
+         'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+         userImage:
+         'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
+       ),
+       PostModel(
+         isSaved: false,
+         isLiked: false,
+           likes: 400,
+           comments: 12,
+           shares: 3,
+           caption: 'caption',
+           date: '30/12/2019',
+           userName: 'Habibi wallah',
+           image:
+           'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+           userImage:
+           'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+      ],
+   );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -213,12 +199,9 @@ class VisitProfile extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  myMaterialButton(
+                  myMaterialButton(width: 140,
                       text: 'Follow', onPressed: () {}, fontSize: 18),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  myMaterialButton(
+                  myMaterialButton(width: 140,
                       text: 'Message', onPressed: () {}, fontSize: 18),
                 ],
               ),
@@ -232,13 +215,18 @@ class VisitProfile extends StatelessWidget {
                 ),
               ),
               ListView.builder(
-                padding: const EdgeInsets.all(0.0),
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemCount: posts.length,
-                itemBuilder: (context, i) => postBuilder(model: posts[i],context: context),
-              ),
+                  padding: const EdgeInsets.all(0.0),
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  itemCount: user.posts.length,
+                  itemBuilder: (context, i) => ChangeNotifierProvider<PostModel>(
+                    create: (context) => user.posts[i],
+                    child: Consumer<PostModel>(
+                      builder: (context, model, child) =>
+                          postBuilder(model: model, context: context),
+                    ),
+                  )),
               const SizedBox(
                 height: 55,
               ),

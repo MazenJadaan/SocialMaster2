@@ -26,3 +26,30 @@ class UserModel extends ChangeNotifier{
     required this.myPosts,
 });
 }
+
+class OtherUserModel extends ChangeNotifier{
+  String name;
+  int followers;
+  int following;
+  String phoneNumber;
+  String isMale;
+  String birthDate;
+  String caption;
+  String profileImage;
+  String backgroundImage;
+  List<PostModel> posts;
+
+  OtherUserModel({
+    required this.name,
+    required this.followers,
+    required this.following,
+    required this.phoneNumber,
+    required this.isMale,
+    required this.birthDate,
+    required this.caption,
+    required this.profileImage,
+    required this.backgroundImage,
+    required this.posts,
+  });
+
+}
