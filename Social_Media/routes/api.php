@@ -47,7 +47,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::Post('makeProfileOfficial/{id}', [UserProfile::class, 'makeProfileOfficial']);
 
-    Route::get('searchUsers', [SearchController::class, 'searchIntoUsers']);
+    Route::post('searchUsers', [SearchController::class, 'searchIntoUsers']);
 
     Route::get('searchPosts', [SearchController::class, 'searchIntoPosts']);
 });

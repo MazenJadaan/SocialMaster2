@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class showSearchResult extends JsonResource
+class showStories extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,9 +15,13 @@ class showSearchResult extends JsonResource
     public function toArray($request)
     {
         return [
-            'first_name'=>$this->first_name,
-            'last_name'=>$this->last_name,
-            'profile'=>$this->user_profile->toArray(),
+            'id'=>$this->id,
+            'story_body'=>$this->story_body,
+            'story_date'=>$this->story_date,
+            'story_time'=>$this->story_time,
+            'photo_path'=>$this->photo_path,
+            'video_path'=>$this->video_path,
+            'profile'=>$this->userProfile->toArray(),
         ];
     }
 }

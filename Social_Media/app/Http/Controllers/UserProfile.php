@@ -121,27 +121,28 @@ class UserProfile extends Controller
 
     public function makeProfileOfficial($id, Request $request)
     {
+        // $profileID = User_profile::find($id)->id;
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        $res = $stripe->tokens->create([
-            'card' => [
-                'number' => $request->number,
-                'exp_month' => $request->exp_month,
-                'exp_year' => $request->exp_year,
-                'cvc' => $request->cvc,
-            ],
-        ]);
+        // $res = $stripe->tokens->create([
+        //     'card' => [
+        //         'number' =>'4000005280000002',
+        //         'exp_month' =>6,
+        //         'exp_year' => 2024,
+        //         'cvc' => '314',
+        //     ],
+        // ]);
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $response = $stripe->charges->create([
-            'amount' => 8,
-            'currency' => 'USD',
-            'source' => $res->id,
+            'amount' => 2000,
+            'currency' => 'USD', 
+            'source' => 'tok_nl',
             'description' => 'Pay for make profile official',
         ]);
         return $this->ApiResponse($response, 'Congratulations! Your account verification was successful.', 200);
 
-        $blueLabel = officialaccounts::create([
-            'user_profile_id' => $id
-        ]);
+        $user = officialaccounts::create([
+            'user_profile_id'=>$id
+        ]);   
     }
 
     public function showProfilesPosts(User_profile $profile)
