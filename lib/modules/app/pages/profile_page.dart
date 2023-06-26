@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/models/postmodel.dart';
 import 'package:social_master/models/usermodel.dart';
+import 'package:social_master/modules/app/edit_profile.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../../../shared/components/post_component.dart';
@@ -26,7 +27,8 @@ class ProfilePage extends StatelessWidget {
   }
 
   UserModel user = UserModel(
-    name: 'mohamad',
+    fname: 'mohamad',
+    lname: 'alraie',
     caption: 'habibi come to lebanon',
     followers: 500,
     following: 1200,
@@ -221,7 +223,7 @@ class ProfilePage extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  Text(user.name,
+                  Text('${user.fname} ${user.lname}',
                       style: TextStyle(
                           fontFamily: 'SignikaNegative',
                           fontSize: 20,
@@ -236,7 +238,7 @@ class ProfilePage extends StatelessWidget {
                         style: const TextStyle(
                           fontFamily: 'SignikaNegative',
                           fontSize: 14,
-                          color: Colors.white24,
+                          color: Colors.black45,
                         )),
                   ),
                   const SizedBox(
@@ -245,7 +247,7 @@ class ProfilePage extends StatelessWidget {
                   myMaterialButton(
                       text: 'Edit profile details',
                       width: double.infinity,
-                      onPressed: () {},
+                      onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EditProfile(user)));},
                       fontSize: 18),
                   myMaterialButton(
                       text: 'Create a new post',

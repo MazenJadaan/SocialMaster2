@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:social_master/models/postmodel.dart';
 
 class UserModel extends ChangeNotifier{
-  String name;
+  String fname;
+  String lname;
   int followers;
   int following;
   String phoneNumber;
@@ -14,7 +15,8 @@ class UserModel extends ChangeNotifier{
   List<MyPostModel> myPosts;
 
   UserModel({
-    required this.name,
+    required this.fname,
+    required this.lname,
     required this.followers,
     required this.following,
     required this.phoneNumber,

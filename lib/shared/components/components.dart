@@ -59,6 +59,7 @@ Widget smallTextFormField({
   Icon? prefixIcon,
   GlobalKey? key,
   bool obscureText = false,
+   String initialValue='fafa',
   final String? hint,
   final int maxlines = 1,
 }) =>
@@ -68,6 +69,7 @@ Widget smallTextFormField({
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: TextFormField(
+           initialValue: initialValue,
           controller: controller,
           obscureText: obscureText,
           keyboardType: inputType,
