@@ -82,7 +82,11 @@ class UserProfile extends Controller
     {
         $profileID = User_profile::find($id)->id;
         $userID = (Auth::user());
-        if ($userID->id != $profileID) {
+        $userAlreadyFollower=userfollowers::where([
+            ['user_id',$userID->id],
+            ['user_profile_id',$profileID]
+        ])->first();
+        if ($userID->id != $profileID && !$userAlreadyFollower) {
             $follow = userfollowers::create([
                 'user_id' => $userID->id,
                 'user_profile_id' => $profileID

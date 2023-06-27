@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\StoriesController;
 use App\Http\Controllers\UserProfile;
 
 /*
@@ -49,7 +50,19 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('searchUsers', [SearchController::class, 'searchIntoUsers']);
 
-    Route::get('searchPosts', [SearchController::class, 'searchIntoPosts']);
+    Route::post('searchPosts', [SearchController::class, 'searchIntoPosts']);
+
+    Route::post('addStories', [StoriesController::class, 'addStory']);
+
+    Route::post('addPhotoToStory', [StoriesController::class, 'addPhoto']);
+
+    Route::post('addVideoToStory', [StoriesController::class, 'addVideo']);
+
+    Route::get('showStory', [StoriesController::class, 'showStoryDetail']);
+
+    Route::get('showFollwingStory', [StoriesController::class, 'showStory']);
+
+    Route::delete('deleteStory/{id}', [StoriesController::class, 'deleteStory']);
 });
 
 

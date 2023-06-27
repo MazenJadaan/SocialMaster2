@@ -7,6 +7,7 @@ use App\Models\story;
 use App\Models\User_profile;
 use Carbon\Carbon;
 use App\Http\Resources\showStories;
+use App\Models\User;
 use App\Models\userfollowers;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponseTrait;
@@ -23,25 +24,26 @@ class StoriesController extends Controller
 
         $result = story::create([
             'story_body' => $data['story_body'],
-            'story_date' => Carbon::now()->format('m/d'),
-            'story_time' => Carbon::now()->format('H:i'),
-            'user_id' => $userID->id,
-            // 'user_profile_id' => $userID->id,
+            'story_date' => Carbon::now()->format('Y-m-d'),
+            'story_time' => Carbon::now()->addHour(3)->format('H:i'),
+            'user_id' => $userID,
+            'user_profile_id' => $userID,
         ]);
         return $this->ApiResponse($result, 'Information updated successfully', 201);
     }
 
-    public function addPhoto(Request $request)
+    public function addMedia(Request $request)
     {
         $userID = Auth::user()->id;
         $userStory = story::find($userID);
         $data = $request->validate([
-            'photo_path' => 'image|mimes:jpg,jpeg',
+            'photo_path' => 'required_without:video_path|image|mimetypes:image/jpeg,image/png,video/mp4',
+            'video_path'=>'required_without:photo_path|mimetypes:video/mp4,image/jpeg,image/png',
         ]);
         if ($request->hasFile('photo_path')) {
             $imageName = time() . '.' . $request->file('photo_path')->extension();
-            $request->file('photo_path')->storeAs('images/photo_path/', $imageName);
-            $name_path = 'storage/app/images/photo_path/' . $imageName;
+            $request->file('photo_path')->storeAs('images/story_picture/', $imageName);
+            $name_path = 'storage/app/images/story_picture/' . $imageName;
             $userStory->photo_path = $name_path;
             $userStory->save();
         }
@@ -56,11 +58,19 @@ class StoriesController extends Controller
         ]);
         if ($request->hasFile('video_path')) {
             $videoName = time() . '.' . $request->file('video_path')->extension();
-            $request->file('video_path')->storeAs('images/video_path/', $videoName);
-            $name_path = 'storage/app/images/video_path/' . $videoName;
+            $request->file('video_path')->storeAs('videos/story_video/', $videoName);
+            $name_path = 'storage/app/videos/story_video/' . $videoName;
             $userStory->video_path = $name_path;
             $userStory->save();
         }
+    }
+
+    public function showStoryDetail()
+    {
+        $userID = Auth::user()->id;
+        $userStory = story::find($userID);
+        $user = showStories::make(story::with('userProfile')->find($userID));
+        return $this->ApiResponse($user, 'Information returned susseccfuly', 200);
     }
 
     public function deleteStory($id)
@@ -68,14 +78,11 @@ class StoriesController extends Controller
         $result = story::where('id', $id)->delete();
     }
 
-    public function showStory($id)
+    public function showStory()
     {
-
         $userID = Auth::user()->id;
-        $search=userfollowers::where([
-        ['user_id',$userID],
-        ['user_id',$userID],
-        ]);
-        // $user = showStories::collection(User_profile::find($userID));
+        $user=userfollowers::where('user_id',$userID)->get();
+        $ids = $user->pluck('user_profile_id')->toArray();
+        $finalResult=story::whereIn('user_profile_id',$ids)->get();
     }
 }
