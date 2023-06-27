@@ -53,5 +53,4 @@ class OtherUserModel extends ChangeNotifier{
     required this.backgroundImage,
     required this.posts,
   });
-
 }

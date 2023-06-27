@@ -10,7 +10,7 @@ class Tab1 extends StatelessWidget {
   List<PostModel> posts = [
     PostModel(
       isSaved: false,
-      isLiked: true,
+      isLiked: false,
       likes: 400,
       comments: 12,
       shares: 3,
@@ -49,7 +49,7 @@ class Tab1 extends StatelessWidget {
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
     PostModel(
       isSaved: false,
-        isLiked: true,
+        isLiked: false,
         likes: 400,
         comments: 12,
         shares: 3,

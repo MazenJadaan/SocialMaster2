@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/modules/app/pages/search_page.dart';
 import 'package:social_master/modules/app/pages/chat_page.dart';
 import 'package:social_master/modules/app/pages/home_page.dart';
-import 'package:social_master/modules/app/pages/notifications_page.dart';
+import 'package:social_master/modules/app/pages/see_page.dart';
 import 'package:social_master/modules/app/pages/profile_page.dart';
 
 import '../../shared/styles/colors.dart';

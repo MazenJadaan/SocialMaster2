@@ -272,8 +272,8 @@ class ProfilePage extends StatelessWidget {
                       scrollDirection: Axis.vertical,
                       itemCount: user.myPosts.length,
                       itemBuilder: (context, i) =>
-                          ChangeNotifierProvider<MyPostModel>(
-                            create: (context) => user.myPosts[i],
+                          ChangeNotifierProvider<MyPostModel>.value(
+                            value: user.myPosts[i],
                             child: Consumer<MyPostModel>(
                               builder: (context, model2, child) =>
                                   myPostBuilder(

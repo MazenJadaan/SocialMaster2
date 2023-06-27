@@ -59,7 +59,7 @@ Widget smallTextFormField({
   Icon? prefixIcon,
   GlobalKey? key,
   bool obscureText = false,
-   String initialValue='fafa',
+
   final String? hint,
   final int maxlines = 1,
 }) =>
@@ -69,7 +69,6 @@ Widget smallTextFormField({
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: TextFormField(
-           initialValue: initialValue,
           controller: controller,
           obscureText: obscureText,
           keyboardType: inputType,
@@ -94,6 +93,57 @@ Widget smallTextFormField({
         ),
       ),
     );
+
+
+
+
+
+
+Widget captionTextFormField({
+  required TextEditingController controller,
+  final String? Function(String? string)? validate,
+  final  inputType = TextInputType.name,
+  required final String label,
+  Icon? prefixIcon,
+  GlobalKey? key,
+  bool obscureText = false,
+
+  final String? hint,
+  final int maxlines = 1,
+}) =>
+    Padding(
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+      child: Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: TextFormField(
+          maxLength: 250,
+          controller: controller,
+          obscureText: obscureText,
+          keyboardType: inputType,
+          validator: validate,
+          maxLines: maxlines,
+          obscuringCharacter: '*',
+          decoration: InputDecoration(
+            hintText: hint,
+            hintStyle:
+            TextStyle(color: AppTheme.colors.darkPurple, fontSize: 8),
+            label: Text(
+              label,
+              style: TextStyle(
+                color: AppTheme.colors.purple,
+              ),
+            ),
+            border: InputBorder.none,
+            filled: true,
+            fillColor: AppTheme.colors.opacityPurple,
+            prefix: prefixIcon,
+          ),
+        ),
+      ),
+    );
+
+
 
 
 
