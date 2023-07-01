@@ -1,8 +1,8 @@
-class UserModel {
+class StoryUserModel {
   String profilUrl;
   String name;
   List<StoryModel> stories;
-  UserModel(
+  StoryUserModel(
       {required this.profilUrl, required this.name, required this.stories});
 }
 
@@ -14,7 +14,7 @@ class StoryModel {
 }
 
 final dataUsers = [
-  UserModel(
+  StoryUserModel(
       stories: [
         StoryModel(
             imageUrl:

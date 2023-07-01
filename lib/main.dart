@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           // primarySwatch: Colors.purple,
           ),
 
-      home: Home(),
+      home:  Signup(),
 
 
     );

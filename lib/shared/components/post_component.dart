@@ -7,8 +7,8 @@ import 'package:social_master/modules/app/visit_profile.dart';
 
 import '../styles/colors.dart';
 
-
 Widget postBuilder({required PostModel model, context}) =>
+
     Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
       child: Container(
@@ -27,7 +27,10 @@ Widget postBuilder({required PostModel model, context}) =>
                 children: [
                   //profile image
                   GestureDetector(
-                    onTap: () {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>VisitProfile()));},
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => VisitProfile()));
+                    },
                     child: CircleAvatar(
                       backgroundColor: Colors.transparent,
                       radius: 22,
@@ -64,12 +67,10 @@ Widget postBuilder({required PostModel model, context}) =>
                   const Spacer(),
                   //save post
                   GestureDetector(
-                      onTap: () {},
-                      child: const FaIcon(FontAwesomeIcons.solidBookmark,
-                          color: Colors.white, size: 19),
-
+                    onTap: () {model.handleSave();},
+                    child:  FaIcon(FontAwesomeIcons.solidBookmark,
+                        color: model.saveColor, size: 20),
                   ),
-
 
                   const SizedBox(
                     width: 25,
@@ -87,107 +88,114 @@ Widget postBuilder({required PostModel model, context}) =>
             ),
             Padding(
               padding: const EdgeInsets.all(5.0),
-              child: Stack(
-                alignment: AlignmentDirectional.bottomCenter,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
+              child: GestureDetector(
+                onDoubleTap: (){model.handleLike();},
+                child: Stack(
+                  alignment: AlignmentDirectional.bottomCenter,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: model.image == ''
+                          ? (Container(
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.only(
+                                    bottomRight: Radius.circular(30),
+                                    bottomLeft: Radius.circular(30)),
+                                color: AppTheme.colors.opacityPurple,
+                              ),
+                              height: 30,
+                            ))
+                          : Image(
+                              image: NetworkImage('${model.image}'),
+                              fit: BoxFit.cover,
+                            ),
                     ),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: Image(
-                      image: NetworkImage('${model.image}'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                        bottomRight: Radius.circular(30),
-                        bottomLeft: Radius.circular(30)),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(30),
-                              bottomRight: Radius.circular(30)),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 14.0,
-                              right: 14.0,
-                              bottom: 5.0,
-                              top: 4.0),
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                width: 5,
-                              ),
-
-                              GestureDetector(
-                                onTap: (){},
-                                child: const FaIcon(
-                                    FontAwesomeIcons.solidHeart,
-                                    size: 19,
-                                    color: Colors.white),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text("${model.likes}",
-                                  style: const TextStyle(
-                                    fontFamily: 'SignikaNegative',
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                  )),
-                              const SizedBox(
-                                width: 18,
-                              ),
-                              GestureDetector(
-                                onTap: (){},
-                                child: const FaIcon(
-                                    FontAwesomeIcons.solidCommentDots,
-                                    size: 19,
-                                    color: Colors.white),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text("${model.comments}",
-                                  style: const TextStyle(
-                                    fontFamily: 'SignikaNegative',
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                  )),
-                              const Spacer(),
-                              GestureDetector(
-                                onTap: (){},
-                                child: const FaIcon(
-                                  FontAwesomeIcons.solidPaperPlane,
-                                  size: 19,
-                                  color: Colors.white,
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          bottomRight: Radius.circular(30),
+                          bottomLeft: Radius.circular(30)),
+                      child: BackdropFilter(
+                        filter: model.image == ''?ImageFilter.blur(sigmaY: 0.0,sigmaX: 0.0):ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(30),
+                                bottomRight: Radius.circular(30)),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 14.0, right: 14.0, bottom: 5.0, top: 4.0),
+                            child: Row(
+                              children: [
+                                const SizedBox(
+                                  width: 5,
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text("${model.shares}",
-                                  style: const TextStyle(
-                                    fontFamily: 'SignikaNegative',
-                                    fontSize: 15,
+                                GestureDetector(
+                                  onTap: () {model.handleLike();},
+                                  child:  FaIcon(FontAwesomeIcons.solidHeart,
+                                      size: 21, color: model.likeColor),
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                Text("${model.likes}",
+                                    style: const TextStyle(
+                                      fontFamily: 'SignikaNegative',
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                    )),
+                                const SizedBox(
+                                  width: 18,
+                                ),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: const FaIcon(
+                                      FontAwesomeIcons.solidCommentDots,
+                                      size: 21,
+                                      color: Colors.white),
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                Text("${model.comments}",
+                                    style: const TextStyle(
+                                      fontFamily: 'SignikaNegative',
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                    )),
+                                const Spacer(),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: const FaIcon(
+                                    FontAwesomeIcons.solidPaperPlane,
+                                    size: 19,
                                     color: Colors.white,
-                                  )),
-                              const SizedBox(
-                                width: 5.0,
-                              ),
-                            ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                Text("${model.shares}",
+                                    style: const TextStyle(
+                                      fontFamily: 'SignikaNegative',
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                    )),
+                                const SizedBox(
+                                  width: 5.0,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             // Comment(controller: _commentController, hint: 'write a comment'),
@@ -196,11 +204,7 @@ Widget postBuilder({required PostModel model, context}) =>
       ),
     );
 
-
-
-
-Widget myPostBuilder({required MyPostModel model,required context}) =>
-    Padding(
+Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
       child: Container(
         width: double.infinity,
@@ -250,49 +254,62 @@ Widget myPostBuilder({required MyPostModel model,required context}) =>
                     ],
                   ),
                   const Spacer(),
-                  GestureDetector(
-                    onTap: (){},
-                    child: const FaIcon(
-                      FontAwesomeIcons.solidBookmark,
-                      color: Colors.white,
-                      size: 19,
-                    ),
-                  ),
+
 
                   PopupMenuButton(
                     color: Colors.white,
-                    itemBuilder: (context) =>  [
+                    itemBuilder: (context) => [
                       PopupMenuItem(
-                        onTap: (){print('edit');},
-                        child:  Row(
+                        onTap: () {
+                          print('edit');
+                        },
+                        child: Row(
                           children: [
                             FaIcon(FontAwesomeIcons.pen),
-                            SizedBox(width: 8,),
+                            SizedBox(
+                              width: 8,
+                            ),
                             Text('edit post'),
                           ],
                         ),
                       ),
                       PopupMenuItem(
-                        onTap: (){print('delete');},
-                        child:  Row(
+                        onTap: () {
+                          print('delete');
+                        },
+                        child: Row(
                           children: [
                             FaIcon(FontAwesomeIcons.trash),
-                            SizedBox(width: 8,),
+                            SizedBox(
+                              width: 8,
+                            ),
                             Text('delete post'),
                           ],
                         ),
                       ),
                       PopupMenuItem(
-                        onTap: (){print('promotion');},
-                        child:  Row(
+                        onTap: () {
+                          print('promotion');
+                        },
+                        child: Row(
                           children: [
                             FaIcon(FontAwesomeIcons.dollarSign),
-                            SizedBox(width: 8,),
+                            SizedBox(
+                              width: 8,
+                            ),
                             Text('post promotion'),
                           ],
                         ),
                       ),
                     ],
+                  ),
+                  GestureDetector(
+                    onTap: () {model.handleSave();},
+                    child:  FaIcon(
+                      FontAwesomeIcons.solidBookmark,
+                      color: model.saveColor,
+                      size: 20,
+                    ),
                   ),
                   const SizedBox(
                     width: 20,
@@ -310,103 +327,108 @@ Widget myPostBuilder({required MyPostModel model,required context}) =>
             ),
             Padding(
               padding: const EdgeInsets.all(5.0),
-              child: Stack(
-                alignment: AlignmentDirectional.bottomCenter,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
+              child: GestureDetector(
+                onDoubleTap: (){model.handleLike();},
+                child: Stack(
+                  alignment: AlignmentDirectional.bottomCenter,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: model.image == ''
+                          ? (Container(
+                              color: AppTheme.colors.purple,
+                            ))
+                          : Image(
+                              image: NetworkImage('${model.image}'),
+                              fit: BoxFit.cover,
+                            ),
                     ),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: Image(
-                      image: NetworkImage('${model.image}'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                        bottomRight: Radius.circular(30),
-                        bottomLeft: Radius.circular(30)),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 3, sigmaY: 2),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(30),
-                              bottomRight: Radius.circular(30)),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 14.0, right: 14.0, bottom: 5.0, top: 4.0),
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              GestureDetector(
-                                onTap: (){},
-                                child: const FaIcon(
-                                    FontAwesomeIcons.solidHeart,
-                                    size: 19,
-                                    color: Colors.white),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text("${model.likes}",
-                                  style: const TextStyle(
-                                    fontFamily: 'SignikaNegative',
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                  )),
-                              const SizedBox(
-                                width: 18,
-                              ),
-                              GestureDetector(
-                                onTap: (){},
-                                child: const FaIcon(
-                                    FontAwesomeIcons.solidCommentDots,
-                                    size: 19,
-                                    color: Colors.white),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text("${model.comments}",
-                                  style: const TextStyle(
-                                    fontFamily: 'SignikaNegative',
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                  )),
-                              const Spacer(),
-                              GestureDetector(
-                                onTap: (){},
-                                child: const FaIcon(
-                                  FontAwesomeIcons.solidPaperPlane,
-                                  size: 19,
-                                  color: Colors.white,
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          bottomRight: Radius.circular(30),
+                          bottomLeft: Radius.circular(30)),
+                      child:  BackdropFilter(
+                        filter: model.image == ''?ImageFilter.blur(sigmaY: 0.0,sigmaX: 0.0):ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(30),
+                                bottomRight: Radius.circular(30)),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 14.0, right: 14.0, bottom: 5.0, top: 4.0),
+                            child: Row(
+                              children: [
+                                const SizedBox(
+                                  width: 5,
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text("${model.shares}",
-                                  style: const TextStyle(
-                                    fontFamily: 'SignikaNegative',
-                                    fontSize: 15,
+                                GestureDetector(
+                                  onTap: () {model.handleLike();},
+                                  child: FaIcon(FontAwesomeIcons.solidHeart,
+                                      size: 19, color: model.likeColor),
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                Text("${model.likes}",
+                                    style: const TextStyle(
+                                      fontFamily: 'SignikaNegative',
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                    )),
+                                const SizedBox(
+                                  width: 18,
+                                ),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: const FaIcon(
+                                      FontAwesomeIcons.solidCommentDots,
+                                      size: 19,
+                                      color: Colors.white),
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                Text("${model.comments}",
+                                    style: const TextStyle(
+                                      fontFamily: 'SignikaNegative',
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                    )),
+                                const Spacer(),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: const FaIcon(
+                                    FontAwesomeIcons.solidPaperPlane,
+                                    size: 19,
                                     color: Colors.white,
-                                  )),
-                              const SizedBox(
-                                width: 5.0,
-                              ),
-                            ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                Text("${model.shares}",
+                                    style: const TextStyle(
+                                      fontFamily: 'SignikaNegative',
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                    )),
+                                const SizedBox(
+                                  width: 5.0,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

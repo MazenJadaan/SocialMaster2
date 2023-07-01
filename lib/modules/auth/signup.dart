@@ -2,22 +2,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:http/http.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:social_master/models/connection/login.dart';
-import 'package:social_master/modules/app/home.dart';
 import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
-
 import '../../models/connection/register.dart';
 import '../../provider/obscure_model.dart';
 import '../../shared/styles/colors.dart';
-
 import 'package:http/http.dart' as http;
 import '../../shared/validate/validate.dart';
-import 'login.dart';
 
 class Signup extends StatelessWidget {
   Signup({Key? key}) : super(key: key);
@@ -76,11 +70,6 @@ class Signup extends StatelessWidget {
                   Container(height: 200,
                       width: 200,
                       child: Lottie.asset("assets/images/signani.json")),
-                  // const Image(
-                  //   image: AssetImage("assets/images/monitoring (2).png"),
-                  //   width: 200,
-                  //   height: 180,
-                  // ),
                   Row(
                     children: [
                       Expanded(
@@ -163,13 +152,13 @@ class Signup extends StatelessWidget {
                             return const SignupDetails();
                           }));
                         } else {
-                          // Fluttertoast.showToast(
-                          //     msg: "any Text Faild",
-                          //     gravity: ToastGravity.BOTTOM,
-                          //     toastLength: Toast.LENGTH_SHORT,
-                          //     backgroundColor: Colors.pink,
-                          //     timeInSecForIosWeb: 2,
-                          //     fontSize: 18);
+                          Fluttertoast.showToast(
+                              msg: "any Text Faild",
+                              gravity: ToastGravity.BOTTOM,
+                              toastLength: Toast.LENGTH_SHORT,
+                              backgroundColor: Colors.pink,
+                              timeInSecForIosWeb: 2,
+                              fontSize: 18);
                         }
                       }
                     },

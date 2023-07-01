@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:social_master/modules/app/home_page_content/create_post.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../home_page_content/tab1.dart';
 import '../home_page_content/tab2.dart';
-import '../navigations.dart';
+import '../notifications.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class HomePage extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             headerSliverBuilder: (context, value) {
               return [
-                SliverAppBar(
+                SliverAppBar(snap: true,
                   backgroundColor: AppTheme.colors.purple,
                   floating: true,
                   elevation: 0.0,
@@ -29,25 +30,31 @@ class HomePage extends StatelessWidget {
 
                     },
                   ),
-                  title:   Center(
+                  title:   const Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image(image: AssetImage('assets/images/logo_name.png',),width: 125),
                         //Text("Master",style: TextStyle(fontSize: 40,fontFamily: 'Cairo',color: Colors.black),),
-                        SizedBox(width: 8,),
-                        //Icon(Icons.phone_in_talk)
+
                       ],
                     )
                   ),
                   actions:  [
                   IconButton(
-                    onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Navigations()));},
+                    onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CreatePost()));},
                     icon: const FaIcon(
-                      FontAwesomeIcons.bell,
+                      FontAwesomeIcons.plus,
                       color: Colors.white,
                     ),
                   ),
+                    IconButton(
+                      onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Notifications()));},
+                      icon: const FaIcon(
+                        FontAwesomeIcons.bell,
+                        color: Colors.white,
+                      ),
+                    ),
                   ],
                   bottom: TabBar(
                     dividerColor: Colors.white,

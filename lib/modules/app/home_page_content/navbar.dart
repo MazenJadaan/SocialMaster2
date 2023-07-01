@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_master/modules/app/pages/profile_page.dart';
 
-import '../favorite_page.dart';
+import '../favourites.dart';
 
 class NavBar extends StatelessWidget {
     NavBar({super.key});
