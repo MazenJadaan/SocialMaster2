@@ -11,74 +11,76 @@ import '../../../shared/styles/colors.dart';
 import '../visit_profile.dart';
 
 class Tab2 extends StatelessWidget {
-   Tab2(this.scrollController,{Key? key}) : super(key: key);
+  Tab2(this.scrollController, {Key? key}) : super(key: key);
   ScrollController scrollController;
-   List<PostModel> posts = [
-     PostModel(
-       likes: 400,
-       comments: 12,
-       shares: 3,
-       caption: 'caption',
-       date: '30/12/2019',
-       userName: 'Habibi wallah',
-       image:
-       'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-       userImage:
-       'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
-     ),
-     PostModel(
-         likes: 400,
-         comments: 12,
-         shares: 3,
-         caption: 'caption',
-         date: '30/12/2019',
-         userName: 'Habibi wallah',
-         image:
-         'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-         userImage:
-         'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-     PostModel(
-         likes: 400,
-         comments: 12,
-         shares: 3,
-         caption: 'caption',
-         date: '30/12/2019',
-         userName: 'Habibi wallah',
-         image:
-         'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-         userImage:
-         'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-     PostModel(
-         likes: 400,
-         comments: 12,
-         shares: 3,
-         caption: 'caption',
-         date: '30/12/2019',
-         userName: 'Habibi wallah',
-         image:
-         'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-         userImage:
-         'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-     PostModel(
-         likes: 400,
-         comments: 12,
-         shares: 3,
-         caption: 'caption',
-         date: '30/12/2019',
-         userName: 'Habibi wallah',
-         image:
-         'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-         userImage:
-         'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-   ];
+  List<PostModel> posts = [
+    PostModel(
+      likes: 400,
+      comments: 12,
+      shares: 3,
+      caption: 'caption',
+      date: '30/12/2019',
+      userName: 'Habibi wallah',
+      image:
+          'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+      userImage:
+          'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
+    ),
+    PostModel(
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        userImage:
+            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+    PostModel(
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        userImage:
+            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+    PostModel(
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        userImage:
+            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+    PostModel(
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        userImage:
+            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-      children: [
+      physics: const BouncingScrollPhysics(),
+      scrollDirection: Axis.vertical,
+      child: Column(
+        children: [
           SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
@@ -112,28 +114,10 @@ class Tab2 extends StatelessWidget {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Story()));
                     },
-                    child: Container(
-                        width: 80,
-                        height: 80,
-                        child: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              'https://media.licdn.com/dms/image/D4D03AQFOidLqeOofwQ/profile-displayphoto-shrink_800_800/0/1675283623437?e=2147483647&v=beta&t=PWqFmmIcp6DuF2iNY6PlvGIjaBEccf8lrWe7Eb9XOd8'),
-                        )),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: MaterialButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Story()));
-                    },
-                    child: Container(
-                      width: 80,
-                      height: 80,
-                      child: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              'https://media.licdn.com/dms/image/D4E03AQE1K3zESFjOQg/profile-displayphoto-shrink_800_800/0/1680206692324?e=2147483647&v=beta&t=hTHBbcKIECvpy5xjMffpemlLVOZ7X4mInJa3opOrfcI')),
+                    child: CircleAvatar(
+                      radius: 40,
+                      backgroundImage: NetworkImage(
+                          'https://media.licdn.com/dms/image/D4D03AQFOidLqeOofwQ/profile-displayphoto-shrink_800_800/0/1675283623437?e=2147483647&v=beta&t=PWqFmmIcp6DuF2iNY6PlvGIjaBEccf8lrWe7Eb9XOd8'),
                     ),
                   ),
                 ),
@@ -144,13 +128,10 @@ class Tab2 extends StatelessWidget {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Story()));
                     },
-                    child: Container(
-                      width: 80,
-                      height: 80,
-                      child: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              'https://img.youm7.com/ArticleImgs/2018/8/16/56018-%D8%A8%D8%A7%D8%B3%D9%85-%D9%8A%D8%A7%D8%AE%D9%88%D8%B1-(5).jpg')),
-                    ),
+                    child: CircleAvatar(
+                        radius: 40,
+                        backgroundImage: NetworkImage(
+                            'https://media.licdn.com/dms/image/D4E03AQE1K3zESFjOQg/profile-displayphoto-shrink_800_800/0/1680206692324?e=2147483647&v=beta&t=hTHBbcKIECvpy5xjMffpemlLVOZ7X4mInJa3opOrfcI')),
                   ),
                 ),
                 Padding(
@@ -160,13 +141,10 @@ class Tab2 extends StatelessWidget {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Story()));
                     },
-                    child: Container(
-                      width: 80,
-                      height: 80,
-                      child: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              'https://img.youm7.com/ArticleImgs/2018/8/16/56018-%D8%A8%D8%A7%D8%B3%D9%85-%D9%8A%D8%A7%D8%AE%D9%88%D8%B1-(5).jpg')),
-                    ),
+                    child: CircleAvatar(
+                        radius: 40,
+                        backgroundImage: NetworkImage(
+                            'https://img.youm7.com/ArticleImgs/2018/8/16/56018-%D8%A8%D8%A7%D8%B3%D9%85-%D9%8A%D8%A7%D8%AE%D9%88%D8%B1-(5).jpg')),
                   ),
                 ),
                 Padding(
@@ -176,20 +154,31 @@ class Tab2 extends StatelessWidget {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Story()));
                     },
-                    child: Container(
-                      width: 80,
-                      height: 80,
-                      child: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              'https://media.licdn.com/dms/image/D4D03AQFOidLqeOofwQ/profile-displayphoto-shrink_800_800/0/1675283623437?e=2147483647&v=beta&t=PWqFmmIcp6DuF2iNY6PlvGIjaBEccf8lrWe7Eb9XOd8')),
-                    ),
+                    child: CircleAvatar(
+                        radius: 40,
+                        backgroundImage: NetworkImage(
+                            'https://img.youm7.com/ArticleImgs/2018/8/16/56018-%D8%A8%D8%A7%D8%B3%D9%85-%D9%8A%D8%A7%D8%AE%D9%88%D8%B1-(5).jpg')),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: MaterialButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Story()));
+                    },
+                    child: CircleAvatar(
+                        radius: 40,
+                        backgroundImage: NetworkImage(
+                            'https://media.licdn.com/dms/image/D4D03AQFOidLqeOofwQ/profile-displayphoto-shrink_800_800/0/1675283623437?e=2147483647&v=beta&t=PWqFmmIcp6DuF2iNY6PlvGIjaBEccf8lrWe7Eb9XOd8')),
                   ),
                 )
               ],
             ),
-          ),SizedBox(height: 20),
+          ),
+          SizedBox(height: 20),
           SingleChildScrollView(
-            physics:  BouncingScrollPhysics(),
+            physics: BouncingScrollPhysics(),
             child: Column(
               children: [
                 ListView.builder(
@@ -198,19 +187,24 @@ class Tab2 extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   itemCount: posts.length,
-                  itemBuilder: (context, i) => postBuilder(model: posts[i],context: context),
+                  itemBuilder: (context, i) =>
+                      postBuilder(model: posts[i], context: context),
                 ),
               ],
             ),
           ),
-          OutlinedButton(onPressed: (){scrollController.animateTo(0,duration: const Duration(milliseconds: 500), curve: Curves.easeIn);}, child: Text('back to the Top',style: TextStyle(color: AppTheme.colors.purple),)),
+          OutlinedButton(
+              onPressed: () {
+                scrollController.animateTo(0,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.easeIn);
+              },
+              child: Icon(Icons.update_sharp)),
           const SizedBox(
             height: 55,
           ),
-      ],
-
-    ),
-        )
-    );
+        ],
+      ),
+    ));
   }
 }

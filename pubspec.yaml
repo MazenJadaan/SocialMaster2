@@ -45,6 +45,8 @@ dependencies:
   fluttertoast: ^8.2.2
   story: ^1.1.0
   lottie: ^2.3.1
+  agora_rtc_engine: ^4.0.7
+  permission_handler:
 
 
 
