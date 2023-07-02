@@ -15,8 +15,8 @@ class story extends Model
         'story_body',
         'story_date',
         'story_time',
-        'photo_path',
-        'video_path'
+        'story_date_expire',
+        'media'
     ];
 
     public function user(){

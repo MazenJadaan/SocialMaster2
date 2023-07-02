@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 return new class extends Migration
 {
@@ -17,11 +19,11 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('user_profile_id')->unsigned();
-            $table->text('story_body');
+            $table->text('story_body')->nullable();
             $table->date('story_date');
+            $table->timestamp('story_date_expire')->default(Carbon::now()->addDay());
             $table->time('story_time');
-            $table->string('photo_path')->nullable();
-            $table->string('video_path')->nullable();
+            $table->string('media')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

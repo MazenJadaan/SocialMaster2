@@ -54,11 +54,9 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('addStories', [StoriesController::class, 'addStory']);
 
-    Route::post('addPhotoToStory', [StoriesController::class, 'addPhoto']);
+    Route::get('showCurrentStory', [StoriesController::class, 'showStoryDetail']);
 
-    Route::post('addVideoToStory', [StoriesController::class, 'addVideo']);
-
-    Route::get('showStory', [StoriesController::class, 'showStoryDetail']);
+    Route::get('showOldestStory', [StoriesController::class, 'showArchiveStories']);
 
     Route::get('showFollwingStory', [StoriesController::class, 'showStory']);
 
