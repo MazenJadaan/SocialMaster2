@@ -72,14 +72,14 @@ class _CreatePostState extends State<CreatePost> {
             GestureDetector(
               child: image != null
                   ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.file(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.file(
                         image!,
                         // height: 165,
                         // width: 165,
                         fit: BoxFit.cover,
                       ),
-                  )
+                    )
                   : Center(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -104,10 +104,10 @@ class _CreatePostState extends State<CreatePost> {
                 uploadImage();
                 setState(() {});
               },
-              onLongPress: (){image=null;
-                setState(() {
-
-                });},
+              onLongPress: () {
+                image = null;
+                setState(() {});
+              },
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -118,15 +118,20 @@ class _CreatePostState extends State<CreatePost> {
                     color: Colors.grey,
                   )),
             ),
-    SizedBox(height: 20,),
-    Center(
-      child: myMaterialButton(
-      width: 240,
-      height: 50,
-      text: "Create",
-      onPressed: () async {},),
-    ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
+            Center(
+              child: myMaterialButton(
+                width: 240,
+                height: 50,
+                text: "Create",
+                onPressed: () async {},
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),

@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class PostModel extends ChangeNotifier {
   String? userImage;
   String? image='';
+  String? vid='';
   String date = "30/7/2001";
   String caption = "";
   String userName = "Anonymous";
@@ -30,6 +31,7 @@ class PostModel extends ChangeNotifier {
     required this.isSaved,
     this.image,
     this.userImage,
+    this.vid,
 
   });
 
@@ -52,6 +54,7 @@ class PostModel extends ChangeNotifier {
 class MyPostModel extends ChangeNotifier{
   String? userImage;
   String? image='';
+
   String date = "30/7/2001";
   String caption = "";
   String userName = "Anonymous";
@@ -74,6 +77,7 @@ class MyPostModel extends ChangeNotifier{
     required this.isSaved,
     this.image,
     this.userImage,
+
   });
 
   handleLike(){
@@ -85,5 +89,8 @@ class MyPostModel extends ChangeNotifier{
     isSaved == false ? saveColor=Colors.orange : saveColor=Colors.white;
     this.isSaved = !isSaved;
     notifyListeners();
+  }
+  videoPlayer(){
+
   }
 }
