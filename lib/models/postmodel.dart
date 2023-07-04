@@ -49,7 +49,6 @@ class PostModel extends ChangeNotifier {
 class MyPostModel extends ChangeNotifier{
   String? userImage;
   String? image='';
-
   String date = "30/7/2001";
   String caption = "";
   String userName = "Anonymous";
@@ -88,4 +87,23 @@ class MyPostModel extends ChangeNotifier{
   videoPlayer(){
 
   }
+}
+
+class SharedPostModel extends ChangeNotifier{
+  String? userImage;
+  String date = "30/7/2001";
+  String caption = "";
+  String userName = "Anonymous";
+  PostModel post;
+
+  SharedPostModel({
+    required this.caption,
+    required this.date,
+    required this.userName,
+    required this.post,
+    this.userImage,
+  });
+  doSomething()=>notifyListeners();
+
+
 }
