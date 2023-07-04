@@ -20,26 +20,26 @@ use Stripe;
 class UserProfile extends Controller
 {
     use ApiResponseTrait;
+
+     public function showMyProfile()
+     {
+         $myid = Auth::id();
+         $user = User::select('id','first_name','last_name','phone_num','gender','birthdate')->with('user_profile')->find($myid);
+         return $this->ApiResponse($user, ' My Profile Information returned successfully', 200);
+     }
     public function addInformations(Request $request)
     {
         $data = $request->validate([
-            'job' => 'required|regex:/^[A-Za-zأ-ي\s]+$/u', // اخر وحدة لمنع ادهال الارقام 
-            'study_place' => 'required|regex:/^[A-Za-zأ-ي\s]+$/u',
-            'place_stay' => 'required|regex:/^[A-Za-zأ-ي\s]+$/u',
-            'place_born' => 'required|regex:/^[A-Za-zأ-ي\s]+$/u',
-            'bio' => 'required|regex:/^[A-Za-zأ-ي\s]+$/u|max:50',
-            'state' => 'required',
+            'job' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u', // اخر وحدة لمنع ادهال الارقام
+            'study_place' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u',
+            'place_stay' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u',
+            'place_born' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u',
+            'bio' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u|max:50',
+            'state' => 'nullable|in:single,engaged,married,in_relationship',
         ]);
-        $userID = Auth::user()->id;
+        $userID = Auth::id();
         $user_profile = User_profile::find($userID);
         $user_profile->update($data);
-        if ($request->hasFile('cover_photo')) {
-            $imageName = time() . '.' . $request->file('cover_photo')->extension();
-            $request->file('cover_photo')->storeAs('images/cover_picture/', $imageName);
-            $name_path = 'storage/app/images/cover_picture/' . $imageName;
-            $user_profile->cover_photo = $name_path;
-            $user_profile->save();
-        }
         $user = UserProfileInformationsResource::make(User_profile::find($userID));
         return $this->ApiResponse($user, 'Information updated successfully', 201);
     }
@@ -81,30 +81,36 @@ class UserProfile extends Controller
     public function follow($id)
     {
         $profileID = User_profile::find($id)->id;
-        $userID = (Auth::user());
+        $userID = (Auth::id());
         $userAlreadyFollower=userfollowers::where([
-            ['user_id',$userID->id],
+            ['user_id',$userID],
             ['user_profile_id',$profileID]
         ])->first();
-        if ($userID->id != $profileID && !$userAlreadyFollower) {
+        if ($userID != $profileID && !$userAlreadyFollower) {
             $follow = userfollowers::create([
-                'user_id' => $userID->id,
+                'user_id' => $userID,
                 'user_profile_id' => $profileID
             ]);
             $userProfile = User_profile::find($id);
             $userProfile->increment('followers_number', 1);
             $userProfile->save();
-            return $this->ApiResponse('null', '', 200);
+            return $this->ApiResponse('null', 'follow is done', 200);
         }
-        return $this->ApiResponse('null', 'you cant follow yourself يا متوحد', '401');
+        elseif($userID == $profileID ) {
+            return $this->ApiResponse('null', 'you cant follow yourself يا متوحد', '401');
+        }
+        elseif($userAlreadyFollower){
+            return $this->ApiResponse('null', 'you already following this user', '401');
+        }
+
     }
 
     public function unFollow($id)
     {
         $profileID = User_profile::find($id)->id;
-        $userID = (Auth::user());
+        $userID = (Auth::id());
         $userUnFollow = Userfollowers::where([
-            ['user_id', $userID->id],
+            ['user_id', $userID],
             ['user_profile_id', $profileID]
         ])->delete();
 
@@ -112,8 +118,10 @@ class UserProfile extends Controller
         $userProfile->decrement('followers_number', 1);
         $userProfile->save();
 
-        return $this->ApiResponse('null', '', 200);
+        return $this->ApiResponse('null', 'unfollowing its done ', 200);
     }
+
+
 
     public function showProfile($id)
     {
@@ -138,7 +146,7 @@ class UserProfile extends Controller
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $response = $stripe->charges->create([
             'amount' => 2000,
-            'currency' => 'USD', 
+            'currency' => 'USD',
             'source' => 'tok_nl',
             'description' => 'Pay for make profile official',
         ]);
@@ -146,13 +154,13 @@ class UserProfile extends Controller
 
         $user = officialaccounts::create([
             'user_profile_id'=>$id
-        ]);   
+        ]);
     }
 
     public function showProfilesPosts(User_profile $profile)
     {
         $returnPosts = post::where('user_profile_id', $profile->id)->get();
 
-        //نجهز الريسورس لوقت نجهز البوستات 
+        //نجهز الريسورس لوقت نجهز البوستات
     }
 }

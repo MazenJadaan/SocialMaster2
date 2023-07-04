@@ -32,6 +32,8 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('/complete_register', [AuthController::class, 'complete_register']);
 
+    Route::get('showMyProfile', [UserProfile::class,'showMyProfile']);
+
     Route::post('addProfileInformations', [UserProfile::class, 'addInformations']);
 
     Route::post('updateProfileInformations', [UserProfile::class, 'updateInformations']);

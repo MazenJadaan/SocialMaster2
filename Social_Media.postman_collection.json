@@ -952,6 +952,1175 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "show my profile",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/showMyProfile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"showMyProfile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 20:32:46 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 20:32:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 4,\n        \"first_name\": \"asem\",\n        \"last_name\": \"refa3i\",\n        \"phone_num\": \"0955220355\",\n        \"gender\": \"male\",\n        \"birthdate\": \"2001-08-02\",\n        \"user_profile\": {\n            \"id\": 4,\n            \"job\": \"engineer\",\n            \"study_place\": \"damascus university\",\n            \"place_stay\": \"damascus\",\n            \"place_born\": \"midan\",\n            \"bio\": \"listen george wassouf\",\n            \"cover_photo\": \"storage/app/images/cover_picture/1688493857.jpg\",\n            \"profile_photo\": \"storage/app/images/profile_picture/1688493692.jpg\",\n            \"followers_number\": 0,\n            \"state\": \"single\",\n            \"user_id\": 4,\n            \"created_at\": \"2023-07-04T17:55:33.000000Z\",\n            \"updated_at\": \"2023-07-04T19:38:19.000000Z\"\n        }\n    },\n    \"message\": \" My Profile Information returned successfully\",\n    \"status\": 200\n}"
+				}
+			]
+		},
+		{
+			"name": "addProfileInfo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDlmMWRiZmYyYzk3MWNkOTk1Zjk4OTFmMGFhYzgyZDMwOWI2NTlmZDQ3MzQwNDg5NDA2MWZhN2Q2OGM4NDE5ZjY2YTM2YzFjYmEwNzQzOTgiLCJpYXQiOjE2ODY0MzQyNTAuNzY2NjQ1LCJuYmYiOjE2ODY0MzQyNTAuNzY2NjU2LCJleHAiOjE3MTgwNTY2NTAuNDQ1MjA3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.bRLt4z-xlR02w4g5go8mNUtNkroYi6NJzjoV2rUaFgyM96QwiITeR8SMMIsL2jbzvGIhTd0gRRhnlBmHDHeSf6Cj-6GSlVAyNRXNkIuxznbHhmqvsEXOnltblUqiq1q4LJyRd4MCnnM1QHOghRcWk0nhZsARy8g0sFI-SpBbTFTmG9GFzWBjgXFIhGNspHioHoc5gNUnFx0EznZliU3oS3vAH7RjeCoPE8Gjuf92DNIJcc8WPp9PBbsk64Bwv6mFripoBk8WQLJCDR6G5r5c5q2fms3a3W4FPx6jotoM3uUrFHyMQMhorvZw8um32qYT-_PCwYKAC0MCI9dn4GJkRePx2txdrlkOsK7AsNX2Ya2CWp1oXmP7g5m_Dyvc3IS_8Tghh4gd7dMQLRwjgA8AoRDloJhXnqAhhkLGsd4jO1g0uTK4nYbidMbbz9ahvDu7CwqqS86JCzPocrhaMr8asCB3m6Bo3lzWP2s-i3sU6poPWUxq3iPFQ0C_6jcwOcVACn3N1VvqK0015yCg7u8Pae3RkGFOFo_yr9t5TYiqQmT3y0zdwA_6ExvdWgyKeWrI5LH60Ro0zKhQZJ6DfqM0_UY3KDHTG3hocY8swnwGdU4we3ZyRBfh4eZIJzsYF09DdFWvnOF7K2-Bywn2NmIdC8i-_vkLpLK9qmVUX2Bx7_g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "job",
+							"value": "فرن الالي",
+							"type": "text"
+						},
+						{
+							"key": "study_place",
+							"value": "همك",
+							"type": "text"
+						},
+						{
+							"key": "place_stay",
+							"value": "شام",
+							"type": "text"
+						},
+						{
+							"key": "place_born",
+							"value": "دير ",
+							"type": "text"
+						},
+						{
+							"key": "bio",
+							"value": "عم ",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "single",
+							"type": "text"
+						},
+						{
+							"key": "cover_photo",
+							"type": "file",
+							"src": "/C:/Users/DELL 5583/Downloads/صوري/٢٠١٩٠٩٠٤_١٥٣٨٠٤.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addProfileInformations",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addProfileInformations"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "addProfileInfo",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "job",
+									"value": "engineer",
+									"type": "text"
+								},
+								{
+									"key": "study_place",
+									"value": "damascus university ",
+									"type": "text"
+								},
+								{
+									"key": "place_stay",
+									"value": "damascus",
+									"type": "text"
+								},
+								{
+									"key": "place_born",
+									"value": "midan",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "listen george wassouf",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "single",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/addProfileInformations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"addProfileInformations"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 19:38:19 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 19:38:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "56"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"job\": \"engineer\",\n        \"study_place\": \"damascus university\",\n        \"place_stay\": \"damascus\",\n        \"place_born\": \"midan\",\n        \"bio\": \"listen george wassouf\",\n        \"cover_photo\": \"storage/app/images/cover_picture/1688493857.jpg\",\n        \"profile_photo\": \"storage/app/images/profile_picture/1688493692.jpg\",\n        \"followers_number\": 0,\n        \"state\": \"single\",\n        \"user_id\": 4\n    },\n    \"message\": \"Information updated successfully\",\n    \"status\": 201\n}"
+				}
+			]
+		},
+		{
+			"name": "Edit Profile Cover",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTQ1MTVkMzQ3ZThlZjYzMzQ2ZTI2Zjg1MGRmYTZiYTYzY2JkYWRjZjMyYmUxNTYwNGQ0MzgwNTY2ZGQ5OTA4ODFiZWI3ZTBlZTM2ZDBjZDQiLCJpYXQiOjE2ODcwMzMzNjcuOTUxNTg3LCJuYmYiOjE2ODcwMzMzNjcuOTUxNTk0LCJleHAiOjE3MTg2NTU3NjcuNjYyODQsInN1YiI6IjMiLCJzY29wZXMiOltdfQ.DzW8BYGP5sBZfDA5jBr-NW0t89L2lU8Y1u1xs657kM8bSKrMVB9WJSQK2hAqCGKfthS94zx1DKSuvmkPz4j56b_ghP8yBDPPDQUme7XWBnAUNDyv_ILW5XZOvbeV0F8ris4mjnbu7F_R1f3Bsa5gmT4JbBjSAAjCKjeIMrSpD-dJXPF4dSDl6keQk1kM5TNc1tkASxX8CpRvKlqR1CcR2GascCxgV8SlevAq2Z5XYM6RxHK3h1EYjI3F92H1TJ5CYCBdh0NwyIuuctiOHugDiWJk1sevs5GxEsrwoWl0eK_keIueODLDJGBz9_uWpPCWncjCktwnGnpHSSx-EADfSsdarDV_LywHHEzSOFbr1zJrvQ9yi9-WcuNUtiS5a8EEf3OkwH6zSNyLNVDWAlD2FW6e5qs4Pd0JEuDlvZhyRff1Nu5dxvdp9NbOWk8wLtX_3eDlyBB2QGQHrWGoqzF5R8ICN1tW3i-djvcZb1Og17eIBh3Ezx7QoqD9aBhXMT0pP2FcxCjBWrsiGFAZRAuHCmjaFKrnxzD-XeIj0pI19pCcfPMMy9RNoIEhEuPCZsoUKvKqV6X-Pzgp--9l_cJl-FJtMv8CzSoHzKyJBCkF2uzQPJ25uPaKLh0BoiWhTQymPPb86Ir6okgI5Cd5YjN3qSiNxu-qImrflxTWT-KYEA0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/updateProfileCover",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"updateProfileCover"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Edit Profile Cover",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cover_photo",
+									"type": "file",
+									"src": "/C:/Users/ASUS/Desktop/backgrounds/BMW/wp3616641.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/updateProfileCover",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"updateProfileCover"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 18:04:17 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 18:04:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": \"\",\n    \"message\": \"Information updated successfully\",\n    \"status\": 201\n}"
+				}
+			]
+		},
+		{
+			"name": "Edit profile photo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTQ1MTVkMzQ3ZThlZjYzMzQ2ZTI2Zjg1MGRmYTZiYTYzY2JkYWRjZjMyYmUxNTYwNGQ0MzgwNTY2ZGQ5OTA4ODFiZWI3ZTBlZTM2ZDBjZDQiLCJpYXQiOjE2ODcwMzMzNjcuOTUxNTg3LCJuYmYiOjE2ODcwMzMzNjcuOTUxNTk0LCJleHAiOjE3MTg2NTU3NjcuNjYyODQsInN1YiI6IjMiLCJzY29wZXMiOltdfQ.DzW8BYGP5sBZfDA5jBr-NW0t89L2lU8Y1u1xs657kM8bSKrMVB9WJSQK2hAqCGKfthS94zx1DKSuvmkPz4j56b_ghP8yBDPPDQUme7XWBnAUNDyv_ILW5XZOvbeV0F8ris4mjnbu7F_R1f3Bsa5gmT4JbBjSAAjCKjeIMrSpD-dJXPF4dSDl6keQk1kM5TNc1tkASxX8CpRvKlqR1CcR2GascCxgV8SlevAq2Z5XYM6RxHK3h1EYjI3F92H1TJ5CYCBdh0NwyIuuctiOHugDiWJk1sevs5GxEsrwoWl0eK_keIueODLDJGBz9_uWpPCWncjCktwnGnpHSSx-EADfSsdarDV_LywHHEzSOFbr1zJrvQ9yi9-WcuNUtiS5a8EEf3OkwH6zSNyLNVDWAlD2FW6e5qs4Pd0JEuDlvZhyRff1Nu5dxvdp9NbOWk8wLtX_3eDlyBB2QGQHrWGoqzF5R8ICN1tW3i-djvcZb1Og17eIBh3Ezx7QoqD9aBhXMT0pP2FcxCjBWrsiGFAZRAuHCmjaFKrnxzD-XeIj0pI19pCcfPMMy9RNoIEhEuPCZsoUKvKqV6X-Pzgp--9l_cJl-FJtMv8CzSoHzKyJBCkF2uzQPJ25uPaKLh0BoiWhTQymPPb86Ir6okgI5Cd5YjN3qSiNxu-qImrflxTWT-KYEA0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "profile_photo",
+							"type": "file",
+							"src": "/C:/Users/DELL 5583/Downloads/صوري/٢٠٢٠٠٤٠٧_٠٣٠٤٠٣.jpg"
+						},
+						{
+							"key": "",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/updateProfilePicture",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"updateProfilePicture"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Edit prfile photo",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profile_photo",
+									"type": "file",
+									"src": "/C:/Users/ASUS/Desktop/backgrounds/syrian national team/R (2).jpg"
+								},
+								{
+									"key": "",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/updateProfilePicture",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"updateProfilePicture"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 18:01:32 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 18:01:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": \"\",\n    \"message\": \"Information updated successfully\",\n    \"status\": 201\n}"
+				}
+			]
+		},
+		{
+			"name": "followProfile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWYwZjE1ZjIxZThhNTI4ZjRlZTZkYWIzMGQzYjJiNmJlY2NlMTU3ZjU4OTU5Njc5OGYwZjU1ODE0MDZiNDk2YzA5OWU1OTk4ZmM3N2Y4YmQiLCJpYXQiOjE2ODY0NDQ2NDkuMzY5OTEyLCJuYmYiOjE2ODY0NDQ2NDkuMzY5OTE2LCJleHAiOjE3MTgwNjcwNDkuMzE2OTQ4LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.nzqwvtXPS5ZsokVZaG4qks0yV0SuKnVCklnFD11rTaulEMYu3JDAmb3_44tzD0kHYMatZNR942mecvxYcowVxE-SZidqkRAPSIcjnUo34pPmfNEJo5kAGFuTU5e72foxOud1pDjuCypGhBpLvRifzvV_zy3LpRp3IyoLnc8ZKUxRULDIf0-oxAQqx3sdOjiNhOT14Alh3XAofGsl3_0INAcws_avTmrHueBapQXDvA3kGWiDe_HDMFjYz3inLJZZycRpAvm4jwrC6H24etLUf9gHRDjKRGGvzlFwznwmJPeHHQJgpOpg9X9zI0riozlMa2P5oYRaM9IsNWW8FJK3NjzgnB20sAyrxXCkFfxlWhsEaPNJdGr7fsYCJVihulqy73b95PQjnY-GUwfgWn1dm8BRzK_W_mHbv4uZHuyJzDyqUN8S4ceVMUDG5NXdeJsOBFvF9T9hw55iOvAL6hUa5K_EFdyzcIRiFZMuspE3awmbUEFLbdctWhEq-39aDRVgvBIFuKYiNcf8OQdNZ6rHGM0EKJ4qcDbu_4zklX99yS37FRQb1xLvCVbY8huwAEsvUax4zO7G8enbce3hV8jEUhQBHsUsX_CG4X7QxVDGTLu4YGW6f9Xc97Pf-uVjbVEkqvtc_nBc8SVP9f3E9xki7JABv8jcSiu9kwKJ5zVpXtk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/followProfile/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"followProfile",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "followProfile succesful",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/followProfile/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"followProfile",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 20:01:43 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 20:01:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": \"null\",\n    \"message\": \"follow is done\",\n    \"status\": 200\n}"
+				},
+				{
+					"name": "followProfile faild",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/followProfile/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"followProfile",
+								"2"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 20:02:30 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 20:02:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "56"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": \"null\",\n    \"message\": \"you already following this user\",\n    \"status\": \"401\"\n}"
+				}
+			]
+		},
+		{
+			"name": "unFollowProfile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWYwZjE1ZjIxZThhNTI4ZjRlZTZkYWIzMGQzYjJiNmJlY2NlMTU3ZjU4OTU5Njc5OGYwZjU1ODE0MDZiNDk2YzA5OWU1OTk4ZmM3N2Y4YmQiLCJpYXQiOjE2ODY0NDQ2NDkuMzY5OTEyLCJuYmYiOjE2ODY0NDQ2NDkuMzY5OTE2LCJleHAiOjE3MTgwNjcwNDkuMzE2OTQ4LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.nzqwvtXPS5ZsokVZaG4qks0yV0SuKnVCklnFD11rTaulEMYu3JDAmb3_44tzD0kHYMatZNR942mecvxYcowVxE-SZidqkRAPSIcjnUo34pPmfNEJo5kAGFuTU5e72foxOud1pDjuCypGhBpLvRifzvV_zy3LpRp3IyoLnc8ZKUxRULDIf0-oxAQqx3sdOjiNhOT14Alh3XAofGsl3_0INAcws_avTmrHueBapQXDvA3kGWiDe_HDMFjYz3inLJZZycRpAvm4jwrC6H24etLUf9gHRDjKRGGvzlFwznwmJPeHHQJgpOpg9X9zI0riozlMa2P5oYRaM9IsNWW8FJK3NjzgnB20sAyrxXCkFfxlWhsEaPNJdGr7fsYCJVihulqy73b95PQjnY-GUwfgWn1dm8BRzK_W_mHbv4uZHuyJzDyqUN8S4ceVMUDG5NXdeJsOBFvF9T9hw55iOvAL6hUa5K_EFdyzcIRiFZMuspE3awmbUEFLbdctWhEq-39aDRVgvBIFuKYiNcf8OQdNZ6rHGM0EKJ4qcDbu_4zklX99yS37FRQb1xLvCVbY8huwAEsvUax4zO7G8enbce3hV8jEUhQBHsUsX_CG4X7QxVDGTLu4YGW6f9Xc97Pf-uVjbVEkqvtc_nBc8SVP9f3E9xki7JABv8jcSiu9kwKJ5zVpXtk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/unFollow/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"unFollow",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "unFollowProfile",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/unFollow/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"unFollow",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 20:05:41 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Jul 2023 20:05:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": \"null\",\n    \"message\": \"unfollowing its done \",\n    \"status\": 200\n}"
+				}
+			]
+		},
+		{
+			"name": "showProfile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDlmMWRiZmYyYzk3MWNkOTk1Zjk4OTFmMGFhYzgyZDMwOWI2NTlmZDQ3MzQwNDg5NDA2MWZhN2Q2OGM4NDE5ZjY2YTM2YzFjYmEwNzQzOTgiLCJpYXQiOjE2ODY0MzQyNTAuNzY2NjQ1LCJuYmYiOjE2ODY0MzQyNTAuNzY2NjU2LCJleHAiOjE3MTgwNTY2NTAuNDQ1MjA3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.bRLt4z-xlR02w4g5go8mNUtNkroYi6NJzjoV2rUaFgyM96QwiITeR8SMMIsL2jbzvGIhTd0gRRhnlBmHDHeSf6Cj-6GSlVAyNRXNkIuxznbHhmqvsEXOnltblUqiq1q4LJyRd4MCnnM1QHOghRcWk0nhZsARy8g0sFI-SpBbTFTmG9GFzWBjgXFIhGNspHioHoc5gNUnFx0EznZliU3oS3vAH7RjeCoPE8Gjuf92DNIJcc8WPp9PBbsk64Bwv6mFripoBk8WQLJCDR6G5r5c5q2fms3a3W4FPx6jotoM3uUrFHyMQMhorvZw8um32qYT-_PCwYKAC0MCI9dn4GJkRePx2txdrlkOsK7AsNX2Ya2CWp1oXmP7g5m_Dyvc3IS_8Tghh4gd7dMQLRwjgA8AoRDloJhXnqAhhkLGsd4jO1g0uTK4nYbidMbbz9ahvDu7CwqqS86JCzPocrhaMr8asCB3m6Bo3lzWP2s-i3sU6poPWUxq3iPFQ0C_6jcwOcVACn3N1VvqK0015yCg7u8Pae3RkGFOFo_yr9t5TYiqQmT3y0zdwA_6ExvdWgyKeWrI5LH60Ro0zKhQZJ6DfqM0_UY3KDHTG3hocY8swnwGdU4we3ZyRBfh4eZIJzsYF09DdFWvnOF7K2-Bywn2NmIdC8i-_vkLpLK9qmVUX2Bx7_g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showProfile/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showProfile",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchIntoUsers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTFhZmUyY2UwZDI4Mzg3ODc4YTkwMjYwYzdhOTIxMWRjNThmOTYzMGQ0OTdmOTM2ZjI4ZmMyMzdkYTJhNmQ3MmIzYWY3Njk4MDJhNzgxMDYiLCJpYXQiOjE2ODc3MTk1ODcuNDEzMDgzLCJuYmYiOjE2ODc3MTk1ODcuNDEzMDksImV4cCI6MTcxOTM0MTk4Ny4wMTY3MDUsInN1YiI6IjMiLCJzY29wZXMiOltdfQ.JxO_It7CodLpv1K_Gh2MqY406IW6cj21jeLdNL0ArPmI3iIuU7fZmORDNSEsPFvuJ7D1pBmyoa8LdIMGLUJV3HxIDNR3TYE-NAft2_wgP69_61PJESfD7bNfYFbSuj1jn4FaDDj9TOkbDWslEQ4RvlBsSuEE2SDkNWsQlpG6g2ar35IxzWX81JylXagsQqDtIG4Dmy9OPtMh3sRjs4NMKzF7Kqmabe2HtxU0zB8A4JnlI5zr91qm_HO7IwbsCvheRv9lmbLPMYUyNRsZYaZSFQIW9Ph5g4JwhldDoeZEHPXYRvd2ni2BBkv4vZKVUbmQfsqmGwVulCblZYx54EZCDEA9jWKl1n2M9uFH7Wk_RNe_RbKhTohRqbziaJ-IM67Fj5dCKcfB0o7xf_Yi4YshHoi_31f7Upip9c7nVfgORYr70NM29PI1vZDr_L8I7PkkCw4ceymHmdA-_jPFYQ6Tn6JJWYfCpDKmVIEaHQlfMc9672_sFfcwx84akv3SsaynQjSvJHTym9CK4P6-YeI6WWwpSR19U1JfvRpFvcm6L2UV5oEL1R-N5cwZQJU-7Bx-_oIh_YZ8jnSuwY3RnBgSkz1Phr4XowxF5qNybJqhKAG4esfNOa4nMisYAI45icC85ITULlRt6tP7uXI4fN2C_v0dxAStqJzVpeNqeAYxulI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "mazen",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/searchUsers",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"searchUsers"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "ma",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchIntoPosts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/searchPosts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"searchPosts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "makeProfileOfficial",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddStories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzY2ZDNjMjM0NTU5NWZmZmVlYmE3NGVlMWRkZTQyODdjZTg5NDU2MmUxYTI0NGVlYTRiZGExN2MyMGZmN2I5NzQwOGRhZDI2NDg2MzdmMzciLCJpYXQiOjE2ODgzMDI4NjkuODk4MjEsIm5iZiI6MTY4ODMwMjg2OS44OTgyMTUsImV4cCI6MTcxOTkyNTI2OS44NTMyNzMsInN1YiI6IjIiLCJzY29wZXMiOltdfQ.dB9Y89VvmxLYr-tNUhkZVuhlH4XaV8Kl6dMVYGUXRkioVsGz1ZrsntHaa7NPMedwvc8xf_ZXgA48jX5z2zWWGi08ktTwaT5OwSUheF30YWDzb60Hz33lUncTZetkAZGWg4q4u_qzpEXlVL9W14zupAMiZxHIpYel5pod7qXk6-t-QE0fDMehiDPzPW2OjaRG4fAF2h-WMwPIVXuu4LgBdS-HRGss8kROZyrD5x1dmkjSVFKBG_S27xhZUAMvU-6MibZPsgLr2wOF8bs1iQFXQ-Kc2nlrva_McIYt5c5rRu4Ora7379MCdsZIobzWAQANTSxCdxQfPBylWk-0XYsmEPEzwgx_vBp1WalH604wJaPYuNsbidRl_I4Nv5_iijiJw2ISjIvKaQLzCHcNpOsOC3jXo2LcLAITRT0IIBU_YHY7jCtuJGWxGAa8DPAQK-pgr1lB1Uijw_cX71Qs5S1Pcu9igBc5Z7kJVxsqTHOc1nosRHUEcU19PqLTMGQQoSFAXVkO2ApYBAeozdGDwbIqHi8bB-Uw4klZfs9eN_9H9ph9DPyk82Sq0z2zyOaxuVUXHscnIxhh1kMTFcVZVQZaVsBnblEH6aQu7504xnI7bz_Sbpyj5BJn_RGH9QUsEGy0X1aSAxuIKLjzhaZ_RH1vvREYxgOJuICt0SGFaMdiLKk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "story_body",
+							"value": "ستوري اولى للزلمة رقم 2 ",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"type": "file",
+							"src": "/C:/Users/DELL 5583/Downloads/Video/mp4.mp4"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addStories",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addStories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteStory",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deleteStory/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deleteStory",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showFullStory",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showCurrentStory",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showCurrentStory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showFollowingStory",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showFollwingStory",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showFollwingStory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ArchiveStories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showOldestStory",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showOldestStory"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
