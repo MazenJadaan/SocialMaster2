@@ -1,22 +1,20 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:social_master/shared/components/components.dart';
 
-import '../../../shared/styles/colors.dart';
+import '../../shared/styles/colors.dart';
 
 class CreatePost extends StatefulWidget {
-  CreatePost({Key? key}) : super(key: key);
+  const CreatePost({Key? key}) : super(key: key);
 
   @override
   State<CreatePost> createState() => _CreatePostState();
 }
 
 class _CreatePostState extends State<CreatePost> {
-  TextEditingController _captionController = TextEditingController();
+  final TextEditingController _captionController = TextEditingController();
 
   File? image;
 
@@ -72,14 +70,14 @@ class _CreatePostState extends State<CreatePost> {
             GestureDetector(
               child: image != null
                   ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.file(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.file(
                         image!,
                         // height: 165,
                         // width: 165,
                         fit: BoxFit.cover,
                       ),
-                  )
+                    )
                   : Center(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -104,10 +102,10 @@ class _CreatePostState extends State<CreatePost> {
                 uploadImage();
                 setState(() {});
               },
-              onLongPress: (){image=null;
-                setState(() {
-
-                });},
+              onLongPress: () {
+                image = null;
+                setState(() {});
+              },
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -118,15 +116,20 @@ class _CreatePostState extends State<CreatePost> {
                     color: Colors.grey,
                   )),
             ),
-    SizedBox(height: 20,),
-    Center(
-      child: myMaterialButton(
-      width: 240,
-      height: 50,
-      text: "Create",
-      onPressed: () async {},),
-    ),
-            SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
+            Center(
+              child: myMaterialButton(
+                width: 240,
+                height: 50,
+                text: "Create",
+                onPressed: () async {},
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),

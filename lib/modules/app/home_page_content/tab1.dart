@@ -6,7 +6,7 @@ import '../../../shared/components/post_component.dart';
 
 class Tab1 extends StatelessWidget {
   Tab1(this.scrollController, {Key? key}) : super(key: key);
-  ScrollController scrollController;
+  final ScrollController scrollController;
   List<PostModel> posts = [
     PostModel(
       isSaved: false,
@@ -22,7 +22,7 @@ class Tab1 extends StatelessWidget {
           'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
     ),
     PostModel(
-      isSaved: false,
+        isSaved: false,
         isLiked: false,
         likes: 400,
         comments: 12,
@@ -35,7 +35,7 @@ class Tab1 extends StatelessWidget {
         userImage:
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
     PostModel(
-      isSaved: false,
+        isSaved: false,
         isLiked: false,
         likes: 400,
         comments: 12,
@@ -48,7 +48,7 @@ class Tab1 extends StatelessWidget {
         userImage:
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
     PostModel(
-      isSaved: false,
+        isSaved: false,
         isLiked: false,
         likes: 400,
         comments: 12,
@@ -61,6 +61,27 @@ class Tab1 extends StatelessWidget {
         userImage:
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
   ];
+
+  SharedPostModel s = SharedPostModel(
+      post: PostModel(
+        isSaved: false,
+        isLiked: false,
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userName: 'Habibi wallah',
+        image:
+            'https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg',
+        userImage:
+            'https://photo-works.net/images/europe-landscape-photo-edited.jpg',
+      ),
+      caption: 'baaad sana',
+      date: '5/5/5',
+      userName: 'wdwdw',
+      userImage:
+          'https://photo-works.net/images/europe-landscape-photo-edited.jpg');
 
   @override
   Widget build(BuildContext context) {
@@ -75,13 +96,20 @@ class Tab1 extends StatelessWidget {
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 itemCount: posts.length,
-                itemBuilder: (context, i) => ChangeNotifierProvider<PostModel>(
-                      create: (context) => posts[i],
+                itemBuilder: (context, i) =>
+                    ChangeNotifierProvider<PostModel>.value(
+                      value: posts[i],
                       child: Consumer<PostModel>(
                         builder: (context, model, child) =>
                             postBuilder(model: model, context: context),
                       ),
                     )),
+            ChangeNotifierProvider<SharedPostModel>(
+              create: (context)=> s,
+              child: Consumer<SharedPostModel>(
+                builder: (context, model, child) => sharedPostBuilder(model: model,context: context),
+              ),
+            ),
             OutlinedButton(
                 onPressed: () {
                   scrollController.animateTo(0,

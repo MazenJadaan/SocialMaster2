@@ -1,13 +1,9 @@
-
-
-
-
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PostModel extends ChangeNotifier {
   String? userImage;
   String? image='';
+  String? vid='';
   String date = "30/7/2001";
   String caption = "";
   String userName = "Anonymous";
@@ -30,17 +26,18 @@ class PostModel extends ChangeNotifier {
     required this.isSaved,
     this.image,
     this.userImage,
+    this.vid,
 
   });
 
   handleLike(){
     isLiked == false ? likeColor=Colors.red : likeColor=Colors.white;
-    isLiked = !isLiked;
+    this.isLiked = !isLiked;
     notifyListeners();
   }
   handleSave(){
     isSaved == false ? saveColor=Colors.orange : saveColor=Colors.white;
-    isSaved = !isSaved;
+    this.isSaved = !isSaved;
     notifyListeners();
   }
 
@@ -74,6 +71,7 @@ class MyPostModel extends ChangeNotifier{
     required this.isSaved,
     this.image,
     this.userImage,
+
   });
 
   handleLike(){
@@ -86,4 +84,26 @@ class MyPostModel extends ChangeNotifier{
     this.isSaved = !isSaved;
     notifyListeners();
   }
+  videoPlayer(){
+
+  }
+}
+
+class SharedPostModel extends ChangeNotifier{
+  String? userImage;
+  String date = "30/7/2001";
+  String caption = "";
+  String userName = "Anonymous";
+  PostModel post;
+
+  SharedPostModel({
+    required this.caption,
+    required this.date,
+    required this.userName,
+    required this.post,
+    this.userImage,
+  });
+  doSomething()=>notifyListeners();
+
+
 }

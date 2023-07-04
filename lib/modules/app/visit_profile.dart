@@ -51,6 +51,7 @@ class VisitProfile extends StatelessWidget {
            userImage:
            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
       ],
+     sharedPosts: [],
    );
   @override
   Widget build(BuildContext context) {
@@ -219,14 +220,15 @@ class VisitProfile extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
-                  itemCount: user.posts.length,
+                  itemCount: user.posts?.length,
                   itemBuilder: (context, i) => ChangeNotifierProvider<PostModel>(
-                    create: (context) => user.posts[i],
+                    create: (context) => user.posts![i],
                     child: Consumer<PostModel>(
                       builder: (context, model, child) =>
                           postBuilder(model: model, context: context),
                     ),
                   )),
+
               const SizedBox(
                 height: 55,
               ),

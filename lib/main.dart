@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:social_master/modules/auth/login.dart';
-import 'package:social_master/modules/auth/reset_password/reset_password.dart';
-import 'package:social_master/modules/auth/signup_details.dart';
-import 'package:social_master/modules/welcome/welcome_view_page.dart';
+import 'package:social_master/modules/app/home.dart';
 import 'package:social_master/shared/styles/colors.dart';
-import 'modules/app/home.dart';
-import 'modules/auth/reset_password/reset_password_code.dart';
-import 'modules/auth/signup.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -23,15 +16,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Social Master',
       theme: ThemeData(
-        appBarTheme: AppBarTheme(color:AppTheme.colors.purple ),
+        appBarTheme: AppBarTheme(color: AppTheme.colors.purple),
         primaryColor: AppTheme.colors.purple,
-          primarySwatch: Colors.deepPurple,
-          // primarySwatch: Colors.purple,
-          ),
-
-      home:  Signup(),
-
-
+        primarySwatch: Colors.deepPurple,
+        // primarySwatch: Colors.purple,
+      ),
+      home: Home(),
     );
   }
 }

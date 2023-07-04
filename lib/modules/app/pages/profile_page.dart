@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:social_master/models/postmodel.dart';
 import 'package:social_master/models/usermodel.dart';
 import 'package:social_master/modules/app/edit_profile.dart';
+import 'package:social_master/modules/app/create_post.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../../../shared/components/post_component.dart';
@@ -46,7 +47,7 @@ class ProfilePage extends StatelessWidget {
         likes: 400,
         comments: 12,
         shares: 3,
-        caption: 'caption',
+        caption: 'my mym my mym my my mym my my my my m my mym my my my my caption',
         date: '30/12/2019',
         userName: 'Habibi wallah',
         image:
@@ -226,7 +227,7 @@ class ProfilePage extends StatelessWidget {
                   Text('${user.fname} ${user.lname}',
                       style: TextStyle(
                           fontFamily: 'SignikaNegative',
-                          fontSize: 20,
+                          fontSize: 22,
                           color: AppTheme.colors.darkPurple,
                           fontWeight: FontWeight.bold)),
                   const SizedBox(
@@ -252,7 +253,7 @@ class ProfilePage extends StatelessWidget {
                   myMaterialButton(
                       text: 'Create a new post',
                       width: double.infinity,
-                      onPressed: () {},
+                      onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CreatePost()));},
                       fontSize: 18),
                   Padding(
                     padding: const EdgeInsets.symmetric(

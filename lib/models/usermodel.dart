@@ -39,7 +39,8 @@ class OtherUserModel extends ChangeNotifier{
   String caption;
   String profileImage;
   String backgroundImage;
-  List<PostModel> posts;
+  List<PostModel>? posts;
+  List<SharedPostModel>? sharedPosts;
 
   OtherUserModel({
     required this.name,
@@ -52,5 +53,6 @@ class OtherUserModel extends ChangeNotifier{
     required this.profileImage,
     required this.backgroundImage,
     required this.posts,
+    required this.sharedPosts,
   });
 }
