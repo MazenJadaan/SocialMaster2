@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_master/modules/app/home.dart';
-
 import 'package:social_master/shared/styles/colors.dart';
-import 'modules/app/pages/profile_page.dart';
-
 
 void main() {
   runApp(const MyApp());

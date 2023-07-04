@@ -19,13 +19,13 @@ class _EditProfileState extends State<EditProfile> {
   String? chosenDate = 'mm/dd/yyyy';
   late int selectedRadio;
 
-  late TextEditingController _firstNameController =
+  late final TextEditingController _firstNameController =
       TextEditingController(text: widget.user.fname);
 
-  late TextEditingController _lastNameController =
+  late final TextEditingController _lastNameController =
       TextEditingController(text: widget.user.lname);
 
-  late TextEditingController _phoneNumberController =
+  late final TextEditingController _phoneNumberController =
       TextEditingController(text: widget.user.phoneNumber);
 
 

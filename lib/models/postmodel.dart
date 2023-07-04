@@ -1,9 +1,4 @@
-
-
-
-
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PostModel extends ChangeNotifier {
   String? userImage;
@@ -37,12 +32,12 @@ class PostModel extends ChangeNotifier {
 
   handleLike(){
     isLiked == false ? likeColor=Colors.red : likeColor=Colors.white;
-    isLiked = !isLiked;
+    this.isLiked = !isLiked;
     notifyListeners();
   }
   handleSave(){
     isSaved == false ? saveColor=Colors.orange : saveColor=Colors.white;
-    isSaved = !isSaved;
+    this.isSaved = !isSaved;
     notifyListeners();
   }
 

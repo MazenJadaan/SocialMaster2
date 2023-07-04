@@ -6,8 +6,8 @@ import '../../../shared/components/post_component.dart';
 
 class Tab1 extends StatelessWidget {
   Tab1(this.scrollController, {Key? key}) : super(key: key);
-  ScrollController scrollController;
-  List<PostModel> posts = [
+  final ScrollController scrollController;
+   List<PostModel> posts = [
     PostModel(
       isSaved: false,
       isLiked: false,
@@ -22,7 +22,7 @@ class Tab1 extends StatelessWidget {
           'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
     ),
     PostModel(
-      isSaved: false,
+        isSaved: false,
         isLiked: false,
         likes: 400,
         comments: 12,
@@ -35,7 +35,7 @@ class Tab1 extends StatelessWidget {
         userImage:
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
     PostModel(
-      isSaved: false,
+        isSaved: false,
         isLiked: false,
         likes: 400,
         comments: 12,
@@ -48,7 +48,7 @@ class Tab1 extends StatelessWidget {
         userImage:
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
     PostModel(
-      isSaved: false,
+        isSaved: false,
         isLiked: false,
         likes: 400,
         comments: 12,
@@ -75,8 +75,9 @@ class Tab1 extends StatelessWidget {
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 itemCount: posts.length,
-                itemBuilder: (context, i) => ChangeNotifierProvider<PostModel>(
-                      create: (context) => posts[i],
+                itemBuilder: (context, i) =>
+                    ChangeNotifierProvider<PostModel>.value(
+                      value: posts[i],
                       child: Consumer<PostModel>(
                         builder: (context, model, child) =>
                             postBuilder(model: model, context: context),

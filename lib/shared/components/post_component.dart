@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:social_master/models/postmodel.dart';
+import 'package:social_master/modules/app/edit_post.dart';
 import 'package:social_master/modules/app/visit_profile.dart';
 
 import '../styles/colors.dart';
@@ -263,7 +264,8 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                         onTap: () {
                           print('edit');
                         },
-                        child: Row(
+                        value: 1,
+                        child: const Row(
                           children: [
                             FaIcon(FontAwesomeIcons.pen),
                             SizedBox(
@@ -277,7 +279,8 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                         onTap: () {
                           print('delete');
                         },
-                        child: Row(
+                        value: 2,
+                        child: const Row(
                           children: [
                             FaIcon(FontAwesomeIcons.trash),
                             SizedBox(
@@ -291,8 +294,9 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                         onTap: () {
                           print('promotion');
                         },
-                        child: Row(
-                          children: [
+                        value: 3,
+                        child:  const Row(
+                          children:  [
                             FaIcon(FontAwesomeIcons.dollarSign),
                             SizedBox(
                               width: 8,
@@ -302,6 +306,22 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                         ),
                       ),
                     ],
+                    onSelected: (value){
+                      switch (value) {
+                        case 1:
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EditPost(model)));
+                          break;
+                        case 2:
+                          print('delete');
+                          break;
+                        case 3:
+                          print('promote');
+                          break;
+                      }
+
+
+
+                    },
                   ),
                   GestureDetector(
                     onTap: () {model.handleSave();},
