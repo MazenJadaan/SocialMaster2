@@ -208,7 +208,7 @@ class _EditProfileState extends State<EditProfile> {
                     setSelectedRadio(val!);
                   }),
               const SizedBox(
-                height: 30,
+                height: 50,
               ),
               Center(
                 child: myMaterialButton(

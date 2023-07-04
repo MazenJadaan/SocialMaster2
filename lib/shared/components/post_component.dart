@@ -8,9 +8,7 @@ import 'package:social_master/modules/app/visit_profile.dart';
 
 import '../styles/colors.dart';
 
-Widget postBuilder({required PostModel model, context}) =>
-
-    Padding(
+Widget postBuilder({required PostModel model, context}) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
       child: Container(
         width: double.infinity,
@@ -68,8 +66,10 @@ Widget postBuilder({required PostModel model, context}) =>
                   const Spacer(),
                   //save post
                   GestureDetector(
-                    onTap: () {model.handleSave();},
-                    child:  FaIcon(FontAwesomeIcons.solidBookmark,
+                    onTap: () {
+                      model.handleSave();
+                    },
+                    child: FaIcon(FontAwesomeIcons.solidBookmark,
                         color: model.saveColor, size: 20),
                   ),
 
@@ -90,7 +90,9 @@ Widget postBuilder({required PostModel model, context}) =>
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: GestureDetector(
-                onDoubleTap: (){model.handleLike();},
+                onDoubleTap: () {
+                  model.handleLike();
+                },
                 child: Stack(
                   alignment: AlignmentDirectional.bottomCenter,
                   children: [
@@ -120,7 +122,9 @@ Widget postBuilder({required PostModel model, context}) =>
                           bottomRight: Radius.circular(30),
                           bottomLeft: Radius.circular(30)),
                       child: BackdropFilter(
-                        filter: model.image == ''?ImageFilter.blur(sigmaY: 0.0,sigmaX: 0.0):ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
+                        filter: model.image == ''
+                            ? ImageFilter.blur(sigmaY: 0.0, sigmaX: 0.0)
+                            : ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
                         child: Container(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
@@ -136,8 +140,10 @@ Widget postBuilder({required PostModel model, context}) =>
                                   width: 5,
                                 ),
                                 GestureDetector(
-                                  onTap: () {model.handleLike();},
-                                  child:  FaIcon(FontAwesomeIcons.solidHeart,
+                                  onTap: () {
+                                    model.handleLike();
+                                  },
+                                  child: FaIcon(FontAwesomeIcons.solidHeart,
                                       size: 21, color: model.likeColor),
                                 ),
                                 const SizedBox(
@@ -173,7 +179,7 @@ Widget postBuilder({required PostModel model, context}) =>
                                   onTap: () {},
                                   child: const FaIcon(
                                     FontAwesomeIcons.solidPaperPlane,
-                                    size: 19,
+                                    size: 20,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -256,7 +262,6 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                   ),
                   const Spacer(),
 
-
                   PopupMenuButton(
                     color: Colors.white,
                     itemBuilder: (context) => [
@@ -295,8 +300,8 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                           print('promotion');
                         },
                         value: 3,
-                        child:  const Row(
-                          children:  [
+                        child: const Row(
+                          children: [
                             FaIcon(FontAwesomeIcons.dollarSign),
                             SizedBox(
                               width: 8,
@@ -306,10 +311,11 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                         ),
                       ),
                     ],
-                    onSelected: (value){
+                    onSelected: (value) {
                       switch (value) {
                         case 1:
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EditPost(model)));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => EditPost(model)));
                           break;
                         case 2:
                           print('delete');
@@ -318,14 +324,13 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                           print('promote');
                           break;
                       }
-
-
-
                     },
                   ),
                   GestureDetector(
-                    onTap: () {model.handleSave();},
-                    child:  FaIcon(
+                    onTap: () {
+                      model.handleSave();
+                    },
+                    child: FaIcon(
                       FontAwesomeIcons.solidBookmark,
                       color: model.saveColor,
                       size: 20,
@@ -348,7 +353,9 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: GestureDetector(
-                onDoubleTap: (){model.handleLike();},
+                onDoubleTap: () {
+                  model.handleLike();
+                },
                 child: Stack(
                   alignment: AlignmentDirectional.bottomCenter,
                   children: [
@@ -371,8 +378,10 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                       borderRadius: const BorderRadius.only(
                           bottomRight: Radius.circular(30),
                           bottomLeft: Radius.circular(30)),
-                      child:  BackdropFilter(
-                        filter: model.image == ''?ImageFilter.blur(sigmaY: 0.0,sigmaX: 0.0):ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
+                      child: BackdropFilter(
+                        filter: model.image == ''
+                            ? ImageFilter.blur(sigmaY: 0.0, sigmaX: 0.0)
+                            : ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
                         child: Container(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
@@ -388,9 +397,11 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                                   width: 5,
                                 ),
                                 GestureDetector(
-                                  onTap: () {model.handleLike();},
+                                  onTap: () {
+                                    model.handleLike();
+                                  },
                                   child: FaIcon(FontAwesomeIcons.solidHeart,
-                                      size: 19, color: model.likeColor),
+                                      size: 21, color: model.likeColor),
                                 ),
                                 const SizedBox(
                                   width: 8,
@@ -408,7 +419,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                                   onTap: () {},
                                   child: const FaIcon(
                                       FontAwesomeIcons.solidCommentDots,
-                                      size: 19,
+                                      size: 21,
                                       color: Colors.white),
                                 ),
                                 const SizedBox(
@@ -425,7 +436,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                                   onTap: () {},
                                   child: const FaIcon(
                                     FontAwesomeIcons.solidPaperPlane,
-                                    size: 19,
+                                    size: 20,
                                     color: Colors.white,
                                   ),
                                 ),
