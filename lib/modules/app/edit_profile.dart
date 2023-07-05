@@ -61,7 +61,7 @@ class _EditProfileState extends State<EditProfile> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 10,
+                height: 15,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -72,6 +72,7 @@ class _EditProfileState extends State<EditProfile> {
                         color: AppTheme.colors.darkPurple,
                         fontWeight: FontWeight.bold)),
               ),
+              SizedBox(height: 20),
               Row(
                 children: [
                   Expanded(
@@ -91,7 +92,7 @@ class _EditProfileState extends State<EditProfile> {
                 ],
               ),
               const SizedBox(
-                height: 8,
+                height: 20,
               ),
               myTextFormField(
                   suffixOnPressed: () {},
@@ -104,7 +105,7 @@ class _EditProfileState extends State<EditProfile> {
                   label: "Phone Number",
                   inputType: TextInputType.number),
               const SizedBox(
-                height: 2,
+                height: 40,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -164,49 +165,8 @@ class _EditProfileState extends State<EditProfile> {
               const SizedBox(
                 height: 8,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text('-Set your new gender.',
-                    style: TextStyle(
-                      fontFamily: 'SignikaNegative',
-                      fontSize: 15,
-                      color: AppTheme.colors.darkPurple,
-                    )),
-              ),
-              RadioListTile(
-                  title:  Row(
-                    children: [
-                      Text(
-                        'Male',
-                        style: TextStyle(
-                            fontSize: 26, fontFamily: 'SignikaNegative'),
-                      ),
-                      Icon(Icons.man)
-                    ],
-                  ),
-                  activeColor: Colors.blue,
-                  value: 1,
-                  groupValue: selectedRadio,
-                  onChanged: (val) {
-                    setSelectedRadio(val!);
-                  }),
-              RadioListTile(
-                  title:  Row(
-                    children: [
-                      Text(
-                        'Female',
-                        style: TextStyle(
-                            fontSize: 26, fontFamily: 'SignikaNegative'),
-                      ),
-                      Icon(Icons.woman)
-                    ],
-                  ),
-                  activeColor: Colors.red,
-                  value: 2,
-                  groupValue: selectedRadio,
-                  onChanged: (val) {
-                    setSelectedRadio(val!);
-                  }),
+
+
               const SizedBox(
                 height: 50,
               ),
