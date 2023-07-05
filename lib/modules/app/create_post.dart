@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:lottie/lottie.dart';
 import 'package:social_master/shared/components/components.dart';
 import '../../shared/styles/colors.dart';
 
@@ -46,6 +47,12 @@ class _CreatePostState extends State<CreatePost> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Center(
+              child: Container(height: 160,
+                  width: 160,
+                  child: Lottie.asset("assets/images/postadd.json")),
+            ),
+
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text('-Write a Caption:',
@@ -56,16 +63,16 @@ class _CreatePostState extends State<CreatePost> {
                   )),
             ),
             captionTextFormField(
-                controller: _captionController, label: 'Caption', maxlines: 3),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text('-Add photo:',
-                  style: TextStyle(
-                    fontFamily: 'SignikaNegative',
-                    fontSize: 16,
-                    color: AppTheme.colors.darkPurple,
-                  )),
-            ),
+                controller: _captionController, label: 'Caption', maxlines: 2),
+            // Padding(
+            //   padding: const EdgeInsets.all(10.0),
+            //   child: Text('-Add photo:',
+            //       style: TextStyle(
+            //         fontFamily: 'SignikaNegative',
+            //         fontSize: 16,
+            //         color: AppTheme.colors.darkPurple,
+            //       )),
+            // ),
             GestureDetector(
               child: image != null
                   ? Padding(
@@ -74,7 +81,7 @@ class _CreatePostState extends State<CreatePost> {
                         image!,
                         // height: 165,
                         // width: 165,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                       ),
                     )
                   : Center(
@@ -91,7 +98,7 @@ class _CreatePostState extends State<CreatePost> {
                               padding: const EdgeInsets.all(20.0),
                               child: Icon(
                                 Icons.add_photo_alternate_outlined,
-                                size: 150,
+                                size: 100,
                                 color: AppTheme.colors.opacityPurple,
                               ),
                             ))),
@@ -116,7 +123,7 @@ class _CreatePostState extends State<CreatePost> {
                   )),
             ),
             const SizedBox(
-              height: 20,
+              height: 60,
             ),
             Center(
               child: myMaterialButton(
