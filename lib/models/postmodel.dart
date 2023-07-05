@@ -11,9 +11,9 @@ class PostModel extends ChangeNotifier {
   int comments = 0;
   int shares = 0;
   bool isLiked = false;
-  Color likeColor =Colors.white;
+  Color? likeColor ;
   bool isSaved = false;
-  Color saveColor =Colors.white;
+  Color? saveColor ;
 
   PostModel({
     required this.likes,
@@ -28,7 +28,10 @@ class PostModel extends ChangeNotifier {
     this.userImage,
     this.vid,
 
-  });
+  }){
+    this.likeColor = isLiked ? Colors.red:Colors.white;
+    this.saveColor = isSaved ?Colors.orange:Colors.white;
+  }
 
   handleLike(){
     isLiked == false ? likeColor=Colors.red : likeColor=Colors.white;
@@ -56,9 +59,9 @@ class MyPostModel extends ChangeNotifier{
   int comments = 0;
   int shares = 0;
   bool isLiked = false;
-  Color likeColor =Colors.white;
+  Color? likeColor;
   bool isSaved = false;
-  Color saveColor =Colors.white;
+  Color? saveColor ;
 
   MyPostModel({
     required this.likes,
@@ -72,7 +75,10 @@ class MyPostModel extends ChangeNotifier{
     this.image,
     this.userImage,
 
-  });
+  }){
+    this.likeColor = isLiked ? Colors.red:Colors.white;
+    this.saveColor = isSaved ?Colors.orange:Colors.white;
+  }
 
   handleLike(){
     isLiked == false ? likeColor=Colors.red : likeColor=Colors.white;
