@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/modules/app/create_post.dart';
+import 'package:social_master/modules/app/home_page_content/navbar.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../home_page_content/tab1.dart';
 import '../home_page_content/tab2.dart';
@@ -12,6 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
         body: DefaultTabController(
           length: 2,
           child: NestedScrollView(
@@ -24,12 +26,12 @@ class HomePage extends StatelessWidget {
                   floating: true,
                   elevation: 0.0,
                   pinned: true,
-                  leading: IconButton(
-                    icon: const FaIcon(FontAwesomeIcons.bars),
-                    onPressed: () {
-
-                    },
-                  ),
+                  // leading: IconButton(
+                  //   icon: const FaIcon(FontAwesomeIcons.bars),
+                  //   onPressed: () {
+                  //
+                  //   },
+                  // ),
                   title:   const Center(
                     child: Image(image: AssetImage('assets/images/logo_name.png',),width: 125)
                   ),
