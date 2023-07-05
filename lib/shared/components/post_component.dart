@@ -742,8 +742,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                         ],
                       ),
                     ),
-                  ),
-                  // Comment(controller: _commentController, hint: 'write a comment'),
+                  )
                 ],
               ),
             ),
