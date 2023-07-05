@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:lottie/lottie.dart';
 import 'package:social_master/models/story/data.dart';
 import 'package:social_master/modules/app/home.dart';
 import 'package:social_master/modules/app/home_page_content/story.dart';
@@ -51,11 +52,10 @@ class _StoryAddState extends State<StoryAdd> {
       ),
       body: Column(
         children: [
+          Container(height: 140,
+              width: 140,
+              child: Lottie.asset("assets/images/addstory.json")),
           SizedBox(height: 10),
-          Text('Share',style: TextStyle(fontSize: 40,fontFamily: 'Pangolin'),),
-          Text('your memories with',style: TextStyle(fontSize: 20,fontFamily: 'Pangolin'),),
-          Text('your friends',style: TextStyle(fontSize: 20,fontFamily: 'Pangolin'),),
-          SizedBox(height: 40),
           Center(
             child: SingleChildScrollView(
               child: Column(
