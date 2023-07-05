@@ -44,6 +44,18 @@ class NavBar extends StatelessWidget {
           ),
           const Divider(thickness: 1,),
           const ListTile(
+            leading: Icon(Icons.archive,color: Colors.purple,),
+            title: Text('My Archive'),
+            trailing: Icon(Icons.chevron_right),
+          ),
+          const Divider(thickness: 1,),
+          const ListTile(
+            leading: Icon(Icons.star,color: Colors.purple,),
+            title: Text('Account Verification'),
+            trailing: Icon(Icons.chevron_right),
+          ),
+          const Divider(thickness: 1,),
+          const ListTile(
             leading: Icon(Icons.language,color: Colors.purple,),
             title: Text('Language'),
             trailing: Icon(Icons.chevron_right),
@@ -52,7 +64,7 @@ class NavBar extends StatelessWidget {
           const ListTile(
             leading: Icon(Icons.mode_edit,color: Colors.purple,),
             title: Text('Theming'),
-            trailing: Icon(Icons.chevron_right),
+            trailing: Icon(Icons.toggle_off_outlined,color: Colors.purple,),
           ),
           const Divider(thickness: 1,),
           const ListTile(
