@@ -174,7 +174,7 @@ class _EditProfileState extends State<EditProfile> {
                     )),
               ),
               RadioListTile(
-                  title: const Row(
+                  title:  Row(
                     children: [
                       Text(
                         'Male',
@@ -191,7 +191,7 @@ class _EditProfileState extends State<EditProfile> {
                     setSelectedRadio(val!);
                   }),
               RadioListTile(
-                  title: const Row(
+                  title:  Row(
                     children: [
                       Text(
                         'Female',

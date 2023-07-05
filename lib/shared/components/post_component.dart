@@ -275,7 +275,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                           print('edit');
                         },
                         value: 1,
-                        child: const Row(
+                        child:  Row(
                           children: [
                             FaIcon(FontAwesomeIcons.pen),
                             SizedBox(
@@ -290,7 +290,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                           print('delete');
                         },
                         value: 2,
-                        child: const Row(
+                        child:  Row(
                           children: [
                             FaIcon(FontAwesomeIcons.trash),
                             SizedBox(
@@ -305,7 +305,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                           print('promotion');
                         },
                         value: 3,
-                        child: const Row(
+                        child:  Row(
                           children: [
                             FaIcon(FontAwesomeIcons.dollarSign),
                             SizedBox(

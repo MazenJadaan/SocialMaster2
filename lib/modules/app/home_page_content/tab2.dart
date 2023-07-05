@@ -1,4 +1,10 @@
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:social_master/models/postmodel.dart';
 import 'package:social_master/models/story/data.dart';
 import 'package:social_master/modules/app/home.dart';
@@ -10,9 +16,19 @@ import '../../../shared/components/post_component.dart';
 import '../../../shared/styles/colors.dart';
 import '../visit_profile.dart';
 
-class Tab2 extends StatelessWidget {
+class Tab2 extends StatefulWidget {
   Tab2(this.scrollController, {Key? key}) : super(key: key);
   ScrollController scrollController;
+
+
+
+  @override
+  State<Tab2> createState() => _Tab2State();
+}
+
+class _Tab2State extends State<Tab2> {
+
+
   List<PostModel> posts = [
     PostModel(
       likes: 400,
@@ -24,7 +40,7 @@ class Tab2 extends StatelessWidget {
       image:
           'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
       userImage:
-          'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
+          'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg', isLiked: true, isSaved: true,
     ),
     PostModel(
         likes: 400,
@@ -36,7 +52,7 @@ class Tab2 extends StatelessWidget {
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg', isLiked: true,isSaved: false),
     PostModel(
         likes: 400,
         comments: 12,
@@ -47,7 +63,7 @@ class Tab2 extends StatelessWidget {
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg', isLiked: true,isSaved: true),
     PostModel(
         likes: 400,
         comments: 12,
@@ -58,7 +74,7 @@ class Tab2 extends StatelessWidget {
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg', isLiked: false,isSaved: false),
     PostModel(
         likes: 400,
         comments: 12,
@@ -69,8 +85,24 @@ class Tab2 extends StatelessWidget {
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg', isLiked: true,isSaved: false),
   ];
+  File? image;
+
+  final ImagePicker picker = ImagePicker();
+
+  Future uploadImage() async {
+    try {
+      final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+      if (pickedImage == null) return;
+      // if (pickedImage != null) {
+      final image2 = File(pickedImage.path);
+      setState(() {});
+      image = image2;
+    } on PlatformException catch (e) {
+      print('Failed to upload image $e');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,24 +119,13 @@ class Tab2 extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
                   child: MaterialButton(
+                         child: Icon(Icons.add,size: 60,),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => StoryAdd()));
+                      setState(() {});
                     },
-                    child: Stack(children: [
-                      Container(
-                        width: 40,
-                        height: 40,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                        ),
-                      ),
-                      Center(
-                          child: Icon(
-                        Icons.add,
-                        size: 60,
-                      ))
-                    ]),
+
                   ),
                 ),
                 Padding(
@@ -195,7 +216,7 @@ class Tab2 extends StatelessWidget {
           ),
           OutlinedButton(
               onPressed: () {
-                scrollController.animateTo(0,
+                widget.scrollController.animateTo(0,
                     duration: const Duration(milliseconds: 500),
                     curve: Curves.easeIn);
               },

@@ -31,14 +31,7 @@ class HomePage extends StatelessWidget {
                     },
                   ),
                   title:   const Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(image: AssetImage('assets/images/logo_name.png',),width: 125),
-                        //Text("Master",style: TextStyle(fontSize: 40,fontFamily: 'Cairo',color: Colors.black),),
-
-                      ],
-                    )
+                    child: Image(image: AssetImage('assets/images/logo_name.png',),width: 125)
                   ),
                   actions:  [
                   IconButton(
