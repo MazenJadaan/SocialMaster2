@@ -48,8 +48,8 @@ class _CreatePostState extends State<CreatePost> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Container(height: 160,
-                  width: 160,
+              child: Container(height: 190,
+                  width: 190,
                   child: Lottie.asset("assets/images/postadd.json")),
             ),
 
