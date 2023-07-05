@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
     SeePage(),
     HomePage(),
     ProfilePage(),
-    ChatPage(),
+    ChatPage()
   ];
 
   @override
