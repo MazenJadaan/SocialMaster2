@@ -153,8 +153,8 @@ class StoriesController extends Controller
     {
         $expireTime = Carbon::now();
         $userID = Auth::user()->id;
-        $user = userfollowers::where('user_id', $userID)->get();
-        $ids = $user->pluck('user_profile_id')->toArray();
+        $userFollowing = userfollowers::where('user_id', $userID)->get();
+        $ids = $userFollowing->pluck('user_profile_id')->toArray();
         $finalResult = showStories::collection(story::whereIn('user_profile_id', $ids)
             ->where('story_date_expire', '>', $expireTime)
             ->get());

@@ -7,6 +7,7 @@ use App\Models\User_profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StoriesController;
 use App\Http\Controllers\UserProfile;
@@ -32,7 +33,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('/complete_register', [AuthController::class, 'complete_register']);
 
-    Route::get('showMyProfile', [UserProfile::class,'showMyProfile']);
+    Route::get('showMyProfile', [UserProfile::class, 'showMyProfile']);
 
     Route::post('addProfileInformations', [UserProfile::class, 'addInformations']);
 
@@ -63,6 +64,12 @@ Route::middleware('auth:api')->group(function () {
     Route::get('showFollwingStory', [StoriesController::class, 'showStory']);
 
     Route::delete('deleteStory/{id}', [StoriesController::class, 'deleteStory']);
+
+    Route::post('Createnewpost', [PostController::class, 'createNewPost']);
+
+    Route::get('returnMyPosts', [PostController::class, 'showAllUserPost']);
+
+    Route::get('returnMyFollowingPosts', [PostController::class, 'showMyFollowingPosts']);
 });
 
 

@@ -21,16 +21,16 @@ class UserProfile extends Controller
 {
     use ApiResponseTrait;
 
-     public function showMyProfile()
-     {
-         $myid = Auth::id();
-         $user = User::select('id','first_name','last_name','phone_num','gender','birthdate')->with('user_profile')->find($myid);
-         return $this->ApiResponse($user, ' My Profile Information returned successfully', 200);
-     }
+    public function showMyProfile()
+    {
+        $myid = Auth::id();
+        $user = User::select('id', 'first_name', 'last_name', 'phone_num', 'gender', 'birthdate')->with('user_profile')->find($myid);
+        return $this->ApiResponse($user, ' My Profile Information returned successfully', 200);
+    }
     public function addInformations(Request $request)
     {
         $data = $request->validate([
-            'job' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u', // اخر وحدة لمنع ادهال الارقام
+            'job' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u',
             'study_place' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u',
             'place_stay' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u',
             'place_born' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u',
@@ -82,9 +82,9 @@ class UserProfile extends Controller
     {
         $profileID = User_profile::find($id)->id;
         $userID = (Auth::id());
-        $userAlreadyFollower=userfollowers::where([
-            ['user_id',$userID],
-            ['user_profile_id',$profileID]
+        $userAlreadyFollower = userfollowers::where([
+            ['user_id', $userID],
+            ['user_profile_id', $profileID]
         ])->first();
         if ($userID != $profileID && !$userAlreadyFollower) {
             $follow = userfollowers::create([
@@ -95,14 +95,11 @@ class UserProfile extends Controller
             $userProfile->increment('followers_number', 1);
             $userProfile->save();
             return $this->ApiResponse('null', 'follow is done', 200);
-        }
-        elseif($userID == $profileID ) {
+        } elseif ($userID == $profileID) {
             return $this->ApiResponse('null', 'you cant follow yourself يا متوحد', '401');
-        }
-        elseif($userAlreadyFollower){
+        } elseif ($userAlreadyFollower) {
             return $this->ApiResponse('null', 'you already following this user', '401');
         }
-
     }
 
     public function unFollow($id)
@@ -153,7 +150,7 @@ class UserProfile extends Controller
         return $this->ApiResponse($response, 'Congratulations! Your account verification was successful.', 200);
 
         $user = officialaccounts::create([
-            'user_profile_id'=>$id
+            'user_profile_id' => $id
         ]);
     }
 

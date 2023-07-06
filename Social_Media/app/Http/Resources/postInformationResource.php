@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class showStories extends JsonResource
+class postInformationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,13 +16,12 @@ class showStories extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'story_body'=>$this->story_body,
-            'story_date'=>$this->story_date,
-            'story_time'=>$this->story_time,
-            'story_date_expire'=>$this->story_date_expire,
-            'media'=>$this->media,
-            'created_at'=>$this->created_at->diffForHumans(),
-            'profile'=>$this->userProfile->toArray(),
+            'user_id'=>$this->user_id,
+            'post_body'=>$this->post_body,
+            'user_profile_id'=>$this->user_profile_id,
+            'post_time'=>$this->post_time,
+            'post_date'=>$this->post_date,
+            'created_at'=>$this->created_at->diffForHumans()
         ];
     }
 }
