@@ -31,7 +31,8 @@ class UserModel extends ChangeNotifier{
 
 class OtherUserModel extends ChangeNotifier{
   bool isFollowed;
-  String name;
+  String fname;
+  String lname;
   int followers;
   int following;
   String phoneNumber;
@@ -45,7 +46,8 @@ class OtherUserModel extends ChangeNotifier{
 
   OtherUserModel({
     required this.isFollowed,
-    required this.name,
+    required this.fname,
+    required this.lname,
     required this.followers,
     required this.following,
     required this.phoneNumber,

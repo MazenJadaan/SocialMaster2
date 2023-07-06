@@ -13,7 +13,8 @@ class VisitProfile extends StatelessWidget {
 
 
    OtherUserModel user = OtherUserModel(
-     name: 'mohamad',
+     fname: 'mohamad',
+     lname: 'alraie',
      caption: 'habibi come to lebanon',
      isFollowed: true,
      followers: 500,
@@ -207,7 +208,7 @@ class VisitProfile extends StatelessWidget {
                     user.isFollowed= !user.isFollowed;
                         if (user.isFollowed) {
                           Fluttertoast.showToast(
-                              msg: "Followed",
+                              msg: "${user.fname} Followed",
                               gravity: ToastGravity.BOTTOM,
                               toastLength: Toast.LENGTH_SHORT,
                               backgroundColor: Colors.black45,
