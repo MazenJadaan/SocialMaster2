@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../modules/chat_detail_page.dart';
+import 'chat_detail_page.dart';
 
 class ChatMessage{
   String message;

@@ -5,7 +5,7 @@ import 'package:social_master/modules/app/pages/search_page.dart';
 import 'package:social_master/modules/app/pages/home_page.dart';
 import 'package:social_master/modules/app/pages/see_page.dart';
 import 'package:social_master/modules/app/pages/profile_page.dart';
-import 'package:social_master/modules/chat_page.dart';
+import 'package:social_master/communicate/chat/chat_page.dart';
 
 import '../../shared/styles/colors.dart';
 

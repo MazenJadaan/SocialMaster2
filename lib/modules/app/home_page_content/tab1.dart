@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/shared/styles/colors.dart';
-import '../../../models/postmodel.dart';
+import '../../../models/post/postmodel.dart';
 import '../../../shared/components/post_component.dart';
 
 class Tab1 extends StatelessWidget {

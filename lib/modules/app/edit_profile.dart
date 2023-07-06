@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_master/shared/validate/validate.dart';
 import '../../shared/styles/colors.dart';
-import '../../models/usermodel.dart';
+import '../../models/edit_profile/usermodel.dart';
 import '../../shared/components/components.dart';
 
 class EditProfile extends StatefulWidget {

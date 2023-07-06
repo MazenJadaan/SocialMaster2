@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:social_master/models/postmodel.dart';
+import 'package:social_master/models/post/postmodel.dart';
 
 class UserModel extends ChangeNotifier{
   String fname;

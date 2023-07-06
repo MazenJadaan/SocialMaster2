@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../modules/chat_detail_page.dart';
+import '../../communicate/chat/chat_detail_page.dart';
 
 class ChatUsersList extends StatefulWidget{
   String text;

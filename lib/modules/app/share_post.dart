@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:social_master/models/postmodel.dart';
+import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/shared/components/post_component.dart';
 
 import '../../shared/components/components.dart';

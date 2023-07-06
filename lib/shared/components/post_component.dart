@@ -1,11 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:social_master/models/postmodel.dart';
+import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/modules/app/edit_post.dart';
 import 'package:social_master/modules/app/share_post.dart';
 import 'package:social_master/modules/app/visit_profile.dart';
-import '../../models/usermodel.dart';
+import '../../models/edit_profile/usermodel.dart';
 import '../styles/colors.dart';
 
 Widget postBuilder({required PostModel model, context}) => Padding(

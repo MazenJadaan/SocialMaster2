@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:social_master/models/postmodel.dart';
+import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/models/story/data.dart';
 import 'package:social_master/modules/app/home.dart';
 import 'package:social_master/modules/app/home_page_content/story.dart';

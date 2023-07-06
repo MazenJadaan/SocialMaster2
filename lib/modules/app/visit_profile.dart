@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../models/postmodel.dart';
+import '../../models/post/postmodel.dart';
 
-import '../../models/usermodel.dart';
+import '../../models/edit_profile/usermodel.dart';
 import '../../shared/components/components.dart';
 import '../../shared/components/post_component.dart';
 import '../../shared/styles/colors.dart';
