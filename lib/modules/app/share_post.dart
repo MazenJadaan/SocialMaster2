@@ -21,6 +21,7 @@ class SharePost extends StatelessWidget {
       ),
       body:  SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.all(10.0),
@@ -33,7 +34,17 @@ class SharePost extends StatelessWidget {
             ),
             captionTextFormField(
                 controller: _captionController, label: 'Caption', maxlines: 3),
-            postBuilder(model: post)
+            postBuilder(model: post),
+            const SizedBox(height: 10,),
+            Center(
+              child: myMaterialButton(
+                width: 240,
+                height: 50,
+                text: "Share",
+                onPressed: () async {},
+              ),
+            ),
+            const SizedBox(height: 10,),
           ],
         ),
       ),

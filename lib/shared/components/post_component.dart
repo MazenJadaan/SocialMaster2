@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/modules/app/edit_post.dart';
@@ -67,7 +68,9 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                   //save post
                   GestureDetector(
                     onTap: () {
+
                       model.handleSave();
+
                     },
                     child: FaIcon(FontAwesomeIcons.solidBookmark,
                         color: model.saveColor, size: 20),
@@ -275,7 +278,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                           print('edit');
                         },
                         value: 1,
-                        child:  Row(
+                        child: Row(
                           children: [
                             FaIcon(FontAwesomeIcons.pen),
                             SizedBox(
@@ -290,7 +293,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                           print('delete');
                         },
                         value: 2,
-                        child:  Row(
+                        child: Row(
                           children: [
                             FaIcon(FontAwesomeIcons.trash),
                             SizedBox(
@@ -305,7 +308,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                           print('promotion');
                         },
                         value: 3,
-                        child:  Row(
+                        child: Row(
                           children: [
                             FaIcon(FontAwesomeIcons.dollarSign),
                             SizedBox(
@@ -697,7 +700,9 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                         width: 18,
                                       ),
                                       GestureDetector(
-                                        onTap: () {model.doSomething();},
+                                        onTap: () {
+                                          model.doSomething();
+                                        },
                                         child: const FaIcon(
                                             FontAwesomeIcons.solidCommentDots,
                                             size: 21,
@@ -714,7 +719,12 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                           )),
                                       const Spacer(),
                                       GestureDetector(
-                                        onTap: () {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SharePost(model.post)));},
+                                        onTap: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      SharePost(model.post)));
+                                        },
                                         child: const FaIcon(
                                           FontAwesomeIcons.solidPaperPlane,
                                           size: 20,

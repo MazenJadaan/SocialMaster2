@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import '../../models/post/postmodel.dart';
 
@@ -14,6 +15,7 @@ class VisitProfile extends StatelessWidget {
    OtherUserModel user = OtherUserModel(
      name: 'mohamad',
      caption: 'habibi come to lebanon',
+     isFollowed: true,
      followers: 500,
      following: 1200,
      birthDate: '12/5/2001',
@@ -201,7 +203,24 @@ class VisitProfile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   myMaterialButton(width: 140,
-                      text: 'Follow', onPressed: () {}, fontSize: 18),
+                      text: !user.isFollowed?'Follow':'un Follow', onPressed: () {
+                    user.isFollowed= !user.isFollowed;
+                        if (user.isFollowed) {
+                          Fluttertoast.showToast(
+                              msg: "Followed",
+                              gravity: ToastGravity.BOTTOM,
+                              toastLength: Toast.LENGTH_SHORT,
+                              backgroundColor: Colors.black45,
+                              fontSize: 16);
+                        } else {
+                          Fluttertoast.showToast(
+                              msg: "un Followed",
+                              gravity: ToastGravity.BOTTOM,
+                              toastLength: Toast.LENGTH_SHORT,
+                              backgroundColor: Colors.black45,
+                              fontSize: 16);
+                        }
+                      }, fontSize: 18),
                   myMaterialButton(width: 140,
                       text: 'Message', onPressed: () {}, fontSize: 18),
                 ],

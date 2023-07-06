@@ -174,7 +174,6 @@ Widget myMaterialButton({
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
               color: Colors.white,
-
             ),
           ),
         ));

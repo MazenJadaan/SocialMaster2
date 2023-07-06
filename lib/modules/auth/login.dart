@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/modules/auth/reset_password/reset_password.dart';
@@ -154,9 +155,8 @@ class _LoginState extends State<Login> {
                               MaterialPageRoute(builder: (context) => Home()),
                               (route) => false);
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Failed')));
-                          // Fluttertoast.showToast(msg: "Email or Pass is Wrong !",gravity: ToastGravity.BOTTOM,toastLength: Toast.LENGTH_SHORT,backgroundColor: Colors.pink,timeInSecForIosWeb: 2,fontSize: 18);
+
+                           Fluttertoast.showToast(msg: "Email or Pass is Wrong !",gravity: ToastGravity.BOTTOM,toastLength: Toast.LENGTH_SHORT,backgroundColor: Colors.pink,timeInSecForIosWeb: 2,fontSize: 18);
                         }
                       }
                     },

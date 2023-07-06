@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:social_master/modules/app/create_post.dart';
-import 'package:social_master/modules/app/saved_posts.dart';
-import 'package:social_master/modules/app/home_page_content/story_add.dart';
-import 'package:social_master/modules/auth/login.dart';
-import 'package:social_master/modules/auth/reset_password/reset_password.dart';
-import 'package:social_master/modules/auth/signup_details.dart';
-import 'package:social_master/modules/welcome/welcome_view_page.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import 'modules/app/home.dart';
-import 'modules/auth/reset_password/reset_password_code.dart';
-import 'modules/auth/signup.dart';
 
 
 void main() {
@@ -19,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

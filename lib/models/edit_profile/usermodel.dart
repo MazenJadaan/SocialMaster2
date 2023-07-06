@@ -30,6 +30,7 @@ class UserModel extends ChangeNotifier{
 }
 
 class OtherUserModel extends ChangeNotifier{
+  bool isFollowed;
   String name;
   int followers;
   int following;
@@ -43,6 +44,7 @@ class OtherUserModel extends ChangeNotifier{
   List<SharedPostModel>? sharedPosts;
 
   OtherUserModel({
+    required this.isFollowed,
     required this.name,
     required this.followers,
     required this.following,

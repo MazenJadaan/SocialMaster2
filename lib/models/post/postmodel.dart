@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class PostModel extends ChangeNotifier {
   String? userImage;
@@ -39,8 +40,24 @@ class PostModel extends ChangeNotifier {
     notifyListeners();
   }
   handleSave(){
-    isSaved == false ? saveColor=Colors.orange : saveColor=Colors.white;
     this.isSaved = !isSaved;
+    this.isSaved ? saveColor=Colors.orange : saveColor=Colors.white;
+
+    if (this.isSaved) {
+      Fluttertoast.showToast(
+          msg: "Saved",
+          gravity: ToastGravity.BOTTOM,
+          toastLength: Toast.LENGTH_SHORT,
+          backgroundColor: Colors.black45,
+          fontSize: 16);
+    } else {
+      Fluttertoast.showToast(
+          msg: "Un Saved",
+          gravity: ToastGravity.BOTTOM,
+          toastLength: Toast.LENGTH_SHORT,
+          backgroundColor: Colors.black45,
+          fontSize: 16);
+    }
     notifyListeners();
   }
 
@@ -86,8 +103,24 @@ class MyPostModel extends ChangeNotifier{
     notifyListeners();
   }
   handleSave(){
-    isSaved == false ? saveColor=Colors.orange : saveColor=Colors.white;
     this.isSaved = !isSaved;
+    this.isSaved ? saveColor=Colors.orange : saveColor=Colors.white;
+
+    if (this.isSaved) {
+      Fluttertoast.showToast(
+          msg: "Saved",
+          gravity: ToastGravity.BOTTOM,
+          toastLength: Toast.LENGTH_SHORT,
+          backgroundColor: Colors.black45,
+          fontSize: 16);
+    } else {
+      Fluttertoast.showToast(
+          msg: "Un Saved",
+          gravity: ToastGravity.BOTTOM,
+          toastLength: Toast.LENGTH_SHORT,
+          backgroundColor: Colors.black45,
+          fontSize: 16);
+    }
     notifyListeners();
   }
   videoPlayer(){
@@ -109,7 +142,8 @@ class SharedPostModel extends ChangeNotifier{
     required this.post,
     this.userImage,
   });
-  doSomething()=>notifyListeners();
 
+
+  doSomething()=>notifyListeners();
 
 }
