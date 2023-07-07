@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\postInformationResource;
 use App\Models\post;
+use App\Models\savepost;
 use App\Models\userfollowers;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponseTrait;
 
 class PostController extends Controller
 {
     use ApiResponseTrait;
+    //dont know if done or not yet
     public function createNewPost(Request $request)
     {
         $userID = Auth::user()->id;
@@ -33,37 +36,85 @@ class PostController extends Controller
     public function editPost()
     {
     }
-
+    //not done yet
     public function showAllUserPost()
     {
         $userID = Auth::user()->id;
-        $userPosts = postInformationResource::collection(post::where('user_id', $userID)->get());
+        $userPosts = postInformationResource::collection(post::where('user_id', $userID)->orderBy('created_at', 'desc')->get());
         return $this->ApiResponse($userPosts, 'Information returned successfully', 200);
     }
-
+    //not done yet
     public function showMyFollowingPosts()
     {
         $userID = Auth::user()->id;
-        $userFollowing =userfollowers::where('user_id', $userID)->get();
+        $userFollowing = userfollowers::where('user_id', $userID)->get();
         $ids = $userFollowing->pluck('user_profile_id')->toArray();
-        $finalResult=postInformationResource::collection(post::whereIn('user_profile_id',$ids)->get());
-        return $this->ApiResponse($finalResult,'Information returned successfully',200);
+        $finalResult = postInformationResource::collection(post::whereIn('user_profile_id', $ids)->get());
+        return $this->ApiResponse($finalResult, 'Information returned successfully', 200);
+    }
+    //done
+    public function deletePost($id)
+    {
+        $userID = Auth::user()->id;
+        $post = post::where([
+            ['user_id', $userID],
+            ['id', $id]
+        ])->delete();
+        return $this->ApiResponse('null', 'Post has been deleted successfully', 200);
+    }
+    //done
+    public function savePost($id)
+    {
+        $userID = Auth::user()->id;
+        $result = savepost::where([
+            ['user_id', $userID],
+            ['post_id', $id]
+        ])->first();
+        if (!$result) {
+            $save = savepost::create([
+                'user_id' => $userID,
+                'post_id' => $id,
+            ]);
+            return $this->ApiResponse('done', 'Post has been saved successfully', 201);
+        } else {
+            return $this->ApiResponse('', 'Post has already been saved', 422);
+        }
+    }
+    //done
+    public function removePostsFromSavedLists($id)
+    {
+        $userID = Auth::user()->id;
+        $result = savepost::where([
+            ['user_id', $userID],
+            ['post_id', $id]
+        ])->delete();
+        return $this->ApiResponse('', 'Deleted successfully', 200);
     }
 
-    public function deletePost()
+    //not done yet 
+    public function showSavedPosts()
     {
-    }
-
-    public function savePost()
-    {
+        $userID = Auth::user()->id;
+        $result = savepost::where('user_id', $userID)->get();
+        $ids = $result->pluck('post_id')->toArray(); //2.5
+        $finalResult = DB::table('saveposts')
+            ->join('posts', 'saveposts.post_id', '=', 'posts.id')//لحتى نجيب معلومات البوست
+            ->join('users','posts.user_id','=','users.id')//لحتى نجيب اسم صاحب البوست
+            ->join('user_profiles','posts.user_profile_id','=','user_profiles.id')//لحتى نجيب صورتو 
+            ->where('saveposts.user_id',$userID)
+            ->whereIn('posts.id', $ids)
+            ->get();
+        return $this->ApiResponse($finalResult, 'Information returned successfully', 200);
     }
 
     public function promotPost()
     {
     }
-
+    //not done yet
     public function showAllWorldPosts()
     {
+        $timeline = postInformationResource::collection(post::inRandomOrder()->limit(60)->get());
+        return $this->ApiResponse($timeline, 'Post has been saved successfully', 200);
     }
 
     public function likePost()

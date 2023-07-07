@@ -14,6 +14,7 @@ class postInformationResource extends JsonResource
      */
     public function toArray($request)
     {
+        //not done yet
         return [
             'id'=>$this->id,
             'user_id'=>$this->user_id,

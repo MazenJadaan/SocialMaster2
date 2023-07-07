@@ -70,6 +70,16 @@ Route::middleware('auth:api')->group(function () {
     Route::get('returnMyPosts', [PostController::class, 'showAllUserPost']);
 
     Route::get('returnMyFollowingPosts', [PostController::class, 'showMyFollowingPosts']);
+
+    Route::delete('deletePosts/{id}', [PostController::class, 'deletePost']);
+
+    Route::post('savePosts/{id}', [PostController::class, 'savePost']);
+
+    Route::get('showSavedPosts', [PostController::class, 'showSavedPosts']);
+
+    Route::delete('cancelSavePost/{id}', [PostController::class, 'removePostsFromSavedLists']);
+
+    Route::get('allWorldTimeLine', [PostController::class, 'showAllWorldPosts']);
 });
 
 
