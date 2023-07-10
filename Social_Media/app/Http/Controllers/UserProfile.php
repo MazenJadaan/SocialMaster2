@@ -134,10 +134,10 @@ class UserProfile extends Controller
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         // $res = $stripe->tokens->create([
         //     'card' => [
-        //         'number' =>'4000005280000002',
-        //         'exp_month' =>6,
-        //         'exp_year' => 2024,
-        //         'cvc' => '314',
+        //         'number' =>bcrypt('4000005280000002'),
+        //         'exp_month' =>bcrypt(6),
+        //         'exp_year' => bcrypt(2024),
+        //         'cvc' => bcrypt('314'),
         //     ],
         // ]);
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
@@ -147,17 +147,10 @@ class UserProfile extends Controller
             'source' => 'tok_nl',
             'description' => 'Pay for make profile official',
         ]);
-        return $this->ApiResponse($response, 'Congratulations! Your account verification was successful.', 200);
-
-        $user = officialaccounts::create([
+        $official = officialaccounts::create([
             'user_profile_id' => $id
         ]);
+        return $this->ApiResponse($response, 'Congratulations! Your account verification was successful.', 200);
     }
 
-    public function showProfilesPosts(User_profile $profile)
-    {
-        $returnPosts = post::where('user_profile_id', $profile->id)->get();
-
-        //نجهز الريسورس لوقت نجهز البوستات
-    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\postInformationResource;
+use App\Models\like;
 use App\Models\post;
 use App\Models\savepost;
 use App\Models\userfollowers;
@@ -98,10 +99,10 @@ class PostController extends Controller
         $result = savepost::where('user_id', $userID)->get();
         $ids = $result->pluck('post_id')->toArray(); //2.5
         $finalResult = DB::table('saveposts')
-            ->join('posts', 'saveposts.post_id', '=', 'posts.id')//لحتى نجيب معلومات البوست
-            ->join('users','posts.user_id','=','users.id')//لحتى نجيب اسم صاحب البوست
-            ->join('user_profiles','posts.user_profile_id','=','user_profiles.id')//لحتى نجيب صورتو 
-            ->where('saveposts.user_id',$userID)
+            ->join('posts', 'saveposts.post_id', '=', 'posts.id') //لحتى نجيب معلومات البوست
+            ->join('users', 'posts.user_id', '=', 'users.id') //لحتى نجيب اسم صاحب البوست
+            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id') //لحتى نجيب صورتو 
+            ->where('saveposts.user_id', $userID)
             ->whereIn('posts.id', $ids)
             ->get();
         return $this->ApiResponse($finalResult, 'Information returned successfully', 200);
@@ -117,8 +118,38 @@ class PostController extends Controller
         return $this->ApiResponse($timeline, 'Post has been saved successfully', 200);
     }
 
-    public function likePost()
+    public function likePost($id)
     {
+        $userID = Auth::user()->id;
+        $postInfo = post::where('id', $id)->first();
+        $postOwner = $postInfo->user_id;
+        $check = like::where([
+            ['user_id', $userID],
+            ['post_id', $id]
+        ])->first();
+        if (!$check) {
+            $like = like::create([
+                'user_id' => $userID,
+                'post_id' => $id,
+                'post_owner' => $postOwner
+            ]);
+        }
+        $likeCount = like::where('post_id', $id)->count();
+
+        return $this->ApiResponse($likeCount, 'Number of likes', 200);
+    }
+
+    public function removeLikeFromPost($id)
+    {
+        $userID = Auth::user()->id;
+        $postLikeInfo = like::where([
+            ['user_id', $userID],
+            ['post_id', $id]
+        ])->delete();
+        $likeCount = like::where('post_id', $id)->count();
+        if ($postLikeInfo)
+            return $this->ApiResponse($likeCount, 'Number of likes', 200);
+        return $this->ApiResponse('', '', 400);
     }
 
     public function commentOnPost()

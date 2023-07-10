@@ -80,6 +80,10 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('cancelSavePost/{id}', [PostController::class, 'removePostsFromSavedLists']);
 
     Route::get('allWorldTimeLine', [PostController::class, 'showAllWorldPosts']);
+
+    Route::post('Like/{id}', [PostController::class, 'likePost']);
+
+    Route::delete('removeLike/{id}', [PostController::class, 'removeLikeFromPost']);
 });
 
 
