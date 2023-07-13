@@ -15,7 +15,8 @@ class SavedPosts extends StatelessWidget {
       shares: 3,
       caption: 'caption',
       date: '30/12/2019',
-      userName: 'Habibi wallah',
+      userFName: 'Habibi',
+      userLName: 'wallah',
       image: '',
       userImage:
           'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
@@ -28,7 +29,8 @@ class SavedPosts extends StatelessWidget {
         shares: 3,
         caption: 'caption',
         date: '30/12/2019',
-        userName: 'Habibi wallah',
+        userFName: 'Habibi',
+        userLName: 'wallah',
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:
@@ -41,7 +43,8 @@ class SavedPosts extends StatelessWidget {
         shares: 3,
         caption: 'caption',
         date: '30/12/2019',
-        userName: 'Habibi wallah',
+        userFName: 'Habibi',
+        userLName: 'wallah',
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:

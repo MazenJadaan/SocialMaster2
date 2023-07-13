@@ -13,8 +13,8 @@ class VisitProfile extends StatelessWidget {
 
 
    OtherUserModel user = OtherUserModel(
-     fname: 'mohamad',
-     lname: 'alraie',
+     fName: 'mohamad',
+     lName: 'alraie',
      caption: 'habibi come to lebanon',
      isFollowed: true,
      followers: 500,
@@ -34,7 +34,8 @@ class VisitProfile extends StatelessWidget {
          shares: 3,
          caption: 'caption',
          date: '30/12/2019',
-         userName: 'Habibi wallah',
+         userFName: 'Habibi',
+         userLName: 'wallah',
          image:
          'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
          userImage:
@@ -48,7 +49,8 @@ class VisitProfile extends StatelessWidget {
            shares: 3,
            caption: 'caption',
            date: '30/12/2019',
-           userName: 'Habibi wallah',
+           userFName: 'Habibi',
+           userLName: 'wallah',
            image:
            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
            userImage:
@@ -62,198 +64,189 @@ class VisitProfile extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           color: AppTheme.colors.opacityPurple,
-          child: Column(
-            children: [
-              Container(
-                width: double.infinity,
-                child: Stack(
-                  alignment: AlignmentDirectional.bottomCenter,
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          height: 220,
-                          child: const Image(
-                            image: NetworkImage(
-                                'https://img.freepik.com/free-vector/night-ocean-landscape-full-moon-stars-shine_107791-7397.jpg'),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        )
-                      ],
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 60,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            topRight: Radius.circular(30)),
-                        color: Color(0xffdfdbe9),
-                      ),
-                    ),
-
-                    CircleAvatar(
-                      radius: 59,
-                      backgroundColor: AppTheme.colors.purple,
-                      child: const CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          radius: 55,
-                          child: ClipOval(
+          child: ChangeNotifierProvider<OtherUserModel>.value(
+            value: user,
+            child: Consumer<OtherUserModel>( builder: (context,model,child)=>Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  child: Stack(
+                    alignment: AlignmentDirectional.bottomCenter,
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            height: 220,
                             child: Image(
-                                width: 200,
-                                height: 200,
-                                image: NetworkImage(
-                                    'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'),
-                                fit: BoxFit.cover),
+                              image: NetworkImage(
+                                  '${model.backgroundImage}'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          )
+                        ],
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 60,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(30),
+                              topRight: Radius.circular(30)),
+                          color: Color(0xffdfdbe9),
                         ),
                       ),
-                    ),
 
-                    //following and followers
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            Text('23440',
-                                style: TextStyle(
-                                    fontFamily: 'SignikaNegative',
-                                    fontSize: 15,
-                                    color: AppTheme.colors.darkPurple,
-                                    fontWeight: FontWeight.bold)),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text('followers',
-                                style: TextStyle(
-                                    fontFamily: 'SignikaNegative',
-                                    fontSize: 15,
-                                    color: AppTheme.colors.darkPurple,
-                                    fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 170,
-                        ),
-                        Column(
-                          children: [
-                            Text('570',
-                                style: TextStyle(
-                                    fontFamily: 'SignikaNegative',
-                                    fontSize: 15,
-                                    color: AppTheme.colors.darkPurple,
-                                    fontWeight: FontWeight.bold)),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text('following',
-                                style: TextStyle(
-                                    fontFamily: 'SignikaNegative',
-                                    fontSize: 15,
-                                    color: AppTheme.colors.darkPurple,
-                                    fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Positioned(
-                        left: 10,
-                        top: 40,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: const Icon(
-                            Icons.arrow_back_rounded,
-                            color: Colors.white,
+                      CircleAvatar(
+                        radius: 59,
+                        backgroundColor: AppTheme.colors.purple,
+                        child:  CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            radius: 55,
+                            child: ClipOval(
+                              child: Image(
+                                  width: 200,
+                                  height: 200,
+                                  image: NetworkImage(
+                                      '${model.profileImage}'),
+                                  fit: BoxFit.cover),
                           ),
-                        )),
+                        ),
+                      ),
+
+                      //following and followers
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              Text('${model.followers}',
+                                  style: TextStyle(
+                                      fontFamily: 'SignikaNegative',
+                                      fontSize: 15,
+                                      color: AppTheme.colors.darkPurple,
+                                      fontWeight: FontWeight.bold)),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Text('followers',
+                                  style: TextStyle(
+                                      fontFamily: 'SignikaNegative',
+                                      fontSize: 15,
+                                      color: AppTheme.colors.darkPurple,
+                                      fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 170,
+                          ),
+                          Column(
+                            children: [
+                              Text('${model.following}',
+                                  style: TextStyle(
+                                      fontFamily: 'SignikaNegative',
+                                      fontSize: 15,
+                                      color: AppTheme.colors.darkPurple,
+                                      fontWeight: FontWeight.bold)),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Text('following',
+                                  style: TextStyle(
+                                      fontFamily: 'SignikaNegative',
+                                      fontSize: 15,
+                                      color: AppTheme.colors.darkPurple,
+                                      fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Positioned(
+                          left: 10,
+                          top: 40,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Icon(
+                              Icons.arrow_back_rounded,
+                              color: Colors.white,
+                            ),
+                          )),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Text('${model.fName} ${model.lName}',
+                    style: TextStyle(
+                        fontFamily: 'SignikaNegative',
+                        fontSize: 20,
+                        color: AppTheme.colors.darkPurple,
+                        fontWeight: FontWeight.bold)),
+                const SizedBox(
+                  height: 10,
+                ),
+                 Padding(
+                  padding:const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Text(
+                      '${model.caption}',
+                      style:const TextStyle(
+                        fontFamily: 'SignikaNegative',
+                        fontSize: 14,
+                        color: Colors.grey,
+                      )),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    myMaterialButton(width: 140,
+                        text: '${model.isFollowed?'un Follow':'Follow'}',
+                        onPressed: () {
+                     model.handleFollow();
+                        }, fontSize: 18),
+
+                    myMaterialButton(width: 140,
+                        text: 'Message', onPressed: () {}, fontSize: 18),
                   ],
                 ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Text('Mohamad Alraie',
-                  style: TextStyle(
-                      fontFamily: 'SignikaNegative',
-                      fontSize: 20,
-                      color: AppTheme.colors.darkPurple,
-                      fontWeight: FontWeight.bold)),
-              const SizedBox(
-                height: 10,
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18.0),
-                child: Text(
-                    'hey welcome to Los Pollos Hermanos  my name is gustavo fring but you can call me gus you can say that i see things in people',
-                    style: TextStyle(
-                      fontFamily: 'SignikaNegative',
-                      fontSize: 14,
-                      color: Colors.grey,
-                    )),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  myMaterialButton(width: 140,
-                      text: !user.isFollowed?'Follow':'un Follow', onPressed: () {
-                    user.isFollowed= !user.isFollowed;
-                        if (user.isFollowed) {
-                          Fluttertoast.showToast(
-                              msg: "${user.fname} Followed",
-                              gravity: ToastGravity.BOTTOM,
-                              toastLength: Toast.LENGTH_SHORT,
-                              backgroundColor: Colors.black45,
-                              fontSize: 16);
-                        } else {
-                          Fluttertoast.showToast(
-                              msg: "un Followed",
-                              gravity: ToastGravity.BOTTOM,
-                              toastLength: Toast.LENGTH_SHORT,
-                              backgroundColor: Colors.black45,
-                              fontSize: 16);
-                        }
-                      }, fontSize: 18),
-                  myMaterialButton(width: 140,
-                      text: 'Message', onPressed: () {}, fontSize: 18),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 32.0, vertical: 10.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 1,
-                  color: AppTheme.colors.purple,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 32.0, vertical: 10.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 1,
+                    color: AppTheme.colors.purple,
+                  ),
                 ),
-              ),
-              ListView.builder(
-                  padding: const EdgeInsets.all(0.0),
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: user.posts?.length,
-                  itemBuilder: (context, i) => ChangeNotifierProvider<PostModel>(
-                    create: (context) => user.posts![i],
-                    child: Consumer<PostModel>(
-                      builder: (context, model, child) =>
-                          postBuilder(model: model, context: context),
-                    ),
-                  )),
+                ListView.builder(
+                    padding: const EdgeInsets.all(0.0),
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: model.posts?.length,
+                    itemBuilder: (context, i) => ChangeNotifierProvider<PostModel>(
+                      create: (context) => model.posts![i],
+                      child: Consumer<PostModel>(
+                        builder: (context, model, child) =>
+                            postBuilder(model: model, context: context),
+                      ),
+                    )),
 
-              const SizedBox(
-                height: 55,
-              ),
-            ],
+                const SizedBox(
+                  height: 55,
+                ),
+              ],
+            ),
           ),
+        ),
         ),
       ),
     );

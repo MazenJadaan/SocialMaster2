@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/shared/components/components.dart';
 
-import '../../shared/styles/colors.dart';
+import '../../../shared/styles/colors.dart';
 
 class EditPost extends StatefulWidget {
   EditPost(this.post, {Key? key}) : super(key: key);

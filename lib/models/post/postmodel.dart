@@ -7,7 +7,8 @@ class PostModel extends ChangeNotifier {
   String? vid='';
   String date = "30/7/2001";
   String caption = "";
-  String userName = "Anonymous";
+  String userFName;
+  String userLName;
   int likes = 0;
   int comments = 0;
   int shares = 0;
@@ -21,24 +22,24 @@ class PostModel extends ChangeNotifier {
     required this.comments,
     required this.shares,
     required this.caption,
-    required this.userName,
+    required this.userFName,
+    required this.userLName,
     required this.date,
     required this.isLiked,
     required this.isSaved,
     this.image,
     this.userImage,
     this.vid,
-
   }){
     this.likeColor = isLiked ? Colors.red:Colors.white;
     this.saveColor = isSaved ?Colors.orange:Colors.white;
   }
-
   handleLike(){
     isLiked == false ? likeColor=Colors.red : likeColor=Colors.white;
     this.isLiked = !isLiked;
     notifyListeners();
   }
+
   handleSave(){
     this.isSaved = !isSaved;
     this.isSaved ? saveColor=Colors.orange : saveColor=Colors.white;
@@ -71,7 +72,8 @@ class MyPostModel extends ChangeNotifier{
   String? image='';
   String date = "30/7/2001";
   String caption = "";
-  String userName = "Anonymous";
+  String userFName;
+  String userLName;
   int likes = 0;
   int comments = 0;
   int shares = 0;
@@ -86,7 +88,8 @@ class MyPostModel extends ChangeNotifier{
     required this.shares,
     required this.caption,
     required this.date,
-    required this.userName,
+    required this.userFName,
+    required this.userLName,
     required this.isLiked,
     required this.isSaved,
     this.image,
@@ -132,13 +135,15 @@ class SharedPostModel extends ChangeNotifier{
   String? userImage;
   String date = "30/7/2001";
   String caption = "";
-  String userName = "Anonymous";
+  String userFName;
+  String userLName;
   PostModel post;
 
   SharedPostModel({
     required this.caption,
     required this.date,
-    required this.userName,
+    required this.userFName,
+    required this.userLName,
     required this.post,
     this.userImage,
   });

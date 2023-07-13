@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/shared/components/post_component.dart';
 
-import '../../shared/components/components.dart';
-import '../../shared/styles/colors.dart';
+import '../../../shared/components/components.dart';
+import '../../../shared/styles/colors.dart';
 
 class SharePost extends StatelessWidget {
   SharePost(this.post,{Key? key}) : super(key: key);

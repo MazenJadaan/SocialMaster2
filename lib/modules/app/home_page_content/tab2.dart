@@ -27,7 +27,8 @@ class _Tab2State extends State<Tab2> {
       shares: 3,
       caption: 'caption',
       date: '30/12/2019',
-      userName: 'Habibi wallah',
+      userFName: 'Habibi',
+      userLName: 'wallah',
       image:
           'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
       userImage:
@@ -39,7 +40,8 @@ class _Tab2State extends State<Tab2> {
         shares: 3,
         caption: 'caption',
         date: '30/12/2019',
-        userName: 'Habibi wallah',
+        userFName: 'Habibi',
+        userLName: 'wallah',
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:
@@ -50,7 +52,8 @@ class _Tab2State extends State<Tab2> {
         shares: 3,
         caption: 'caption',
         date: '30/12/2019',
-        userName: 'Habibi wallah',
+        userFName: 'Habibi',
+        userLName: 'wallah',
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:
@@ -61,7 +64,8 @@ class _Tab2State extends State<Tab2> {
         shares: 3,
         caption: 'caption',
         date: '30/12/2019',
-        userName: 'Habibi wallah',
+        userFName: 'Habibi',
+        userLName: 'wallah',
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:
@@ -72,7 +76,8 @@ class _Tab2State extends State<Tab2> {
         shares: 3,
         caption: 'caption',
         date: '30/12/2019',
-        userName: 'Habibi wallah',
+        userFName: 'Habibi',
+        userLName: 'wallah',
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:

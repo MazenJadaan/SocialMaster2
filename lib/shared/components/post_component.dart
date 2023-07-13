@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/models/post/postmodel.dart';
-import 'package:social_master/modules/app/edit_post.dart';
-import 'package:social_master/modules/app/share_post.dart';
+import 'package:social_master/modules/app/handle_post/edit_post.dart';
+import 'package:social_master/modules/app/handle_post/share_post.dart';
 import 'package:social_master/modules/app/visit_profile.dart';
 import '../../models/edit_profile/usermodel.dart';
 import '../styles/colors.dart';
@@ -50,7 +50,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(model.userName,
+                      Text('${model.userFName} ${model.userLName}',
                           style: TextStyle(
                               fontFamily: 'SignikaNegative',
                               fontSize: 17,
@@ -152,7 +152,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                 const SizedBox(
                                   width: 8,
                                 ),
-                                Text("${model.likes}",
+                                Text("${model.isLiked==true ? model.likes+1 : model.likes }",
                                     style: const TextStyle(
                                       fontFamily: 'SignikaNegative',
                                       fontSize: 15,
@@ -254,7 +254,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(model.userName,
+                      Text('${model.userFName} ${model.userLName}',
                           style: TextStyle(
                               fontFamily: 'SignikaNegative',
                               fontSize: 17,
@@ -414,7 +414,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                                 const SizedBox(
                                   width: 8,
                                 ),
-                                Text("${model.likes}",
+                                Text("${model.isLiked==true ? model.likes+1 : model.likes}",
                                     style: const TextStyle(
                                       fontFamily: 'SignikaNegative',
                                       fontSize: 15,
@@ -516,7 +516,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(model.userName,
+                    Text('${model.userFName} ${model.userLName}',
                         style: TextStyle(
                             fontFamily: 'SignikaNegative',
                             fontSize: 17,
@@ -583,7 +583,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(model.post.userName,
+                            Text('${model.post.userFName} ${model.post.userLName}',
                                 style: TextStyle(
                                     fontFamily: 'SignikaNegative',
                                     fontSize: 17,
@@ -690,7 +690,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                       const SizedBox(
                                         width: 8,
                                       ),
-                                      Text("${model.post.likes}",
+                                      Text("${model.post.isLiked ==true ? model.post.likes+1 : model.post.likes }",
                                           style: const TextStyle(
                                             fontFamily: 'SignikaNegative',
                                             fontSize: 15,

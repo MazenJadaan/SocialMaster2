@@ -17,7 +17,8 @@ class Tab1 extends StatelessWidget {
       shares: 3,
       caption: 'caption',
       date: '30/12/2019',
-      userName: 'Habibi wallah',
+      userFName: 'Habibi',
+      userLName: 'wallah',
       image: '',
       userImage:
           'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
@@ -30,7 +31,8 @@ class Tab1 extends StatelessWidget {
         shares: 3,
         caption: 'caption',
         date: '30/12/2019',
-        userName: 'Habibi wallah',
+        userFName: 'Habibi',
+        userLName: 'wallah',
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:
@@ -43,7 +45,8 @@ class Tab1 extends StatelessWidget {
         shares: 3,
         caption: 'caption',
         date: '30/12/2019',
-        userName: 'Habibi wallah',
+        userFName: 'Habibi',
+        userLName: 'wallah',
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:
@@ -53,7 +56,8 @@ class Tab1 extends StatelessWidget {
   SharedPostModel s = SharedPostModel(
     caption: 'baaad sana',
     date: '5/5/5',
-    userName: 'wdwdw',
+    userFName: 'Habibi',
+    userLName: 'wallah',
     userImage:
         'https://photo-works.net/images/europe-landscape-photo-edited.jpg',
     post: PostModel(
@@ -64,7 +68,8 @@ class Tab1 extends StatelessWidget {
       shares: 3,
       caption: 'caption',
       date: '30/12/2019',
-      userName: 'Habibi wallah',
+      userFName: 'Habibi',
+      userLName: 'wallah',
       image:
           'https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg',
       userImage:
@@ -79,6 +84,9 @@ class Tab1 extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
+
+
+
             ListView.builder(
                 padding: const EdgeInsets.all(0.0),
                 physics: const NeverScrollableScrollPhysics(),
@@ -93,6 +101,16 @@ class Tab1 extends StatelessWidget {
                             postBuilder(model: model, context: context),
                       ),
                     )),
+
+
+
+
+
+
+
+
+
+
             ChangeNotifierProvider<SharedPostModel>.value(
               value: s,
               child: Consumer<SharedPostModel>(

@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/models/edit_profile/usermodel.dart';
 import 'package:social_master/modules/app/edit_profile.dart';
-import 'package:social_master/modules/app/create_post.dart';
+import 'package:social_master/modules/app/handle_post/create_post.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../../../shared/components/post_component.dart';
@@ -49,7 +49,8 @@ class ProfilePage extends StatelessWidget {
         shares: 3,
         caption: 'my mym my mym my my mym my my my my m my mym my my my my caption',
         date: '30/12/2019',
-        userName: 'Habibi wallah',
+        userFName: 'Habibi',
+        userLName: 'wallah',
         image:
             'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
         userImage:
@@ -63,7 +64,8 @@ class ProfilePage extends StatelessWidget {
           shares: 3,
           caption: 'caption',
           date: '30/12/2019',
-          userName: 'Habibi wallah',
+          userFName: 'Habibi',
+          userLName: 'wallah',
           image:
               'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
           userImage:

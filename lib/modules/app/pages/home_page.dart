@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:social_master/modules/app/create_post.dart';
+import 'package:social_master/modules/app/handle_post/create_post.dart';
 import 'package:social_master/modules/app/home_page_content/navbar.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../home_page_content/tab1.dart';
