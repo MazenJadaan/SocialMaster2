@@ -53,7 +53,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('searchUsers', [SearchController::class, 'searchIntoUsers']);
 
-    Route::post('searchPosts', [SearchController::class, 'searchIntoPosts']);
+    Route::post('searchPosts',[SearchController::class,'searchIntoPosts']);
 
     Route::post('addStories', [StoriesController::class, 'addStory']);
 

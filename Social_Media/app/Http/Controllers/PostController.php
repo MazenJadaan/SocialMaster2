@@ -41,7 +41,13 @@ class PostController extends Controller
     public function showAllUserPost()
     {
         $userID = Auth::user()->id;
-        $userPosts = postInformationResource::collection(post::where('user_id', $userID)->orderBy('created_at', 'desc')->get());
+        $userPosts = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
+            ->where('posts.user_id', $userID)
+            ->get();
+        if (!$userPosts->count())
+            return $this->ApiResponse('', 'No posts added yet', 404);
         return $this->ApiResponse($userPosts, 'Information returned successfully', 200);
     }
     //not done yet
@@ -50,7 +56,13 @@ class PostController extends Controller
         $userID = Auth::user()->id;
         $userFollowing = userfollowers::where('user_id', $userID)->get();
         $ids = $userFollowing->pluck('user_profile_id')->toArray();
-        $finalResult = postInformationResource::collection(post::whereIn('user_profile_id', $ids)->get());
+        $finalResult = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
+            ->whereIn('user_profiles.id',$ids)
+            ->get();
+        if (!$finalResult->count())
+            return $this->ApiResponse('', "You haven't follow any user yet", 401);
         return $this->ApiResponse($finalResult, 'Information returned successfully', 200);
     }
     //done
@@ -97,7 +109,7 @@ class PostController extends Controller
     {
         $userID = Auth::user()->id;
         $result = savepost::where('user_id', $userID)->get();
-        $ids = $result->pluck('post_id')->toArray(); //2.5
+        $ids = $result->pluck('post_id')->toArray();
         $finalResult = DB::table('saveposts')
             ->join('posts', 'saveposts.post_id', '=', 'posts.id') //لحتى نجيب معلومات البوست
             ->join('users', 'posts.user_id', '=', 'users.id') //لحتى نجيب اسم صاحب البوست
@@ -114,8 +126,17 @@ class PostController extends Controller
     //not done yet
     public function showAllWorldPosts()
     {
-        $timeline = postInformationResource::collection(post::inRandomOrder()->limit(60)->get());
-        return $this->ApiResponse($timeline, 'Post has been saved successfully', 200);
+        $timeline = post::get();
+        $userIds = $timeline->pluck('user_id')->toArray();
+        $profileIds = $timeline->pluck('user_profile_id')->toArray();
+        $finalResult = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
+            ->where('users.id', $userIds)
+            ->where('user_profiles.id', $profileIds)
+            ->inRandomOrder()
+            ->paginate(100);
+        return $this->ApiResponse($finalResult, 'Posts returned successfully', 200);
     }
 
     public function likePost($id)
@@ -178,3 +199,4 @@ class PostController extends Controller
 }
 // 'photo_path' => 'image' | 'mimes:jpg,bmp,png,jpeg',
 // 'video_path' => 'mimetypes:video/avi,video/mpeg,video/quicktime'
+// postInformationResource::collection

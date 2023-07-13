@@ -15,6 +15,8 @@ class SearchController extends Controller
     public function searchIntoUsers(Request $request)
     {
         $keyword = $request->name;
+        if(!$keyword)
+            return $this->ApiResponse('','KeyWord is missing',400);
         $result = User::where('first_name', 'like', '%' . $keyword . '%')
             ->orWhere('last_name', 'like', '%' . $keyword . '%')
             ->get();
@@ -33,11 +35,21 @@ class SearchController extends Controller
     public function searchIntoPosts(Request $request)
     {
         $keyword = $request->name;
-        $result = Post::where('body', 'like', '%' . $keyword . '%')
+        if(!$keyword)
+            return $this->ApiResponse('','KeyWord is missing',400);
+        $result = Post::where('post_body', 'like', '%' . $keyword . '%')
+            ->get();    
+        if(!$result->count())
+            return $this->ApiResponse('','posts not found',400);
+        $usersIds=$result->pluck('user_id')->toArray();
+        $postId=$result->pluck('id')->toArray();
+        $finalResult=DB::table('posts')
+            ->join('users','posts.user_id','=','users.id')
+            ->join('user_profiles','posts.user_profile_id','=','user_profiles.id')
+            ->whereIn('users.id',$usersIds)
+            ->whereIn('posts.id',$postId)
             ->get();
-        if (!$result->count()) {
-            return $this->ApiResponse('', 'Posts not found', 404);
-        }
-        return $this->ApiResponse($result, 'Posts found', 200);
+        return $this->ApiResponse($finalResult, 'Posts found', 200);
     }
 }
+
