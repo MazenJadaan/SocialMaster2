@@ -83,10 +83,11 @@ class Tab1 extends StatelessWidget {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
-          children: [
-
-
-
+          children: [Center(
+        child: CircularProgressIndicator(
+        color: AppTheme.colors.purple,
+          backgroundColor: AppTheme.colors.opacityPurple,
+        )),
             ListView.builder(
                 padding: const EdgeInsets.all(0.0),
                 physics: const NeverScrollableScrollPhysics(),
@@ -101,16 +102,6 @@ class Tab1 extends StatelessWidget {
                             postBuilder(model: model, context: context),
                       ),
                     )),
-
-
-
-
-
-
-
-
-
-
             ChangeNotifierProvider<SharedPostModel>.value(
               value: s,
               child: Consumer<SharedPostModel>(

@@ -1,7 +1,8 @@
-//import 'dart:js_util';
+
 
 import 'package:flutter/material.dart';
 import 'package:social_master/modules/app/pages/profile_page.dart';
+import 'package:social_master/shared/styles/colors.dart';
 
 import '../saved_posts.dart';
 
@@ -24,8 +25,9 @@ class NavBar extends StatelessWidget {
             accountName: const Text('Aya'),
             accountEmail:const Text('yoyo@gmail.com'),
             currentAccountPicture: CircleAvatar(
+            backgroundColor:  Colors.transparent,
               child: ClipOval(child:
-              Image.asset('images/user-profile.png'),),
+              Image.asset('assets/images/user-profile.png'),),
             ),
             decoration:const BoxDecoration(
               color:  Color(0xff917fb3),

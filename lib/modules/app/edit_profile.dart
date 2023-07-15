@@ -72,7 +72,7 @@ class _EditProfileState extends State<EditProfile> {
                         color: AppTheme.colors.darkPurple,
                         fontWeight: FontWeight.bold)),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Expanded(

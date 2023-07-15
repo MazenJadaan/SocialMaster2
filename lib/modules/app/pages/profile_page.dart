@@ -28,6 +28,7 @@ class ProfilePage extends StatelessWidget {
   }
 
   UserModel user = UserModel(
+    id: 1,
     fname: 'mohamad',
     lname: 'alraie',
     caption: 'habibi come to lebanon',
@@ -36,6 +37,10 @@ class ProfilePage extends StatelessWidget {
     birthDate: '12/5/2001',
     isMale: 'male',
     phoneNumber: '0945587900',
+    job: 'facebook',
+    studyPlace: 'bab alhara',
+    bornPlace: 'Damascus',
+    state: 'in relationship',
     backgroundImage:
         'https://img.freepik.com/free-vector/night-ocean-landscape-full-moon-stars-shine_107791-7397.jpg',
     profileImage:
@@ -47,7 +52,8 @@ class ProfilePage extends StatelessWidget {
         likes: 400,
         comments: 12,
         shares: 3,
-        caption: 'my mym my mym my my mym my my my my m my mym my my my my caption',
+        caption:
+            'my mym my mym my my mym my my my my m my mym my my my my caption',
         date: '30/12/2019',
         userFName: 'Habibi',
         userLName: 'wallah',
@@ -233,29 +239,135 @@ class ProfilePage extends StatelessWidget {
                           color: AppTheme.colors.darkPurple,
                           fontWeight: FontWeight.bold)),
                   const SizedBox(
-                    height: 10,
+                    height: 12,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18.0),
                     child: Text(user.caption,
                         style: const TextStyle(
-                          fontFamily: 'SignikaNegative',
-                          fontSize: 14,
-                          color: Colors.black45,
-                        )),
+                            fontFamily: 'SignikaNegative',
+                            fontSize: 15,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.w600)),
                   ),
                   const SizedBox(
                     height: 8,
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    child: Row(
+                      children: [
+                        FaIcon(
+                          FontAwesomeIcons.mapLocation,
+                          size: 17,
+                          color: AppTheme.colors.darkPurple,
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          'from ${user.bornPlace ?? 'no where'}.',
+                          style: const TextStyle(
+                            fontFamily: 'SignikaNegative',
+                            fontSize: 15,
+                            color: Colors.black45,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    child: Row(
+                      children: [
+                        FaIcon(
+                          FontAwesomeIcons.briefcase,
+                          size: 17,
+                          color: Colors.brown,
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text('works at ${user.job ?? 'no where'}.',
+                            style: const TextStyle(
+                              fontFamily: 'SignikaNegative',
+                              fontSize: 15,
+                              color: Colors.black45,
+                            )),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    child: Row(
+                      children: [
+                        FaIcon(
+                          FontAwesomeIcons.bookOpen,
+                          size: 17,
+                          color: Color(0xFFC0AB75),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          'studied at ${user.studyPlace ?? 'no where'}.',
+                          style: const TextStyle(
+                            fontFamily: 'SignikaNegative',
+                            fontSize: 15,
+                            color: Colors.black45,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    child: Row(
+                      children: [
+                        FaIcon(
+                          FontAwesomeIcons.solidHeart,
+                          size: 17,
+                          color: Colors.red[800],
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          '${user.state ?? 'unknown'}.',
+                          style: const TextStyle(
+                            fontFamily: 'SignikaNegative',
+                            fontSize: 15,
+                            color: Colors.black45,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 6,),
                   myMaterialButton(
                       text: 'Edit profile details',
                       width: double.infinity,
-                      onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EditProfile(user)));},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => EditProfile(user)));
+                      },
                       fontSize: 18),
                   myMaterialButton(
                       text: 'Create a new post',
                       width: double.infinity,
-                      onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CreatePost()));},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => CreatePost()));
+                      },
                       fontSize: 18),
                   Padding(
                     padding: const EdgeInsets.symmetric(

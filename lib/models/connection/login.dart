@@ -22,7 +22,8 @@ class LoginResponse {
   String? message;
   int? status;
 
-  LoginResponse({required this.data,required this.message,required this.status});
+  LoginResponse(
+      {required this.data, required this.message, required this.status});
 
   LoginResponse.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;

@@ -1,12 +1,16 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_master/modules/auth/reset_password/reset_password.dart';
 import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/shared/styles/colors.dart';
-import 'package:http/http.dart' as http;
+
 import '../../models/connection/login.dart';
 import '../../provider/obscure_model.dart';
 import '../../shared/components/components.dart';
@@ -14,7 +18,6 @@ import '../../shared/network/api/google_signin_api.dart';
 import '../../shared/network/constant/constant.dart';
 import '../../shared/validate/validate.dart';
 import '../app/home.dart';
-import 'package:lottie/lottie.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -24,18 +27,30 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  Future savePrefs(String? token) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('token', token!);
+  }
 
   Future<LoginResponse?> login(LoginParams params) async {
-    showDialog(context: context, builder: (context){
-      return Center(child: CircularProgressIndicator());
-    });
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Center(
+              child: CircularProgressIndicator(
+            color: AppTheme.colors.purple,
+                backgroundColor: AppTheme.colors.opacityPurple,
+          ));
+        });
     var url = Uri.parse("${AppSetting.baseUrl}api/login");
     var response = await http.post(url, body: params.toJson());
     var data = json.decode(response.body);
     if (response.statusCode == 200) {
       LoginResponse loginResponse = LoginResponse.fromJson(data);
+      Navigator.of(context).pop();
       return loginResponse;
     }
+    Navigator.of(context).pop();
     return null;
   }
 
@@ -45,7 +60,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     var formKey = GlobalKey<FormState>();
-    //
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
@@ -79,13 +94,7 @@ class _LoginState extends State<Login> {
                   const SizedBox(
                     height: 1,
                   ),
-                 Lottie.asset("assets/images/welcomeani.json"),
-                  // const Image(
-                  //   image: AssetImage("assets/images/monitoring.png"),
-                  //   width: 200,
-                  //   height: 180,
-                  // ),
-                  // const Spacer(),
+                  Lottie.asset("assets/images/welcomeani.json"),
                   myTextFormField(
                     obscureText: false,
                     label: 'E-mail or phone number',
@@ -116,7 +125,6 @@ class _LoginState extends State<Login> {
                       validate: Validate.passwordValidate,
                     );
                   }),
-
                   Row(
                     children: [
                       const SizedBox(
@@ -137,7 +145,6 @@ class _LoginState extends State<Login> {
                       ),
                     ],
                   ),
-
                   myMaterialButton(
                     width: 240,
                     text: 'Login',
@@ -150,18 +157,24 @@ class _LoginState extends State<Login> {
                           ),
                         );
                         if (loginResponse != null) {
-                          Navigator.pushAndRemoveUntil(
-                              context,
+
+                          AppSetting.token = loginResponse.data?.token ?? "";
+                          savePrefs(loginResponse.data?.token);
+                          Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(builder: (context) => Home()),
                               (route) => false);
                         } else {
-
-                           Fluttertoast.showToast(msg: "Email or Pass is Wrong !",gravity: ToastGravity.BOTTOM,toastLength: Toast.LENGTH_SHORT,backgroundColor: Colors.pink,timeInSecForIosWeb: 2,fontSize: 18);
+                          Fluttertoast.showToast(
+                              msg: "Email or Pass is Wrong !",
+                              gravity: ToastGravity.BOTTOM,
+                              toastLength: Toast.LENGTH_SHORT,
+                              backgroundColor: Colors.pink,
+                              timeInSecForIosWeb: 2,
+                              fontSize: 18);
                         }
                       }
                     },
                   ),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

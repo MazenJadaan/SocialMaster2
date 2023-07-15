@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
@@ -13,24 +14,50 @@ import '../../shared/styles/colors.dart';
 import 'package:http/http.dart' as http;
 import '../../shared/validate/validate.dart';
 
-class Signup extends StatelessWidget {
+class Signup extends StatefulWidget {
   Signup({Key? key}) : super(key: key);
 
+  @override
+  State<Signup> createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
+  Future savePrefs(String? token) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('token', token!);
+  }
+
   Future<RegisterResponse?> login(RegisterParams params) async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Center(
+              child: CircularProgressIndicator(
+                color: AppTheme.colors.purple,
+                backgroundColor: AppTheme.colors.opacityPurple,
+              ));
+        });
+
     var url = Uri.parse("${AppSetting.baseUrl}api/register");
     var response = await http.post(url, body: params.toJson());
     var data = json.decode(response.body);
     if (response.statusCode == 200) {
       RegisterResponse loginResponse = RegisterResponse.fromJson(data);
+      Navigator.of(context).pop();
       return loginResponse;
     }
+    Navigator.of(context).pop();
     return null;
   }
 
   final _emailController = TextEditingController();
+
   final _passwordController = TextEditingController();
+
   final _confirmPasswordController = TextEditingController();
+
   final _firstNameController = TextEditingController();
+
   final _lastNameController = TextEditingController();
 
   @override
@@ -67,7 +94,8 @@ class Signup extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Container(height: 200,
+                  Container(
+                      height: 200,
                       width: 200,
                       child: Lottie.asset("assets/images/signani.json")),
                   Row(
@@ -145,8 +173,8 @@ class Signup extends StatelessWidget {
                                   _confirmPasswordController.text),
                         );
                         if (loginResponse != null) {
-                          print(loginResponse.data?.token);
                           AppSetting.token = loginResponse.data?.token ?? "";
+                          savePrefs(loginResponse.data?.token);
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (context) {
                             return const SignupDetails();
