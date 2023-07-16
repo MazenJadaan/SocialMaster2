@@ -50,6 +50,6 @@ class post extends Model
     }
 
     public function userProfile(){
-        return $this->hasMany(User_profile::class);
+        return $this->belongsTo(User_profile::class);
     }
 }

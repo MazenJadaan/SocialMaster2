@@ -954,15 +954,21 @@
 			]
 		},
 		{
-			"name": "show my profile",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": [
+			"name": "my profile",
+			"item": [
 				{
-					"name": "New Request",
-					"originalRequest": {
+					"name": "show my profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODM2YmZlNTY5Njk2OTQzOGUzNGMwZmVhMmE3NDhhMjBkZjRkZWY5YmVmMWYyMDIwMmViMzJjNjMwODZiZTM2ZjgyMTA2NzIxYWZkNGEwZWYiLCJpYXQiOjE2ODk1MDE2MjguMTExNzc4LCJuYmYiOjE2ODk1MDE2MjguMTExNzgzLCJleHAiOjE3MjExMjQwMjguMTAyMDQ4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.PkTCSkCSC33G-seNmEF1_lALga5fitOs-aIcPuPYSS3NJq2Wt3v5HBxL-l2Kkz6ksQ3_1p-Qb5XW0I8aP_7rSJOa1fUFXh_RmsijtiwYqQDZwckje_DYckjXfxUsiUKG7mAo83EmKj2Rhgtgtc3yI5wdtj21CWufiOFOgquaQWMd761ndMgWj2ajC25SbjeFJUXVsUmO2uxveAj7SDtS9zTO1ZI71biGZg4JkmHRan3xhVtDmonqS31NLN9h8zXooZNq3YXpfjJtxqi5F5kfC5hccMNBFGneoGWqk7nvLHQsz3B1VxQdKrFGH4DC-gdfeL3wG_F5AADSQ-XoFNFms0qWTNdzZgC39XLqNW3sDJeHwtVcOjCHjRJHl4qbmYRJe1QlYkXukDLhS5GcZ8W1T_7RzEhtaAo6xak6ZLWN45GytxJvMmY304jwEeCE9oQnz45kdURrKa4TssanB7q383H4SZqbRgDSelZzctRQqV51sUFh5KQZRyVUG5awP0JX2yzOMqFlQ5J3Nw9tQld7_QACc3DtwzaYN5BpnM2pXZPxQNVC3zzjKkCyCZhObNvzW6QAZ4-0sV7newF7fHEylA8TXcP5fFLpjdoJAU7xtsxdBXC14l7r2wT0BK9qPXUWT-gKOiXQMCmZLiukZDAO1ln0d22lyO3cX7iE2NAStPE",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -982,137 +988,92 @@
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Host",
-							"value": "127.0.0.1:8000"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 20:32:46 GMT"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 20:32:46 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "close"
-						},
-						{
-							"key": "X-Powered-By",
-							"value": "PHP/8.0.28"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, private"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "60"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "58"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"data\": {\n        \"id\": 4,\n        \"first_name\": \"asem\",\n        \"last_name\": \"refa3i\",\n        \"phone_num\": \"0955220355\",\n        \"gender\": \"male\",\n        \"birthdate\": \"2001-08-02\",\n        \"user_profile\": {\n            \"id\": 4,\n            \"job\": \"engineer\",\n            \"study_place\": \"damascus university\",\n            \"place_stay\": \"damascus\",\n            \"place_born\": \"midan\",\n            \"bio\": \"listen george wassouf\",\n            \"cover_photo\": \"storage/app/images/cover_picture/1688493857.jpg\",\n            \"profile_photo\": \"storage/app/images/profile_picture/1688493692.jpg\",\n            \"followers_number\": 0,\n            \"state\": \"single\",\n            \"user_id\": 4,\n            \"created_at\": \"2023-07-04T17:55:33.000000Z\",\n            \"updated_at\": \"2023-07-04T19:38:19.000000Z\"\n        }\n    },\n    \"message\": \" My Profile Information returned successfully\",\n    \"status\": 200\n}"
-				}
-			]
-		},
-		{
-			"name": "addProfileInfo",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDlmMWRiZmYyYzk3MWNkOTk1Zjk4OTFmMGFhYzgyZDMwOWI2NTlmZDQ3MzQwNDg5NDA2MWZhN2Q2OGM4NDE5ZjY2YTM2YzFjYmEwNzQzOTgiLCJpYXQiOjE2ODY0MzQyNTAuNzY2NjQ1LCJuYmYiOjE2ODY0MzQyNTAuNzY2NjU2LCJleHAiOjE3MTgwNTY2NTAuNDQ1MjA3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.bRLt4z-xlR02w4g5go8mNUtNkroYi6NJzjoV2rUaFgyM96QwiITeR8SMMIsL2jbzvGIhTd0gRRhnlBmHDHeSf6Cj-6GSlVAyNRXNkIuxznbHhmqvsEXOnltblUqiq1q4LJyRd4MCnnM1QHOghRcWk0nhZsARy8g0sFI-SpBbTFTmG9GFzWBjgXFIhGNspHioHoc5gNUnFx0EznZliU3oS3vAH7RjeCoPE8Gjuf92DNIJcc8WPp9PBbsk64Bwv6mFripoBk8WQLJCDR6G5r5c5q2fms3a3W4FPx6jotoM3uUrFHyMQMhorvZw8um32qYT-_PCwYKAC0MCI9dn4GJkRePx2txdrlkOsK7AsNX2Ya2CWp1oXmP7g5m_Dyvc3IS_8Tghh4gd7dMQLRwjgA8AoRDloJhXnqAhhkLGsd4jO1g0uTK4nYbidMbbz9ahvDu7CwqqS86JCzPocrhaMr8asCB3m6Bo3lzWP2s-i3sU6poPWUxq3iPFQ0C_6jcwOcVACn3N1VvqK0015yCg7u8Pae3RkGFOFo_yr9t5TYiqQmT3y0zdwA_6ExvdWgyKeWrI5LH60Ro0zKhQZJ6DfqM0_UY3KDHTG3hocY8swnwGdU4we3ZyRBfh4eZIJzsYF09DdFWvnOF7K2-Bywn2NmIdC8i-_vkLpLK9qmVUX2Bx7_g",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "job",
-							"value": "فرن الالي",
-							"type": "text"
-						},
-						{
-							"key": "study_place",
-							"value": "همك",
-							"type": "text"
-						},
-						{
-							"key": "place_stay",
-							"value": "شام",
-							"type": "text"
-						},
-						{
-							"key": "place_born",
-							"value": "دير ",
-							"type": "text"
-						},
-						{
-							"key": "bio",
-							"value": "عم ",
-							"type": "text"
-						},
-						{
-							"key": "state",
-							"value": "single",
-							"type": "text"
-						},
-						{
-							"key": "cover_photo",
-							"type": "file",
-							"src": "/C:/Users/DELL 5583/Downloads/صوري/٢٠١٩٠٩٠٤_١٥٣٨٠٤.jpg"
+							"name": "show my profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/showMyProfile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"showMyProfile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jul 2023 10:51:07 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jul 2023 10:51:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"profile information\": {\n            \"id\": 1,\n            \"first_name\": \"asem\",\n            \"last_name\": \"refa3i\",\n            \"gender\": \"male\",\n            \"birthdate\": \"2001-08-02\",\n            \"user_profile\": {\n                \"id\": 1,\n                \"job\": null,\n                \"study_place\": null,\n                \"place_stay\": null,\n                \"place_born\": null,\n                \"bio\": null,\n                \"cover_photo\": \"storage/app/images/cover_picture/Fw79JsNXwAEHNTq.jfif\",\n                \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\",\n                \"followers_number\": 0,\n                \"state\": null,\n                \"user_id\": 1,\n                \"created_at\": \"2023-07-14T15:08:20.000000Z\",\n                \"updated_at\": \"2023-07-14T15:13:49.000000Z\"\n            }\n        },\n        \"all posts\": [\n            {\n                \"id\": 1,\n                \"first_name\": \"asem\",\n                \"last_name\": \"refa3i\",\n                \"post\": [\n                    {\n                        \"id\": 7,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \" post 3 for user 1 \",\n                        \"post_time\": \"13:45:20\",\n                        \"post_date\": \"2023-07-16\",\n                        \"created_at\": \"2023-07-16T10:45:20.000000Z\",\n                        \"updated_at\": \"2023-07-16T10:45:20.000000Z\",\n                        \"photo\": [],\n                        \"video\": [\n                            {\n                                \"id\": 4,\n                                \"post_id\": 7,\n                                \"video_path\": \"storage/app/videos/posts_videos/wahda.mp4\",\n                                \"created_at\": \"2023-07-16T10:48:48.000000Z\",\n                                \"updated_at\": \"2023-07-16T10:48:48.000000Z\"\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 6,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \" post 2 for user 1 \",\n                        \"post_time\": \"13:45:08\",\n                        \"post_date\": \"2023-07-16\",\n                        \"created_at\": \"2023-07-16T10:45:08.000000Z\",\n                        \"updated_at\": \"2023-07-16T10:45:08.000000Z\",\n                        \"photo\": [\n                            {\n                                \"id\": 7,\n                                \"post_id\": 6,\n                                \"photo_path\": \"storage/app/images/posts_pictures/third_picture.jpg\",\n                                \"created_at\": \"2023-07-16T10:46:11.000000Z\",\n                                \"updated_at\": \"2023-07-16T10:46:11.000000Z\"\n                            }\n                        ],\n                        \"video\": []\n                    },\n                    {\n                        \"id\": 4,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \"other post user 1 \",\n                        \"post_time\": \"18:38:11\",\n                        \"post_date\": \"2023-07-15\",\n                        \"created_at\": \"2023-07-15T15:38:11.000000Z\",\n                        \"updated_at\": \"2023-07-15T15:38:11.000000Z\",\n                        \"photo\": [],\n                        \"video\": [\n                            {\n                                \"id\": 2,\n                                \"post_id\": 4,\n                                \"video_path\": \"storage/app/videos/posts_videos/laravel.mp4\",\n                                \"created_at\": \"2023-07-15T15:39:31.000000Z\",\n                                \"updated_at\": \"2023-07-15T15:39:31.000000Z\"\n                            }\n                        ]\n                    }\n                ],\n                \"sharepost\": [\n                    {\n                        \"id\": 2,\n                        \"user_id\": 1,\n                        \"post_id\": 1,\n                        \"body\": \"user 1 share post 1 of user 2 \",\n                        \"created_at\": \"2023-07-15T15:56:20.000000Z\",\n                        \"updated_at\": \"2023-07-15T15:56:20.000000Z\",\n                        \"post\": {\n                            \"id\": 1,\n                            \"user_id\": 2,\n                            \"user_profile_id\": 2,\n                            \"post_body\": \"my post 1\",\n                            \"post_time\": \"19:20:12\",\n                            \"post_date\": \"2023-07-14\",\n                            \"created_at\": \"2023-07-14T16:20:12.000000Z\",\n                            \"updated_at\": \"2023-07-14T16:20:12.000000Z\",\n                            \"user\": {\n                                \"id\": 2,\n                                \"first_name\": \"asem1\",\n                                \"last_name\": \"refa3i\"\n                            },\n                            \"photo\": [\n                                {\n                                    \"id\": 1,\n                                    \"post_id\": 1,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/first_picture.jpg\",\n                                    \"created_at\": \"2023-07-14T16:23:26.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:23:26.000000Z\"\n                                },\n                                {\n                                    \"id\": 2,\n                                    \"post_id\": 1,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/second_picture.jpg\",\n                                    \"created_at\": \"2023-07-14T16:23:34.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:23:34.000000Z\"\n                                },\n                                {\n                                    \"id\": 3,\n                                    \"post_id\": 1,\n                                    \"photo_path\": \"storage/app/images/profile_picture/1685690560.jpg\",\n                                    \"created_at\": \"2023-07-14T16:23:39.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:23:39.000000Z\"\n                                }\n                            ],\n                            \"video\": []\n                        }\n                    },\n                    {\n                        \"id\": 1,\n                        \"user_id\": 1,\n                        \"post_id\": 2,\n                        \"body\": \"user 1 share post of user 2 \",\n                        \"created_at\": \"2023-07-15T15:56:05.000000Z\",\n                        \"updated_at\": \"2023-07-15T15:56:05.000000Z\",\n                        \"post\": {\n                            \"id\": 2,\n                            \"user_id\": 2,\n                            \"user_profile_id\": 2,\n                            \"post_body\": \"my post 2\",\n                            \"post_time\": \"19:24:02\",\n                            \"post_date\": \"2023-07-14\",\n                            \"created_at\": \"2023-07-14T16:14:02.000000Z\",\n                            \"updated_at\": \"2023-07-14T16:14:02.000000Z\",\n                            \"user\": {\n                                \"id\": 2,\n                                \"first_name\": \"asem1\",\n                                \"last_name\": \"refa3i\"\n                            },\n                            \"photo\": [\n                                {\n                                    \"id\": 4,\n                                    \"post_id\": 2,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/first_picture.jpg\",\n                                    \"created_at\": \"2023-07-14T16:24:24.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:24:24.000000Z\"\n                                }\n                            ],\n                            \"video\": []\n                        }\n                    }\n                ]\n            }\n        ]\n    },\n    \"message\": \" My Profile Information returned successfully\",\n    \"status\": 200\n}"
 						}
 					]
 				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/addProfileInformations",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"addProfileInformations"
-					]
-				}
-			},
-			"response": [
 				{
 					"name": "addProfileInfo",
-					"originalRequest": {
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDlmMWRiZmYyYzk3MWNkOTk1Zjk4OTFmMGFhYzgyZDMwOWI2NTlmZDQ3MzQwNDg5NDA2MWZhN2Q2OGM4NDE5ZjY2YTM2YzFjYmEwNzQzOTgiLCJpYXQiOjE2ODY0MzQyNTAuNzY2NjQ1LCJuYmYiOjE2ODY0MzQyNTAuNzY2NjU2LCJleHAiOjE3MTgwNTY2NTAuNDQ1MjA3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.bRLt4z-xlR02w4g5go8mNUtNkroYi6NJzjoV2rUaFgyM96QwiITeR8SMMIsL2jbzvGIhTd0gRRhnlBmHDHeSf6Cj-6GSlVAyNRXNkIuxznbHhmqvsEXOnltblUqiq1q4LJyRd4MCnnM1QHOghRcWk0nhZsARy8g0sFI-SpBbTFTmG9GFzWBjgXFIhGNspHioHoc5gNUnFx0EznZliU3oS3vAH7RjeCoPE8Gjuf92DNIJcc8WPp9PBbsk64Bwv6mFripoBk8WQLJCDR6G5r5c5q2fms3a3W4FPx6jotoM3uUrFHyMQMhorvZw8um32qYT-_PCwYKAC0MCI9dn4GJkRePx2txdrlkOsK7AsNX2Ya2CWp1oXmP7g5m_Dyvc3IS_8Tghh4gd7dMQLRwjgA8AoRDloJhXnqAhhkLGsd4jO1g0uTK4nYbidMbbz9ahvDu7CwqqS86JCzPocrhaMr8asCB3m6Bo3lzWP2s-i3sU6poPWUxq3iPFQ0C_6jcwOcVACn3N1VvqK0015yCg7u8Pae3RkGFOFo_yr9t5TYiqQmT3y0zdwA_6ExvdWgyKeWrI5LH60Ro0zKhQZJ6DfqM0_UY3KDHTG3hocY8swnwGdU4we3ZyRBfh4eZIJzsYF09DdFWvnOF7K2-Bywn2NmIdC8i-_vkLpLK9qmVUX2Bx7_g",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -1126,277 +1087,301 @@
 							"formdata": [
 								{
 									"key": "job",
-									"value": "engineer",
+									"value": "فرن الالي",
 									"type": "text"
 								},
 								{
 									"key": "study_place",
-									"value": "damascus university ",
+									"value": "همك",
 									"type": "text"
 								},
 								{
 									"key": "place_stay",
-									"value": "damascus",
+									"value": "شام",
 									"type": "text"
 								},
 								{
 									"key": "place_born",
-									"value": "midan",
+									"value": "دير ",
 									"type": "text"
 								},
 								{
 									"key": "bio",
-									"value": "listen george wassouf",
+									"value": "عم ",
 									"type": "text"
 								},
 								{
 									"key": "state",
 									"value": "single",
 									"type": "text"
+								},
+								{
+									"key": "cover_photo",
+									"type": "file",
+									"src": "/C:/Users/DELL 5583/Downloads/صوري/٢٠١٩٠٩٠٤_١٥٣٨٠٤.jpg"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/addProfileInformations",
+							"raw": "http://127.0.0.1:8000/api/addProfileInformations",
+							"protocol": "http",
 							"host": [
-								"{{url}}"
+								"127",
+								"0",
+								"0",
+								"1"
 							],
+							"port": "8000",
 							"path": [
 								"api",
 								"addProfileInformations"
 							]
 						}
 					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Host",
-							"value": "127.0.0.1:8000"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 19:38:19 GMT"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 19:38:19 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "close"
-						},
-						{
-							"key": "X-Powered-By",
-							"value": "PHP/8.0.28"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, private"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "60"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "56"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"data\": {\n        \"job\": \"engineer\",\n        \"study_place\": \"damascus university\",\n        \"place_stay\": \"damascus\",\n        \"place_born\": \"midan\",\n        \"bio\": \"listen george wassouf\",\n        \"cover_photo\": \"storage/app/images/cover_picture/1688493857.jpg\",\n        \"profile_photo\": \"storage/app/images/profile_picture/1688493692.jpg\",\n        \"followers_number\": 0,\n        \"state\": \"single\",\n        \"user_id\": 4\n    },\n    \"message\": \"Information updated successfully\",\n    \"status\": 201\n}"
-				}
-			]
-		},
-		{
-			"name": "Edit Profile Cover",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTQ1MTVkMzQ3ZThlZjYzMzQ2ZTI2Zjg1MGRmYTZiYTYzY2JkYWRjZjMyYmUxNTYwNGQ0MzgwNTY2ZGQ5OTA4ODFiZWI3ZTBlZTM2ZDBjZDQiLCJpYXQiOjE2ODcwMzMzNjcuOTUxNTg3LCJuYmYiOjE2ODcwMzMzNjcuOTUxNTk0LCJleHAiOjE3MTg2NTU3NjcuNjYyODQsInN1YiI6IjMiLCJzY29wZXMiOltdfQ.DzW8BYGP5sBZfDA5jBr-NW0t89L2lU8Y1u1xs657kM8bSKrMVB9WJSQK2hAqCGKfthS94zx1DKSuvmkPz4j56b_ghP8yBDPPDQUme7XWBnAUNDyv_ILW5XZOvbeV0F8ris4mjnbu7F_R1f3Bsa5gmT4JbBjSAAjCKjeIMrSpD-dJXPF4dSDl6keQk1kM5TNc1tkASxX8CpRvKlqR1CcR2GascCxgV8SlevAq2Z5XYM6RxHK3h1EYjI3F92H1TJ5CYCBdh0NwyIuuctiOHugDiWJk1sevs5GxEsrwoWl0eK_keIueODLDJGBz9_uWpPCWncjCktwnGnpHSSx-EADfSsdarDV_LywHHEzSOFbr1zJrvQ9yi9-WcuNUtiS5a8EEf3OkwH6zSNyLNVDWAlD2FW6e5qs4Pd0JEuDlvZhyRff1Nu5dxvdp9NbOWk8wLtX_3eDlyBB2QGQHrWGoqzF5R8ICN1tW3i-djvcZb1Og17eIBh3Ezx7QoqD9aBhXMT0pP2FcxCjBWrsiGFAZRAuHCmjaFKrnxzD-XeIj0pI19pCcfPMMy9RNoIEhEuPCZsoUKvKqV6X-Pzgp--9l_cJl-FJtMv8CzSoHzKyJBCkF2uzQPJ25uPaKLh0BoiWhTQymPPb86Ir6okgI5Cd5YjN3qSiNxu-qImrflxTWT-KYEA0",
-							"type": "string"
+							"name": "addProfileInfo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "job",
+											"value": "engineer",
+											"type": "text"
+										},
+										{
+											"key": "study_place",
+											"value": "damascus university ",
+											"type": "text"
+										},
+										{
+											"key": "place_stay",
+											"value": "damascus",
+											"type": "text"
+										},
+										{
+											"key": "place_born",
+											"value": "midan",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "listen george wassouf",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "single",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/addProfileInformations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"addProfileInformations"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Jul 2023 19:38:19 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Jul 2023 19:38:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"job\": \"engineer\",\n        \"study_place\": \"damascus university\",\n        \"place_stay\": \"damascus\",\n        \"place_born\": \"midan\",\n        \"bio\": \"listen george wassouf\",\n        \"cover_photo\": \"storage/app/images/cover_picture/1688493857.jpg\",\n        \"profile_photo\": \"storage/app/images/profile_picture/1688493692.jpg\",\n        \"followers_number\": 0,\n        \"state\": \"single\",\n        \"user_id\": 4\n    },\n    \"message\": \"Information updated successfully\",\n    \"status\": 201\n}"
 						}
 					]
 				},
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/updateProfileCover",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"updateProfileCover"
-					]
-				}
-			},
-			"response": [
 				{
 					"name": "Edit Profile Cover",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "cover_photo",
-									"type": "file",
-									"src": "/C:/Users/ASUS/Desktop/backgrounds/BMW/wp3616641.jpg"
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTQ1MTVkMzQ3ZThlZjYzMzQ2ZTI2Zjg1MGRmYTZiYTYzY2JkYWRjZjMyYmUxNTYwNGQ0MzgwNTY2ZGQ5OTA4ODFiZWI3ZTBlZTM2ZDBjZDQiLCJpYXQiOjE2ODcwMzMzNjcuOTUxNTg3LCJuYmYiOjE2ODcwMzMzNjcuOTUxNTk0LCJleHAiOjE3MTg2NTU3NjcuNjYyODQsInN1YiI6IjMiLCJzY29wZXMiOltdfQ.DzW8BYGP5sBZfDA5jBr-NW0t89L2lU8Y1u1xs657kM8bSKrMVB9WJSQK2hAqCGKfthS94zx1DKSuvmkPz4j56b_ghP8yBDPPDQUme7XWBnAUNDyv_ILW5XZOvbeV0F8ris4mjnbu7F_R1f3Bsa5gmT4JbBjSAAjCKjeIMrSpD-dJXPF4dSDl6keQk1kM5TNc1tkASxX8CpRvKlqR1CcR2GascCxgV8SlevAq2Z5XYM6RxHK3h1EYjI3F92H1TJ5CYCBdh0NwyIuuctiOHugDiWJk1sevs5GxEsrwoWl0eK_keIueODLDJGBz9_uWpPCWncjCktwnGnpHSSx-EADfSsdarDV_LywHHEzSOFbr1zJrvQ9yi9-WcuNUtiS5a8EEf3OkwH6zSNyLNVDWAlD2FW6e5qs4Pd0JEuDlvZhyRff1Nu5dxvdp9NbOWk8wLtX_3eDlyBB2QGQHrWGoqzF5R8ICN1tW3i-djvcZb1Og17eIBh3Ezx7QoqD9aBhXMT0pP2FcxCjBWrsiGFAZRAuHCmjaFKrnxzD-XeIj0pI19pCcfPMMy9RNoIEhEuPCZsoUKvKqV6X-Pzgp--9l_cJl-FJtMv8CzSoHzKyJBCkF2uzQPJ25uPaKLh0BoiWhTQymPPb86Ir6okgI5Cd5YjN3qSiNxu-qImrflxTWT-KYEA0",
+									"type": "string"
 								}
 							]
 						},
+						"method": "POST",
+						"header": [],
 						"url": {
-							"raw": "{{url}}/api/updateProfileCover",
+							"raw": "http://127.0.0.1:8000/api/updateProfileCover",
+							"protocol": "http",
 							"host": [
-								"{{url}}"
+								"127",
+								"0",
+								"0",
+								"1"
 							],
+							"port": "8000",
 							"path": [
 								"api",
 								"updateProfileCover"
 							]
 						}
 					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Host",
-							"value": "127.0.0.1:8000"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 18:04:17 GMT"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 18:04:17 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "close"
-						},
-						{
-							"key": "X-Powered-By",
-							"value": "PHP/8.0.28"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, private"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "60"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "59"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"data\": \"\",\n    \"message\": \"Information updated successfully\",\n    \"status\": 201\n}"
-				}
-			]
-		},
-		{
-			"name": "Edit profile photo",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTQ1MTVkMzQ3ZThlZjYzMzQ2ZTI2Zjg1MGRmYTZiYTYzY2JkYWRjZjMyYmUxNTYwNGQ0MzgwNTY2ZGQ5OTA4ODFiZWI3ZTBlZTM2ZDBjZDQiLCJpYXQiOjE2ODcwMzMzNjcuOTUxNTg3LCJuYmYiOjE2ODcwMzMzNjcuOTUxNTk0LCJleHAiOjE3MTg2NTU3NjcuNjYyODQsInN1YiI6IjMiLCJzY29wZXMiOltdfQ.DzW8BYGP5sBZfDA5jBr-NW0t89L2lU8Y1u1xs657kM8bSKrMVB9WJSQK2hAqCGKfthS94zx1DKSuvmkPz4j56b_ghP8yBDPPDQUme7XWBnAUNDyv_ILW5XZOvbeV0F8ris4mjnbu7F_R1f3Bsa5gmT4JbBjSAAjCKjeIMrSpD-dJXPF4dSDl6keQk1kM5TNc1tkASxX8CpRvKlqR1CcR2GascCxgV8SlevAq2Z5XYM6RxHK3h1EYjI3F92H1TJ5CYCBdh0NwyIuuctiOHugDiWJk1sevs5GxEsrwoWl0eK_keIueODLDJGBz9_uWpPCWncjCktwnGnpHSSx-EADfSsdarDV_LywHHEzSOFbr1zJrvQ9yi9-WcuNUtiS5a8EEf3OkwH6zSNyLNVDWAlD2FW6e5qs4Pd0JEuDlvZhyRff1Nu5dxvdp9NbOWk8wLtX_3eDlyBB2QGQHrWGoqzF5R8ICN1tW3i-djvcZb1Og17eIBh3Ezx7QoqD9aBhXMT0pP2FcxCjBWrsiGFAZRAuHCmjaFKrnxzD-XeIj0pI19pCcfPMMy9RNoIEhEuPCZsoUKvKqV6X-Pzgp--9l_cJl-FJtMv8CzSoHzKyJBCkF2uzQPJ25uPaKLh0BoiWhTQymPPb86Ir6okgI5Cd5YjN3qSiNxu-qImrflxTWT-KYEA0",
-							"type": "string"
+							"name": "Edit Profile Cover",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "cover_photo",
+											"type": "file",
+											"src": "/C:/Users/ASUS/Desktop/backgrounds/BMW/wp3616641.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/updateProfileCover",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"updateProfileCover"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Jul 2023 18:04:17 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Jul 2023 18:04:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"\",\n    \"message\": \"Information updated successfully\",\n    \"status\": 201\n}"
 						}
 					]
 				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "profile_photo",
-							"type": "file",
-							"src": "/C:/Users/DELL 5583/Downloads/صوري/٢٠٢٠٠٤٠٧_٠٣٠٤٠٣.jpg"
-						},
-						{
-							"key": "",
-							"type": "file",
-							"src": [],
-							"disabled": true
-						}
-					]
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/updateProfilePicture",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"updateProfilePicture"
-					]
-				}
-			},
-			"response": [
 				{
-					"name": "Edit prfile photo",
-					"originalRequest": {
+					"name": "Edit profile photo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTQ1MTVkMzQ3ZThlZjYzMzQ2ZTI2Zjg1MGRmYTZiYTYzY2JkYWRjZjMyYmUxNTYwNGQ0MzgwNTY2ZGQ5OTA4ODFiZWI3ZTBlZTM2ZDBjZDQiLCJpYXQiOjE2ODcwMzMzNjcuOTUxNTg3LCJuYmYiOjE2ODcwMzMzNjcuOTUxNTk0LCJleHAiOjE3MTg2NTU3NjcuNjYyODQsInN1YiI6IjMiLCJzY29wZXMiOltdfQ.DzW8BYGP5sBZfDA5jBr-NW0t89L2lU8Y1u1xs657kM8bSKrMVB9WJSQK2hAqCGKfthS94zx1DKSuvmkPz4j56b_ghP8yBDPPDQUme7XWBnAUNDyv_ILW5XZOvbeV0F8ris4mjnbu7F_R1f3Bsa5gmT4JbBjSAAjCKjeIMrSpD-dJXPF4dSDl6keQk1kM5TNc1tkASxX8CpRvKlqR1CcR2GascCxgV8SlevAq2Z5XYM6RxHK3h1EYjI3F92H1TJ5CYCBdh0NwyIuuctiOHugDiWJk1sevs5GxEsrwoWl0eK_keIueODLDJGBz9_uWpPCWncjCktwnGnpHSSx-EADfSsdarDV_LywHHEzSOFbr1zJrvQ9yi9-WcuNUtiS5a8EEf3OkwH6zSNyLNVDWAlD2FW6e5qs4Pd0JEuDlvZhyRff1Nu5dxvdp9NbOWk8wLtX_3eDlyBB2QGQHrWGoqzF5R8ICN1tW3i-djvcZb1Og17eIBh3Ezx7QoqD9aBhXMT0pP2FcxCjBWrsiGFAZRAuHCmjaFKrnxzD-XeIj0pI19pCcfPMMy9RNoIEhEuPCZsoUKvKqV6X-Pzgp--9l_cJl-FJtMv8CzSoHzKyJBCkF2uzQPJ25uPaKLh0BoiWhTQymPPb86Ir6okgI5Cd5YjN3qSiNxu-qImrflxTWT-KYEA0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "profile_photo",
 									"type": "file",
-									"src": "/C:/Users/ASUS/Desktop/backgrounds/syrian national team/R (2).jpg"
+									"src": "/C:/Users/DELL 5583/Downloads/صوري/٢٠٢٠٠٤٠٧_٠٣٠٤٠٣.jpg"
 								},
 								{
 									"key": "",
@@ -1407,65 +1392,151 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/updateProfilePicture",
+							"raw": "http://127.0.0.1:8000/api/updateProfilePicture",
+							"protocol": "http",
 							"host": [
-								"{{url}}"
+								"127",
+								"0",
+								"0",
+								"1"
 							],
+							"port": "8000",
 							"path": [
 								"api",
 								"updateProfilePicture"
 							]
 						}
 					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Host",
-							"value": "127.0.0.1:8000"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 18:01:32 GMT"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 18:01:32 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "close"
-						},
-						{
-							"key": "X-Powered-By",
-							"value": "PHP/8.0.28"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, private"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "60"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "58"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
+							"name": "Edit prfile photo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "profile_photo",
+											"type": "file",
+											"src": "/C:/Users/ASUS/Desktop/backgrounds/syrian national team/R (2).jpg"
+										},
+										{
+											"key": "",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/updateProfilePicture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"updateProfilePicture"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Jul 2023 18:01:32 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Jul 2023 18:01:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"\",\n    \"message\": \"Information updated successfully\",\n    \"status\": 201\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"data\": \"\",\n    \"message\": \"Information updated successfully\",\n    \"status\": 201\n}"
+					]
 				}
 			]
+		},
+		{
+			"name": "show Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDlmMWRiZmYyYzk3MWNkOTk1Zjk4OTFmMGFhYzgyZDMwOWI2NTlmZDQ3MzQwNDg5NDA2MWZhN2Q2OGM4NDE5ZjY2YTM2YzFjYmEwNzQzOTgiLCJpYXQiOjE2ODY0MzQyNTAuNzY2NjQ1LCJuYmYiOjE2ODY0MzQyNTAuNzY2NjU2LCJleHAiOjE3MTgwNTY2NTAuNDQ1MjA3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.bRLt4z-xlR02w4g5go8mNUtNkroYi6NJzjoV2rUaFgyM96QwiITeR8SMMIsL2jbzvGIhTd0gRRhnlBmHDHeSf6Cj-6GSlVAyNRXNkIuxznbHhmqvsEXOnltblUqiq1q4LJyRd4MCnnM1QHOghRcWk0nhZsARy8g0sFI-SpBbTFTmG9GFzWBjgXFIhGNspHioHoc5gNUnFx0EznZliU3oS3vAH7RjeCoPE8Gjuf92DNIJcc8WPp9PBbsk64Bwv6mFripoBk8WQLJCDR6G5r5c5q2fms3a3W4FPx6jotoM3uUrFHyMQMhorvZw8um32qYT-_PCwYKAC0MCI9dn4GJkRePx2txdrlkOsK7AsNX2Ya2CWp1oXmP7g5m_Dyvc3IS_8Tghh4gd7dMQLRwjgA8AoRDloJhXnqAhhkLGsd4jO1g0uTK4nYbidMbbz9ahvDu7CwqqS86JCzPocrhaMr8asCB3m6Bo3lzWP2s-i3sU6poPWUxq3iPFQ0C_6jcwOcVACn3N1VvqK0015yCg7u8Pae3RkGFOFo_yr9t5TYiqQmT3y0zdwA_6ExvdWgyKeWrI5LH60Ro0zKhQZJ6DfqM0_UY3KDHTG3hocY8swnwGdU4we3ZyRBfh4eZIJzsYF09DdFWvnOF7K2-Bywn2NmIdC8i-_vkLpLK9qmVUX2Bx7_g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showProfile/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showProfile",
+						"2"
+					]
+				}
+			},
+			"response": []
 		},
 		{
 			"name": "followProfile",
@@ -1775,46 +1846,6 @@
 			]
 		},
 		{
-			"name": "showProfile",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDlmMWRiZmYyYzk3MWNkOTk1Zjk4OTFmMGFhYzgyZDMwOWI2NTlmZDQ3MzQwNDg5NDA2MWZhN2Q2OGM4NDE5ZjY2YTM2YzFjYmEwNzQzOTgiLCJpYXQiOjE2ODY0MzQyNTAuNzY2NjQ1LCJuYmYiOjE2ODY0MzQyNTAuNzY2NjU2LCJleHAiOjE3MTgwNTY2NTAuNDQ1MjA3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.bRLt4z-xlR02w4g5go8mNUtNkroYi6NJzjoV2rUaFgyM96QwiITeR8SMMIsL2jbzvGIhTd0gRRhnlBmHDHeSf6Cj-6GSlVAyNRXNkIuxznbHhmqvsEXOnltblUqiq1q4LJyRd4MCnnM1QHOghRcWk0nhZsARy8g0sFI-SpBbTFTmG9GFzWBjgXFIhGNspHioHoc5gNUnFx0EznZliU3oS3vAH7RjeCoPE8Gjuf92DNIJcc8WPp9PBbsk64Bwv6mFripoBk8WQLJCDR6G5r5c5q2fms3a3W4FPx6jotoM3uUrFHyMQMhorvZw8um32qYT-_PCwYKAC0MCI9dn4GJkRePx2txdrlkOsK7AsNX2Ya2CWp1oXmP7g5m_Dyvc3IS_8Tghh4gd7dMQLRwjgA8AoRDloJhXnqAhhkLGsd4jO1g0uTK4nYbidMbbz9ahvDu7CwqqS86JCzPocrhaMr8asCB3m6Bo3lzWP2s-i3sU6poPWUxq3iPFQ0C_6jcwOcVACn3N1VvqK0015yCg7u8Pae3RkGFOFo_yr9t5TYiqQmT3y0zdwA_6ExvdWgyKeWrI5LH60Ro0zKhQZJ6DfqM0_UY3KDHTG3hocY8swnwGdU4we3ZyRBfh4eZIJzsYF09DdFWvnOF7K2-Bywn2NmIdC8i-_vkLpLK9qmVUX2Bx7_g",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/showProfile/2",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"showProfile",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "searchIntoUsers",
 			"request": {
 				"auth": {
@@ -2119,6 +2150,14 @@
 						"showOldestStory"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "return post",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}

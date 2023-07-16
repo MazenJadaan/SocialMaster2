@@ -1,32 +1,42 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\UserProfile;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\showProfileDetails;
+use App\Http\Resources\UserProfileInformationsResource;
+use App\Models\officialaccounts;
+use App\Models\post;
+use App\Models\User;
 use App\Models\User_profile;
 use App\Models\userfollowers;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use App\Traits\ApiResponseTrait;
-use App\Models\post;
-use App\Http\Resources\UserProfileInformationsResource;
-use App\Http\Resources\showProfileDetails;
-use App\Models\officialaccounts;
-use App\Models\User;
-use Exception;
-// use Exception;
+use App\Traits\PostsTrait;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Stripe;
+
+// use Exception;
 // use Stripe\Stripe as StripeStripe;
 
-class UserProfile extends Controller
+
+class MyUserProfile extends Controller
 {
-    use ApiResponseTrait;
+    use ApiResponseTrait,PostsTrait;
 
     public function showMyProfile()
     {
         $myid = Auth::id();
-        $user = User::select('id', 'first_name', 'last_name', 'phone_num', 'gender', 'birthdate')->with('user_profile')->find($myid);
-        return $this->ApiResponse($user, ' My Profile Information returned successfully', 200);
-    }
+        $user = User::select('id', 'first_name', 'last_name', 'gender', 'birthdate')->with('user_profile')->find($myid);
+        $posts = $this->getProfilePosts($myid);
+        $arr = ['profile information' => $user,
+            'all posts' => $posts];
+        return $this->ApiResponse($arr, ' My Profile Information returned successfully', 200);
+                }
+
+
+
     public function addInformations(Request $request)
     {
         $data = $request->validate([
@@ -76,56 +86,6 @@ class UserProfile extends Controller
             $user_profile->save();
         }
         return $this->ApiResponse('', 'Information updated successfully', 201);
-    }
-
-    public function follow($id)
-    {
-        $profileID = User_profile::find($id)->id;
-        $userID = (Auth::id());
-        $userAlreadyFollower = userfollowers::where([
-            ['user_id', $userID],
-            ['user_profile_id', $profileID]
-        ])->first();
-        if ($userID != $profileID && !$userAlreadyFollower) {
-            $follow = userfollowers::create([
-                'user_id' => $userID,
-                'user_profile_id' => $profileID
-            ]);
-            $userProfile = User_profile::find($id);
-            $userProfile->increment('followers_number', 1);
-            $userProfile->save();
-            return $this->ApiResponse('null', 'follow is done', 200);
-        } elseif ($userID == $profileID) {
-            return $this->ApiResponse('null', 'you cant follow yourself يا متوحد', '401');
-        } elseif ($userAlreadyFollower) {
-            return $this->ApiResponse('null', 'you already following this user', '401');
-        }
-    }
-
-    public function unFollow($id)
-    {
-        $profileID = User_profile::find($id)->id;
-        $userID = (Auth::id());
-        $userUnFollow = Userfollowers::where([
-            ['user_id', $userID],
-            ['user_profile_id', $profileID]
-        ])->delete();
-
-        $userProfile = User_profile::find($id);
-        $userProfile->decrement('followers_number', 1);
-        $userProfile->save();
-
-        return $this->ApiResponse('null', 'unfollowing its done ', 200);
-    }
-
-
-
-    public function showProfile($id)
-    {
-        $profileID = User_profile::find($id);
-        //هل نحتاج نهندل حالة عدم وجود بروفايل اصلا ؟؟
-        $user = showProfileDetails::collection(User::with('user_profile')->find($profileID));
-        return $this->ApiResponse($user, 'Profile returned successfully', 200);
     }
 
     public function makeProfileOfficial($id, Request $request)
