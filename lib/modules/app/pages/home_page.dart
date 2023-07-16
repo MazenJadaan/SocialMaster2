@@ -26,12 +26,6 @@ class HomePage extends StatelessWidget {
                   floating: true,
                   elevation: 0.0,
                   pinned: true,
-                  // leading: IconButton(
-                  //   icon: const FaIcon(FontAwesomeIcons.bars),
-                  //   onPressed: () {
-                  //
-                  //   },
-                  // ),
                   title:   const Center(
                     child: Image(image: AssetImage('assets/images/logo_name.png',),width: 125)
                   ),
@@ -63,6 +57,7 @@ class HomePage extends StatelessWidget {
                       Tab(text: "For you"),
                       Tab(text: "Following",)
                     ],
+
                   ),
                 ),
               ];
