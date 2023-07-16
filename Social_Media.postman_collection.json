@@ -1499,91 +1499,21 @@
 			]
 		},
 		{
-			"name": "show Profile",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDlmMWRiZmYyYzk3MWNkOTk1Zjk4OTFmMGFhYzgyZDMwOWI2NTlmZDQ3MzQwNDg5NDA2MWZhN2Q2OGM4NDE5ZjY2YTM2YzFjYmEwNzQzOTgiLCJpYXQiOjE2ODY0MzQyNTAuNzY2NjQ1LCJuYmYiOjE2ODY0MzQyNTAuNzY2NjU2LCJleHAiOjE3MTgwNTY2NTAuNDQ1MjA3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.bRLt4z-xlR02w4g5go8mNUtNkroYi6NJzjoV2rUaFgyM96QwiITeR8SMMIsL2jbzvGIhTd0gRRhnlBmHDHeSf6Cj-6GSlVAyNRXNkIuxznbHhmqvsEXOnltblUqiq1q4LJyRd4MCnnM1QHOghRcWk0nhZsARy8g0sFI-SpBbTFTmG9GFzWBjgXFIhGNspHioHoc5gNUnFx0EznZliU3oS3vAH7RjeCoPE8Gjuf92DNIJcc8WPp9PBbsk64Bwv6mFripoBk8WQLJCDR6G5r5c5q2fms3a3W4FPx6jotoM3uUrFHyMQMhorvZw8um32qYT-_PCwYKAC0MCI9dn4GJkRePx2txdrlkOsK7AsNX2Ya2CWp1oXmP7g5m_Dyvc3IS_8Tghh4gd7dMQLRwjgA8AoRDloJhXnqAhhkLGsd4jO1g0uTK4nYbidMbbz9ahvDu7CwqqS86JCzPocrhaMr8asCB3m6Bo3lzWP2s-i3sU6poPWUxq3iPFQ0C_6jcwOcVACn3N1VvqK0015yCg7u8Pae3RkGFOFo_yr9t5TYiqQmT3y0zdwA_6ExvdWgyKeWrI5LH60Ro0zKhQZJ6DfqM0_UY3KDHTG3hocY8swnwGdU4we3ZyRBfh4eZIJzsYF09DdFWvnOF7K2-Bywn2NmIdC8i-_vkLpLK9qmVUX2Bx7_g",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/showProfile/2",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"showProfile",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "followProfile",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWYwZjE1ZjIxZThhNTI4ZjRlZTZkYWIzMGQzYjJiNmJlY2NlMTU3ZjU4OTU5Njc5OGYwZjU1ODE0MDZiNDk2YzA5OWU1OTk4ZmM3N2Y4YmQiLCJpYXQiOjE2ODY0NDQ2NDkuMzY5OTEyLCJuYmYiOjE2ODY0NDQ2NDkuMzY5OTE2LCJleHAiOjE3MTgwNjcwNDkuMzE2OTQ4LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.nzqwvtXPS5ZsokVZaG4qks0yV0SuKnVCklnFD11rTaulEMYu3JDAmb3_44tzD0kHYMatZNR942mecvxYcowVxE-SZidqkRAPSIcjnUo34pPmfNEJo5kAGFuTU5e72foxOud1pDjuCypGhBpLvRifzvV_zy3LpRp3IyoLnc8ZKUxRULDIf0-oxAQqx3sdOjiNhOT14Alh3XAofGsl3_0INAcws_avTmrHueBapQXDvA3kGWiDe_HDMFjYz3inLJZZycRpAvm4jwrC6H24etLUf9gHRDjKRGGvzlFwznwmJPeHHQJgpOpg9X9zI0riozlMa2P5oYRaM9IsNWW8FJK3NjzgnB20sAyrxXCkFfxlWhsEaPNJdGr7fsYCJVihulqy73b95PQjnY-GUwfgWn1dm8BRzK_W_mHbv4uZHuyJzDyqUN8S4ceVMUDG5NXdeJsOBFvF9T9hw55iOvAL6hUa5K_EFdyzcIRiFZMuspE3awmbUEFLbdctWhEq-39aDRVgvBIFuKYiNcf8OQdNZ6rHGM0EKJ4qcDbu_4zklX99yS37FRQb1xLvCVbY8huwAEsvUax4zO7G8enbce3hV8jEUhQBHsUsX_CG4X7QxVDGTLu4YGW6f9Xc97Pf-uVjbVEkqvtc_nBc8SVP9f3E9xki7JABv8jcSiu9kwKJ5zVpXtk",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/followProfile/2",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"followProfile",
-						"2"
-					]
-				}
-			},
-			"response": [
+			"name": "Search Api",
+			"item": [
 				{
-					"name": "followProfile succesful",
-					"originalRequest": {
+					"name": "searchIntoUsers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTFhZmUyY2UwZDI4Mzg3ODc4YTkwMjYwYzdhOTIxMWRjNThmOTYzMGQ0OTdmOTM2ZjI4ZmMyMzdkYTJhNmQ3MmIzYWY3Njk4MDJhNzgxMDYiLCJpYXQiOjE2ODc3MTk1ODcuNDEzMDgzLCJuYmYiOjE2ODc3MTk1ODcuNDEzMDksImV4cCI6MTcxOTM0MTk4Ny4wMTY3MDUsInN1YiI6IjMiLCJzY29wZXMiOltdfQ.JxO_It7CodLpv1K_Gh2MqY406IW6cj21jeLdNL0ArPmI3iIuU7fZmORDNSEsPFvuJ7D1pBmyoa8LdIMGLUJV3HxIDNR3TYE-NAft2_wgP69_61PJESfD7bNfYFbSuj1jn4FaDDj9TOkbDWslEQ4RvlBsSuEE2SDkNWsQlpG6g2ar35IxzWX81JylXagsQqDtIG4Dmy9OPtMh3sRjs4NMKzF7Kqmabe2HtxU0zB8A4JnlI5zr91qm_HO7IwbsCvheRv9lmbLPMYUyNRsZYaZSFQIW9Ph5g4JwhldDoeZEHPXYRvd2ni2BBkv4vZKVUbmQfsqmGwVulCblZYx54EZCDEA9jWKl1n2M9uFH7Wk_RNe_RbKhTohRqbziaJ-IM67Fj5dCKcfB0o7xf_Yi4YshHoi_31f7Upip9c7nVfgORYr70NM29PI1vZDr_L8I7PkkCw4ceymHmdA-_jPFYQ6Tn6JJWYfCpDKmVIEaHQlfMc9672_sFfcwx84akv3SsaynQjSvJHTym9CK4P6-YeI6WWwpSR19U1JfvRpFvcm6L2UV5oEL1R-N5cwZQJU-7Bx-_oIh_YZ8jnSuwY3RnBgSkz1Phr4XowxF5qNybJqhKAG4esfNOa4nMisYAI45icC85ITULlRt6tP7uXI4fN2C_v0dxAStqJzVpeNqeAYxulI",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -1594,187 +1524,556 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": []
+							"formdata": [
+								{
+									"key": "name",
+									"value": "mazen",
+									"type": "text"
+								}
+							]
 						},
 						"url": {
-							"raw": "{{url}}/api/followProfile/2",
+							"raw": "http://127.0.0.1:8000/api/searchUsers",
+							"protocol": "http",
 							"host": [
-								"{{url}}"
+								"127",
+								"0",
+								"0",
+								"1"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"followProfile",
-								"2"
+								"searchUsers"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ma",
+									"disabled": true
+								}
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Host",
-							"value": "127.0.0.1:8000"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 20:01:43 GMT"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 20:01:43 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "close"
-						},
-						{
-							"key": "X-Powered-By",
-							"value": "PHP/8.0.28"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, private"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "60"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "59"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
+							"name": "searchIntoUsers",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "g",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/searchUsers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"searchUsers"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "ma",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jul 2023 15:05:44 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jul 2023 15:05:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"first_name\": \"Santos Rohan Jr.\",\n            \"last_name\": \"Prof. Gino Grant\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Reba Brown\",\n            \"last_name\": \"Anne Gutmann\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Reba Brown\",\n            \"last_name\": \"Anne Gutmann\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Reba Brown\",\n            \"last_name\": \"Anne Gutmann\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Reba Brown\",\n            \"last_name\": \"Anne Gutmann\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Reba Brown\",\n            \"last_name\": \"Anne Gutmann\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Wava Hegmann\",\n            \"last_name\": \"Wilfrid Zemlak\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Wava Hegmann\",\n            \"last_name\": \"Wilfrid Zemlak\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        }\n    ],\n    \"message\": \"Users found\",\n    \"status\": 200\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"data\": \"null\",\n    \"message\": \"follow is done\",\n    \"status\": 200\n}"
+					]
 				},
 				{
-					"name": "followProfile faild",
-					"originalRequest": {
+					"name": "searchIntoPosts",
+					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"header": [],
 						"url": {
-							"raw": "{{url}}/api/followProfile/2",
+							"raw": "http://127.0.0.1:8000/api/searchPosts",
+							"protocol": "http",
 							"host": [
-								"{{url}}"
+								"127",
+								"0",
+								"0",
+								"1"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"followProfile",
-								"2"
+								"searchPosts"
 							]
 						}
 					},
-					"status": "Unauthorized",
-					"code": 401,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Host",
-							"value": "127.0.0.1:8000"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 20:02:30 GMT"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 20:02:30 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "close"
-						},
-						{
-							"key": "X-Powered-By",
-							"value": "PHP/8.0.28"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, private"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "60"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "56"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
+							"name": "searchIntoPosts",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "text",
+											"value": "user",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/searchPosts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"searchPosts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jul 2023 16:23:02 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jul 2023 16:23:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 4,\n            \"user_id\": 1,\n            \"post_body\": \"other post user 1 \",\n            \"post_time\": \"18:38:11\",\n            \"post_date\": \"2023-07-15\",\n            \"photo\": [],\n            \"video\": [\n                {\n                    \"post_id\": 4,\n                    \"video_path\": \"storage/app/videos/posts_videos/laravel.mp4\"\n                }\n            ],\n            \"user\": {\n                \"id\": 1,\n                \"first_name\": \"asem\",\n                \"last_name\": \"refa3i\",\n                \"user_profile\": {\n                    \"user_id\": 1,\n                    \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n                }\n            }\n        },\n        {\n            \"id\": 6,\n            \"user_id\": 1,\n            \"post_body\": \" post 2 for user 1 \",\n            \"post_time\": \"13:45:08\",\n            \"post_date\": \"2023-07-16\",\n            \"photo\": [\n                {\n                    \"post_id\": 6,\n                    \"photo_path\": \"storage/app/images/posts_pictures/third_picture.jpg\"\n                }\n            ],\n            \"video\": [],\n            \"user\": {\n                \"id\": 1,\n                \"first_name\": \"asem\",\n                \"last_name\": \"refa3i\",\n                \"user_profile\": {\n                    \"user_id\": 1,\n                    \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n                }\n            }\n        },\n        {\n            \"id\": 7,\n            \"user_id\": 1,\n            \"post_body\": \" post 3 for user 1 \",\n            \"post_time\": \"13:45:20\",\n            \"post_date\": \"2023-07-16\",\n            \"photo\": [],\n            \"video\": [\n                {\n                    \"post_id\": 7,\n                    \"video_path\": \"storage/app/videos/posts_videos/wahda.mp4\"\n                }\n            ],\n            \"user\": {\n                \"id\": 1,\n                \"first_name\": \"asem\",\n                \"last_name\": \"refa3i\",\n                \"user_profile\": {\n                    \"user_id\": 1,\n                    \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n                }\n            }\n        }\n    ],\n    \"message\": \"Posts found\",\n    \"status\": 200\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"data\": \"null\",\n    \"message\": \"you already following this user\",\n    \"status\": \"401\"\n}"
+					]
 				}
 			]
 		},
 		{
-			"name": "unFollowProfile",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+			"name": "profile of other user",
+			"item": [
+				{
+					"name": "show Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDlmMWRiZmYyYzk3MWNkOTk1Zjk4OTFmMGFhYzgyZDMwOWI2NTlmZDQ3MzQwNDg5NDA2MWZhN2Q2OGM4NDE5ZjY2YTM2YzFjYmEwNzQzOTgiLCJpYXQiOjE2ODY0MzQyNTAuNzY2NjQ1LCJuYmYiOjE2ODY0MzQyNTAuNzY2NjU2LCJleHAiOjE3MTgwNTY2NTAuNDQ1MjA3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.bRLt4z-xlR02w4g5go8mNUtNkroYi6NJzjoV2rUaFgyM96QwiITeR8SMMIsL2jbzvGIhTd0gRRhnlBmHDHeSf6Cj-6GSlVAyNRXNkIuxznbHhmqvsEXOnltblUqiq1q4LJyRd4MCnnM1QHOghRcWk0nhZsARy8g0sFI-SpBbTFTmG9GFzWBjgXFIhGNspHioHoc5gNUnFx0EznZliU3oS3vAH7RjeCoPE8Gjuf92DNIJcc8WPp9PBbsk64Bwv6mFripoBk8WQLJCDR6G5r5c5q2fms3a3W4FPx6jotoM3uUrFHyMQMhorvZw8um32qYT-_PCwYKAC0MCI9dn4GJkRePx2txdrlkOsK7AsNX2Ya2CWp1oXmP7g5m_Dyvc3IS_8Tghh4gd7dMQLRwjgA8AoRDloJhXnqAhhkLGsd4jO1g0uTK4nYbidMbbz9ahvDu7CwqqS86JCzPocrhaMr8asCB3m6Bo3lzWP2s-i3sU6poPWUxq3iPFQ0C_6jcwOcVACn3N1VvqK0015yCg7u8Pae3RkGFOFo_yr9t5TYiqQmT3y0zdwA_6ExvdWgyKeWrI5LH60Ro0zKhQZJ6DfqM0_UY3KDHTG3hocY8swnwGdU4we3ZyRBfh4eZIJzsYF09DdFWvnOF7K2-Bywn2NmIdC8i-_vkLpLK9qmVUX2Bx7_g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/showProfile/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"showProfile",
+								"2"
+							]
+						}
+					},
+					"response": [
 						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWYwZjE1ZjIxZThhNTI4ZjRlZTZkYWIzMGQzYjJiNmJlY2NlMTU3ZjU4OTU5Njc5OGYwZjU1ODE0MDZiNDk2YzA5OWU1OTk4ZmM3N2Y4YmQiLCJpYXQiOjE2ODY0NDQ2NDkuMzY5OTEyLCJuYmYiOjE2ODY0NDQ2NDkuMzY5OTE2LCJleHAiOjE3MTgwNjcwNDkuMzE2OTQ4LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.nzqwvtXPS5ZsokVZaG4qks0yV0SuKnVCklnFD11rTaulEMYu3JDAmb3_44tzD0kHYMatZNR942mecvxYcowVxE-SZidqkRAPSIcjnUo34pPmfNEJo5kAGFuTU5e72foxOud1pDjuCypGhBpLvRifzvV_zy3LpRp3IyoLnc8ZKUxRULDIf0-oxAQqx3sdOjiNhOT14Alh3XAofGsl3_0INAcws_avTmrHueBapQXDvA3kGWiDe_HDMFjYz3inLJZZycRpAvm4jwrC6H24etLUf9gHRDjKRGGvzlFwznwmJPeHHQJgpOpg9X9zI0riozlMa2P5oYRaM9IsNWW8FJK3NjzgnB20sAyrxXCkFfxlWhsEaPNJdGr7fsYCJVihulqy73b95PQjnY-GUwfgWn1dm8BRzK_W_mHbv4uZHuyJzDyqUN8S4ceVMUDG5NXdeJsOBFvF9T9hw55iOvAL6hUa5K_EFdyzcIRiFZMuspE3awmbUEFLbdctWhEq-39aDRVgvBIFuKYiNcf8OQdNZ6rHGM0EKJ4qcDbu_4zklX99yS37FRQb1xLvCVbY8huwAEsvUax4zO7G8enbce3hV8jEUhQBHsUsX_CG4X7QxVDGTLu4YGW6f9Xc97Pf-uVjbVEkqvtc_nBc8SVP9f3E9xki7JABv8jcSiu9kwKJ5zVpXtk",
-							"type": "string"
+							"name": "showProfile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/showProfile/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"showProfile",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jul 2023 16:47:50 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jul 2023 16:47:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"user information\": [\n            {\n                \"id\": 1,\n                \"first_name\": \"asem\",\n                \"last_name\": \"refa3i\",\n                \"gender\": \"male\",\n                \"birthdate\": \"2001-08-02\",\n                \"profile\": {\n                    \"id\": 1,\n                    \"job\": null,\n                    \"study_place\": null,\n                    \"place_stay\": null,\n                    \"place_born\": null,\n                    \"bio\": null,\n                    \"cover_photo\": \"storage/app/images/cover_picture/Fw79JsNXwAEHNTq.jfif\",\n                    \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\",\n                    \"followers_number\": 0,\n                    \"state\": null,\n                    \"user_id\": 1,\n                    \"created_at\": \"2023-07-14T15:08:20.000000Z\",\n                    \"updated_at\": \"2023-07-14T15:13:49.000000Z\"\n                }\n            }\n        ],\n        \"user posts\": [\n            {\n                \"id\": 1,\n                \"first_name\": \"asem\",\n                \"last_name\": \"refa3i\",\n                \"post\": [\n                    {\n                        \"id\": 7,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \" post 3 for user 1 \",\n                        \"post_time\": \"13:45:20\",\n                        \"post_date\": \"2023-07-16\",\n                        \"created_at\": \"2023-07-16T10:45:20.000000Z\",\n                        \"updated_at\": \"2023-07-16T10:45:20.000000Z\",\n                        \"photo\": [],\n                        \"video\": [\n                            {\n                                \"id\": 4,\n                                \"post_id\": 7,\n                                \"video_path\": \"storage/app/videos/posts_videos/wahda.mp4\",\n                                \"created_at\": \"2023-07-16T10:48:48.000000Z\",\n                                \"updated_at\": \"2023-07-16T10:48:48.000000Z\"\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 6,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \" post 2 for user 1 \",\n                        \"post_time\": \"13:45:08\",\n                        \"post_date\": \"2023-07-16\",\n                        \"created_at\": \"2023-07-16T10:45:08.000000Z\",\n                        \"updated_at\": \"2023-07-16T10:45:08.000000Z\",\n                        \"photo\": [\n                            {\n                                \"id\": 7,\n                                \"post_id\": 6,\n                                \"photo_path\": \"storage/app/images/posts_pictures/third_picture.jpg\",\n                                \"created_at\": \"2023-07-16T10:46:11.000000Z\",\n                                \"updated_at\": \"2023-07-16T10:46:11.000000Z\"\n                            }\n                        ],\n                        \"video\": []\n                    },\n                    {\n                        \"id\": 4,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \"other post user 1 \",\n                        \"post_time\": \"18:38:11\",\n                        \"post_date\": \"2023-07-15\",\n                        \"created_at\": \"2023-07-15T15:38:11.000000Z\",\n                        \"updated_at\": \"2023-07-15T15:38:11.000000Z\",\n                        \"photo\": [],\n                        \"video\": [\n                            {\n                                \"id\": 2,\n                                \"post_id\": 4,\n                                \"video_path\": \"storage/app/videos/posts_videos/laravel.mp4\",\n                                \"created_at\": \"2023-07-15T15:39:31.000000Z\",\n                                \"updated_at\": \"2023-07-15T15:39:31.000000Z\"\n                            }\n                        ]\n                    }\n                ],\n                \"sharepost\": [\n                    {\n                        \"id\": 2,\n                        \"user_id\": 1,\n                        \"post_id\": 1,\n                        \"body\": \"user 1 share post 1 of user 2 \",\n                        \"created_at\": \"2023-07-15T15:56:20.000000Z\",\n                        \"updated_at\": \"2023-07-15T15:56:20.000000Z\",\n                        \"post\": {\n                            \"id\": 1,\n                            \"user_id\": 2,\n                            \"user_profile_id\": 2,\n                            \"post_body\": \"my post 1\",\n                            \"post_time\": \"19:20:12\",\n                            \"post_date\": \"2023-07-14\",\n                            \"created_at\": \"2023-07-14T16:20:12.000000Z\",\n                            \"updated_at\": \"2023-07-14T16:20:12.000000Z\",\n                            \"user\": {\n                                \"id\": 2,\n                                \"first_name\": \"asem1\",\n                                \"last_name\": \"refa3i\"\n                            },\n                            \"photo\": [\n                                {\n                                    \"id\": 1,\n                                    \"post_id\": 1,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/first_picture.jpg\",\n                                    \"created_at\": \"2023-07-14T16:23:26.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:23:26.000000Z\"\n                                },\n                                {\n                                    \"id\": 2,\n                                    \"post_id\": 1,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/second_picture.jpg\",\n                                    \"created_at\": \"2023-07-14T16:23:34.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:23:34.000000Z\"\n                                },\n                                {\n                                    \"id\": 3,\n                                    \"post_id\": 1,\n                                    \"photo_path\": \"storage/app/images/profile_picture/1685690560.jpg\",\n                                    \"created_at\": \"2023-07-14T16:23:39.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:23:39.000000Z\"\n                                }\n                            ],\n                            \"video\": []\n                        }\n                    },\n                    {\n                        \"id\": 1,\n                        \"user_id\": 1,\n                        \"post_id\": 2,\n                        \"body\": \"user 1 share post of user 2 \",\n                        \"created_at\": \"2023-07-15T15:56:05.000000Z\",\n                        \"updated_at\": \"2023-07-15T15:56:05.000000Z\",\n                        \"post\": {\n                            \"id\": 2,\n                            \"user_id\": 2,\n                            \"user_profile_id\": 2,\n                            \"post_body\": \"my post 2\",\n                            \"post_time\": \"19:24:02\",\n                            \"post_date\": \"2023-07-14\",\n                            \"created_at\": \"2023-07-14T16:14:02.000000Z\",\n                            \"updated_at\": \"2023-07-14T16:14:02.000000Z\",\n                            \"user\": {\n                                \"id\": 2,\n                                \"first_name\": \"asem1\",\n                                \"last_name\": \"refa3i\"\n                            },\n                            \"photo\": [\n                                {\n                                    \"id\": 4,\n                                    \"post_id\": 2,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/first_picture.jpg\",\n                                    \"created_at\": \"2023-07-14T16:24:24.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:24:24.000000Z\"\n                                }\n                            ],\n                            \"video\": []\n                        }\n                    }\n                ]\n            }\n        ]\n    },\n    \"message\": \"Profile returned successfully\",\n    \"status\": 200\n}"
 						}
 					]
 				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/unFollow/2",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"unFollow",
-						"2"
+				{
+					"name": "followProfile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWYwZjE1ZjIxZThhNTI4ZjRlZTZkYWIzMGQzYjJiNmJlY2NlMTU3ZjU4OTU5Njc5OGYwZjU1ODE0MDZiNDk2YzA5OWU1OTk4ZmM3N2Y4YmQiLCJpYXQiOjE2ODY0NDQ2NDkuMzY5OTEyLCJuYmYiOjE2ODY0NDQ2NDkuMzY5OTE2LCJleHAiOjE3MTgwNjcwNDkuMzE2OTQ4LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.nzqwvtXPS5ZsokVZaG4qks0yV0SuKnVCklnFD11rTaulEMYu3JDAmb3_44tzD0kHYMatZNR942mecvxYcowVxE-SZidqkRAPSIcjnUo34pPmfNEJo5kAGFuTU5e72foxOud1pDjuCypGhBpLvRifzvV_zy3LpRp3IyoLnc8ZKUxRULDIf0-oxAQqx3sdOjiNhOT14Alh3XAofGsl3_0INAcws_avTmrHueBapQXDvA3kGWiDe_HDMFjYz3inLJZZycRpAvm4jwrC6H24etLUf9gHRDjKRGGvzlFwznwmJPeHHQJgpOpg9X9zI0riozlMa2P5oYRaM9IsNWW8FJK3NjzgnB20sAyrxXCkFfxlWhsEaPNJdGr7fsYCJVihulqy73b95PQjnY-GUwfgWn1dm8BRzK_W_mHbv4uZHuyJzDyqUN8S4ceVMUDG5NXdeJsOBFvF9T9hw55iOvAL6hUa5K_EFdyzcIRiFZMuspE3awmbUEFLbdctWhEq-39aDRVgvBIFuKYiNcf8OQdNZ6rHGM0EKJ4qcDbu_4zklX99yS37FRQb1xLvCVbY8huwAEsvUax4zO7G8enbce3hV8jEUhQBHsUsX_CG4X7QxVDGTLu4YGW6f9Xc97Pf-uVjbVEkqvtc_nBc8SVP9f3E9xki7JABv8jcSiu9kwKJ5zVpXtk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/followProfile/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"followProfile",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "followProfile succesful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/followProfile/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"followProfile",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Jul 2023 20:01:43 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Jul 2023 20:01:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"null\",\n    \"message\": \"follow is done\",\n    \"status\": 200\n}"
+						},
+						{
+							"name": "followProfile faild",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/followProfile/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"followProfile",
+										"2"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Jul 2023 20:02:30 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Jul 2023 20:02:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"null\",\n    \"message\": \"you already following this user\",\n    \"status\": \"401\"\n}"
+						}
 					]
-				}
-			},
-			"response": [
+				},
 				{
 					"name": "unFollowProfile",
-					"originalRequest": {
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWYwZjE1ZjIxZThhNTI4ZjRlZTZkYWIzMGQzYjJiNmJlY2NlMTU3ZjU4OTU5Njc5OGYwZjU1ODE0MDZiNDk2YzA5OWU1OTk4ZmM3N2Y4YmQiLCJpYXQiOjE2ODY0NDQ2NDkuMzY5OTEyLCJuYmYiOjE2ODY0NDQ2NDkuMzY5OTE2LCJleHAiOjE3MTgwNjcwNDkuMzE2OTQ4LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.nzqwvtXPS5ZsokVZaG4qks0yV0SuKnVCklnFD11rTaulEMYu3JDAmb3_44tzD0kHYMatZNR942mecvxYcowVxE-SZidqkRAPSIcjnUo34pPmfNEJo5kAGFuTU5e72foxOud1pDjuCypGhBpLvRifzvV_zy3LpRp3IyoLnc8ZKUxRULDIf0-oxAQqx3sdOjiNhOT14Alh3XAofGsl3_0INAcws_avTmrHueBapQXDvA3kGWiDe_HDMFjYz3inLJZZycRpAvm4jwrC6H24etLUf9gHRDjKRGGvzlFwznwmJPeHHQJgpOpg9X9zI0riozlMa2P5oYRaM9IsNWW8FJK3NjzgnB20sAyrxXCkFfxlWhsEaPNJdGr7fsYCJVihulqy73b95PQjnY-GUwfgWn1dm8BRzK_W_mHbv4uZHuyJzDyqUN8S4ceVMUDG5NXdeJsOBFvF9T9hw55iOvAL6hUa5K_EFdyzcIRiFZMuspE3awmbUEFLbdctWhEq-39aDRVgvBIFuKYiNcf8OQdNZ6rHGM0EKJ4qcDbu_4zklX99yS37FRQb1xLvCVbY8huwAEsvUax4zO7G8enbce3hV8jEUhQBHsUsX_CG4X7QxVDGTLu4YGW6f9Xc97Pf-uVjbVEkqvtc_nBc8SVP9f3E9xki7JABv8jcSiu9kwKJ5zVpXtk",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -1784,10 +2083,15 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/unFollow/2",
+							"raw": "http://127.0.0.1:8000/api/unFollow/2",
+							"protocol": "http",
 							"host": [
-								"{{url}}"
+								"127",
+								"0",
+								"0",
+								"1"
 							],
+							"port": "8000",
 							"path": [
 								"api",
 								"unFollow",
@@ -1795,145 +2099,81 @@
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Host",
-							"value": "127.0.0.1:8000"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 20:05:41 GMT"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 04 Jul 2023 20:05:41 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "close"
-						},
-						{
-							"key": "X-Powered-By",
-							"value": "PHP/8.0.28"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, private"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "60"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "58"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
+							"name": "unFollowProfile",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/unFollow/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"unFollow",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Jul 2023 20:05:41 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Jul 2023 20:05:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"null\",\n    \"message\": \"unfollowing its done \",\n    \"status\": 200\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"data\": \"null\",\n    \"message\": \"unfollowing its done \",\n    \"status\": 200\n}"
+					]
 				}
 			]
-		},
-		{
-			"name": "searchIntoUsers",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTFhZmUyY2UwZDI4Mzg3ODc4YTkwMjYwYzdhOTIxMWRjNThmOTYzMGQ0OTdmOTM2ZjI4ZmMyMzdkYTJhNmQ3MmIzYWY3Njk4MDJhNzgxMDYiLCJpYXQiOjE2ODc3MTk1ODcuNDEzMDgzLCJuYmYiOjE2ODc3MTk1ODcuNDEzMDksImV4cCI6MTcxOTM0MTk4Ny4wMTY3MDUsInN1YiI6IjMiLCJzY29wZXMiOltdfQ.JxO_It7CodLpv1K_Gh2MqY406IW6cj21jeLdNL0ArPmI3iIuU7fZmORDNSEsPFvuJ7D1pBmyoa8LdIMGLUJV3HxIDNR3TYE-NAft2_wgP69_61PJESfD7bNfYFbSuj1jn4FaDDj9TOkbDWslEQ4RvlBsSuEE2SDkNWsQlpG6g2ar35IxzWX81JylXagsQqDtIG4Dmy9OPtMh3sRjs4NMKzF7Kqmabe2HtxU0zB8A4JnlI5zr91qm_HO7IwbsCvheRv9lmbLPMYUyNRsZYaZSFQIW9Ph5g4JwhldDoeZEHPXYRvd2ni2BBkv4vZKVUbmQfsqmGwVulCblZYx54EZCDEA9jWKl1n2M9uFH7Wk_RNe_RbKhTohRqbziaJ-IM67Fj5dCKcfB0o7xf_Yi4YshHoi_31f7Upip9c7nVfgORYr70NM29PI1vZDr_L8I7PkkCw4ceymHmdA-_jPFYQ6Tn6JJWYfCpDKmVIEaHQlfMc9672_sFfcwx84akv3SsaynQjSvJHTym9CK4P6-YeI6WWwpSR19U1JfvRpFvcm6L2UV5oEL1R-N5cwZQJU-7Bx-_oIh_YZ8jnSuwY3RnBgSkz1Phr4XowxF5qNybJqhKAG4esfNOa4nMisYAI45icC85ITULlRt6tP7uXI4fN2C_v0dxAStqJzVpeNqeAYxulI",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "mazen",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/searchUsers",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"searchUsers"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "ma",
-							"disabled": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "searchIntoPosts",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/searchPosts",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"searchPosts"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "makeProfileOfficial",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
 		},
 		{
 			"name": "AddStories",
@@ -2150,14 +2390,6 @@
 						"showOldestStory"
 					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "return post",
-			"request": {
-				"method": "GET",
-				"header": []
 			},
 			"response": []
 		}
