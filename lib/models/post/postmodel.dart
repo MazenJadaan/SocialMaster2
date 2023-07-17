@@ -3,8 +3,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class PostModel extends ChangeNotifier {
   String? userImage;
-  String? image='';
-  String? vid='';
+  List<String>? images;
+  String? vid = '';
   String date = "30/7/2001";
   String caption = "";
   String userFName;
@@ -13,9 +13,10 @@ class PostModel extends ChangeNotifier {
   int comments = 0;
   int shares = 0;
   bool isLiked = false;
-  Color? likeColor ;
+  Color? likeColor;
+
   bool isSaved = false;
-  Color? saveColor ;
+  Color? saveColor;
 
   PostModel({
     required this.likes,
@@ -27,22 +28,23 @@ class PostModel extends ChangeNotifier {
     required this.date,
     required this.isLiked,
     required this.isSaved,
-    this.image,
+    required this.images,
     this.userImage,
     this.vid,
-  }){
-    this.likeColor = isLiked ? Colors.red:Colors.white;
-    this.saveColor = isSaved ?Colors.orange:Colors.white;
+  }) {
+    this.likeColor = isLiked ? Colors.red : Colors.white;
+    this.saveColor = isSaved ? Colors.orange : Colors.white;
   }
-  handleLike(){
-    isLiked == false ? likeColor=Colors.red : likeColor=Colors.white;
+
+  handleLike() {
+    isLiked == false ? likeColor = Colors.red : likeColor = Colors.white;
     this.isLiked = !isLiked;
     notifyListeners();
   }
 
-  handleSave(){
+  handleSave() {
     this.isSaved = !isSaved;
-    this.isSaved ? saveColor=Colors.orange : saveColor=Colors.white;
+    this.isSaved ? saveColor = Colors.orange : saveColor = Colors.white;
 
     if (this.isSaved) {
       Fluttertoast.showToast(
@@ -61,15 +63,11 @@ class PostModel extends ChangeNotifier {
     }
     notifyListeners();
   }
-
 }
 
-
-
-
-class MyPostModel extends ChangeNotifier{
+class MyPostModel extends ChangeNotifier {
   String? userImage;
-  String? image='';
+  List<String>? images;
   String date = "30/7/2001";
   String caption = "";
   String userFName;
@@ -80,7 +78,7 @@ class MyPostModel extends ChangeNotifier{
   bool isLiked = false;
   Color? likeColor;
   bool isSaved = false;
-  Color? saveColor ;
+  Color? saveColor;
 
   MyPostModel({
     required this.likes,
@@ -92,22 +90,22 @@ class MyPostModel extends ChangeNotifier{
     required this.userLName,
     required this.isLiked,
     required this.isSaved,
-    this.image,
+    required this.images,
     this.userImage,
-
-  }){
-    this.likeColor = isLiked ? Colors.red:Colors.white;
-    this.saveColor = isSaved ?Colors.orange:Colors.white;
+  }) {
+    this.likeColor = isLiked ? Colors.red : Colors.white;
+    this.saveColor = isSaved ? Colors.orange : Colors.white;
   }
 
-  handleLike(){
-    isLiked == false ? likeColor=Colors.red : likeColor=Colors.white;
+  handleLike() {
+    isLiked == false ? likeColor = Colors.red : likeColor = Colors.white;
     this.isLiked = !isLiked;
     notifyListeners();
   }
-  handleSave(){
+
+  handleSave() {
     this.isSaved = !isSaved;
-    this.isSaved ? saveColor=Colors.orange : saveColor=Colors.white;
+    this.isSaved ? saveColor = Colors.orange : saveColor = Colors.white;
 
     if (this.isSaved) {
       Fluttertoast.showToast(
@@ -126,12 +124,11 @@ class MyPostModel extends ChangeNotifier{
     }
     notifyListeners();
   }
-  videoPlayer(){
 
-  }
+  videoPlayer() {}
 }
 
-class SharedPostModel extends ChangeNotifier{
+class SharedPostModel extends ChangeNotifier {
   String? userImage;
   String date = "30/7/2001";
   String caption = "";
@@ -148,7 +145,5 @@ class SharedPostModel extends ChangeNotifier{
     this.userImage,
   });
 
-
-  doSomething()=>notifyListeners();
-
+  doSomething() => notifyListeners();
 }

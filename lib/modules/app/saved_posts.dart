@@ -17,38 +17,11 @@ class SavedPosts extends StatelessWidget {
       date: '30/12/2019',
       userFName: 'Habibi',
       userLName: 'wallah',
-      image: '',
+      images: [],
       userImage:
           'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
     ),
-    PostModel(
-        isSaved: true,
-        isLiked: false,
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userFName: 'Habibi',
-        userLName: 'wallah',
-        image:
-            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-    PostModel(
-        isSaved: true,
-        isLiked: false,
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userFName: 'Habibi',
-        userLName: 'wallah',
-        image:
-            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+
   ];
 
   @override

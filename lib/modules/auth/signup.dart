@@ -8,11 +8,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
+import 'package:social_master/shared/shared_prefrences.dart';
 import '../../models/connection/register.dart';
 import '../../provider/obscure_model.dart';
 import '../../shared/styles/colors.dart';
 import 'package:http/http.dart' as http;
 import '../../shared/validate/validate.dart';
+import '../app/home.dart';
 
 class Signup extends StatefulWidget {
   Signup({Key? key}) : super(key: key);
@@ -22,43 +24,26 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-  Future savePrefs(String? token) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('token', token!);
-  }
+
 
   Future<RegisterResponse?> login(RegisterParams params) async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-              child: CircularProgressIndicator(
-                color: AppTheme.colors.purple,
-                backgroundColor: AppTheme.colors.opacityPurple,
-              ));
-        });
-
     var url = Uri.parse("${AppSetting.baseUrl}api/register");
     var response = await http.post(url, body: params.toJson());
     var data = json.decode(response.body);
     if (response.statusCode == 200) {
       RegisterResponse loginResponse = RegisterResponse.fromJson(data);
-      Navigator.of(context).pop();
       return loginResponse;
     }
-    Navigator.of(context).pop();
+
     return null;
   }
 
   final _emailController = TextEditingController();
-
   final _passwordController = TextEditingController();
-
   final _confirmPasswordController = TextEditingController();
-
   final _firstNameController = TextEditingController();
-
   final _lastNameController = TextEditingController();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -159,34 +144,48 @@ class _SignupState extends State<Signup> {
                   }),
                   const SizedBox(height: 5),
                   myMaterialButton(
+                    isLoading: isLoading,
                     width: 240,
                     text: 'Signup',
                     onPressed: () async {
-                      if (formKey.currentState!.validate()) {
-                        final RegisterResponse? loginResponse = await login(
-                          RegisterParams(
-                              email: _emailController.text,
-                              firstName: _firstNameController.text,
-                              lastName: _lastNameController.text,
-                              password: _passwordController.text,
-                              passwordConfirmation:
-                                  _confirmPasswordController.text),
-                        );
-                        if (loginResponse != null) {
-                          AppSetting.token = loginResponse.data?.token ?? "";
-                          savePrefs(loginResponse.data?.token);
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (context) {
-                            return const SignupDetails();
-                          }));
-                        } else {
-                          Fluttertoast.showToast(
-                              msg: "any Text Faild",
-                              gravity: ToastGravity.BOTTOM,
-                              toastLength: Toast.LENGTH_SHORT,
-                              backgroundColor: Colors.pink,
-                              timeInSecForIosWeb: 2,
-                              fontSize: 18);
+                      if (isLoading) { Fluttertoast.showToast(
+                          msg: "Faild",
+                          gravity: ToastGravity.BOTTOM,
+                          toastLength: Toast.LENGTH_SHORT,
+                          backgroundColor: Colors.pink,
+                          timeInSecForIosWeb: 2,
+                          fontSize: 18);
+                        setState(() => isLoading = false);
+
+                      } else {
+                        if (formKey.currentState!.validate()) {
+                          setState(() => isLoading = true);
+                          final RegisterResponse? loginResponse = await login(
+                            RegisterParams(
+                                email: _emailController.text,
+                                firstName: _firstNameController.text,
+                                lastName: _lastNameController.text,
+                                password: _passwordController.text,
+                                passwordConfirmation:
+                                    _confirmPasswordController.text),
+                          );
+                          if (loginResponse != null) {
+                            AppSetting.token = loginResponse.data?.token ?? "";
+                            Prefs.setToken(AppSetting.token);
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (context) {
+                              return const SignupDetails();
+                            }));
+                          } else {
+                            setState(() => isLoading = false);
+                            Fluttertoast.showToast(
+                                msg: "Faild",
+                                gravity: ToastGravity.BOTTOM,
+                                toastLength: Toast.LENGTH_SHORT,
+                                backgroundColor: Colors.pink,
+                                timeInSecForIosWeb: 2,
+                                fontSize: 18);
+                          }
                         }
                       }
                     },

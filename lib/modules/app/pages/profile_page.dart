@@ -64,8 +64,9 @@ class _ProfilePageState extends State<ProfilePage>
         date: '30/12/2019',
         userFName: 'Habibi',
         userLName: 'wallah',
-        image:
-            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        images: [
+          'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'
+        ],
         userImage:
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
       ),
@@ -79,8 +80,9 @@ class _ProfilePageState extends State<ProfilePage>
           date: '30/12/2019',
           userFName: 'Habibi',
           userLName: 'wallah',
-          image:
-              'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+          images: [
+            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'
+          ],
           userImage:
               'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
     ],
@@ -91,376 +93,371 @@ class _ProfilePageState extends State<ProfilePage>
     TabController _tc = TabController(length: 2, vsync: this);
     return ChangeNotifierProvider<UserModel>.value(
       value: user,
-      child:Consumer<UserModel>(
+      child: Consumer<UserModel>(
         builder: (context, user, child) => Scaffold(
-        body:  NestedScrollView(
-
-            headerSliverBuilder:(context, value) => [ SliverList(delegate:SliverChildListDelegate.fixed([
-              Container(
-                color: AppTheme.colors.opacityPurple,
-                child: Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      child: Stack(
-                        alignment: AlignmentDirectional.bottomCenter,
-                        children: [
-                          Column(
-                            children: [
-                              Container(
-                                width: double.infinity,
-                                height: 220,
-                                child: Image(
-                                  image: NetworkImage(user.backgroundImage),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 30,
-                              ),
-                            ],
-                          ),
-                          Positioned(
-                            bottom: 70,
-                            right: 10,
-                            child: CircleAvatar(
-                              backgroundColor: AppTheme.colors.purple,
-                              radius: 16,
-                              child: IconButton(
-                                  color: Colors.white,
-                                  icon: const FaIcon(
-                                    FontAwesomeIcons.pencil,
-                                    size: 17,
-                                  ),
-                                  onPressed: () {
-                                    uploadImage();
-                                    // setState(() {});
-                                  }),
-                            ),
-                          ),
-                          Container(
-                            width: double.infinity,
-                            height: 60,
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(30),
-                                  topRight: Radius.circular(30)),
-                              color: Color(0xffdfdbe9),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              uploadImage();
-                              // setState(() {});
-                            },
-                            child: Stack(
-                              alignment: AlignmentDirectional.bottomEnd,
+          body: NestedScrollView(
+            headerSliverBuilder: (context, value) => [
+              SliverList(
+                  delegate: SliverChildListDelegate.fixed([
+                Container(
+                  color: AppTheme.colors.opacityPurple,
+                  child: Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        child: Stack(
+                          alignment: AlignmentDirectional.bottomCenter,
+                          children: [
+                            Column(
                               children: [
-                                CircleAvatar(
-                                  radius: 59,
-                                  backgroundColor: AppTheme.colors.purple,
-                                  child: CircleAvatar(
-                                    backgroundColor: Colors.transparent,
-                                    radius: 55,
-                                    child: ClipOval(
-                                      child: Image(
-                                          width: 200,
-                                          height: 200,
-                                          image: NetworkImage(user.profileImage),
-                                          fit: BoxFit.cover),
-                                    ),
+                                Container(
+                                  width: double.infinity,
+                                  height: 220,
+                                  child: Image(
+                                    image: NetworkImage(user.backgroundImage),
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
-                                CircleAvatar(
-                                  backgroundColor: AppTheme.colors.purple,
-                                  radius: 16,
-                                  child: IconButton(
-                                      color: Colors.white,
-                                      icon: const FaIcon(
-                                        FontAwesomeIcons.pencil,
-                                        size: 17,
-                                      ),
-                                      onPressed: () {
-                                        uploadImage();
-                                        // setState(() {});
-                                      }),
+                                const SizedBox(
+                                  height: 30,
                                 ),
                               ],
                             ),
-                          ),
-
-                          //following and followers
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Column(
-                                children: [
-                                  Text('${user.followers}',
-                                      style: TextStyle(
-                                          fontFamily: 'SignikaNegative',
-                                          fontSize: 15,
-                                          color: AppTheme.colors.darkPurple,
-                                          fontWeight: FontWeight.bold)),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text('followers',
-                                      style: TextStyle(
-                                          fontFamily: 'SignikaNegative',
-                                          fontSize: 15,
-                                          color: AppTheme.colors.darkPurple,
-                                          fontWeight: FontWeight.bold)),
-                                ],
+                            Positioned(
+                              bottom: 70,
+                              right: 10,
+                              child: CircleAvatar(
+                                backgroundColor: AppTheme.colors.purple,
+                                radius: 16,
+                                child: IconButton(
+                                    color: Colors.white,
+                                    icon: const FaIcon(
+                                      FontAwesomeIcons.pencil,
+                                      size: 17,
+                                    ),
+                                    onPressed: () {
+                                      uploadImage();
+                                      // setState(() {});
+                                    }),
                               ),
-                              const SizedBox(
-                                width: 170,
-                              ),
-                              Column(
-                                children: [
-                                  Text('${user.following}',
-                                      style: TextStyle(
-                                          fontFamily: 'SignikaNegative',
-                                          fontSize: 15,
-                                          color: AppTheme.colors.darkPurple,
-                                          fontWeight: FontWeight.bold)),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text('following',
-                                      style: TextStyle(
-                                          fontFamily: 'SignikaNegative',
-                                          fontSize: 15,
-                                          color: AppTheme.colors.darkPurple,
-                                          fontWeight: FontWeight.bold)),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text('${user.fname} ${user.lname}',
-                        style: TextStyle(
-                            fontFamily: 'SignikaNegative',
-                            fontSize: 22,
-                            color: AppTheme.colors.darkPurple,
-                            fontWeight: FontWeight.bold)),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                      child: Text(user.caption,
-                          style: const TextStyle(
-                              fontFamily: 'SignikaNegative',
-                              fontSize: 15,
-                              color: Colors.black54,
-                              fontWeight: FontWeight.w600)),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                      child: Row(
-                        children: [
-                          FaIcon(
-                            FontAwesomeIcons.mapLocation,
-                            size: 17,
-                            color: AppTheme.colors.darkPurple,
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            'from ${user.bornPlace ?? 'no where'}.',
-                            style: const TextStyle(
-                              fontFamily: 'SignikaNegative',
-                              fontSize: 15,
-                              color: Colors.black45,
                             ),
-                          ),
-                        ],
+                            Container(
+                              width: double.infinity,
+                              height: 60,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(30),
+                                    topRight: Radius.circular(30)),
+                                color: Color(0xffdfdbe9),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                uploadImage();
+                                // setState(() {});
+                              },
+                              child: Stack(
+                                alignment: AlignmentDirectional.bottomEnd,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 59,
+                                    backgroundColor: AppTheme.colors.purple,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      radius: 55,
+                                      child: ClipOval(
+                                        child: Image(
+                                            width: 200,
+                                            height: 200,
+                                            image:
+                                                NetworkImage(user.profileImage),
+                                            fit: BoxFit.cover),
+                                      ),
+                                    ),
+                                  ),
+                                  CircleAvatar(
+                                    backgroundColor: AppTheme.colors.purple,
+                                    radius: 16,
+                                    child: IconButton(
+                                        color: Colors.white,
+                                        icon: const FaIcon(
+                                          FontAwesomeIcons.pencil,
+                                          size: 17,
+                                        ),
+                                        onPressed: () {
+                                          uploadImage();
+                                          // setState(() {});
+                                        }),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            //following and followers
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  children: [
+                                    Text('${user.followers}',
+                                        style: TextStyle(
+                                            fontFamily: 'SignikaNegative',
+                                            fontSize: 15,
+                                            color: AppTheme.colors.darkPurple,
+                                            fontWeight: FontWeight.bold)),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text('followers',
+                                        style: TextStyle(
+                                            fontFamily: 'SignikaNegative',
+                                            fontSize: 15,
+                                            color: AppTheme.colors.darkPurple,
+                                            fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  width: 170,
+                                ),
+                                Column(
+                                  children: [
+                                    Text('${user.following}',
+                                        style: TextStyle(
+                                            fontFamily: 'SignikaNegative',
+                                            fontSize: 15,
+                                            color: AppTheme.colors.darkPurple,
+                                            fontWeight: FontWeight.bold)),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text('following',
+                                        style: TextStyle(
+                                            fontFamily: 'SignikaNegative',
+                                            fontSize: 15,
+                                            color: AppTheme.colors.darkPurple,
+                                            fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                      child: Row(
-                        children: [
-                          const FaIcon(
-                            FontAwesomeIcons.briefcase,
-                            size: 17,
-                            color: Colors.brown,
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Text('works at ${user.job ?? 'no where'}.',
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text('${user.fname} ${user.lname}',
+                          style: TextStyle(
+                              fontFamily: 'SignikaNegative',
+                              fontSize: 22,
+                              color: AppTheme.colors.darkPurple,
+                              fontWeight: FontWeight.bold)),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                        child: Text(user.caption,
+                            style: const TextStyle(
+                                fontFamily: 'SignikaNegative',
+                                fontSize: 15,
+                                color: Colors.black54,
+                                fontWeight: FontWeight.w600)),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                        child: Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.mapLocation,
+                              size: 17,
+                              color: AppTheme.colors.darkPurple,
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              'from ${user.bornPlace ?? 'no where'}.',
                               style: const TextStyle(
                                 fontFamily: 'SignikaNegative',
                                 fontSize: 15,
                                 color: Colors.black45,
-                              )),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                      child: Row(
-                        children: [
-                          const FaIcon(
-                            FontAwesomeIcons.bookOpen,
-                            size: 17,
-                            color: Color(0xFFC0AB75),
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            'studied at ${user.studyPlace ?? 'no where'}.',
-                            style: const TextStyle(
-                              fontFamily: 'SignikaNegative',
-                              fontSize: 15,
-                              color: Colors.black45,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                      child: Row(
-                        children: [
-                          FaIcon(
-                            FontAwesomeIcons.solidHeart,
-                            size: 17,
-                            color: Colors.red[800],
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            '${user.state ?? 'unknown'}.',
-                            style: const TextStyle(
-                              fontFamily: 'SignikaNegative',
-                              fontSize: 15,
-                              color: Colors.black45,
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                        child: Row(
+                          children: [
+                            const FaIcon(
+                              FontAwesomeIcons.briefcase,
+                              size: 17,
+                              color: Colors.brown,
                             ),
-                          ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text('works at ${user.job ?? 'no where'}.',
+                                style: const TextStyle(
+                                  fontFamily: 'SignikaNegative',
+                                  fontSize: 15,
+                                  color: Colors.black45,
+                                )),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                        child: Row(
+                          children: [
+                            const FaIcon(
+                              FontAwesomeIcons.bookOpen,
+                              size: 17,
+                              color: Color(0xFFC0AB75),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              'studied at ${user.studyPlace ?? 'no where'}.',
+                              style: const TextStyle(
+                                fontFamily: 'SignikaNegative',
+                                fontSize: 15,
+                                color: Colors.black45,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                        child: Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.solidHeart,
+                              size: 17,
+                              color: Colors.red[800],
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              '${user.state ?? 'unknown'}.',
+                              style: const TextStyle(
+                                fontFamily: 'SignikaNegative',
+                                fontSize: 15,
+                                color: Colors.black45,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 6,
+                      ),
+                      myMaterialButton(
+                          text: 'Edit profile details',
+                          width: double.infinity,
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => EditProfile(user)));
+                          },
+                          fontSize: 18),
+                      myMaterialButton(
+                          text: 'Create a new post',
+                          width: double.infinity,
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => CreatePost()));
+                          },
+                          fontSize: 18),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 32.0,
+                          vertical: 10.0,
+                        ),
+                        child: Container(
+                          width: double.infinity,
+                          height: 1,
+                          color: AppTheme.colors.purple,
+                        ),
+                      ),
+                      TabBar(
+                        controller: _tc,
+                        dividerColor: Colors.white,
+                        labelStyle: const TextStyle(
+                            fontFamily: 'SignikaNegative',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17),
+                        indicatorWeight: 3,
+                        indicatorColor: AppTheme.colors.purple,
+                        labelColor: AppTheme.colors.purple,
+                        tabs: const [
+                          Tab(text: "my posts"),
+                          Tab(text: "my shares"),
                         ],
                       ),
-                    ),
-                    const SizedBox(
-                      height: 6,
-                    ),
-                    myMaterialButton(
-                        text: 'Edit profile details',
-                        width: double.infinity,
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => EditProfile(user)));
-                        },
-                        fontSize: 18),
-                    myMaterialButton(
-                        text: 'Create a new post',
-                        width: double.infinity,
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => CreatePost()));
-                        },
-                        fontSize: 18),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 32.0,
-                        vertical: 10.0,
-                      ),
-                      child: Container(
-                        width: double.infinity,
-                        height: 1,
-                        color: AppTheme.colors.purple,
-                      ),
-                    ),
-
-                    TabBar(
-                      controller: _tc,
-                      dividerColor: Colors.white,
-                      labelStyle: const TextStyle(
-                          fontFamily: 'SignikaNegative',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17),
-                      indicatorWeight: 3,
-                      indicatorColor: AppTheme.colors.purple,
-                      labelColor: AppTheme.colors.purple,
-                      tabs: const [
-                        Tab(text: "my posts"),
-                        Tab(text: "my shares"),
-                      ],
-                    ),
-
-
-
-
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ])),
-              ],
-          body:   Container(
-
-
-            child: TabBarView(
-              // viewportFraction: double.maxFinite,
-                controller: _tc,
-                physics: BouncingScrollPhysics(),
-                children: [
-                  Container(
-                    child: ListView.builder(
-                        padding: const EdgeInsets.all(0.0),
-                        physics: BouncingScrollPhysics(),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: user.myPosts.length,
-                        itemBuilder: (context, i) =>
-                        ChangeNotifierProvider<MyPostModel>.value(
-                          value: user.myPosts[i],
-                          child: Consumer<MyPostModel>(
-                            builder: (context, model2, child) =>
-                                myPostBuilder(
-                                    model: model2, context: context),
-                          ),
-                        )),
-                  ),
-                  Container(
-                    child: ListView.builder(
-                        padding: const EdgeInsets.all(0.0),
-                        physics: BouncingScrollPhysics(),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: user.myPosts.length,
-                        itemBuilder: (context, i) =>
-                        ChangeNotifierProvider<MyPostModel>.value(
-                          value: user.myPosts[i],
-                          child: Consumer<MyPostModel>(
-                            builder: (context, model2, child) =>
-                                myPostBuilder(
-                                    model: model2, context: context),
-                          ),
-                        )),
-                  ),
-                ]),
-          ),
+              ])),
+            ],
+            body: Container(
+              child: TabBarView(
+                  // viewportFraction: double.maxFinite,
+                  controller: _tc,
+                  physics: BouncingScrollPhysics(),
+                  children: [
+                    Container(
+                      child: ListView.builder(
+                          padding: const EdgeInsets.all(0.0),
+                          physics: BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: user.myPosts.length,
+                          itemBuilder: (context, i) =>
+                              ChangeNotifierProvider<MyPostModel>.value(
+                                value: user.myPosts[i],
+                                child: Consumer<MyPostModel>(
+                                  builder: (context, model2, child) =>
+                                      myPostBuilder(
+                                          model: model2, context: context),
+                                ),
+                              )),
+                    ),
+                    Container(
+                      child: ListView.builder(
+                          padding: const EdgeInsets.all(0.0),
+                          physics: BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: user.myPosts.length,
+                          itemBuilder: (context, i) =>
+                              ChangeNotifierProvider<MyPostModel>.value(
+                                value: user.myPosts[i],
+                                child: Consumer<MyPostModel>(
+                                  builder: (context, model2, child) =>
+                                      myPostBuilder(
+                                          model: model2, context: context),
+                                ),
+                              )),
+                    ),
+                  ]),
+            ),
           ),
         ),
       ),

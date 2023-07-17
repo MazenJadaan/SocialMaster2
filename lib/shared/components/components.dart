@@ -148,6 +148,7 @@ Widget captionTextFormField({
 
 
 Widget myMaterialButton({
+  bool isLoading=false,
   required final String text,
   required final Function() onPressed,
   final double width = 120.0,
@@ -157,7 +158,14 @@ Widget myMaterialButton({
 }) =>
     MaterialButton(
         onPressed: onPressed,
-        child: Container(
+        child: isLoading ? Center(
+            child: CircularProgressIndicator(
+              color: AppTheme.colors.purple,
+              backgroundColor: AppTheme.colors.opacityPurple,
+              strokeWidth: 2,
+
+            ))
+            :Container(
           alignment: AlignmentDirectional.center,
           width: width,
           height: height,
@@ -167,7 +175,8 @@ Widget myMaterialButton({
             color: AppTheme.colors.purple,
           ),
           clipBehavior: Clip.antiAliasWithSaveLayer,
-          child: Text(
+          child:
+            Text(
             text,
             style: TextStyle(
               fontFamily: 'SignikaNegative',

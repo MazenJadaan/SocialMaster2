@@ -43,8 +43,8 @@ class VisitProfile extends StatelessWidget {
         date: '30/12/2019',
         userFName: 'Habibi',
         userLName: 'wallah',
-        image:
-            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        images:
+            ['https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'],
         userImage:
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
       ),
@@ -58,8 +58,8 @@ class VisitProfile extends StatelessWidget {
           date: '30/12/2019',
           userFName: 'Habibi',
           userLName: 'wallah',
-          image:
-              'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+          images:
+              ['https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'],
           userImage:
               'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
     ],

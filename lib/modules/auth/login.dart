@@ -10,12 +10,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_master/modules/auth/reset_password/reset_password.dart';
 import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/shared/styles/colors.dart';
-
 import '../../models/connection/login.dart';
 import '../../provider/obscure_model.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/api/google_signin_api.dart';
 import '../../shared/network/constant/constant.dart';
+import '../../shared/shared_prefrences.dart';
 import '../../shared/validate/validate.dart';
 import '../app/home.dart';
 
@@ -27,35 +27,22 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  Future savePrefs(String? token) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('token', token!);
-  }
+
 
   Future<LoginResponse?> login(LoginParams params) async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-              child: CircularProgressIndicator(
-            color: AppTheme.colors.purple,
-                backgroundColor: AppTheme.colors.opacityPurple,
-          ));
-        });
     var url = Uri.parse("${AppSetting.baseUrl}api/login");
     var response = await http.post(url, body: params.toJson());
     var data = json.decode(response.body);
     if (response.statusCode == 200) {
       LoginResponse loginResponse = LoginResponse.fromJson(data);
-      Navigator.of(context).pop();
       return loginResponse;
     }
-    Navigator.of(context).pop();
     return null;
   }
 
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -147,30 +134,37 @@ class _LoginState extends State<Login> {
                   ),
                   myMaterialButton(
                     width: 240,
+                    isLoading: isLoading,
                     text: 'Login',
                     onPressed: () async {
-                      if (formKey.currentState!.validate()) {
-                        final LoginResponse? loginResponse = await login(
-                          LoginParams(
-                            emailORmobile: _emailController.text,
-                            password: _passwordController.text,
-                          ),
-                        );
-                        if (loginResponse != null) {
+                      if (isLoading) {
+                        setState(() => isLoading = false);
 
-                          AppSetting.token = loginResponse.data?.token ?? "";
-                          savePrefs(loginResponse.data?.token);
-                          Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(builder: (context) => Home()),
-                              (route) => false);
-                        } else {
-                          Fluttertoast.showToast(
-                              msg: "Email or Pass is Wrong !",
-                              gravity: ToastGravity.BOTTOM,
-                              toastLength: Toast.LENGTH_SHORT,
-                              backgroundColor: Colors.pink,
-                              timeInSecForIosWeb: 2,
-                              fontSize: 18);
+                      } else {
+                        if (formKey.currentState!.validate()) {
+                          setState(() => isLoading = true);
+                          final LoginResponse? loginResponse = await login(
+                            LoginParams(
+                              emailORmobile: _emailController.text,
+                              password: _passwordController.text,
+                            ),
+                          );
+                          if (loginResponse != null) {
+                            AppSetting.token = loginResponse.data?.token ?? "";
+                            Prefs.setToken(loginResponse.data?.token);
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(builder: (context) => Home()),
+                                (route) => false);
+                          } else {
+                            setState(() => isLoading = false);
+                            Fluttertoast.showToast(
+                                msg: "Email or Pass is Wrong!",
+                                gravity: ToastGravity.BOTTOM,
+                                toastLength: Toast.LENGTH_SHORT,
+                                backgroundColor: Colors.pink,
+                                timeInSecForIosWeb: 2,
+                                fontSize: 16);
+                          }
                         }
                       }
                     },

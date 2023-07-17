@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:social_master/shared/shared_prefrences.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/constant/constant.dart';
 import '../../shared/styles/colors.dart';
@@ -22,18 +24,16 @@ class _SignupDetailsState extends State<SignupDetails> {
   final _phoneNumberController = TextEditingController();
 
   DateTime date = DateTime.now();
+  String? token = Prefs.getToken();
   File? image;
 
-  static Future<bool> signupDetails(
-      {required String phone_num,
-      required String gender,
-      required String birthdate,
-      required String profile_photo}) async {
-    print(phone_num);
-    print(gender);
-    print(birthdate);
-    print(profile_photo);
-
+  Future<bool> signupDetails({
+    required String phone_num,
+    required String gender,
+    required String birthdate,
+    required String profile_photo,
+    required String token,
+  }) async {
     //create multipart request for POST or PATCH method
     var request = http.MultipartRequest(
         "POST", Uri.parse("${AppSetting.baseUrl}api/complete_register"));
@@ -41,18 +41,16 @@ class _SignupDetailsState extends State<SignupDetails> {
     request.fields["phone_num"] = phone_num;
     request.fields["gender"] = gender;
     request.fields["birthdate"] = birthdate;
-    request.headers["Authorization"] = "Bearer ${AppSetting.token}";
-    print(AppSetting.token);
+    request.headers["Authorization"] = "Bearer $token";
     //create multipart using filepath, string or bytes
     var pic = await http.MultipartFile.fromPath("profile_photo", profile_photo);
     //add multipart to request
     request.files.add(pic);
     var response = await request.send();
+
     //Get the response from the server
     var responseData = await response.stream.toBytes();
-    print(response);
     var responseString = String.fromCharCodes(responseData);
-    print(responseString);
     final json = jsonDecode(responseString);
     if (response.statusCode == 200) {
       return true;
@@ -67,7 +65,6 @@ class _SignupDetailsState extends State<SignupDetails> {
     try {
       final pickedImage = await picker.pickImage(source: ImageSource.gallery);
       if (pickedImage == null) return;
-      // if (pickedImage != null) {
       final image2 = File(pickedImage.path);
       setState(() {});
       image = image2;
@@ -81,6 +78,7 @@ class _SignupDetailsState extends State<SignupDetails> {
   @override
   void initState() {
     super.initState();
+
     selectedRadio = 0;
   }
 
@@ -103,16 +101,16 @@ class _SignupDetailsState extends State<SignupDetails> {
           style: TextStyle(),
         )),
       ),
-      body: SingleChildScrollView(
-        child: Form(
-          autovalidateMode: AutovalidateMode.always,
-          key: formKey,
+      body: Form(
+        autovalidateMode: AutovalidateMode.always,
+        key: formKey,
+        child: SingleChildScrollView(
           child: Column(
             children: [
               const SizedBox(
                 height: 10,
               ),
-                const Row(
+              const Row(
                 children: [
                   SizedBox(
                     width: 10,
@@ -123,7 +121,8 @@ class _SignupDetailsState extends State<SignupDetails> {
                   ),
                   Text(
                     "Complete your details to Sign up:",
-                    style: TextStyle(fontFamily: 'SignikaNegative', fontSize: 16),
+                    style:
+                        TextStyle(fontFamily: 'SignikaNegative', fontSize: 16),
                   ),
                 ],
               ),
@@ -194,7 +193,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               const SizedBox(
                 height: 10,
               ),
-                const Row(
+              const Row(
                 children: [
                   SizedBox(
                     width: 10,
@@ -205,7 +204,8 @@ class _SignupDetailsState extends State<SignupDetails> {
                   ),
                   Text(
                     "Select your gender:",
-                    style: TextStyle(fontFamily: 'SignikaNegative', fontSize: 16),
+                    style:
+                        TextStyle(fontFamily: 'SignikaNegative', fontSize: 16),
                   ),
                 ],
               ),
@@ -213,11 +213,12 @@ class _SignupDetailsState extends State<SignupDetails> {
                 height: 10,
               ),
               RadioListTile(
-                  title:   const Row(
+                  title: const Row(
                     children: [
                       Text(
                         'Male',
-                        style: TextStyle(fontSize: 28, fontFamily: 'SignikaNegative'),
+                        style: TextStyle(
+                            fontSize: 28, fontFamily: 'SignikaNegative'),
                       ),
                       Icon(Icons.man)
                     ],
@@ -229,11 +230,12 @@ class _SignupDetailsState extends State<SignupDetails> {
                     setSelectedRadio(val!);
                   }),
               RadioListTile(
-                  title:   const Row(
+                  title: const Row(
                     children: [
                       Text(
                         'Female',
-                        style: TextStyle(fontSize: 28, fontFamily: 'SignikaNegative'),
+                        style: TextStyle(
+                            fontSize: 28, fontFamily: 'SignikaNegative'),
                       ),
                       Icon(Icons.woman)
                     ],
@@ -247,7 +249,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               const SizedBox(
                 height: 10,
               ),
-                const Row(children: [
+              const Row(children: [
                 SizedBox(
                   width: 10,
                 ),
@@ -298,7 +300,8 @@ class _SignupDetailsState extends State<SignupDetails> {
                           child: Text(
                             '${date.day}',
                             style: TextStyle(
-                                fontSize: 20, color: AppTheme.colors.darkPurple),
+                                fontSize: 20,
+                                color: AppTheme.colors.darkPurple),
                           ),
                         ),
                       ),
@@ -316,7 +319,8 @@ class _SignupDetailsState extends State<SignupDetails> {
                           child: Text(
                             '${date.month}',
                             style: TextStyle(
-                                fontSize: 20, color: AppTheme.colors.darkPurple),
+                                fontSize: 20,
+                                color: AppTheme.colors.darkPurple),
                           ),
                         ),
                       ),
@@ -334,7 +338,8 @@ class _SignupDetailsState extends State<SignupDetails> {
                           child: Text(
                             '${date.year}',
                             style: TextStyle(
-                                fontSize: 20, color: AppTheme.colors.darkPurple),
+                                fontSize: 20,
+                                color: AppTheme.colors.darkPurple),
                           ),
                         ),
                       ),
@@ -342,32 +347,37 @@ class _SignupDetailsState extends State<SignupDetails> {
                   ),
                 ),
               ),
-              const Spacer(),
+              const SizedBox(
+                height: 20,
+              ),
               myMaterialButton(
                   width: 240,
                   height: 50,
                   text: "Done",
                   onPressed: () async {
                     if (formKey.currentState!.validate()) {
-                      // if (fromkey2.currentState.validate()) {
                       bool res = await signupDetails(
                         phone_num: _phoneNumberController.text,
                         gender: selectedRadio == 1 ? "male" : "female",
                         profile_photo: image!.path,
                         birthdate: '${date.month}/${date.day}/${date.year}',
+                        token: token!,
                       );
 
                       if (res) {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (context) => const Home()),
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => const Home()),
                             (route) => false);
                       } else {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(content: Text('Failed')));
+                        Fluttertoast.showToast(
+                            msg: "Failed",
+                            gravity: ToastGravity.BOTTOM,
+                            toastLength: Toast.LENGTH_SHORT,
+                            backgroundColor: Colors.pink,
+                            timeInSecForIosWeb: 2,
+                            fontSize: 16);
                       }
-
-
                     }
                   }),
               const SizedBox(

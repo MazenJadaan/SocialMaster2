@@ -8,21 +8,7 @@ class Tab1 extends StatelessWidget {
   Tab1(this.scrollController, {Key? key}) : super(key: key);
   final ScrollController scrollController;
 
- final List<PostModel> posts = [
-    PostModel(
-      isSaved: false,
-      isLiked: true,
-      likes: 400,
-      comments: 12,
-      shares: 3,
-      caption: 'caption',
-      date: '30/12/2019',
-      userFName: 'Habibi',
-      userLName: 'wallah',
-      image: '',
-      userImage:
-          'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
-    ),
+  final List<PostModel> posts = [
     PostModel(
         isSaved: false,
         isLiked: false,
@@ -33,12 +19,17 @@ class Tab1 extends StatelessWidget {
         date: '30/12/2019',
         userFName: 'Habibi',
         userLName: 'wallah',
-        image:
-            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        images: [
+          'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+          'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg',
+          'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg',
+          'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
+          'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg'
+        ],
         userImage:
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
     PostModel(
-        isSaved: true,
+        isSaved: false,
         isLiked: false,
         likes: 400,
         comments: 12,
@@ -47,8 +38,22 @@ class Tab1 extends StatelessWidget {
         date: '30/12/2019',
         userFName: 'Habibi',
         userLName: 'wallah',
-        image:
-            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        images: [
+          'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg'
+        ],
+        userImage:
+            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+    PostModel(
+        isSaved: false,
+        isLiked: false,
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userFName: 'Habibi',
+        userLName: 'wallah',
+        images: [],
         userImage:
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
   ];
@@ -59,7 +64,7 @@ class Tab1 extends StatelessWidget {
     userFName: 'Habibi',
     userLName: 'wallah',
     userImage:
-        'https://photo-works.net/images/europe-landscape-photo-edited.jpg',
+        'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg',
     post: PostModel(
       isSaved: true,
       isLiked: false,
@@ -70,10 +75,11 @@ class Tab1 extends StatelessWidget {
       date: '30/12/2019',
       userFName: 'Habibi',
       userLName: 'wallah',
-      image:
-          'https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg',
+      images: [
+        'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg'
+      ],
       userImage:
-          'https://photo-works.net/images/europe-landscape-photo-edited.jpg',
+          'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg',
     ),
   );
 
@@ -83,11 +89,13 @@ class Tab1 extends StatelessWidget {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
-          children: [Center(
-        child: CircularProgressIndicator(
-        color: AppTheme.colors.purple,
-          backgroundColor: AppTheme.colors.opacityPurple,
-        )),
+          children: [
+            Center(
+                child: CircularProgressIndicator(
+              color: AppTheme.colors.purple,
+              backgroundColor: AppTheme.colors.opacityPurple,
+              strokeWidth: 2,
+            )),
             ListView.builder(
                 padding: const EdgeInsets.all(0.0),
                 physics: const NeverScrollableScrollPhysics(),

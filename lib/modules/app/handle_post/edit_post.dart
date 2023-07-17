@@ -20,7 +20,9 @@ class EditPost extends StatefulWidget {
 class _EditPostState extends State<EditPost> {
   late final TextEditingController _captionController =
       TextEditingController(text: widget.post.caption);
-  late Image p = Image(image: NetworkImage(widget.post.image!));
+  late Image p = Image(image: NetworkImage(''
+      // widget.post.image!
+  ));
   File? image;
   final ImagePicker picker = ImagePicker();
 

@@ -1,16 +1,15 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/modules/app/handle_post/edit_post.dart';
 import 'package:social_master/modules/app/handle_post/share_post.dart';
 import 'package:social_master/modules/app/visit_profile.dart';
-import '../../models/edit_profile/usermodel.dart';
 import '../styles/colors.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 Widget postBuilder({required PostModel model, context}) => Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -68,9 +67,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                   //save post
                   GestureDetector(
                     onTap: () {
-
                       model.handleSave();
-
                     },
                     child: FaIcon(FontAwesomeIcons.solidBookmark,
                         color: model.saveColor, size: 20),
@@ -100,32 +97,47 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                   alignment: AlignmentDirectional.bottomCenter,
                   children: [
                     Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: model.image == ''
-                          ? (Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomRight: Radius.circular(30),
-                                    bottomLeft: Radius.circular(30)),
-                                color: AppTheme.colors.opacityPurple,
-                              ),
-                              height: 30,
-                            ))
-                          : Image(
-                              image: NetworkImage('${model.image}'),
-                              fit: BoxFit.cover,
-                            ),
-                    ),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        child: model.images!.isEmpty
+                            ? (Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.only(
+                                      bottomRight: Radius.circular(30),
+                                      bottomLeft: Radius.circular(30)),
+                                  color: AppTheme.colors.opacityPurple,
+                                ),
+                                height: 30,
+                              ))
+                            : MasonryGridView.builder(
+                                mainAxisSpacing: 4,
+                                crossAxisSpacing: 4,
+                                padding: EdgeInsets.all(0),
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                gridDelegate:
+                                    SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount:
+                                      model.images!.length == 1 ? 1 : 2,
+                                ),
+                                itemCount: model.images!.length,
+                                itemBuilder: (context, index) => ClipRRect(
+                                      borderRadius: BorderRadius.circular(5),
+                                      child: Image(
+                                        image: NetworkImage(
+                                            '${model.images![index]}'),
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ))),
                     ClipRRect(
                       borderRadius: const BorderRadius.only(
                           bottomRight: Radius.circular(30),
                           bottomLeft: Radius.circular(30)),
                       child: BackdropFilter(
-                        filter: model.image == ''
+                        filter: model.images!.isEmpty
                             ? ImageFilter.blur(sigmaY: 0.0, sigmaX: 0.0)
                             : ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
                         child: Container(
@@ -152,7 +164,8 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                 const SizedBox(
                                   width: 8,
                                 ),
-                                Text("${model.isLiked==true ? model.likes+1 : model.likes }",
+                                Text(
+                                    "${model.isLiked == true ? model.likes + 1 : model.likes}",
                                     style: const TextStyle(
                                       fontFamily: 'SignikaNegative',
                                       fontSize: 15,
@@ -368,26 +381,46 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                   alignment: AlignmentDirectional.bottomCenter,
                   children: [
                     Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: model.image == ''
-                          ? (Container(
-                              color: AppTheme.colors.purple,
-                            ))
-                          : Image(
-                              image: NetworkImage('${model.image}'),
-                              fit: BoxFit.cover,
-                            ),
-                    ),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        child: model.images!.isEmpty
+                            ? (Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.only(
+                                      bottomRight: Radius.circular(30),
+                                      bottomLeft: Radius.circular(30)),
+                                  color: AppTheme.colors.opacityPurple,
+                                ),
+                                height: 30,
+                              ))
+                            : MasonryGridView.builder(
+                                mainAxisSpacing: 4,
+                                crossAxisSpacing: 4,
+                                padding: EdgeInsets.all(0),
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                gridDelegate:
+                                    SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount:
+                                      model.images!.length == 1 ? 1 : 2,
+                                ),
+                                itemCount: model.images!.length,
+                                itemBuilder: (context, index) => ClipRRect(
+                                      borderRadius: BorderRadius.circular(5),
+                                      child: Image(
+                                        image: NetworkImage(
+                                            '${model.images![index]}'),
+                                      ),
+                                    ))),
                     ClipRRect(
                       borderRadius: const BorderRadius.only(
                           bottomRight: Radius.circular(30),
                           bottomLeft: Radius.circular(30)),
                       child: BackdropFilter(
-                        filter: model.image == ''
+                        filter: model.images!.isEmpty
                             ? ImageFilter.blur(sigmaY: 0.0, sigmaX: 0.0)
                             : ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
                         child: Container(
@@ -414,7 +447,8 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                                 const SizedBox(
                                   width: 8,
                                 ),
-                                Text("${model.isLiked==true ? model.likes+1 : model.likes}",
+                                Text(
+                                    "${model.isLiked == true ? model.likes + 1 : model.likes}",
                                     style: const TextStyle(
                                       fontFamily: 'SignikaNegative',
                                       fontSize: 15,
@@ -571,7 +605,8 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                               child: Image(
                                   width: 80,
                                   height: 80,
-                                  image: NetworkImage('${model.post.image}'),
+                                  image:
+                                      NetworkImage('${model.post.userImage}'),
                                   fit: BoxFit.cover),
                             ),
                           ),
@@ -583,7 +618,8 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('${model.post.userFName} ${model.post.userLName}',
+                            Text(
+                                '${model.post.userFName} ${model.post.userLName}',
                                 style: TextStyle(
                                     fontFamily: 'SignikaNegative',
                                     fontSize: 17,
@@ -632,32 +668,51 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                         alignment: AlignmentDirectional.bottomCenter,
                         children: [
                           Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            child: model.post.image == ''
-                                ? (Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                          bottomRight: Radius.circular(30),
-                                          bottomLeft: Radius.circular(30)),
-                                      color: AppTheme.colors.opacityPurple,
-                                    ),
-                                    height: 30,
-                                  ))
-                                : Image(
-                                    image: NetworkImage('${model.post.image}'),
-                                    fit: BoxFit.cover,
-                                  ),
-                          ),
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              child: model.post.images!.isEmpty
+                                  ? (Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.only(
+                                            bottomRight: Radius.circular(30),
+                                            bottomLeft: Radius.circular(30)),
+                                        color: AppTheme.colors.opacityPurple,
+                                      ),
+                                      height: 30,
+                                    ))
+                                  : MasonryGridView.builder(
+                                      mainAxisSpacing: 4,
+                                      crossAxisSpacing: 4,
+                                      padding: EdgeInsets.all(0),
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      gridDelegate:
+                                          SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount:
+                                            model.post.images!.length == 1
+                                                ? 1
+                                                : 2,
+                                      ),
+                                      itemCount: model.post.images!.length,
+                                      itemBuilder: (context, index) =>
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            child: Image(
+                                              image: NetworkImage(
+                                                  '${model.post.images![index]}'),
+                                            ),
+                                          ))),
                           ClipRRect(
                             borderRadius: const BorderRadius.only(
                                 bottomRight: Radius.circular(30),
                                 bottomLeft: Radius.circular(30)),
                             child: BackdropFilter(
-                              filter: model.post.image == ''
+                              filter: model.post.images!.isEmpty
                                   ? ImageFilter.blur(sigmaY: 0.0, sigmaX: 0.0)
                                   : ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
                               child: Container(
@@ -690,7 +745,8 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                       const SizedBox(
                                         width: 8,
                                       ),
-                                      Text("${model.post.isLiked ==true ? model.post.likes+1 : model.post.likes }",
+                                      Text(
+                                          "${model.post.isLiked == true ? model.post.likes + 1 : model.post.likes}",
                                           style: const TextStyle(
                                             fontFamily: 'SignikaNegative',
                                             fontSize: 15,

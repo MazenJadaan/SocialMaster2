@@ -21,19 +21,7 @@ class _Tab2State extends State<Tab2> {
 
 
   List<PostModel> posts = [
-    PostModel(
-      likes: 400,
-      comments: 12,
-      shares: 3,
-      caption: 'caption',
-      date: '30/12/2019',
-      userFName: 'Habibi',
-      userLName: 'wallah',
-      image:
-          'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-      userImage:
-          'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg', isLiked: true, isSaved: true,
-    ),
+
     PostModel(
         likes: 400,
         comments: 12,
@@ -42,44 +30,8 @@ class _Tab2State extends State<Tab2> {
         date: '30/12/2019',
         userFName: 'Habibi',
         userLName: 'wallah',
-        image:
-            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg', isLiked: true,isSaved: false),
-    PostModel(
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userFName: 'Habibi',
-        userLName: 'wallah',
-        image:
-            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg', isLiked: true,isSaved: true),
-    PostModel(
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userFName: 'Habibi',
-        userLName: 'wallah',
-        image:
-            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-        userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg', isLiked: false,isSaved: false),
-    PostModel(
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userFName: 'Habibi',
-        userLName: 'wallah',
-        image:
-            'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
+        images:
+            ['https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'],
         userImage:
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg', isLiked: true,isSaved: false),
   ];
