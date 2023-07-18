@@ -21,7 +21,8 @@ class User_profile extends Model
         'profile_photo',
         'followers_number',
         'state',
-        'user_id'
+        'user_id',
+        'following_number'
     ];
 
     ////////////// Relatioship ///////////////

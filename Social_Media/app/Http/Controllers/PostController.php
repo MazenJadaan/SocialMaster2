@@ -37,6 +37,7 @@ class PostController extends Controller
     public function editPost()
     {
     }
+<<<<<<< HEAD
     //not done yet
     public function showAllUserPost()
     {
@@ -53,6 +54,24 @@ class PostController extends Controller
     }
     //not done yet
     public function showMyFollowingPosts()
+=======
+
+
+//    public function showAllUserPost()
+//    {
+//        $userID = Auth::user()->id;
+//        $userPosts = DB::table('posts')
+//            ->join('users', 'posts.user_id', '=', 'users.id')
+//            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
+//            ->where('posts.user_id', $userID)
+//            ->get();
+//        if (!$userPosts->count())
+//            return $this->ApiResponse('', 'No posts added yet', 404);
+//        return $this->ApiResponse($userPosts, 'Information returned successfully', 200);
+//    }
+// now we don't use it
+    public  function showMyFollowingPosts()
+>>>>>>> 26c08895abfb2d81d91d69ee204fb456c1340dd2
     {
         $userID = Auth::user()->id;
         $userFollowing = userfollowers::where('user_id', $userID)->get();
@@ -105,7 +124,7 @@ class PostController extends Controller
         return $this->ApiResponse('', 'Deleted successfully', 200);
     }
 
-    //not done yet 
+    //not done yet
     public function showSavedPosts()
     {
         $userID = Auth::user()->id;
@@ -114,7 +133,7 @@ class PostController extends Controller
         $finalResult = DB::table('saveposts')
             ->join('posts', 'saveposts.post_id', '=', 'posts.id') //لحتى نجيب معلومات البوست
             ->join('users', 'posts.user_id', '=', 'users.id') //لحتى نجيب اسم صاحب البوست
-            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id') //لحتى نجيب صورتو 
+            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id') //لحتى نجيب صورتو
             ->where('saveposts.user_id', $userID)
             ->whereIn('posts.id', $ids)
             ->get();

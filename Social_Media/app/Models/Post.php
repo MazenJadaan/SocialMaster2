@@ -49,7 +49,7 @@ class post extends Model
         return $this->hasMany(Video::class);
     }
 
-    public function userProfile(){
-        return $this->hasMany(User_profile::class);
+    public function user_profile(){
+        return $this->belongsTo(User_profile::class);
     }
 }

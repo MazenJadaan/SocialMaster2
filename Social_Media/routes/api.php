@@ -1,16 +1,15 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\GoogleAuthController;
-use App\Models\User;
-use App\Models\User_profile;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StoriesController;
-use App\Http\Controllers\UserProfile;
+use App\Http\Controllers\UserProfile\MyUserProfile;
+use App\Http\Controllers\UserProfile\OtherUserProfile;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,23 +32,21 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('/complete_register', [AuthController::class, 'complete_register']);
 
-    Route::get('showMyProfile', [UserProfile::class, 'showMyProfile']);
+    Route::get('showMyProfile', [MyUserProfile::class, 'showMyProfile']);
 
-    Route::post('addProfileInformations', [UserProfile::class, 'addInformations']);
+    Route::post('addProfileInformations', [MyUserProfile::class, 'addInformations']);
 
-    Route::post('updateProfileInformations', [UserProfile::class, 'updateInformations']);
+    Route::post('updateProfilePicture', [MyUserProfile::class, 'editProfilePhoto']);
 
-    Route::post('updateProfilePicture', [UserProfile::class, 'editProfilePhoto']);
+    Route::post('updateProfileCover', [MyUserProfile::class, 'editCoverPhoto']);
 
-    Route::post('updateProfileCover', [UserProfile::class, 'editCoverPhoto']);
+    Route::Post('makeProfileOfficial/{id}', [MyUserProfile::class, 'makeProfileOfficial']);
 
-    Route::post('followProfile/{id}', [UserProfile::class, 'follow']);
+    Route::post('followProfile/{id}', [OtherUserProfile::class, 'follow']);
 
-    Route::get('showProfile/{id}', [UserProfile::class, 'showProfile']);
+    Route::get('showProfile/{id}', [OtherUserProfile::class, 'showProfile']);
 
-    Route::delete('unFollow/{id}', [UserProfile::class, 'unFollow']);
-
-    Route::Post('makeProfileOfficial/{id}', [UserProfile::class, 'makeProfileOfficial']);
+    Route::delete('unFollow/{id}', [OtherUserProfile::class, 'unFollow']);
 
     Route::post('searchUsers', [SearchController::class, 'searchIntoUsers']);
 
