@@ -45,8 +45,9 @@ class PostController extends Controller
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
             ->where('posts.user_id', $userID)
+            ->orderBy('posts.created_at','desc')
             ->get();
-        if (!$userPosts->count())
+        if (!$userPosts->count())   
             return $this->ApiResponse('', 'No posts added yet', 404);
         return $this->ApiResponse($userPosts, 'Information returned successfully', 200);
     }
