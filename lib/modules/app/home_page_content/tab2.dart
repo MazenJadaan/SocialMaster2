@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/modules/app/home_page_content/story.dart';
 import 'package:social_master/modules/app/home_page_content/story_add.dart';
-import '../../../shared/components/post_component.dart';
+import '../../../shared/components/post_component/post_component.dart';
 
 class Tab2 extends StatefulWidget {
   Tab2(this.scrollController, {Key? key}) : super(key: key);
@@ -162,13 +162,8 @@ class _Tab2State extends State<Tab2> {
               ],
             ),
           ),
-          OutlinedButton(
-              onPressed: () {
-                widget.scrollController.animateTo(0,
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeIn);
-              },
-              child: Icon(Icons.update_sharp)),
+
+
           const SizedBox(
             height: 55,
           ),

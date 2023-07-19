@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 class PostModel extends ChangeNotifier {
   String? userImage;
   List<String>? images;
-  String? vid = '';
+  String? vid;
   String date = "30/7/2001";
   String caption = "";
   String userFName;
@@ -14,7 +14,6 @@ class PostModel extends ChangeNotifier {
   int shares = 0;
   bool isLiked = false;
   Color? likeColor;
-
   bool isSaved = false;
   Color? saveColor;
 

@@ -9,68 +9,94 @@ import '../notifications.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
-  ScrollController sc =ScrollController();
+  ScrollController sc = ScrollController();
+  ScrollController sc1 = ScrollController();
+  ScrollController sc2 = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavBar(),
-        body: DefaultTabController(
-          length: 2,
-          child: NestedScrollView(
-            controller: sc ,
-            physics: const BouncingScrollPhysics(),
-            headerSliverBuilder: (context, value) {
-              return [
-                SliverAppBar(snap: true,
-                  backgroundColor: AppTheme.colors.purple,
-                  floating: true,
-                  elevation: 0.0,
-                  pinned: true,
-                  title:   const Center(
-                    child: Image(image: AssetImage('assets/images/logo_name.png',),width: 125)
-                  ),
-                  actions:  [
+      body: DefaultTabController(
+        length: 2,
+        child: NestedScrollView(
+          controller: sc,
+          physics: const BouncingScrollPhysics(),
+          headerSliverBuilder: (context, value) {
+            return [
+              SliverAppBar(
+                snap: true,
+                backgroundColor: AppTheme.colors.purple,
+                floating: true,
+                elevation: 0.0,
+                pinned: true,
+                title: const Center(
+                    child: Image(
+                        image: AssetImage(
+                          'assets/images/logo_name.png',
+                        ),
+                        width: 125)),
+                actions: [
                   IconButton(
-                    onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CreatePost()));},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => CreatePost()));
+                    },
                     icon: const FaIcon(
                       FontAwesomeIcons.plus,
                       color: Colors.white,
                     ),
                   ),
-                    IconButton(
-                      onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Notifications()));},
-                      icon: const FaIcon(
-                        FontAwesomeIcons.bell,
-                        color: Colors.white,
-                      ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Notifications()));
+                    },
+                    icon: const FaIcon(
+                      FontAwesomeIcons.bell,
+                      color: Colors.white,
                     ),
-                  ],
-                  bottom: TabBar(
-                    dividerColor: Colors.white,
-                    labelStyle: const TextStyle(
-                        fontFamily: 'SignikaNegative',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17),
-                    indicatorWeight: 3,
-                    indicatorColor: AppTheme.colors.purple,
-                    tabs: const [
-                      Tab(text: "For you"),
-                      Tab(text: "Following",)
-                    ],
-
                   ),
-                ),
-              ];
-            },
-            body:  TabBarView(
-                physics: BouncingScrollPhysics(),
-                children: [
-              Tab1(sc),
-              Tab2(sc),
-            ]),
-          ),
-        ),
+                ],
+                bottom: TabBar(
 
-      );
+                  dividerColor: Colors.white,
+                  labelStyle: const TextStyle(
+                      fontFamily: 'SignikaNegative',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17),
+                  indicatorWeight: 3,
+                  indicatorColor: AppTheme.colors.purple,
+                  tabs: [
+                    GestureDetector(
+                      child: Tab(text: "For you",),
+                      onDoubleTap: () {
+                        sc.animateTo(0,
+                            duration: const Duration(milliseconds: 400),
+                            curve: Curves.easeIn);
+                      },
+                    ),
+                    GestureDetector(
+                      child: Tab(
+                        text: "Following",
+                      ),
+                      onDoubleTap: () {
+                        sc.animateTo(0,
+                            duration: const Duration(milliseconds: 400),
+                            curve: Curves.easeIn);
+                      },
+                    )
+                  ],
+                ),
+              ),
+            ];
+          },
+          body: TabBarView(physics: BouncingScrollPhysics(), children: [
+            Tab1(sc),
+            Tab2(sc),
+          ]),
+        ),
+      ),
+    );
   }
 }

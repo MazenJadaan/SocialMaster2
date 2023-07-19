@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_master/shared/validate/validate.dart';
 import '../../shared/styles/colors.dart';
-import '../../models/edit_profile/usermodel.dart';
+import '../../models/usermodel.dart';
 import '../../shared/components/components.dart';
 
 class EditProfile extends StatefulWidget {
@@ -20,10 +20,10 @@ class _EditProfileState extends State<EditProfile> {
   late int selectedRadio;
 
   late final TextEditingController _firstNameController =
-      TextEditingController(text: widget.user.fname);
+      TextEditingController(text: widget.user.firstName);
 
   late final TextEditingController _lastNameController =
-      TextEditingController(text: widget.user.lname);
+      TextEditingController(text: widget.user.lastName);
 
   late final TextEditingController _phoneNumberController =
       TextEditingController(text: widget.user.phoneNumber);
@@ -33,7 +33,7 @@ class _EditProfileState extends State<EditProfile> {
   @override
   void initState() {
     super.initState();
-    widget.user.isMale == 'male' ? selectedRadio = 1 : selectedRadio = 2;
+    widget.user.gender == 'male' ? selectedRadio = 1 : selectedRadio = 2;
   }
 
   setSelectedRadio(int val) {
@@ -110,7 +110,7 @@ class _EditProfileState extends State<EditProfile> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                    '-Your current birthdate is ${widget.user.birthDate} Set a new one if you want to change it.',
+                    '-Your current birthdate is ${widget.user.birthdate} Set a new one if you want to change it.',
                     style: TextStyle(
                       fontFamily: 'SignikaNegative',
                       fontSize: 15,

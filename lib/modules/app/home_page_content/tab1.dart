@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../../../models/post/postmodel.dart';
-import '../../../shared/components/post_component.dart';
+import '../../../shared/components/post_component/post_component.dart';
+import '../../../shared/components/post_component/shared_post_component.dart';
 
 class Tab1 extends StatelessWidget {
   Tab1(this.scrollController, {Key? key}) : super(key: key);
@@ -90,12 +91,6 @@ class Tab1 extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            Center(
-                child: CircularProgressIndicator(
-              color: AppTheme.colors.purple,
-              backgroundColor: AppTheme.colors.opacityPurple,
-              strokeWidth: 2,
-            )),
             ListView.builder(
                 padding: const EdgeInsets.all(0.0),
                 physics: const NeverScrollableScrollPhysics(),
@@ -117,16 +112,6 @@ class Tab1 extends StatelessWidget {
                     sharedPostBuilder(model: model, context: context),
               ),
             ),
-            OutlinedButton(
-                onPressed: () {
-                  scrollController.animateTo(0,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeIn);
-                },
-                child: Text(
-                  'back to the Top',
-                  style: TextStyle(color: AppTheme.colors.purple),
-                )),
             const SizedBox(
               height: 55,
             ),

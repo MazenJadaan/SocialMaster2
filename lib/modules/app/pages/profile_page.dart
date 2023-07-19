@@ -1,17 +1,17 @@
 import 'dart:io';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/models/post/postmodel.dart';
-import 'package:social_master/models/edit_profile/usermodel.dart';
+import 'package:social_master/models/usermodel.dart';
 import 'package:social_master/modules/app/edit_profile.dart';
 import 'package:social_master/modules/app/handle_post/create_post.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/styles/colors.dart';
-import '../../../shared/components/post_component.dart';
+import '../../../shared/components/post_component/my_post_component.dart';
+
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -35,22 +35,26 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   UserModel user = UserModel(
+    createdAt: '',
+    placeStay: '',
+    profileId: 1,
+    updatedAt: '',
     id: 1,
-    fname: 'mohamad',
-    lname: 'alraie',
-    caption: 'habibi come to lebanon',
-    followers: 500,
+    firstName: 'mohamad',
+    lastName: 'alraie',
+    bio: 'habibi come to lebanon',
+    followersNumber: 500,
     following: 1200,
-    birthDate: '12/5/2001',
-    isMale: 'male',
+    birthdate: '12/5/2001',
+    gender: 'male',
     phoneNumber: '0945587900',
     job: 'facebook',
     studyPlace: 'bab alhara',
-    bornPlace: 'Damascus',
+    placeBorn: 'Damascus',
     state: 'in relationship',
-    backgroundImage:
+    coverPhoto:
         'https://img.freepik.com/free-vector/night-ocean-landscape-full-moon-stars-shine_107791-7397.jpg',
-    profileImage:
+    profilePhoto:
         'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
     myPosts: [
       MyPostModel(
@@ -114,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage>
                                   width: double.infinity,
                                   height: 220,
                                   child: Image(
-                                    image: NetworkImage(user.backgroundImage),
+                                    image: NetworkImage(user.coverPhoto!),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -170,7 +174,7 @@ class _ProfilePageState extends State<ProfilePage>
                                             width: 200,
                                             height: 200,
                                             image:
-                                                NetworkImage(user.profileImage),
+                                                NetworkImage(user.profilePhoto!),
                                             fit: BoxFit.cover),
                                       ),
                                     ),
@@ -199,7 +203,7 @@ class _ProfilePageState extends State<ProfilePage>
                               children: [
                                 Column(
                                   children: [
-                                    Text('${user.followers}',
+                                    Text('${user.followersNumber}',
                                         style: TextStyle(
                                             fontFamily: 'SignikaNegative',
                                             fontSize: 15,
@@ -246,7 +250,7 @@ class _ProfilePageState extends State<ProfilePage>
                       const SizedBox(
                         height: 15,
                       ),
-                      Text('${user.fname} ${user.lname}',
+                      Text('${user.firstName} ${user.lastName}',
                           style: TextStyle(
                               fontFamily: 'SignikaNegative',
                               fontSize: 22,
@@ -257,7 +261,7 @@ class _ProfilePageState extends State<ProfilePage>
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                        child: Text(user.caption,
+                        child: Text(user.bio!,
                             style: const TextStyle(
                                 fontFamily: 'SignikaNegative',
                                 fontSize: 15,
@@ -280,7 +284,7 @@ class _ProfilePageState extends State<ProfilePage>
                               width: 8,
                             ),
                             Text(
-                              'from ${user.bornPlace ?? 'no where'}.',
+                              'from ${user.placeBorn ?? 'no where'}.',
                               style: const TextStyle(
                                 fontFamily: 'SignikaNegative',
                                 fontSize: 15,
@@ -428,10 +432,10 @@ class _ProfilePageState extends State<ProfilePage>
                           physics: BouncingScrollPhysics(),
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          itemCount: user.myPosts.length,
+                          itemCount: user.myPosts!.length,
                           itemBuilder: (context, i) =>
                               ChangeNotifierProvider<MyPostModel>.value(
-                                value: user.myPosts[i],
+                                value: user.myPosts![i],
                                 child: Consumer<MyPostModel>(
                                   builder: (context, model2, child) =>
                                       myPostBuilder(
@@ -445,10 +449,10 @@ class _ProfilePageState extends State<ProfilePage>
                           physics: BouncingScrollPhysics(),
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          itemCount: user.myPosts.length,
+                          itemCount: user.myPosts!.length,
                           itemBuilder: (context, i) =>
                               ChangeNotifierProvider<MyPostModel>.value(
-                                value: user.myPosts[i],
+                                value: user.myPosts![i],
                                 child: Consumer<MyPostModel>(
                                   builder: (context, model2, child) =>
                                       myPostBuilder(
@@ -464,3 +468,4 @@ class _ProfilePageState extends State<ProfilePage>
     );
   }
 }
+

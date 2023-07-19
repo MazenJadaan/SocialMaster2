@@ -4,9 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../models/post/postmodel.dart';
 
-import '../../models/edit_profile/usermodel.dart';
+import '../../models/usermodel.dart';
 import '../../shared/components/components.dart';
-import '../../shared/components/post_component.dart';
+import '../../shared/components/post_component/post_component.dart';
 import '../../shared/styles/colors.dart';
 
 class VisitProfile extends StatelessWidget {

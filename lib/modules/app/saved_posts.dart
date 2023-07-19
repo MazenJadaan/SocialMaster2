@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/post/postmodel.dart';
-import '../../shared/components/post_component.dart';
+import '../../shared/components/post_component/post_component.dart';
+
 
 class SavedPosts extends StatelessWidget {
   SavedPosts({Key? key}) : super(key: key);
   List<PostModel> posts = [
     PostModel(
+      vid: null,
       isSaved: true,
       isLiked: false,
       likes: 400,
