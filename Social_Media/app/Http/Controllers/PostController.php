@@ -37,24 +37,6 @@ class PostController extends Controller
     public function editPost()
     {
     }
-<<<<<<< HEAD
-    //not done yet
-    public function showAllUserPost()
-    {
-        $userID = Auth::user()->id;
-        $userPosts = DB::table('posts')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
-            ->where('posts.user_id', $userID)
-            ->orderBy('posts.created_at','desc')
-            ->get();
-        if (!$userPosts->count())   
-            return $this->ApiResponse('', 'No posts added yet', 404);
-        return $this->ApiResponse($userPosts, 'Information returned successfully', 200);
-    }
-    //not done yet
-    public function showMyFollowingPosts()
-=======
 
 
 //    public function showAllUserPost()
@@ -71,7 +53,6 @@ class PostController extends Controller
 //    }
 // now we don't use it
     public  function showMyFollowingPosts()
->>>>>>> 26c08895abfb2d81d91d69ee204fb456c1340dd2
     {
         $userID = Auth::user()->id;
         $userFollowing = userfollowers::where('user_id', $userID)->get();

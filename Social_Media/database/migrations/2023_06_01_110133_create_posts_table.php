@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('user_profile_id')->unsigned();
             $table->longText('post_body');
+            $table->string('post_video')->nullable();
             $table->time('post_time');
             $table->date('post_date');
 

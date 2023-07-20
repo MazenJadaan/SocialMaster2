@@ -35,7 +35,7 @@ class User_profile extends Model
     }
 
     public function story(){
-        return $this->hasMany(story::class);
+        return $this->hasMany(Story::class);
     }
 
     public function officailAccount(){

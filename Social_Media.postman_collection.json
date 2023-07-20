@@ -1021,11 +1021,11 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 16 Jul 2023 10:51:07 GMT"
+									"value": "Tue, 18 Jul 2023 11:07:29 GMT"
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 16 Jul 2023 10:51:07 GMT"
+									"value": "Tue, 18 Jul 2023 11:07:29 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1049,7 +1049,7 @@
 								},
 								{
 									"key": "X-RateLimit-Remaining",
-									"value": "58"
+									"value": "59"
 								},
 								{
 									"key": "Access-Control-Allow-Origin",
@@ -1057,7 +1057,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": {\n        \"profile information\": {\n            \"id\": 1,\n            \"first_name\": \"asem\",\n            \"last_name\": \"refa3i\",\n            \"gender\": \"male\",\n            \"birthdate\": \"2001-08-02\",\n            \"user_profile\": {\n                \"id\": 1,\n                \"job\": null,\n                \"study_place\": null,\n                \"place_stay\": null,\n                \"place_born\": null,\n                \"bio\": null,\n                \"cover_photo\": \"storage/app/images/cover_picture/Fw79JsNXwAEHNTq.jfif\",\n                \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\",\n                \"followers_number\": 0,\n                \"state\": null,\n                \"user_id\": 1,\n                \"created_at\": \"2023-07-14T15:08:20.000000Z\",\n                \"updated_at\": \"2023-07-14T15:13:49.000000Z\"\n            }\n        },\n        \"all posts\": [\n            {\n                \"id\": 1,\n                \"first_name\": \"asem\",\n                \"last_name\": \"refa3i\",\n                \"post\": [\n                    {\n                        \"id\": 7,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \" post 3 for user 1 \",\n                        \"post_time\": \"13:45:20\",\n                        \"post_date\": \"2023-07-16\",\n                        \"created_at\": \"2023-07-16T10:45:20.000000Z\",\n                        \"updated_at\": \"2023-07-16T10:45:20.000000Z\",\n                        \"photo\": [],\n                        \"video\": [\n                            {\n                                \"id\": 4,\n                                \"post_id\": 7,\n                                \"video_path\": \"storage/app/videos/posts_videos/wahda.mp4\",\n                                \"created_at\": \"2023-07-16T10:48:48.000000Z\",\n                                \"updated_at\": \"2023-07-16T10:48:48.000000Z\"\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 6,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \" post 2 for user 1 \",\n                        \"post_time\": \"13:45:08\",\n                        \"post_date\": \"2023-07-16\",\n                        \"created_at\": \"2023-07-16T10:45:08.000000Z\",\n                        \"updated_at\": \"2023-07-16T10:45:08.000000Z\",\n                        \"photo\": [\n                            {\n                                \"id\": 7,\n                                \"post_id\": 6,\n                                \"photo_path\": \"storage/app/images/posts_pictures/third_picture.jpg\",\n                                \"created_at\": \"2023-07-16T10:46:11.000000Z\",\n                                \"updated_at\": \"2023-07-16T10:46:11.000000Z\"\n                            }\n                        ],\n                        \"video\": []\n                    },\n                    {\n                        \"id\": 4,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \"other post user 1 \",\n                        \"post_time\": \"18:38:11\",\n                        \"post_date\": \"2023-07-15\",\n                        \"created_at\": \"2023-07-15T15:38:11.000000Z\",\n                        \"updated_at\": \"2023-07-15T15:38:11.000000Z\",\n                        \"photo\": [],\n                        \"video\": [\n                            {\n                                \"id\": 2,\n                                \"post_id\": 4,\n                                \"video_path\": \"storage/app/videos/posts_videos/laravel.mp4\",\n                                \"created_at\": \"2023-07-15T15:39:31.000000Z\",\n                                \"updated_at\": \"2023-07-15T15:39:31.000000Z\"\n                            }\n                        ]\n                    }\n                ],\n                \"sharepost\": [\n                    {\n                        \"id\": 2,\n                        \"user_id\": 1,\n                        \"post_id\": 1,\n                        \"body\": \"user 1 share post 1 of user 2 \",\n                        \"created_at\": \"2023-07-15T15:56:20.000000Z\",\n                        \"updated_at\": \"2023-07-15T15:56:20.000000Z\",\n                        \"post\": {\n                            \"id\": 1,\n                            \"user_id\": 2,\n                            \"user_profile_id\": 2,\n                            \"post_body\": \"my post 1\",\n                            \"post_time\": \"19:20:12\",\n                            \"post_date\": \"2023-07-14\",\n                            \"created_at\": \"2023-07-14T16:20:12.000000Z\",\n                            \"updated_at\": \"2023-07-14T16:20:12.000000Z\",\n                            \"user\": {\n                                \"id\": 2,\n                                \"first_name\": \"asem1\",\n                                \"last_name\": \"refa3i\"\n                            },\n                            \"photo\": [\n                                {\n                                    \"id\": 1,\n                                    \"post_id\": 1,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/first_picture.jpg\",\n                                    \"created_at\": \"2023-07-14T16:23:26.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:23:26.000000Z\"\n                                },\n                                {\n                                    \"id\": 2,\n                                    \"post_id\": 1,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/second_picture.jpg\",\n                                    \"created_at\": \"2023-07-14T16:23:34.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:23:34.000000Z\"\n                                },\n                                {\n                                    \"id\": 3,\n                                    \"post_id\": 1,\n                                    \"photo_path\": \"storage/app/images/profile_picture/1685690560.jpg\",\n                                    \"created_at\": \"2023-07-14T16:23:39.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:23:39.000000Z\"\n                                }\n                            ],\n                            \"video\": []\n                        }\n                    },\n                    {\n                        \"id\": 1,\n                        \"user_id\": 1,\n                        \"post_id\": 2,\n                        \"body\": \"user 1 share post of user 2 \",\n                        \"created_at\": \"2023-07-15T15:56:05.000000Z\",\n                        \"updated_at\": \"2023-07-15T15:56:05.000000Z\",\n                        \"post\": {\n                            \"id\": 2,\n                            \"user_id\": 2,\n                            \"user_profile_id\": 2,\n                            \"post_body\": \"my post 2\",\n                            \"post_time\": \"19:24:02\",\n                            \"post_date\": \"2023-07-14\",\n                            \"created_at\": \"2023-07-14T16:14:02.000000Z\",\n                            \"updated_at\": \"2023-07-14T16:14:02.000000Z\",\n                            \"user\": {\n                                \"id\": 2,\n                                \"first_name\": \"asem1\",\n                                \"last_name\": \"refa3i\"\n                            },\n                            \"photo\": [\n                                {\n                                    \"id\": 4,\n                                    \"post_id\": 2,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/first_picture.jpg\",\n                                    \"created_at\": \"2023-07-14T16:24:24.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:24:24.000000Z\"\n                                }\n                            ],\n                            \"video\": []\n                        }\n                    }\n                ]\n            }\n        ]\n    },\n    \"message\": \" My Profile Information returned successfully\",\n    \"status\": 200\n}"
+							"body": "{\n    \"data\": {\n        \"profile information\": {\n            \"id\": 2,\n            \"first_name\": \"mazen\",\n            \"last_name\": \"ra3i\",\n            \"gender\": \"female\",\n            \"birthdate\": null,\n            \"user_profile\": {\n                \"id\": 2,\n                \"job\": null,\n                \"study_place\": null,\n                \"place_stay\": null,\n                \"place_born\": null,\n                \"bio\": null,\n                \"cover_photo\": \"storage/app/images/cover_picture/Fw79JsNXwAEHNTq.jfif\",\n                \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\",\n                \"followers_number\": 0,\n                \"following_number\": 0,\n                \"state\": null,\n                \"user_id\": 2,\n                \"created_at\": \"2023-07-18T11:02:45.000000Z\",\n                \"updated_at\": \"2023-07-18T11:02:45.000000Z\"\n            }\n        },\n        \"all posts\": [\n            {\n                \"id\": 2,\n                \"first_name\": \"mazen\",\n                \"last_name\": \"ra3i\",\n                \"post\": [\n                    {\n                        \"id\": 3,\n                        \"user_id\": 2,\n                        \"user_profile_id\": 2,\n                        \"post_body\": \"post 1 user 2 \",\n                        \"post_video\": null,\n                        \"post_time\": \"14:04:40\",\n                        \"post_date\": \"2023-07-18\",\n                        \"created_at\": \"2023-07-18T11:04:40.000000Z\",\n                        \"updated_at\": \"2023-07-18T11:04:40.000000Z\",\n                        \"photo\": []\n                    }\n                ],\n                \"sharepost\": [\n                    {\n                        \"id\": 1,\n                        \"user_id\": 2,\n                        \"post_id\": 1,\n                        \"body\": \"shared post 1  of user 1 by user 2 \",\n                        \"created_at\": \"2023-07-18T11:06:12.000000Z\",\n                        \"updated_at\": \"2023-07-18T11:06:12.000000Z\",\n                        \"post\": {\n                            \"id\": 1,\n                            \"user_id\": 1,\n                            \"user_profile_id\": 1,\n                            \"post_body\": \"post 1 user 1 \",\n                            \"post_video\": \"storage/app/videos/stories_videos/1689613785.mp4\",\n                            \"post_time\": \"13:57:16\",\n                            \"post_date\": \"2023-07-18\",\n                            \"created_at\": null,\n                            \"updated_at\": null,\n                            \"user\": {\n                                \"id\": 1,\n                                \"first_name\": \"alaa\",\n                                \"last_name\": \"ra3i\"\n                            },\n                            \"photo\": []\n                        }\n                    },\n                    {\n                        \"id\": 2,\n                        \"user_id\": 2,\n                        \"post_id\": 2,\n                        \"body\": \"shared post 2  of user 1 by user 2 \",\n                        \"created_at\": \"2023-07-18T11:06:12.000000Z\",\n                        \"updated_at\": \"2023-07-18T11:06:12.000000Z\",\n                        \"post\": {\n                            \"id\": 2,\n                            \"user_id\": 1,\n                            \"user_profile_id\": 1,\n                            \"post_body\": \"post 2 user 1 \",\n                            \"post_video\": null,\n                            \"post_time\": \"13:58:39\",\n                            \"post_date\": \"2023-07-18\",\n                            \"created_at\": \"2023-07-18T10:58:43.000000Z\",\n                            \"updated_at\": \"2023-07-18T10:58:43.000000Z\",\n                            \"user\": {\n                                \"id\": 1,\n                                \"first_name\": \"alaa\",\n                                \"last_name\": \"ra3i\"\n                            },\n                            \"photo\": [\n                                {\n                                    \"id\": 1,\n                                    \"post_id\": 2,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/default_picture.png\",\n                                    \"created_at\": \"2023-07-18T10:59:34.000000Z\",\n                                    \"updated_at\": \"2023-07-18T10:59:34.000000Z\"\n                                },\n                                {\n                                    \"id\": 2,\n                                    \"post_id\": 2,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/default_picture.png\",\n                                    \"created_at\": \"2023-07-18T10:59:34.000000Z\",\n                                    \"updated_at\": \"2023-07-18T10:59:34.000000Z\"\n                                }\n                            ]\n                        }\n                    }\n                ]\n            }\n        ]\n    },\n    \"message\": \" My Profile Information returned successfully\",\n    \"status\": 200\n}"
 						}
 					]
 				},
@@ -1805,14 +1805,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/showProfile/1",
+									"raw": "{{url}}/api/showProfile/2",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"showProfile",
-										"1"
+										"2"
 									]
 								}
 							},
@@ -1826,11 +1826,11 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 16 Jul 2023 16:47:50 GMT"
+									"value": "Tue, 18 Jul 2023 11:08:56 GMT"
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 16 Jul 2023 16:47:50 GMT"
+									"value": "Tue, 18 Jul 2023 11:08:56 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1854,7 +1854,7 @@
 								},
 								{
 									"key": "X-RateLimit-Remaining",
-									"value": "59"
+									"value": "58"
 								},
 								{
 									"key": "Access-Control-Allow-Origin",
@@ -1862,7 +1862,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": {\n        \"user information\": [\n            {\n                \"id\": 1,\n                \"first_name\": \"asem\",\n                \"last_name\": \"refa3i\",\n                \"gender\": \"male\",\n                \"birthdate\": \"2001-08-02\",\n                \"profile\": {\n                    \"id\": 1,\n                    \"job\": null,\n                    \"study_place\": null,\n                    \"place_stay\": null,\n                    \"place_born\": null,\n                    \"bio\": null,\n                    \"cover_photo\": \"storage/app/images/cover_picture/Fw79JsNXwAEHNTq.jfif\",\n                    \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\",\n                    \"followers_number\": 0,\n                    \"state\": null,\n                    \"user_id\": 1,\n                    \"created_at\": \"2023-07-14T15:08:20.000000Z\",\n                    \"updated_at\": \"2023-07-14T15:13:49.000000Z\"\n                }\n            }\n        ],\n        \"user posts\": [\n            {\n                \"id\": 1,\n                \"first_name\": \"asem\",\n                \"last_name\": \"refa3i\",\n                \"post\": [\n                    {\n                        \"id\": 7,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \" post 3 for user 1 \",\n                        \"post_time\": \"13:45:20\",\n                        \"post_date\": \"2023-07-16\",\n                        \"created_at\": \"2023-07-16T10:45:20.000000Z\",\n                        \"updated_at\": \"2023-07-16T10:45:20.000000Z\",\n                        \"photo\": [],\n                        \"video\": [\n                            {\n                                \"id\": 4,\n                                \"post_id\": 7,\n                                \"video_path\": \"storage/app/videos/posts_videos/wahda.mp4\",\n                                \"created_at\": \"2023-07-16T10:48:48.000000Z\",\n                                \"updated_at\": \"2023-07-16T10:48:48.000000Z\"\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 6,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \" post 2 for user 1 \",\n                        \"post_time\": \"13:45:08\",\n                        \"post_date\": \"2023-07-16\",\n                        \"created_at\": \"2023-07-16T10:45:08.000000Z\",\n                        \"updated_at\": \"2023-07-16T10:45:08.000000Z\",\n                        \"photo\": [\n                            {\n                                \"id\": 7,\n                                \"post_id\": 6,\n                                \"photo_path\": \"storage/app/images/posts_pictures/third_picture.jpg\",\n                                \"created_at\": \"2023-07-16T10:46:11.000000Z\",\n                                \"updated_at\": \"2023-07-16T10:46:11.000000Z\"\n                            }\n                        ],\n                        \"video\": []\n                    },\n                    {\n                        \"id\": 4,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \"other post user 1 \",\n                        \"post_time\": \"18:38:11\",\n                        \"post_date\": \"2023-07-15\",\n                        \"created_at\": \"2023-07-15T15:38:11.000000Z\",\n                        \"updated_at\": \"2023-07-15T15:38:11.000000Z\",\n                        \"photo\": [],\n                        \"video\": [\n                            {\n                                \"id\": 2,\n                                \"post_id\": 4,\n                                \"video_path\": \"storage/app/videos/posts_videos/laravel.mp4\",\n                                \"created_at\": \"2023-07-15T15:39:31.000000Z\",\n                                \"updated_at\": \"2023-07-15T15:39:31.000000Z\"\n                            }\n                        ]\n                    }\n                ],\n                \"sharepost\": [\n                    {\n                        \"id\": 2,\n                        \"user_id\": 1,\n                        \"post_id\": 1,\n                        \"body\": \"user 1 share post 1 of user 2 \",\n                        \"created_at\": \"2023-07-15T15:56:20.000000Z\",\n                        \"updated_at\": \"2023-07-15T15:56:20.000000Z\",\n                        \"post\": {\n                            \"id\": 1,\n                            \"user_id\": 2,\n                            \"user_profile_id\": 2,\n                            \"post_body\": \"my post 1\",\n                            \"post_time\": \"19:20:12\",\n                            \"post_date\": \"2023-07-14\",\n                            \"created_at\": \"2023-07-14T16:20:12.000000Z\",\n                            \"updated_at\": \"2023-07-14T16:20:12.000000Z\",\n                            \"user\": {\n                                \"id\": 2,\n                                \"first_name\": \"asem1\",\n                                \"last_name\": \"refa3i\"\n                            },\n                            \"photo\": [\n                                {\n                                    \"id\": 1,\n                                    \"post_id\": 1,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/first_picture.jpg\",\n                                    \"created_at\": \"2023-07-14T16:23:26.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:23:26.000000Z\"\n                                },\n                                {\n                                    \"id\": 2,\n                                    \"post_id\": 1,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/second_picture.jpg\",\n                                    \"created_at\": \"2023-07-14T16:23:34.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:23:34.000000Z\"\n                                },\n                                {\n                                    \"id\": 3,\n                                    \"post_id\": 1,\n                                    \"photo_path\": \"storage/app/images/profile_picture/1685690560.jpg\",\n                                    \"created_at\": \"2023-07-14T16:23:39.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:23:39.000000Z\"\n                                }\n                            ],\n                            \"video\": []\n                        }\n                    },\n                    {\n                        \"id\": 1,\n                        \"user_id\": 1,\n                        \"post_id\": 2,\n                        \"body\": \"user 1 share post of user 2 \",\n                        \"created_at\": \"2023-07-15T15:56:05.000000Z\",\n                        \"updated_at\": \"2023-07-15T15:56:05.000000Z\",\n                        \"post\": {\n                            \"id\": 2,\n                            \"user_id\": 2,\n                            \"user_profile_id\": 2,\n                            \"post_body\": \"my post 2\",\n                            \"post_time\": \"19:24:02\",\n                            \"post_date\": \"2023-07-14\",\n                            \"created_at\": \"2023-07-14T16:14:02.000000Z\",\n                            \"updated_at\": \"2023-07-14T16:14:02.000000Z\",\n                            \"user\": {\n                                \"id\": 2,\n                                \"first_name\": \"asem1\",\n                                \"last_name\": \"refa3i\"\n                            },\n                            \"photo\": [\n                                {\n                                    \"id\": 4,\n                                    \"post_id\": 2,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/first_picture.jpg\",\n                                    \"created_at\": \"2023-07-14T16:24:24.000000Z\",\n                                    \"updated_at\": \"2023-07-14T16:24:24.000000Z\"\n                                }\n                            ],\n                            \"video\": []\n                        }\n                    }\n                ]\n            }\n        ]\n    },\n    \"message\": \"Profile returned successfully\",\n    \"status\": 200\n}"
+							"body": "{\n    \"data\": {\n        \"user information\": [\n            {\n                \"id\": 2,\n                \"first_name\": \"mazen\",\n                \"last_name\": \"ra3i\",\n                \"gender\": \"female\",\n                \"birthdate\": null,\n                \"profile\": {\n                    \"id\": 2,\n                    \"job\": null,\n                    \"study_place\": null,\n                    \"place_stay\": null,\n                    \"place_born\": null,\n                    \"bio\": null,\n                    \"cover_photo\": \"storage/app/images/cover_picture/Fw79JsNXwAEHNTq.jfif\",\n                    \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\",\n                    \"followers_number\": 0,\n                    \"following_number\": 0,\n                    \"state\": null,\n                    \"user_id\": 2,\n                    \"created_at\": \"2023-07-18T11:02:45.000000Z\",\n                    \"updated_at\": \"2023-07-18T11:02:45.000000Z\"\n                }\n            }\n        ],\n        \"user posts\": [\n            {\n                \"id\": 2,\n                \"first_name\": \"mazen\",\n                \"last_name\": \"ra3i\",\n                \"post\": [\n                    {\n                        \"id\": 3,\n                        \"user_id\": 2,\n                        \"user_profile_id\": 2,\n                        \"post_body\": \"post 1 user 2 \",\n                        \"post_video\": null,\n                        \"post_time\": \"14:04:40\",\n                        \"post_date\": \"2023-07-18\",\n                        \"created_at\": \"2023-07-18T11:04:40.000000Z\",\n                        \"updated_at\": \"2023-07-18T11:04:40.000000Z\",\n                        \"photo\": []\n                    }\n                ],\n                \"sharepost\": [\n                    {\n                        \"id\": 1,\n                        \"user_id\": 2,\n                        \"post_id\": 1,\n                        \"body\": \"shared post 1  of user 1 by user 2 \",\n                        \"created_at\": \"2023-07-18T11:06:12.000000Z\",\n                        \"updated_at\": \"2023-07-18T11:06:12.000000Z\",\n                        \"post\": {\n                            \"id\": 1,\n                            \"user_id\": 1,\n                            \"user_profile_id\": 1,\n                            \"post_body\": \"post 1 user 1 \",\n                            \"post_video\": \"storage/app/videos/stories_videos/1689613785.mp4\",\n                            \"post_time\": \"13:57:16\",\n                            \"post_date\": \"2023-07-18\",\n                            \"created_at\": null,\n                            \"updated_at\": null,\n                            \"user\": {\n                                \"id\": 1,\n                                \"first_name\": \"alaa\",\n                                \"last_name\": \"ra3i\"\n                            },\n                            \"photo\": []\n                        }\n                    },\n                    {\n                        \"id\": 2,\n                        \"user_id\": 2,\n                        \"post_id\": 2,\n                        \"body\": \"shared post 2  of user 1 by user 2 \",\n                        \"created_at\": \"2023-07-18T11:06:12.000000Z\",\n                        \"updated_at\": \"2023-07-18T11:06:12.000000Z\",\n                        \"post\": {\n                            \"id\": 2,\n                            \"user_id\": 1,\n                            \"user_profile_id\": 1,\n                            \"post_body\": \"post 2 user 1 \",\n                            \"post_video\": null,\n                            \"post_time\": \"13:58:39\",\n                            \"post_date\": \"2023-07-18\",\n                            \"created_at\": \"2023-07-18T10:58:43.000000Z\",\n                            \"updated_at\": \"2023-07-18T10:58:43.000000Z\",\n                            \"user\": {\n                                \"id\": 1,\n                                \"first_name\": \"alaa\",\n                                \"last_name\": \"ra3i\"\n                            },\n                            \"photo\": [\n                                {\n                                    \"id\": 1,\n                                    \"post_id\": 2,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/default_picture.png\",\n                                    \"created_at\": \"2023-07-18T10:59:34.000000Z\",\n                                    \"updated_at\": \"2023-07-18T10:59:34.000000Z\"\n                                },\n                                {\n                                    \"id\": 2,\n                                    \"post_id\": 2,\n                                    \"photo_path\": \"storage/app/images/posts_pictures/default_picture.png\",\n                                    \"created_at\": \"2023-07-18T10:59:34.000000Z\",\n                                    \"updated_at\": \"2023-07-18T10:59:34.000000Z\"\n                                }\n                            ]\n                        }\n                    }\n                ]\n            }\n        ]\n    },\n    \"message\": \"Profile returned successfully\",\n    \"status\": 200\n}"
 						}
 					]
 				},
@@ -2176,222 +2176,602 @@
 			]
 		},
 		{
-			"name": "AddStories",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzY2ZDNjMjM0NTU5NWZmZmVlYmE3NGVlMWRkZTQyODdjZTg5NDU2MmUxYTI0NGVlYTRiZGExN2MyMGZmN2I5NzQwOGRhZDI2NDg2MzdmMzciLCJpYXQiOjE2ODgzMDI4NjkuODk4MjEsIm5iZiI6MTY4ODMwMjg2OS44OTgyMTUsImV4cCI6MTcxOTkyNTI2OS44NTMyNzMsInN1YiI6IjIiLCJzY29wZXMiOltdfQ.dB9Y89VvmxLYr-tNUhkZVuhlH4XaV8Kl6dMVYGUXRkioVsGz1ZrsntHaa7NPMedwvc8xf_ZXgA48jX5z2zWWGi08ktTwaT5OwSUheF30YWDzb60Hz33lUncTZetkAZGWg4q4u_qzpEXlVL9W14zupAMiZxHIpYel5pod7qXk6-t-QE0fDMehiDPzPW2OjaRG4fAF2h-WMwPIVXuu4LgBdS-HRGss8kROZyrD5x1dmkjSVFKBG_S27xhZUAMvU-6MibZPsgLr2wOF8bs1iQFXQ-Kc2nlrva_McIYt5c5rRu4Ora7379MCdsZIobzWAQANTSxCdxQfPBylWk-0XYsmEPEzwgx_vBp1WalH604wJaPYuNsbidRl_I4Nv5_iijiJw2ISjIvKaQLzCHcNpOsOC3jXo2LcLAITRT0IIBU_YHY7jCtuJGWxGAa8DPAQK-pgr1lB1Uijw_cX71Qs5S1Pcu9igBc5Z7kJVxsqTHOc1nosRHUEcU19PqLTMGQQoSFAXVkO2ApYBAeozdGDwbIqHi8bB-Uw4klZfs9eN_9H9ph9DPyk82Sq0z2zyOaxuVUXHscnIxhh1kMTFcVZVQZaVsBnblEH6aQu7504xnI7bz_Sbpyj5BJn_RGH9QUsEGy0X1aSAxuIKLjzhaZ_RH1vvREYxgOJuICt0SGFaMdiLKk",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "story_body",
-							"value": "ستوري اولى للزلمة رقم 2 ",
-							"type": "text"
+			"name": "story",
+			"item": [
+				{
+					"name": "AddStories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzY2ZDNjMjM0NTU5NWZmZmVlYmE3NGVlMWRkZTQyODdjZTg5NDU2MmUxYTI0NGVlYTRiZGExN2MyMGZmN2I5NzQwOGRhZDI2NDg2MzdmMzciLCJpYXQiOjE2ODgzMDI4NjkuODk4MjEsIm5iZiI6MTY4ODMwMjg2OS44OTgyMTUsImV4cCI6MTcxOTkyNTI2OS44NTMyNzMsInN1YiI6IjIiLCJzY29wZXMiOltdfQ.dB9Y89VvmxLYr-tNUhkZVuhlH4XaV8Kl6dMVYGUXRkioVsGz1ZrsntHaa7NPMedwvc8xf_ZXgA48jX5z2zWWGi08ktTwaT5OwSUheF30YWDzb60Hz33lUncTZetkAZGWg4q4u_qzpEXlVL9W14zupAMiZxHIpYel5pod7qXk6-t-QE0fDMehiDPzPW2OjaRG4fAF2h-WMwPIVXuu4LgBdS-HRGss8kROZyrD5x1dmkjSVFKBG_S27xhZUAMvU-6MibZPsgLr2wOF8bs1iQFXQ-Kc2nlrva_McIYt5c5rRu4Ora7379MCdsZIobzWAQANTSxCdxQfPBylWk-0XYsmEPEzwgx_vBp1WalH604wJaPYuNsbidRl_I4Nv5_iijiJw2ISjIvKaQLzCHcNpOsOC3jXo2LcLAITRT0IIBU_YHY7jCtuJGWxGAa8DPAQK-pgr1lB1Uijw_cX71Qs5S1Pcu9igBc5Z7kJVxsqTHOc1nosRHUEcU19PqLTMGQQoSFAXVkO2ApYBAeozdGDwbIqHi8bB-Uw4klZfs9eN_9H9ph9DPyk82Sq0z2zyOaxuVUXHscnIxhh1kMTFcVZVQZaVsBnblEH6aQu7504xnI7bz_Sbpyj5BJn_RGH9QUsEGy0X1aSAxuIKLjzhaZ_RH1vvREYxgOJuICt0SGFaMdiLKk",
+									"type": "string"
+								}
+							]
 						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "story_body",
+									"value": "ستوري اولى للزلمة رقم 2 ",
+									"type": "text"
+								},
+								{
+									"key": "media",
+									"type": "file",
+									"src": "/C:/Users/DELL 5583/Downloads/Video/mp4.mp4"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/addStories",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"addStories"
+							]
+						}
+					},
+					"response": [
 						{
-							"key": "media",
-							"type": "file",
-							"src": "/C:/Users/DELL 5583/Downloads/Video/mp4.mp4"
+							"name": "AddStories",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "story_body",
+											"value": "text of story (النص والصورة او الفيديو مو اجباري يعني ممكن بس نص ممكن بس صورة او فيديو وممكن ال2 مع بعض)",
+											"type": "text"
+										},
+										{
+											"key": "media",
+											"type": "file",
+											"src": "/C:/Users/ASUS/Desktop/backgrounds/sham/R (1).jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/addStories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"addStories"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Jul 2023 17:12:56 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Jul 2023 17:12:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"story_date\": \"2023-07-17\",\n        \"story_time\": \"20:12\",\n        \"story_date_expire\": \"2023-07-18T17:12:56.327423Z\",\n        \"user_id\": 2,\n        \"user_profile_id\": 2,\n        \"updated_at\": \"2023-07-17T17:12:56.000000Z\",\n        \"created_at\": \"2023-07-17T17:12:56.000000Z\",\n        \"id\": 6,\n        \"story_body\": \"text of story (النص والصورة او الفيديو مو اجباري يعني ممكن بس نص ممكن بس صورة او فيديو وممكن ال2 مع بعض)\",\n        \"media\": \"storage/app/images/stories_pictures/1689613976.jpg\"\n    },\n    \"message\": \"Information updated successfully\",\n    \"status\": 201\n}"
 						}
 					]
 				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/addStories",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"addStories"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "deleteStory",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+				{
+					"name": "deleteStory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/deleteStory/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"deleteStory",
+								"2"
+							]
+						}
+					},
+					"response": [
 						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
-							"type": "string"
+							"name": "deleteStory",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/deleteStory/3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"deleteStory",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Jul 2023 18:45:29 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Jul 2023 18:45:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"\",\n    \"message\": \"Story deleted susseccfuly\",\n    \"status\": 200\n}"
 						}
 					]
 				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/deleteStory/2",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"deleteStory",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "showFullStory",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+				{
+					"name": "showMyStoriesThatAvaliable",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/showCurrentStory",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"showCurrentStory"
+							]
+						}
+					},
+					"response": [
 						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
-							"type": "string"
+							"name": "showFullStory",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/showCurrentStory",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"showCurrentStory"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jul 2023 10:27:28 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jul 2023 10:27:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"my_info\": [\n            {\n                \"id\": 1,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"refa3i\",\n                \"user_profile\": {\n                    \"id\": 1,\n                    \"user_id\": 1,\n                    \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n                }\n            }\n        ],\n        \"my_stories\": [\n            {\n                \"id\": 1,\n                \"story_body\": \"story 1 user 1\",\n                \"story_date\": \"2023-07-18\",\n                \"story_time\": \"00:40:00\",\n                \"elapsed_time\": \"12 hours ago\",\n                \"media\": null\n            },\n            {\n                \"id\": 3,\n                \"story_body\": \"story 3 user 1\",\n                \"story_date\": \"2023-07-18\",\n                \"story_time\": \"00:41:00\",\n                \"elapsed_time\": \"12 hours ago\",\n                \"media\": \"storage/app/images/stories_pictures/1689630104.png\"\n            },\n            {\n                \"id\": 5,\n                \"story_body\": \"story 5 user 1\",\n                \"story_date\": \"2023-07-18\",\n                \"story_time\": \"13:17:00\",\n                \"elapsed_time\": \"9 minutes ago\",\n                \"media\": \"storage/app/images/stories_pictures/1689675451.jpg\"\n            }\n        ]\n    },\n    \"message\": \"Information returned susseccfuly\",\n    \"status\": 200\n}"
 						}
 					]
 				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/showCurrentStory",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"showCurrentStory"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "showFollowingStory",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+				{
+					"name": "showMyUserFollowingStories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/showFollwingStory",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"showFollwingStory"
+							]
+						}
+					},
+					"response": [
 						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
-							"type": "string"
+							"name": "showFollowingStory",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/showFollwingStory",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"showFollwingStory"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jul 2023 10:43:08 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jul 2023 10:43:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"first_name\": \"alaa\",\n            \"last_name\": \"refa3i\",\n            \"user_profile\": {\n                \"user_id\": 1,\n                \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n            },\n            \"story\": [\n                {\n                    \"id\": 1,\n                    \"user_id\": 1,\n                    \"user_profile_id\": 1,\n                    \"story_body\": \"story 1 user 1\",\n                    \"story_date\": \"2023-07-18\",\n                    \"story_date_expire\": \"13 hours ago\",\n                    \"story_time\": \"00:40:00\",\n                    \"media\": null,\n                    \"created_at\": \"2023-07-17T21:40:58.000000Z\",\n                    \"updated_at\": \"2023-07-17T21:40:58.000000Z\"\n                },\n                {\n                    \"id\": 3,\n                    \"user_id\": 1,\n                    \"user_profile_id\": 1,\n                    \"story_body\": \"story 3 user 1\",\n                    \"story_date\": \"2023-07-18\",\n                    \"story_date_expire\": \"13 hours ago\",\n                    \"story_time\": \"00:41:00\",\n                    \"media\": \"storage/app/images/stories_pictures/1689630104.png\",\n                    \"created_at\": \"2023-07-17T21:41:44.000000Z\",\n                    \"updated_at\": \"2023-07-17T21:41:44.000000Z\"\n                },\n                {\n                    \"id\": 5,\n                    \"user_id\": 1,\n                    \"user_profile_id\": 1,\n                    \"story_body\": \"story 5 user 1\",\n                    \"story_date\": \"2023-07-18\",\n                    \"story_date_expire\": \"25 minutes ago\",\n                    \"story_time\": \"13:17:00\",\n                    \"media\": \"storage/app/images/stories_pictures/1689675451.jpg\",\n                    \"created_at\": \"2023-07-18T10:17:31.000000Z\",\n                    \"updated_at\": \"2023-07-18T10:17:32.000000Z\"\n                }\n            ]\n        }\n    ],\n    \"message\": \"Information returned susseccfuly\",\n    \"status\": 200\n}"
 						}
 					]
 				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/showFollwingStory",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"showFollwingStory"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ArchiveStories",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+				{
+					"name": "MyArchiveStories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/showOldestStory",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"showOldestStory"
+							]
+						}
+					},
+					"response": [
 						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
-							"type": "string"
+							"name": "ArchiveStories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/showOldestStory",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"showOldestStory"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jul 2023 10:44:54 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jul 2023 10:44:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"user_profile_id\": 1,\n            \"story_body\": \"story 1 user 1\",\n            \"story_date\": \"2023-07-18\",\n            \"story_date_expire\": \"13 hours ago\",\n            \"story_time\": \"00:40:00\",\n            \"media\": null,\n            \"created_at\": \"2023-07-17T21:40:58.000000Z\",\n            \"updated_at\": \"2023-07-17T21:40:58.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"user_id\": 1,\n            \"user_profile_id\": 1,\n            \"story_body\": \"story 2 user 1\",\n            \"story_date\": \"2023-07-18\",\n            \"story_date_expire\": \"13 hours ago\",\n            \"story_time\": \"00:41:00\",\n            \"media\": \"storage/app/videos/stories_videos/1689630094.mp4\",\n            \"created_at\": \"2023-07-17T21:41:34.000000Z\",\n            \"updated_at\": \"2023-07-17T21:41:34.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"user_id\": 1,\n            \"user_profile_id\": 1,\n            \"story_body\": \"story 3 user 1\",\n            \"story_date\": \"2023-07-18\",\n            \"story_date_expire\": \"13 hours ago\",\n            \"story_time\": \"00:41:00\",\n            \"media\": \"storage/app/images/stories_pictures/1689630104.png\",\n            \"created_at\": \"2023-07-17T21:41:44.000000Z\",\n            \"updated_at\": \"2023-07-17T21:41:44.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"user_id\": 1,\n            \"user_profile_id\": 1,\n            \"story_body\": null,\n            \"story_date\": \"2023-07-18\",\n            \"story_date_expire\": \"13 hours ago\",\n            \"story_time\": \"00:42:00\",\n            \"media\": \"storage/app/images/stories_pictures/1689630122.jpg\",\n            \"created_at\": \"2023-07-17T21:42:02.000000Z\",\n            \"updated_at\": \"2023-07-17T21:42:02.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"user_id\": 1,\n            \"user_profile_id\": 1,\n            \"story_body\": \"story 5 user 1\",\n            \"story_date\": \"2023-07-18\",\n            \"story_date_expire\": \"27 minutes ago\",\n            \"story_time\": \"13:17:00\",\n            \"media\": \"storage/app/images/stories_pictures/1689675451.jpg\",\n            \"created_at\": \"2023-07-18T10:17:31.000000Z\",\n            \"updated_at\": \"2023-07-18T10:17:32.000000Z\"\n        }\n    ],\n    \"message\": \"Information returned susseccfuly\",\n    \"status\": 200\n}"
 						}
 					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/showOldestStory",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"showOldestStory"
-					]
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [

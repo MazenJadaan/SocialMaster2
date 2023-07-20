@@ -19,10 +19,11 @@ class showStories extends JsonResource
             'story_body'=>$this->story_body,
             'story_date'=>$this->story_date,
             'story_time'=>$this->story_time,
-            'story_date_expire'=>$this->story_date_expire,
+            'elapsed_time'=>$this->story_date_expire,
             'media'=>$this->media,
-            'created_at'=>$this->created_at->diffForHumans(),
-            'profile'=>$this->userProfile->toArray(),
+//            'profile_photo'=>$this->userProfile->profile_photo,
+//            'first_name'=>$this->user->first_name,
+//            'last_name'=>$this->user->last_name
         ];
     }
 }

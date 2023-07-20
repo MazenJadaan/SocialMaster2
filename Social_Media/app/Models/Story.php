@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class story extends Model
+class Story extends Model
 {
     use HasFactory;
 
@@ -18,6 +18,12 @@ class story extends Model
         'story_date_expire',
         'media'
     ];
+
+
+    public function getStoryDateExpireAttribute()
+    {
+     return $this->created_at->diffForHumans();
+    }
 
     public function user(){
         return $this->belongsTo(User::class,'user_id');

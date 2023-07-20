@@ -42,25 +42,29 @@ Route::middleware('auth:api')->group(function () {
 
     Route::Post('makeProfileOfficial/{id}', [MyUserProfile::class, 'makeProfileOfficial']);
 
-    Route::post('followProfile/{id}', [OtherUserProfile::class, 'follow']);
-
-    Route::get('showProfile/{id}', [OtherUserProfile::class, 'showProfile']);
-
-    Route::delete('unFollow/{id}', [OtherUserProfile::class, 'unFollow']);
-
     Route::post('searchUsers', [SearchController::class, 'searchIntoUsers']);
 
     Route::post('searchPosts',[SearchController::class,'searchIntoPosts']);
 
+    Route::get('showProfile/{id}', [OtherUserProfile::class, 'showProfile']);
+
+    Route::post('followProfile/{id}', [OtherUserProfile::class, 'follow']);
+
+    Route::delete('unFollow/{id}', [OtherUserProfile::class, 'unFollow']);
+
     Route::post('addStories', [StoriesController::class, 'addStory']);
 
-    Route::get('showCurrentStory', [StoriesController::class, 'showStoryDetail']);
+    Route::delete('deleteStory/{id}', [StoriesController::class, 'deleteStory']);
 
-    Route::get('showOldestStory', [StoriesController::class, 'showArchiveStories']);
+    Route::get('showCurrentStory', [StoriesController::class, 'showMyStoryDetail']);
 
     Route::get('showFollwingStory', [StoriesController::class, 'showStory']);
 
-    Route::delete('deleteStory/{id}', [StoriesController::class, 'deleteStory']);
+    Route::get('showOldestStory', [StoriesController::class, 'showArchiveStories']);
+
+
+
+
 
     Route::post('Createnewpost', [PostController::class, 'createNewPost']);
 

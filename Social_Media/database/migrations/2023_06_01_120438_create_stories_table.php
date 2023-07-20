@@ -26,10 +26,19 @@ return new class extends Migration
             $table->string('media')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('user_profile_id')->references('id')->on('user_profiles')->onDelete('cascade');
-        });
-    }
+
+
+
+
+
+
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        $table->foreign('user_profile_id')->references('id')->on('user_profiles')->onDelete('cascade');
+    });
+}
+
+
+
 
     /**
      * Reverse the migrations.

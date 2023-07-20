@@ -45,9 +45,9 @@ class post extends Model
         return $this->hasMany(sharepost::class);
     }
 
-    public function video(){
-        return $this->hasMany(Video::class);
-    }
+//    public function video(){
+//        return $this->hasMany(Video::class);
+//    }
 
     public function user_profile(){
         return $this->belongsTo(User_profile::class);

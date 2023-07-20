@@ -92,19 +92,19 @@ class MyUserProfile extends Controller
     {
         // $profileID = User_profile::find($id)->id;
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        $res = $stripe->tokens->create([
-            'card' => [
-                'number' =>bcrypt('4000005280000002'),
-                'exp_month' =>bcrypt(6),
-                'exp_year' => bcrypt(2024),
-                'cvc' => bcrypt('314'),
-            ],
-        ]);
+        // $res = $stripe->tokens->create([
+        //     'card' => [
+        //         'number' =>bcrypt('4000005280000002'),
+        //         'exp_month' =>bcrypt(6),
+        //         'exp_year' => bcrypt(2024),
+        //         'cvc' => bcrypt('314'),
+        //     ],
+        // ]);
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $response = $stripe->charges->create([
             'amount' => 2000,
             'currency' => 'USD',
-            'source' => $res->id,
+            'source' => 'tok_nl',
             'description' => 'Pay for make profile official',
         ]);
         $official = officialaccounts::create([

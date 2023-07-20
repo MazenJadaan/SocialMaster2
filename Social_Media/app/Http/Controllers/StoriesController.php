@@ -6,8 +6,10 @@ namespace App\Http\Controllers;
 
 
 
+use App\Models\User;
+use App\Models\User_profile;
 use Illuminate\Support\Facades\Auth;
-use App\Models\story;
+use App\Models\Story;
 use Carbon\Carbon;
 use App\Http\Resources\showStories;
 use App\Models\userfollowers;
@@ -25,7 +27,7 @@ class StoriesController extends Controller
         $expireTime = Carbon::now()->addDay()->addHour(3);
         // return $expireTime;
         $data = $request->validate([
-            'story_body' => 'required_without:media|string',
+            'story_body' => 'required_without:media',
             'media' => 'required_without:story_body|file|mimetypes:image/jpeg,image/png,video/mp4',
         ]);
         $hastext = $request->has('story_body');
@@ -40,44 +42,48 @@ class StoriesController extends Controller
                     if ($video['playtime_seconds'] > 30) {
                         return $this->ApiResponse('', "Can't post videos longer than 30 sec", 401);
                     } else {
-                        $story = story::create([
+                        $story = Story::create([
                             'story_date' => Carbon::now()->format('Y-m-d'),
                             'story_time' => Carbon::now()->format('H:i'),
                             'story_date_expire' => Carbon::now()->addDay(),
                             'user_id' => $userID,
                             'user_profile_id' => $userID,
+
                         ]);
                         $story->story_body = $data['story_body'];
+
                         $videoName = time() . '.' . $request->file('media')->extension();
-                        $request->file('media')->storeAs('images/story_media/', $videoName);
-                        $name_path = 'storage/app/images/story_media/' . $videoName;
+                        $request->file('media')->storeAs('videos/stories_videos/', $videoName);
+                        $name_path = 'storage/app/videos/stories_videos/' . $videoName;
                         $story->media = $name_path;
                     }
                 }
             } else {
-                $story = story::create([
+                $story = Story::create([
                     'story_date' => Carbon::now()->format('Y-m-d'),
                     'story_time' => Carbon::now()->format('H:i'),
                     'story_date_expire' => Carbon::now()->addDay(),
                     'user_id' => $userID,
                     'user_profile_id' => $userID,
                 ]);
+
                 $story->story_body = $data['story_body'];
                 $imageName = time() . '.' . $request->file('media')->extension();
-                $request->file('media')->storeAs('images/story_media/', $imageName);
-                $name_path = 'storage/app/images/story_media/' . $imageName;
+                $request->file('media')->storeAs('images/stories_pictures/', $imageName);
+                $name_path = 'storage/app/images/stories_pictures/' . $imageName;
                 $story->media = $name_path;
             }
             $story->save();
             return $this->ApiResponse($story, 'Information updated successfully', 201);
         } elseif ($hastext) {
-            $story = story::create([
+            $story = Story::create([
                 'story_date' => Carbon::now()->format('Y-m-d'),
                 'story_time' => Carbon::now()->format('H:i'),
                 'story_date_expire' => Carbon::now()->addDay(),
                 'user_id' => $userID,
                 'user_profile_id' => $userID,
             ]);
+
             $story->story_body = $data['story_body'];
             $story->save();
             return $this->ApiResponse($story, 'Information updated successfully', 201);
@@ -91,7 +97,7 @@ class StoriesController extends Controller
                     if ($video['playtime_seconds'] > 30) {
                         return $this->ApiResponse('', "Can't post videos longer than 30 sec", 401);
                     } else {
-                        $story = story::create([
+                        $story = Story::create([
                             'story_date' => Carbon::now()->format('Y-m-d'),
                             'story_time' => Carbon::now()->format('H:i'),
                             'story_date_expire' => Carbon::now()->addDay(),
@@ -99,14 +105,15 @@ class StoriesController extends Controller
                             'user_profile_id' => $userID,
                         ]);
                         $videoName = time() . '.' . $request->file('media')->extension();
-                        $request->file('media')->storeAs('images/story_media/', $videoName);
-                        $name_path = 'storage/app/images/story_media/' . $videoName;
+                        $request->file('media')->storeAs('videos/stories_videos/', $videoName);
+                        $name_path = 'storage/app/videos/stories_videos/' . $videoName;
                         $story->media = $name_path;
+
                         $story->save();
                     }
                 }
             } else {
-                $story = story::create([
+                $story = Story::create([
                     'story_date' => Carbon::now()->format('Y-m-d'),
                     'story_time' => Carbon::now()->format('H:i'),
                     'story_date_expire' => Carbon::now()->addDay(),
@@ -114,9 +121,10 @@ class StoriesController extends Controller
                     'user_profile_id' => $userID,
                 ]);
                 $imageName = time() . '.' . $request->file('media')->extension();
-                $request->file('media')->storeAs('images/story_media/', $imageName);
-                $name_path = 'storage/app/images/story_media/' . $imageName;
+                $request->file('media')->storeAs('images/stories_pictures/', $imageName);
+                $name_path = 'storage/app/images/stories_pictures/' . $imageName;
                 $story->media = $name_path;
+
                 $story->save();
             }
             return $this->ApiResponse($story, 'Information updated successfully', 201);
@@ -125,39 +133,65 @@ class StoriesController extends Controller
         }
     }
     //done
-    public function showStoryDetail()
+
+    public function deleteStory($id)
+    {
+           $current_user = Auth::id();
+       $my_story= Story::select('user_id')->where('id',$id)->value('user_id');
+        if($current_user == $my_story) {
+            $result = Story::where('id', $id)->delete();
+            return $this->ApiResponse('', 'Story deleted susseccfuly', 200);
+
+        }
+        else {
+            return $this->ApiResponse('','this not your story you cant delete her',400);
+        }
+    }
+
+
+    public function showMyStoryDetail()
     {
         $expireTime = Carbon::now();
         $userID = Auth::user()->id;
-        $user = showStories::collection(story::with('userProfile')->where([
+        $user = User::select('id','first_name','last_name')->where('id',$userID)->with(['user_profile'=>function($q){
+            $q->select('id','user_id','profile_photo');
+        }])->get();
+        $user_stories = showStories::collection(Story::where([
             ['user_id', $userID],
             ['story_date_expire', '>', $expireTime],
         ])->get());
-        return $this->ApiResponse($user, 'Information returned susseccfuly', 200);
+        $data = [
+           'my_info' => $user ,
+          'my_stories' =>  $user_stories
+        ];
+        return $this->ApiResponse($data, 'Information returned susseccfuly', 200);
     }
     //done
-    public function deleteStory($id)
+
+    public function showStory()
     {
-        $result = story::where('id', $id)->delete();
-        return $this->ApiResponse('', 'Story deleted susseccfuly', 200);
+     // $expireTime = Carbon::now();
+        $userID = Auth::user()->id;
+        $userFollowing = userfollowers::where('user_id', $userID)->get();
+        $ids = $userFollowing->pluck('user_profile_id')->toArray();
+        $finalResult= User::select('id','first_name','last_name')->whereIn('id',$ids)->with(['user_profile'=>function($q){
+            $q->select('user_id','profile_photo');
+       }])->with(['story'=>function($q1){
+           $expireTime = Carbon::now();
+            $q1 ->where('story_date_expire', '>', $expireTime);
+        }])->get();
+      /* $finalResult = showStories::collection(story::whereIn('user_profile_id', $ids)
+         ->where('story_date_expire', '>', $expireTime)
+            ->get());*/
+      return   $this->ApiResponse($finalResult, 'Information returned susseccfuly', 200);
     }
+
     //done
     public function showArchiveStories()
     {
         $userID = Auth::user()->id;
-        $userStory = story::where('user_id', $userID)->get();
+        $userStory = Story::where('user_id', $userID)->get();
         return $this->ApiResponse($userStory, 'Information returned susseccfuly', 200);
     }
     //done
-    public function showStory()
-    {
-        $expireTime = Carbon::now();
-        $userID = Auth::user()->id;
-        $userFollowing = userfollowers::where('user_id', $userID)->get();
-        $ids = $userFollowing->pluck('user_profile_id')->toArray();
-        $finalResult = showStories::collection(story::whereIn('user_profile_id', $ids)
-            ->where('story_date_expire', '>', $expireTime)
-            ->get());
-        return $this->ApiResponse($finalResult, 'Information returned susseccfuly', 200);
-    }
 }

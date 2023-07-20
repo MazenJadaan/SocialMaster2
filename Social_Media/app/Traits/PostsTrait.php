@@ -8,13 +8,13 @@ trait PostsTrait {
    public function getProfilePosts($id){
        $posts = User::select('id', 'first_name', 'last_name')->where('id', $id)
            ->with(['post' => function ($query) {
-               $query->orderBy('created_at', 'desc')->with('photo')->with('video');
+               $query->orderBy('created_at', 'desc')->with('photo');
            }])
            ->with(['Sharepost'=>function($q){
                $q->orderBy('created_at', 'desc')->with(['post'=>function($q2){
                    $q2->with(['user'=>function($q3){
                        $q3->select('id','first_name','last_name');
-                   }])->with('photo')->with('video');
+                   }])->with('photo');
                }]);
            }])->get();
        return $posts;
