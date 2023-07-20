@@ -27,7 +27,7 @@ class PostModel extends ChangeNotifier {
     required this.date,
     required this.isLiked,
     required this.isSaved,
-    required this.images,
+    this.images,
     this.userImage,
     this.vid,
   }) {

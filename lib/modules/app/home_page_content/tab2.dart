@@ -162,8 +162,6 @@ class _Tab2State extends State<Tab2> {
               ],
             ),
           ),
-
-
           const SizedBox(
             height: 55,
           ),

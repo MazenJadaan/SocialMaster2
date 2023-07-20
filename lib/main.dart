@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:social_master/modules/auth/login.dart';
-import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/shared/shared_prefrences.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import 'modules/app/home.dart';
-import 'modules/auth/signup_details.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

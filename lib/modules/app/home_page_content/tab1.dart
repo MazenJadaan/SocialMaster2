@@ -39,6 +39,20 @@ class Tab1 extends StatelessWidget {
         date: '30/12/2019',
         userFName: 'Habibi',
         userLName: 'wallah',
+        images: [],
+        vid:'',
+        userImage:
+        'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
+    PostModel(
+        isSaved: false,
+        isLiked: false,
+        likes: 400,
+        comments: 12,
+        shares: 3,
+        caption: 'caption',
+        date: '30/12/2019',
+        userFName: 'Habibi',
+        userLName: 'wallah',
         images: [
           'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg'
         ],
@@ -91,20 +105,23 @@ class Tab1 extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            ListView.builder(
-                padding: const EdgeInsets.all(0.0),
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemCount: posts.length,
-                itemBuilder: (context, i) =>
-                    ChangeNotifierProvider<PostModel>.value(
-                      value: posts[i],
-                      child: Consumer<PostModel>(
-                        builder: (context, model, child) =>
-                            postBuilder(model: model, context: context),
-                      ),
-                    )),
+            RefreshIndicator(
+              onRefresh: refresh,
+              child: ListView.builder(
+                  padding: const EdgeInsets.all(0.0),
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  itemCount: posts.length,
+                  itemBuilder: (context, i) =>
+                      ChangeNotifierProvider<PostModel>.value(
+                        value: posts[i],
+                        child: Consumer<PostModel>(
+                          builder: (context, model, child) =>
+                              postBuilder(model: model, context: context),
+                        ),
+                      )),
+            ),
             ChangeNotifierProvider<SharedPostModel>.value(
               value: s,
               child: Consumer<SharedPostModel>(
@@ -120,4 +137,7 @@ class Tab1 extends StatelessWidget {
       ),
     );
   }
+}
+Future refresh() async {
+  print('refresh');
 }
