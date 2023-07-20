@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/models/post/postmodel.dart';
 
 import 'package:social_master/modules/app/handle_post/share_post.dart';
+import 'package:social_master/modules/app/handle_video/video_player.dart';
 import 'package:social_master/modules/app/visit_profile.dart';
 import '../../styles/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -113,13 +114,15 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                     borderRadius: BorderRadius.only(
                                         bottomRight: Radius.circular(30),
                                         bottomLeft: Radius.circular(30)),
-                                    color:Colors.transparent,
+                                    color: Colors.transparent,
                                   ),
                                   height: 30,
                                 )
                               : GestureDetector(
                                   onTap: () {
-                                    showVideo(context: context);
+                                    showVideo(
+                                        context: context,
+                                        vidUrl: 'assets/videos/vid.mp4');
                                   },
                                   child: Container(
                                     height: 200,
@@ -148,46 +151,47 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                         image: model.images![index]);
                                   },
                                   child: Image(
-                                    image:
-                                        NetworkImage('${model.images![index]}'),
-                                    fit: BoxFit.contain,
-                                      loadingBuilder: (context, child, loadingProgress) {
+                                      image: NetworkImage(
+                                          '${model.images![index]}'),
+                                      fit: BoxFit.contain,
+                                      loadingBuilder:
+                                          (context, child, loadingProgress) {
                                         int? expSize;
-                                        expSize = loadingProgress?.expectedTotalBytes;
+                                        expSize =
+                                            loadingProgress?.expectedTotalBytes;
                                         if (expSize != null) {
-                                          return
-                                            Container(height: 150,
-                                              color: AppTheme.colors.opacityPurple,
-                                              child: Center(
-                                                  child: CircularProgressIndicator(
-                                                    color: AppTheme.colors.purple,
-                                                    backgroundColor: AppTheme.colors.opacityPurple,
-                                                    strokeWidth: 2,
-                                                  )),
-                                            );
-                                        }
-                                        else {
+                                          return Container(
+                                            height: 150,
+                                            color:
+                                                AppTheme.colors.opacityPurple,
+                                            child: Center(
+                                                child:
+                                                    CircularProgressIndicator(
+                                              color: AppTheme.colors.purple,
+                                              backgroundColor:
+                                                  AppTheme.colors.opacityPurple,
+                                              strokeWidth: 2,
+                                            )),
+                                          );
+                                        } else {
                                           return child;
                                         }
-                                      }
-                                  ),
+                                      }),
                                 ),
                               ),
                             ),
                     ),
                     Container(
-
                       child: ClipRRect(
                         borderRadius: const BorderRadius.only(
-                            bottomRight: Radius.circular(30),
-                            bottomLeft: Radius.circular(30),),
+                          bottomRight: Radius.circular(30),
+                          bottomLeft: Radius.circular(30),
+                        ),
                         child: BackdropFilter(
                           filter: model.images!.isEmpty
                               ? ImageFilter.blur(sigmaY: 0.0, sigmaX: 0.0)
                               : ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
-
                           child: Container(
-
                             decoration: const BoxDecoration(
                               color: Color(0x2A000000),
                               borderRadius: BorderRadius.only(
@@ -197,7 +201,10 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             child: Padding(
                               padding: const EdgeInsets.only(
-                                  left: 14.0, right: 14.0, bottom: 2.0, top: 2.0),
+                                  left: 14.0,
+                                  right: 14.0,
+                                  bottom: 2.0,
+                                  top: 2.0),
                               child: Row(
                                 children: [
                                   const SizedBox(
@@ -259,12 +266,14 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                   const SizedBox(
                                     width: 8,
                                   ),
-                                  Text("${model.shares}",
-                                      style: const TextStyle(
-                                        fontFamily: 'SignikaNegative',
-                                        fontSize: 15,
-                                        color: Colors.white,
-                                      )),
+                                  Text(
+                                    "${model.shares}",
+                                    style: const TextStyle(
+                                      fontFamily: 'SignikaNegative',
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                   const SizedBox(
                                     width: 5.0,
                                   ),
@@ -289,45 +298,37 @@ Future showPhoto({required BuildContext context, String? image}) {
   return showDialog(
     context: context,
     builder: (context) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 8.0),
-        child: SizedBox(
-          width: 300,
-          child: Image(
-              image: NetworkImage(image!),
-              loadingBuilder: (context, child, loadingProgress) {
-                int? expSize;
-                expSize = loadingProgress?.expectedTotalBytes;
-                if (expSize != null) {
-                  return
-                    Center(
-                        child: CircularProgressIndicator(
-                          color: AppTheme.colors.purple,
-                          backgroundColor: AppTheme.colors.opacityPurple,
-                          strokeWidth: 2,
-                        ));
-                }
-                else {
-                  return child;
-                }
-              }),
-        ),
+      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
+      child: SizedBox(
+        width: 300,
+        child: Image(
+            image: NetworkImage(image!),
+            loadingBuilder: (context, child, loadingProgress) {
+              int? expSize;
+              expSize = loadingProgress?.expectedTotalBytes;
+              if (expSize != null) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: AppTheme.colors.purple,
+                    backgroundColor: AppTheme.colors.opacityPurple,
+                    strokeWidth: 2,
+                  ),
+                );
+              } else {
+                return child;
+              }
+            }),
       ),
+    ),
   );
 }
 
-Future showVideo({required BuildContext context}) {
+Future showVideo({required BuildContext context, required String vidUrl}) {
   return showDialog(
     context: context,
     builder: (context) => Padding(
       padding: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 8.0),
-      child: SizedBox(
-        width: 300,
-        child: Container(
-          width: 200,
-          height: 200,
-          color: Colors.purple,
-        ),
-      ),
+      child: VideoPlayer(vidUrl),
     ),
   );
 }
