@@ -5,6 +5,7 @@ import 'package:social_master/modules/welcome/intro_page1.dart';
 import 'package:social_master/modules/welcome/intro_page2.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
+import '../../shared/shared_prefrences.dart';
 import 'intro_page3.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -62,7 +63,8 @@ class _WelcomePageState extends State<WelcomePage> {
                 onLastPage
                     ? GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacement(
+                          Prefs.setFirstTime(true);
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const Login()));

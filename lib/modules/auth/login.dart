@@ -6,7 +6,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_master/modules/auth/reset_password/reset_password.dart';
 import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/shared/styles/colors.dart';

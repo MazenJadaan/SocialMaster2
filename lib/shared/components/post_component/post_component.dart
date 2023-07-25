@@ -86,9 +86,10 @@ Widget postBuilder({required PostModel model, context}) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 model.caption,
-                style: const TextStyle(
+                style:  TextStyle(
                   fontFamily: 'SignikaNegative',
                   fontSize: 15,
+                  color: AppTheme.colors.darkPurple
                 ),
               ),
             ),
@@ -120,14 +121,15 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                 )
                               : GestureDetector(
                                   onTap: () {
+
                                     showVideo(
                                         context: context,
-                                        vidUrl: 'assets/videos/vid.mp4');
+                                        vidUrl: 'assets/videos/11.mp4');
                                   },
                                   child: Container(
                                     height: 200,
-                                    width: 200,
-                                    color: Colors.blue,
+                                    color: Colors.black,
+                                    child:Icon( Icons.play_circle_outline,color: Colors.white,size: 60,),
                                   ),
                                 ))
                           : MasonryGridView.builder(
@@ -324,11 +326,15 @@ Future showPhoto({required BuildContext context, String? image}) {
 }
 
 Future showVideo({required BuildContext context, required String vidUrl}) {
-  return showDialog(
+   return
+    showDialog(
     context: context,
-    builder: (context) => Padding(
-      padding: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 8.0),
-      child: VideoPlayer(vidUrl),
-    ),
+    builder: (context) =>
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 50.0),
+          child: VideoPlayerWidget(vidUrl),
+        ),
+
+
   );
 }

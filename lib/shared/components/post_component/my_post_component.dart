@@ -7,7 +7,7 @@ import '../../styles/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -134,9 +134,10 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 model.caption,
-                style: const TextStyle(
+                style:  TextStyle(
                   fontFamily: 'SignikaNegative',
                   fontSize: 15,
+                    color: AppTheme.colors.darkPurple
                 ),
               ),
             ),
