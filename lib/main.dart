@@ -28,7 +28,8 @@ class MyApp extends StatelessWidget {
 
         // primarySwatch: Colors.purple,
       ),
-      home: Prefs.getToken() ==null ?( Prefs.getFirtTime()==true ? Login(): WelcomePage()) :Home(),
+      home:
+      Prefs.getToken() ==null ?( Prefs.getFirtTime()==true ? Login(): WelcomePage()) :Home(),
     );
   }
 }

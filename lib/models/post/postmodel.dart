@@ -2,50 +2,51 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class PostModel extends ChangeNotifier {
+  int? id;
   String? userImage;
   List<String>? images;
-  String? vid;
-  String date = "30/7/2001";
-  String caption = "";
-  String userFName;
-  String userLName;
-  int likes = 0;
-  int comments = 0;
-  int shares = 0;
-  bool isLiked = false;
+  String? video;
+  String? date = "30/7/2001";
+  String? caption = "";
+  String? userFName;
+  String? userLName;
+  int? likes = 0;
+  int? comments = 0;
+  int? shares = 0;
+  bool? isLiked = false;
   Color? likeColor;
-  bool isSaved = false;
+  bool? isSaved = false;
   Color? saveColor;
 
   PostModel({
-    required this.likes,
-    required this.comments,
-    required this.shares,
-    required this.caption,
-    required this.userFName,
-    required this.userLName,
-    required this.date,
-    required this.isLiked,
-    required this.isSaved,
+    this.likes,
+     this.comments,
+     this.shares,
+     this.caption,
+     this.userFName,
+     this.userLName,
+     this.date,
+    this.isLiked,
+     this.isSaved,
     this.images,
     this.userImage,
-    this.vid,
+    this.video,
   }) {
-    this.likeColor = isLiked ? Colors.red : Colors.white;
-    this.saveColor = isSaved ? Colors.orange : Colors.white;
+    this.likeColor = isLiked! ? Colors.red : Colors.white;
+    this.saveColor = isSaved! ? Colors.orange : Colors.white;
   }
 
   handleLike() {
     isLiked == false ? likeColor = Colors.red : likeColor = Colors.white;
-    this.isLiked = !isLiked;
+    this.isLiked = !isLiked!;
     notifyListeners();
   }
 
   handleSave() {
-    this.isSaved = !isSaved;
-    this.isSaved ? saveColor = Colors.orange : saveColor = Colors.white;
+    this.isSaved = !isSaved!;
+    this.isSaved! ? saveColor = Colors.orange : saveColor = Colors.white;
 
-    if (this.isSaved) {
+    if (this.isSaved!) {
       Fluttertoast.showToast(
           msg: "Saved",
           gravity: ToastGravity.BOTTOM,
@@ -65,48 +66,58 @@ class PostModel extends ChangeNotifier {
 }
 
 class MyPostModel extends ChangeNotifier {
+  int? userId;
+  int? userProfileId;
+  int? id;
+  int? postId;
   String? userImage;
   List<String>? images;
-  String date = "30/7/2001";
-  String caption = "";
-  String userFName;
-  String userLName;
-  int likes = 0;
-  int comments = 0;
-  int shares = 0;
-  bool isLiked = false;
+  String? video;
+  String? date = "30/7/2001";
+  String? caption = "";
+  String? userFName;
+  String? userLName;
+  int? likes = 0;
+  int? comments = 0;
+  int? shares = 0;
+  bool? isLiked = false;
   Color? likeColor;
-  bool isSaved = false;
+  bool? isSaved = false;
   Color? saveColor;
 
   MyPostModel({
-    required this.likes,
-    required this.comments,
-    required this.shares,
-    required this.caption,
-    required this.date,
-    required this.userFName,
-    required this.userLName,
-    required this.isLiked,
-    required this.isSaved,
-    required this.images,
+    this.userId,
+    this.userProfileId,
+    this.postId,
+    this.id,
+     this.likes,
+     this.comments,
+     this.shares,
+     this.caption,
+     this.date,
+     this.userFName,
+     this.userLName,
+     this.isLiked,
+     this.isSaved,
+     this.images,
+    this.video,
     this.userImage,
   }) {
-    this.likeColor = isLiked ? Colors.red : Colors.white;
-    this.saveColor = isSaved ? Colors.orange : Colors.white;
+    this.likeColor = isLiked! ? Colors.red : Colors.white;
+    this.saveColor = isSaved! ? Colors.orange : Colors.white;
   }
 
   handleLike() {
     isLiked == false ? likeColor = Colors.red : likeColor = Colors.white;
-    this.isLiked = !isLiked;
+    this.isLiked = !isLiked!;
     notifyListeners();
   }
 
   handleSave() {
-    this.isSaved = !isSaved;
-    this.isSaved ? saveColor = Colors.orange : saveColor = Colors.white;
+    this.isSaved = !isSaved!;
+    this.isSaved! ? saveColor = Colors.orange : saveColor = Colors.white;
 
-    if (this.isSaved) {
+    if (this.isSaved!) {
       Fluttertoast.showToast(
           msg: "Saved",
           gravity: ToastGravity.BOTTOM,
@@ -128,19 +139,23 @@ class MyPostModel extends ChangeNotifier {
 }
 
 class SharedPostModel extends ChangeNotifier {
+  int? id;
+  int? userId;
   String? userImage;
-  String date = "30/7/2001";
-  String caption = "";
-  String userFName;
-  String userLName;
-  PostModel post;
+  String? date ;
+  String? caption ;
+  String? userFName;
+  String? userLName;
+  PostModel? post;
 
   SharedPostModel({
-    required this.caption,
-    required this.date,
-    required this.userFName,
-    required this.userLName,
-    required this.post,
+    this.userId,
+    this.id,
+    this.caption,
+    this.date,
+    this.userFName,
+    this.userLName,
+    this.post,
     this.userImage,
   });
 

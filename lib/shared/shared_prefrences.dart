@@ -12,7 +12,6 @@ class Prefs {
   static Future init() async => prefs = await SharedPreferences.getInstance();
 
 
-
   static setToken(String? token) => prefs!.setString(keyToken, token!);
   static String? getToken() => prefs!.getString(keyToken);
 

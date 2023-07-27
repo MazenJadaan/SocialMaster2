@@ -356,6 +356,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                   text: "Done",
                   onPressed: () async {
                     if (formKey.currentState!.validate()) {
+                      print(token);
                       bool res = await signupDetails(
                         phone_num: _phoneNumberController.text,
                         gender: selectedRadio == 1 ? "male" : "female",
@@ -367,7 +368,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                       if (res) {
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                                builder: (context) => const Home()),
+                                builder: (context) =>  Home()),
                             (route) => false);
                       } else {
                         Fluttertoast.showToast(

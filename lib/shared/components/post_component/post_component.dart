@@ -2,12 +2,13 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/models/post/postmodel.dart';
-
 import 'package:social_master/modules/app/handle_post/share_post.dart';
-import 'package:social_master/modules/app/handle_video/video_player.dart';
 import 'package:social_master/modules/app/visit_profile.dart';
+import '../../../modules/app/handle_media/show_video.dart';
+import '../../../modules/app/handle_media/show_photo.dart';
 import '../../styles/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import '../components.dart';
 
 Widget postBuilder({required PostModel model, context}) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
@@ -38,6 +39,11 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                         child: Image(
                             width: 80,
                             height: 80,
+                            errorBuilder: (context, error, stackTrace) =>
+                                Container(
+                                  color: AppTheme.colors.opacityPurple,
+                                  child:myCircularProgressIndicator(),
+                                ),
                             image: NetworkImage('${model.userImage}'),
                             fit: BoxFit.cover),
                       ),
@@ -57,7 +63,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                               color: AppTheme.colors.darkPurple,
                               fontWeight: FontWeight.bold)),
                       Text(
-                        model.date,
+                        model.date!,
                         style: TextStyle(
                           fontFamily: 'SignikaNegative',
                           fontSize: 13,
@@ -85,7 +91,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
-                model.caption,
+                model.caption!,
                 style:  TextStyle(
                   fontFamily: 'SignikaNegative',
                   fontSize: 15,
@@ -109,7 +115,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                       ),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: model.images!.isEmpty
-                          ? (model.vid == null
+                          ? (model.video == null
                               ? Container(
                                   decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.only(
@@ -121,10 +127,9 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                 )
                               : GestureDetector(
                                   onTap: () {
-
                                     showVideo(
                                         context: context,
-                                        vidUrl: 'assets/videos/11.mp4');
+                                        vidUrl: model.video!);
                                   },
                                   child: Container(
                                     height: 200,
@@ -153,9 +158,16 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                         image: model.images![index]);
                                   },
                                   child: Image(
+
                                       image: NetworkImage(
                                           '${model.images![index]}'),
                                       fit: BoxFit.contain,
+                                      errorBuilder: (context, error, stackTrace) =>
+                                          Container(
+                                            height: 150,
+                                            color: AppTheme.colors.opacityPurple,
+                                            child:myCircularProgressIndicator(),
+                                          ),
                                       loadingBuilder:
                                           (context, child, loadingProgress) {
                                         int? expSize;
@@ -165,19 +177,13 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                           return Container(
                                             height: 150,
                                             color:
-                                                AppTheme.colors.opacityPurple,
-                                            child: Center(
-                                                child:
-                                                    CircularProgressIndicator(
-                                              color: AppTheme.colors.purple,
-                                              backgroundColor:
-                                                  AppTheme.colors.opacityPurple,
-                                              strokeWidth: 2,
-                                            )),
+                                            AppTheme.colors.opacityPurple,
+                                            child: myCircularProgressIndicator(),
                                           );
                                         } else {
                                           return child;
                                         }
+
                                       }),
                                 ),
                               ),
@@ -223,7 +229,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                     width: 8,
                                   ),
                                   Text(
-                                    "${model.isLiked == true ? model.likes + 1 : model.likes}",
+                                    "${model.isLiked == true ? model.likes! + 1 : model.likes}",
                                     style: const TextStyle(
                                       fontFamily: 'SignikaNegative',
                                       fontSize: 15,
@@ -296,45 +302,6 @@ Widget postBuilder({required PostModel model, context}) => Padding(
       ),
     );
 
-Future showPhoto({required BuildContext context, String? image}) {
-  return showDialog(
-    context: context,
-    builder: (context) => Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
-      child: SizedBox(
-        width: 300,
-        child: Image(
-            image: NetworkImage(image!),
-            loadingBuilder: (context, child, loadingProgress) {
-              int? expSize;
-              expSize = loadingProgress?.expectedTotalBytes;
-              if (expSize != null) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: AppTheme.colors.purple,
-                    backgroundColor: AppTheme.colors.opacityPurple,
-                    strokeWidth: 2,
-                  ),
-                );
-              } else {
-                return child;
-              }
-            }),
-      ),
-    ),
-  );
-}
-
-Future showVideo({required BuildContext context, required String vidUrl}) {
-   return
-    showDialog(
-    context: context,
-    builder: (context) =>
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 50.0),
-          child: VideoPlayerWidget(vidUrl),
-        ),
 
 
-  );
-}
+

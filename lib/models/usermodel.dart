@@ -9,8 +9,8 @@ class UserModel extends ChangeNotifier{
   String? firstName;
   String? lastName;
   int? followersNumber;
-  int? following;
-  String? phoneNumber;
+  int? followingNumber;
+  int? phoneNumber;
   String? gender;
   String? birthdate;
   String? bio;
@@ -24,6 +24,9 @@ class UserModel extends ChangeNotifier{
   String? createdAt;
   String? updatedAt;
   List<MyPostModel>? myPosts;
+  List<SharedPostModel>? mySharedPosts;
+
+
 
   UserModel({
      this.profileId,
@@ -31,7 +34,7 @@ class UserModel extends ChangeNotifier{
      this.firstName,
      this.lastName,
      this.followersNumber,
-     this.following,
+     this.followingNumber,
      this.phoneNumber,
      this.gender,
      this.birthdate,
@@ -39,6 +42,7 @@ class UserModel extends ChangeNotifier{
      this.profilePhoto,
     this.coverPhoto,
     this.myPosts,
+    this.mySharedPosts,
     this.job,
     this.studyPlace,
     this.state,
@@ -49,51 +53,6 @@ class UserModel extends ChangeNotifier{
 });
 
 
-  UserModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    firstName = json['first_name'];
-    lastName = json['last_name'];
-    gender = json['gender'];
-    birthdate = json['birthdate'];
-    profileId =json['user_profile']['id'];
-    job = json['user_profile']['job'];
-    studyPlace = json['user_profile']['study_place'];
-    placeStay = json['user_profile']['place_stay'];
-    placeBorn = json['user_profile']['place_born'];
-    bio = json['user_profile']['bio'];
-    coverPhoto = json['user_profile']['cover_photo'];
-    profilePhoto = json['user_profile']['profile_photo'];
-    followersNumber = json['user_profile']['followers_number'];
-    state = json['user_profile']['state'];
-    createdAt = json['user_profile']['created_at'];
-    updatedAt = json['user_profile']['updated_at'];
-
-  //  userId is the id
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['first_name'] = this.firstName;
-    data['last_name'] = this.lastName;
-    data['gender'] = this.gender;
-    data['birthdate'] = this.birthdate;
-    data['user_profile']['id'] = this.profileId;
-    data['user_profile']['job'] = this.job;
-    data['user_profile']['study_place'] = this.studyPlace;
-    data['user_profile']['place_stay'] = this.placeStay;
-    data['user_profile']['place_born'] = this.placeBorn;
-    data['user_profile']['bio'] = this.bio;
-    data['user_profile']['cover_photo'] = this.coverPhoto;
-    data['user_profile']['profile_photo'] = this.profilePhoto;
-    data['user_profile']['followers_number'] = this.followersNumber;
-    data['user_profile']['state'] = this.state;
-    data['user_profile']['user_id'] = this.id;
-    data['user_profile']['created_at'] = this.createdAt;
-    data['user_profile']['updated_at'] = this.updatedAt;
-
-    return data;
-  }
 
 
 }
@@ -159,3 +118,4 @@ class OtherUserModel extends ChangeNotifier {
     notifyListeners();
   }
 }
+

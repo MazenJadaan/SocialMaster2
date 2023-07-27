@@ -9,7 +9,7 @@ class SavedPosts extends StatelessWidget {
   SavedPosts({Key? key}) : super(key: key);
   List<PostModel> posts = [
     PostModel(
-      vid: null,
+      video: null,
       isSaved: true,
       isLiked: false,
       likes: 400,

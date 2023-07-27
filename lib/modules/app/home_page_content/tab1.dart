@@ -27,6 +27,7 @@ class Tab1 extends StatelessWidget {
           'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
           'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg'
         ],
+        video: null,
         userImage:
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
     PostModel(
@@ -40,7 +41,7 @@ class Tab1 extends StatelessWidget {
         userFName: 'Habibi',
         userLName: 'wallah',
         images: [],
-        vid:'',
+        video:'assets/videos/vid.mp4',
         userImage:
         'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
     PostModel(

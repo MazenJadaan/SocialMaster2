@@ -71,9 +71,9 @@ class HomePage extends StatelessWidget {
                   indicatorColor: AppTheme.colors.purple,
                   tabs: [
                     GestureDetector(
-                      child: Tab(
-                        text: "For you",
-                      ),
+                        child: const Tab(
+                          text: "For you",
+                        ),
                       onDoubleTap: () {
                         sc.animateTo(0,
                             duration: const Duration(milliseconds: 400),
@@ -81,7 +81,7 @@ class HomePage extends StatelessWidget {
                       },
                     ),
                     GestureDetector(
-                      child: Tab(
+                      child: const Tab(
                         text: "Following",
                       ),
                       onDoubleTap: () {
@@ -95,7 +95,7 @@ class HomePage extends StatelessWidget {
               ),
             ];
           },
-          body: TabBarView(physics: BouncingScrollPhysics(), children: [
+          body: TabBarView(physics: const BouncingScrollPhysics(), children: [
             Tab1(sc),
             Tab2(sc),
           ]),

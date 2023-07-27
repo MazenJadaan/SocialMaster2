@@ -4,6 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/modules/app/handle_post/share_post.dart';
 import 'package:social_master/modules/app/visit_profile.dart';
+import 'package:social_master/shared/components/components.dart';
+import '../../../modules/app/handle_media/show_video.dart';
 import '../../styles/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -37,6 +39,11 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                           width: 80,
                           height: 80,
                           image: NetworkImage('${model.userImage}'),
+                          errorBuilder: (context, error, stackTrace) =>
+                              Container(
+                                color: AppTheme.colors.opacityPurple,
+                                child:myCircularProgressIndicator(),
+                              ),
                           fit: BoxFit.cover),
                     ),
                   ),
@@ -54,7 +61,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                             fontSize: 17,
                             color: AppTheme.colors.darkPurple,
                             fontWeight: FontWeight.bold)),
-                    Text(model.date,
+                    Text(model.date!,
                         style: TextStyle(
                           fontFamily: 'SignikaNegative',
                           fontSize: 13,
@@ -67,7 +74,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Text(model.caption,
+            child: Text(model.caption!,
                 style: TextStyle(
                   fontFamily: 'SignikaNegative',
                   fontSize: 16,
@@ -104,7 +111,12 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                   width: 80,
                                   height: 80,
                                   image:
-                                      NetworkImage('${model.post.userImage}'),
+                                      NetworkImage('${model.post!.userImage}'),
+                                  errorBuilder: (context, error, stackTrace) =>
+                                      Container(
+                                        color: AppTheme.colors.opacityPurple,
+                                        child:myCircularProgressIndicator(),
+                                      ),
                                   fit: BoxFit.cover),
                             ),
                           ),
@@ -117,13 +129,13 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                                '${model.post.userFName} ${model.post.userLName}',
+                                '${model.post!.userFName} ${model.post!.userLName}',
                                 style: TextStyle(
                                     fontFamily: 'SignikaNegative',
                                     fontSize: 17,
                                     color: AppTheme.colors.darkPurple,
                                     fontWeight: FontWeight.bold)),
-                            Text(model.date,
+                            Text(model.date!,
                                 style: TextStyle(
                                   fontFamily: 'SignikaNegative',
                                   fontSize: 13,
@@ -135,11 +147,11 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                         //save post
                         GestureDetector(
                           onTap: () {
-                            model.post.handleSave();
+                            model.post!.handleSave();
                             model.doSomething();
                           },
                           child: FaIcon(FontAwesomeIcons.solidBookmark,
-                              color: model.post.saveColor, size: 20),
+                              color: model.post!.saveColor, size: 20),
                         ),
 
                         const SizedBox(
@@ -150,7 +162,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Text(model.post.caption,
+                    child: Text(model.post!.caption!,
                         style:  TextStyle(
                           fontFamily: 'SignikaNegative',
                           fontSize: 15,
@@ -161,7 +173,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: GestureDetector(
                       onDoubleTap: () {
-                        model.post.handleLike();
+                        model.post!.handleLike();
                       },
                       child: Stack(
                         alignment: AlignmentDirectional.bottomCenter,
@@ -172,7 +184,8 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                               borderRadius: BorderRadius.circular(30),
                             ),
                             clipBehavior: Clip.antiAliasWithSaveLayer,
-                            child: model.post.images!.isEmpty
+                            child: model.post!.images!.isEmpty
+                                ? (model.post!.video == null
                                 ? (Container(
                                     decoration: BoxDecoration(
                                       borderRadius: const BorderRadius.only(
@@ -182,6 +195,18 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                     ),
                                     height: 30,
                                   ))
+                                : GestureDetector(
+                              onTap: () {
+                                showVideo(
+                                    context: context,
+                                    vidUrl: model.post!.video!);
+                              },
+                              child: Container(
+                                height: 200,
+                                color: Colors.black,
+                                child:Icon( Icons.play_circle_outline,color: Colors.white,size: 60,),
+                              ),
+                            ))
                                 : MasonryGridView.builder(
                                     mainAxisSpacing: 4,
                                     crossAxisSpacing: 4,
@@ -192,22 +217,28 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                     gridDelegate:
                                         SliverSimpleGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount:
-                                          model.post.images!.length == 1
+                                          model.post!.images!.length == 1
                                               ? 1
                                               : 2,
                                     ),
-                                    itemCount: model.post.images!.length,
+                                    itemCount: model.post!.images!.length,
                                     itemBuilder: (context, index) => ClipRRect(
                                       borderRadius: BorderRadius.circular(5),
                                       child: GestureDetector(
                                         onTap: () {
                                           showPhoto(
                                               context: context,
-                                              image: model.post.images![index]);
+                                              image: model.post!.images![index]);
                                         },
                                         child: Image(
                                           image: NetworkImage(
-                                              '${model.post.images![index]}'),
+                                              '${model.post!.images![index]}'),
+                                            errorBuilder: (context, error, stackTrace) =>
+                                                Container(
+                                                  height: 150,
+                                                  color: AppTheme.colors.opacityPurple,
+                                                  child:myCircularProgressIndicator(),
+                                                ),
                                             loadingBuilder: (context, child, loadingProgress) {
                                               int? expSize;
                                               expSize = loadingProgress?.expectedTotalBytes;
@@ -215,13 +246,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                                 return
                                                   Container(height: 150,
                                                     color: AppTheme.colors.opacityPurple,
-                                                    child: Center(
-                                                        child: CircularProgressIndicator(
-
-                                                          color: AppTheme.colors.purple,
-                                                          backgroundColor: AppTheme.colors.opacityPurple,
-                                                          strokeWidth: 2,
-                                                        )),
+                                                    child:myCircularProgressIndicator(),
                                                   );
                                               }
                                               else {
@@ -238,7 +263,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                 bottomRight: Radius.circular(30),
                                 bottomLeft: Radius.circular(30)),
                             child: BackdropFilter(
-                              filter: model.post.images!.isEmpty
+                              filter: model.post!.images!.isEmpty
                                   ? ImageFilter.blur(sigmaY: 0.0, sigmaX: 0.0)
                                   : ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
                               child: Container(
@@ -261,19 +286,19 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                       ),
                                       GestureDetector(
                                         onTap: () {
-                                          model.post.handleLike();
+                                          model.post!.handleLike();
                                           model.doSomething();
                                         },
                                         child: FaIcon(
                                             FontAwesomeIcons.solidHeart,
                                             size: 21,
-                                            color: model.post.likeColor),
+                                            color: model.post!.likeColor),
                                       ),
                                       const SizedBox(
                                         width: 8,
                                       ),
                                       Text(
-                                          "${model.post.isLiked == true ? model.post.likes + 1 : model.post.likes}",
+                                          "${model.post!.isLiked == true ? model.post!.likes! + 1 : model.post!.likes}",
                                           style: const TextStyle(
                                             fontFamily: 'SignikaNegative',
                                             fontSize: 15,
@@ -294,7 +319,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                       const SizedBox(
                                         width: 8,
                                       ),
-                                      Text("${model.post.comments}",
+                                      Text("${model.post!.comments}",
                                           style: const TextStyle(
                                             fontFamily: 'SignikaNegative',
                                             fontSize: 15,
@@ -306,7 +331,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                           Navigator.of(context).push(
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      SharePost(model.post)));
+                                                      SharePost(model.post!)));
                                         },
                                         child: const FaIcon(
                                           FontAwesomeIcons.solidPaperPlane,
@@ -317,7 +342,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                       const SizedBox(
                                         width: 8,
                                       ),
-                                      Text("${model.post.shares}",
+                                      Text("${model.post!.shares}",
                                           style: const TextStyle(
                                             fontFamily: 'SignikaNegative',
                                             fontSize: 15,
@@ -358,12 +383,7 @@ Future showPhoto({required BuildContext context, String? image}) {
               expSize = loadingProgress?.expectedTotalBytes;
               if (expSize != null) {
                 return
-                  Center(
-                      child: CircularProgressIndicator(
-                        color: AppTheme.colors.purple,
-                        backgroundColor: AppTheme.colors.opacityPurple,
-                        strokeWidth: 2,
-                      ));
+                 myCircularProgressIndicator();
               }
               else {
                 return child;

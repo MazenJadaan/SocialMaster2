@@ -48,7 +48,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                               color: AppTheme.colors.darkPurple,
                               fontWeight: FontWeight.bold)),
                       Text(
-                        model.date,
+                        model.date!,
                         style: TextStyle(
                           fontFamily: 'SignikaNegative',
                           fontSize: 13,
@@ -133,7 +133,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
-                model.caption,
+                model.caption!,
                 style:  TextStyle(
                   fontFamily: 'SignikaNegative',
                   fontSize: 15,
@@ -247,7 +247,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                                   width: 8,
                                 ),
                                 Text(
-                                    "${model.isLiked == true ? model.likes + 1 : model.likes}",
+                                    "${model.isLiked == true ? model.likes! + 1 : model.likes}",
                                     style: const TextStyle(
                                       fontFamily: 'SignikaNegative',
                                       fontSize: 15,

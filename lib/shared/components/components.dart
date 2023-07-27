@@ -186,3 +186,11 @@ Widget myMaterialButton({
             ),
           ),
         ));
+
+Widget myCircularProgressIndicator()=>Center(
+  child:   CircularProgressIndicator(
+  color: AppTheme.colors.purple,
+  backgroundColor: AppTheme.colors.opacityPurple,
+  strokeWidth: 2,
+  ),
+);
