@@ -2772,6 +2772,565 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "image and video together",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "video",
+											"type": "file",
+											"src": "/C:/Users/ASUS/Desktop/♥️♥️(video0)_٠٩٢١٢٠.mp4"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/ASUS/Desktop/photo_2023-07-26_19-17-44.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/create_post",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"create_post"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jul 2023 08:27:44 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jul 2023 08:27:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=UTF-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "the post cannot contain video and image Either a photo or a video"
+						},
+						{
+							"name": "post with just text",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "video",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "image[]",
+											"contentType": "",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "post_body",
+											"value": "post with just text",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/create_post",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"create_post"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jul 2023 08:55:12 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jul 2023 08:55:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 25,\n        \"user_id\": 1,\n        \"post_body\": \"post with just text\",\n        \"user_profile_id\": 1,\n        \"post_time\": \"11:55:12\",\n        \"post_date\": \"2023-07-28\",\n        \"created_at\": \"1 second ago\"\n    },\n    \"message\": \"post created its successful\",\n    \"status\": 200\n}"
+						},
+						{
+							"name": "post with text with one image",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "video",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "image[]",
+											"contentType": "",
+											"type": "file",
+											"src": "/C:/Users/ASUS/Desktop/received_593997979358846.jpeg"
+										},
+										{
+											"key": "post_body",
+											"value": "post 5 text with photo",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/create_post",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"create_post"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jul 2023 09:06:35 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jul 2023 09:06:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"post\": {\n            \"id\": 5,\n            \"user_id\": 1,\n            \"post_body\": \"post 5 text with photo\",\n            \"user_profile_id\": 1,\n            \"post_time\": \"12:06:35\",\n            \"post_date\": \"2023-07-28\",\n            \"created_at\": \"1 second ago\"\n        },\n        \"post_images\": [\n            {\n                \"id\": 1,\n                \"post_id\": 5,\n                \"photo_path\": \"storage/app/videos/posts_videos/1690535195.jpg\",\n                \"created_at\": \"2023-07-28T09:06:35.000000Z\",\n                \"updated_at\": \"2023-07-28T09:06:35.000000Z\"\n            }\n        ]\n    },\n    \"message\": \"post created its successful\",\n    \"status\": 200\n}"
+						},
+						{
+							"name": "post with text with multy image",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "video",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "image[]",
+											"contentType": "",
+											"type": "file",
+											"src": [
+												"/C:/Users/ASUS/Desktop/photo_2023-07-26_19-17-44.jpg",
+												"/C:/Users/ASUS/Desktop/شش.png"
+											]
+										},
+										{
+											"key": "post_body",
+											"value": "post 5 text with  multy photo",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/create_post",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"create_post"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jul 2023 09:08:00 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jul 2023 09:08:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"post\": {\n            \"id\": 6,\n            \"user_id\": 1,\n            \"post_body\": \"post 5 text with  multy photo\",\n            \"user_profile_id\": 1,\n            \"post_time\": \"12:08:00\",\n            \"post_date\": \"2023-07-28\",\n            \"created_at\": \"1 second ago\"\n        },\n        \"post_images\": [\n            {\n                \"id\": 2,\n                \"post_id\": 6,\n                \"photo_path\": \"storage/app/videos/posts_videos/1690535280.jpg\",\n                \"created_at\": \"2023-07-28T09:08:00.000000Z\",\n                \"updated_at\": \"2023-07-28T09:08:00.000000Z\"\n            },\n            {\n                \"id\": 3,\n                \"post_id\": 6,\n                \"photo_path\": \"storage/app/videos/posts_videos/1690535280.png\",\n                \"created_at\": \"2023-07-28T09:08:00.000000Z\",\n                \"updated_at\": \"2023-07-28T09:08:00.000000Z\"\n            }\n        ]\n    },\n    \"message\": \"post created its successful\",\n    \"status\": 200\n}"
+						},
+						{
+							"name": "post with text and video",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "video",
+											"type": "file",
+											"src": "/C:/Users/ASUS/Desktop/♥️♥️(video0)_٠٩٢١٢٠.mp4"
+										},
+										{
+											"key": "image[]",
+											"contentType": "",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "post_body",
+											"value": "post 6 text with  video",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/create_post",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"create_post"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jul 2023 09:10:06 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jul 2023 09:10:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"post\": {\n            \"id\": 8,\n            \"user_id\": 1,\n            \"post_body\": \"post 6 text with  video\",\n            \"user_profile_id\": 1,\n            \"post_time\": \"12:10:06\",\n            \"post_date\": \"2023-07-28\",\n            \"created_at\": \"1 second ago\"\n        },\n        \"post_video\": \"storage/app/videos/posts_videos/1690535406.mp4\"\n    },\n    \"message\": \"post created its successful\",\n    \"status\": 200\n}"
+						},
+						{
+							"name": "post with just video",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "video",
+											"type": "file",
+											"src": "/C:/Users/ASUS/Desktop/♥️♥️(video0)_٠٩٢١٢٠.mp4"
+										},
+										{
+											"key": "image[]",
+											"contentType": "",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "post_body",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/create_post",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"create_post"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jul 2023 09:10:55 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jul 2023 09:10:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"post\": {\n            \"id\": 9,\n            \"user_id\": 1,\n            \"post_body\": null,\n            \"user_profile_id\": 1,\n            \"post_time\": \"12:10:55\",\n            \"post_date\": \"2023-07-28\",\n            \"created_at\": \"1 second ago\"\n        },\n        \"post_video\": \"storage/app/videos/posts_videos/1690535455.mp4\"\n    },\n    \"message\": \"post created its successful\",\n    \"status\": 200\n}"
+						}
+					]
+				}
+			]
 		}
 	],
 	"event": [

@@ -12,6 +12,7 @@ use App\Models\User_profile;
 use App\Models\userfollowers;
 use App\Traits\ApiResponseTrait;
 use App\Traits\PostsTrait;
+use App\Traits\Save_MediaTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,7 @@ use Stripe;
 
 class MyUserProfile extends Controller
 {
-    use ApiResponseTrait,PostsTrait;
+    use ApiResponseTrait,PostsTrait,Save_MediaTrait;
 
     public function showMyProfile()
     {
@@ -62,10 +63,11 @@ class MyUserProfile extends Controller
         $userID = Auth::user()->id;
         $user_profile = User_profile::find($userID);
         if ($request->hasFile('profile_photo')) {
-            $imageName = time() . '.' . $request->file('profile_photo')->extension();
-            $request->file('profile_photo')->storeAs('public/images/profile_picture/', $imageName);
-            $name_path = 'storage/images/profile_picture/' . $imageName;
-            $user_profile->profile_photo = $name_path;
+            $data = $request->file('profile_photo');
+            $save_path = 'images/profile_picture/' ;
+            $pic_name =  $this->save_media($data,$save_path);
+
+            $user_profile->profile_photo = $pic_name;
             $user_profile->save();
         }
         return $this->ApiResponse('', 'Information updated successfully', 201);
@@ -79,10 +81,10 @@ class MyUserProfile extends Controller
         $userID = Auth::user()->id;
         $user_profile = User_profile::find($userID);
         if ($request->hasFile('cover_photo')) {
-            $imageName = time() . '.' . $request->file('cover_photo')->extension();
-            $request->file('cover_photo')->storeAs('public/images/cover_picture/', $imageName);
-            $name_path = 'storage/public/images/cover_picture/' . $imageName;
-            $user_profile->cover_photo = $name_path;
+            $data = $request->file('cover_photo');
+            $save_path = 'images/cover_picture/' ;
+            $pic_name =  $this->save_media($data,$save_path);
+            $user_profile->cover_photo = $pic_name;
             $user_profile->save();
         }
         return $this->ApiResponse('', 'Information updated successfully', 201);

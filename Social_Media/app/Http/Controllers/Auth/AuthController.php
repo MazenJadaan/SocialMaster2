@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Traits\ApiResponseTrait;
+use App\Traits\Save_MediaTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     use ApiResponseTrait;
+    use Save_MediaTrait;
 
     public function register(Request $request)
     {
@@ -46,10 +48,10 @@ class AuthController extends Controller
         ]);
 
         if ($request->profile_photo) {
-            $imageName = time().'.'.$request->profile_photo->extension();
-            $request->profile_photo->storeAs('public/images/profile_picture', $imageName);
-            $name_path = 'storage/images/profile_picture/'.$imageName;
-            $user->user_profile()->update(['profile_photo' => $name_path]);
+            $data = $request->file('profile_photo');
+            $save_path = 'images/profile_picture/' ;
+        $pic_name =  $this->save_media($data,$save_path);
+            $user->user_profile()->update(['profile_photo' => $pic_name]);
         }
 
         return $this->ApiResponse(null, 'complete information its succesful', 200);

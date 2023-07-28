@@ -50,13 +50,4 @@ class User_profile extends Model
     ///
 
 
-    public function getProfilePhotoAttribute($value)
-    {
-        return  asset($value);
-    }
-    public function  getCoverPhotoAttribute($value){
-        return  asset($value);
-    }
-
-
 }

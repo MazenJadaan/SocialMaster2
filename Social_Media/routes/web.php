@@ -23,6 +23,6 @@ Route::get('/main',function (){
     return 'login succesful it\'' ;
 });
 Route::get('/user',function (){
-    $photo = \App\Models\photo::find(13);
+  $photo = User_profile::find(1);
     return view('posts',['photo'=>$photo]);
 });

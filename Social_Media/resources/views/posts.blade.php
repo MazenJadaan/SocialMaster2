@@ -39,10 +39,11 @@
 {{--    @foreach($photo as $p)--}}
 <tr>
     <td>{{ $photo->id }}</td>
-    <td>{{ $photo->post_id }}</td>
-    <td> <img src = "{{ $photo->photo_path }}" width="100" height="100"  /></td>
+    <td> <img src = "{{ asset($photo->profile_photo) }}" width="100" height="100" /></td>
+    <td> <img src = "{{ asset($photo->cover_photo) }}" width="100" height="100"  /></td>
 
-       </td>
+
+
 </tr>
 {{--    @endforeach--}}
 

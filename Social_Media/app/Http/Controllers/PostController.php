@@ -7,6 +7,7 @@ use App\Models\like;
 use App\Models\post;
 use App\Models\savepost;
 use App\Models\userfollowers;
+use App\Traits\Save_MediaTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,7 @@ use App\Traits\ApiResponseTrait;
 
 class PostController extends Controller
 {
-    use ApiResponseTrait;
+    use ApiResponseTrait,Save_MediaTrait;
     //dont know if done or not yet
     public function createNewPost(Request $request)
     {
@@ -29,9 +30,10 @@ class PostController extends Controller
 //                $data = $request->validate([
 //                    'post_body' => 'string',
 //                ]);
-                $video_name = time() . '.' . $request->file('video')->extension();
-                $request->file('video')->storeAs('public/videos/posts_videos/', $video_name);
-                $name_path = 'storage/videos/posts_videos/' . $video_name;
+
+            $data = $request->file('video');
+            $save_path = 'videos/posts_videos/' ;
+            $video_name =  $this->save_media($data,$save_path);
 
 
 
@@ -40,14 +42,14 @@ class PostController extends Controller
                     'user_profile_id' => $userID,
                     'post_time' => Carbon::now()->format('H:i:s'),
                     'post_date' => Carbon::now()->format('Y-m-d'),
-                    'post_video' => $name_path
+                    'post_video' => $video_name
                 ]);
                 if($request->input('post_body')) {
                     $post->post_body =  $request->input('post_body');
                     $post->save();
             }
                 $postResult = ['post' => postInformationResource::make($post),
-                    'post_video' => $name_path];
+                    'post_video' => $video_name];
                 return $this->ApiResponse($postResult, 'post created its successful', 200);
             }
 
@@ -75,16 +77,19 @@ class PostController extends Controller
 //            $img->storeAs('images/posts_pictures/', $image_name);
 //                $name_path = 'storage/app/images/posts_pictures/' . $image_name;
 
-               $image_name = time() . '.' . $img->extension();
-               $img->storeAs('public/images/posts_pictures/', $image_name);
-               $name_path = 'storage/images/posts_pictures/' . $image_name;
+//               $image_name = time() . '.' . $img->extension();
+//               $img->storeAs('public/images/posts_pictures/', $image_name);
+//               $name_path = 'storage/images/posts_pictures/' . $image_name;
 
+
+               $save_path = 'images/posts_pictures/' ;
+               $pic_name =  $this->save_media($img,$save_path);
                 $post->photo()->create(['post_id'=> $post->id,
-                    'photo_path'=>$name_path]);
-$url = asset($name_path);
+                    'photo_path'=>$pic_name]);
+
          }
             $postResult = ['post' => postInformationResource::make($post),
-                'post_images' => $url];
+                'post_images' => $post->photo];
             return $this->ApiResponse($postResult, 'post created its successful', 200);
         }
         elseif (empty($request->input('video')) && empty($request->input('image'))){

@@ -8,6 +8,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\User_profile;
+use App\Traits\Save_MediaTrait;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Story;
 use Carbon\Carbon;
@@ -19,7 +20,7 @@ use getID3;
 
 class StoriesController extends Controller
 {
-    use ApiResponseTrait;
+    use ApiResponseTrait,Save_MediaTrait;
     //done
     public function addStory(Request $request)
     {
@@ -52,10 +53,11 @@ class StoriesController extends Controller
                         ]);
                         $story->story_body = $data['story_body'];
 
-                        $videoName = time() . '.' . $request->file('media')->extension();
-                        $request->file('media')->storeAs('videos/stories_videos/', $videoName);
-                        $name_path = 'storage/app/videos/stories_videos/' . $videoName;
-                        $story->media = $name_path;
+                        $data = $request->file('media');
+                        $save_path = 'videos/stories_videos/' ;
+                        $video_name =  $this->save_media($data,$save_path);
+
+                        $story->media = $video_name;
                     }
                 }
             } else {
@@ -68,10 +70,13 @@ class StoriesController extends Controller
                 ]);
 
                 $story->story_body = $data['story_body'];
-                $imageName = time() . '.' . $request->file('media')->extension();
-                $request->file('media')->storeAs('images/stories_pictures/', $imageName);
-                $name_path = 'storage/app/images/stories_pictures/' . $imageName;
-                $story->media = $name_path;
+
+
+                $data = $request->file('media');
+                $save_path = 'images/stories_pictures/' ;
+                $pic_name =  $this->save_media($data,$save_path);
+
+                $story->media = $pic_name;
             }
             $story->save();
             return $this->ApiResponse($story, 'Information updated successfully', 201);
@@ -104,10 +109,11 @@ class StoriesController extends Controller
                             'user_id' => $userID,
                             'user_profile_id' => $userID,
                         ]);
-                        $videoName = time() . '.' . $request->file('media')->extension();
-                        $request->file('media')->storeAs('videos/stories_videos/', $videoName);
-                        $name_path = 'storage/app/videos/stories_videos/' . $videoName;
-                        $story->media = $name_path;
+
+                        $data = $request->file('media');
+                        $save_path = 'videos/stories_videos/' ;
+                        $video_name =  $this->save_media($data,$save_path);
+                        $story->media = $video_name;
 
                         $story->save();
                     }
@@ -120,10 +126,13 @@ class StoriesController extends Controller
                     'user_id' => $userID,
                     'user_profile_id' => $userID,
                 ]);
-                $imageName = time() . '.' . $request->file('media')->extension();
-                $request->file('media')->storeAs('images/stories_pictures/', $imageName);
-                $name_path = 'storage/app/images/stories_pictures/' . $imageName;
-                $story->media = $name_path;
+
+                $data = $request->file('media');
+                $save_path = 'images/stories_pictures/' ;
+                $pic_name =  $this->save_media($data,$save_path);
+
+
+                $story->media = $pic_name;
 
                 $story->save();
             }
