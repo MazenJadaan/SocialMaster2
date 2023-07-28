@@ -14,7 +14,8 @@ class post extends Model
         'user_profile_id',
         'post_body',
         'post_time',
-        'post_date'
+        'post_date',
+        'post_video'
     ];
 
     public function user(){

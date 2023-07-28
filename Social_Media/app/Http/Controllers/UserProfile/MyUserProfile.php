@@ -63,8 +63,8 @@ class MyUserProfile extends Controller
         $user_profile = User_profile::find($userID);
         if ($request->hasFile('profile_photo')) {
             $imageName = time() . '.' . $request->file('profile_photo')->extension();
-            $request->file('profile_photo')->storeAs('images/profile_picture/', $imageName);
-            $name_path = 'storage/app/images/profile_picture/' . $imageName;
+            $request->file('profile_photo')->storeAs('public/images/profile_picture/', $imageName);
+            $name_path = 'storage/images/profile_picture/' . $imageName;
             $user_profile->profile_photo = $name_path;
             $user_profile->save();
         }
@@ -80,8 +80,8 @@ class MyUserProfile extends Controller
         $user_profile = User_profile::find($userID);
         if ($request->hasFile('cover_photo')) {
             $imageName = time() . '.' . $request->file('cover_photo')->extension();
-            $request->file('cover_photo')->storeAs('images/cover_picture/', $imageName);
-            $name_path = 'storage/app/images/cover_picture/' . $imageName;
+            $request->file('cover_photo')->storeAs('public/images/cover_picture/', $imageName);
+            $name_path = 'storage/public/images/cover_picture/' . $imageName;
             $user_profile->cover_photo = $name_path;
             $user_profile->save();
         }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\post;
+use App\Models\User_profile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +21,8 @@ Route::get('/', function () {
 
 Route::get('/main',function (){
     return 'login succesful it\'' ;
+});
+Route::get('/user',function (){
+    $photo = \App\Models\photo::find(13);
+    return view('posts',['photo'=>$photo]);
 });

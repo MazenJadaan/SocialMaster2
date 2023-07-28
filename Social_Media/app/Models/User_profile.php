@@ -46,5 +46,17 @@ class User_profile extends Model
         return $this->hasMany(Post::class);
     }
     /// //////////  Relationship //////////////////
+    ///
+    ///
+
+
+    public function getProfilePhotoAttribute($value)
+    {
+        return  asset($value);
+    }
+    public function  getCoverPhotoAttribute($value){
+        return  asset($value);
+    }
+
 
 }

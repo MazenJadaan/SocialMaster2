@@ -20,19 +20,94 @@ class PostController extends Controller
     public function createNewPost(Request $request)
     {
         $userID = Auth::user()->id;
-        $data = $request->validate([
-            'post_body' => 'string',
-        ]);
-        $post = Post::create([
-            'user_id' => $userID,
-            'user_profile_id' => $userID,
-            'post_body' => $data['post_body'],
-            'post_time' => Carbon::now()->format('H:i:s'),
-            'post_date' => Carbon::now()->format('Y-m-d'),
-        ]);
-        $postResult = postInformationResource::make($post);
-        return $this->ApiResponse($postResult, 'Post created successfully', 201);
+
+        if($request->hasFile('image') && $request->hasFile('video')){
+            return "the post cannot contain video and image Either a photo or a video";
+        }
+
+        elseif ($request->hasFile('video') && empty($request->input('image'))) {
+//                $data = $request->validate([
+//                    'post_body' => 'string',
+//                ]);
+                $video_name = time() . '.' . $request->file('video')->extension();
+                $request->file('video')->storeAs('public/videos/posts_videos/', $video_name);
+                $name_path = 'storage/videos/posts_videos/' . $video_name;
+
+
+
+                $post = Post::create([
+                    'user_id' => $userID,
+                    'user_profile_id' => $userID,
+                    'post_time' => Carbon::now()->format('H:i:s'),
+                    'post_date' => Carbon::now()->format('Y-m-d'),
+                    'post_video' => $name_path
+                ]);
+                if($request->input('post_body')) {
+                    $post->post_body =  $request->input('post_body');
+                    $post->save();
+            }
+                $postResult = ['post' => postInformationResource::make($post),
+                    'post_video' => $name_path];
+                return $this->ApiResponse($postResult, 'post created its successful', 200);
+            }
+
+
+
+        elseif ($request->hasFile('image') && empty($request->input('video'))) {
+//            $data = $request->validate([
+//                'post_body' => 'string',
+//            ]);
+
+            $post = Post::create([
+                'user_id' => $userID,
+                'user_profile_id' => $userID,
+                'post_time' => Carbon::now()->format('H:i:s'),
+                'post_date' => Carbon::now()->format('Y-m-d'),
+            ]);
+            if($request->input('post_body')) {
+                $post->post_body =  $request->input('post_body');
+                $post->save();
+            }
+
+            $images = $request->file('image');
+           foreach ($images as $img){
+//                $image_name = time() . '.' . $img->extension();
+//            $img->storeAs('images/posts_pictures/', $image_name);
+//                $name_path = 'storage/app/images/posts_pictures/' . $image_name;
+
+               $image_name = time() . '.' . $img->extension();
+               $img->storeAs('public/images/posts_pictures/', $image_name);
+               $name_path = 'storage/images/posts_pictures/' . $image_name;
+
+                $post->photo()->create(['post_id'=> $post->id,
+                    'photo_path'=>$name_path]);
+$url = asset($name_path);
+         }
+            $postResult = ['post' => postInformationResource::make($post),
+                'post_images' => $url];
+            return $this->ApiResponse($postResult, 'post created its successful', 200);
+        }
+        elseif (empty($request->input('video')) && empty($request->input('image'))){
+                $data = $request->validate([
+                    'post_body' => 'string|required',
+                ]);
+
+                $post = Post::create([
+                    'user_id' => $userID,
+                    'user_profile_id' => $userID,
+                    'post_body' => $data['post_body'],
+                    'post_time' => Carbon::now()->format('H:i:s'),
+                    'post_date' => Carbon::now()->format('Y-m-d'),
+                ]);
+                $postResult = postInformationResource::make($post);
+                return $this->ApiResponse($postResult, 'post created its successful', 200);
+            }
+
+
     }
+
+
+
 
     public function editPost()
     {

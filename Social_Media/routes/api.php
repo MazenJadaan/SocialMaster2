@@ -62,6 +62,8 @@ Route::middleware('auth:api')->group(function () {
 
     Route::get('showOldestStory', [StoriesController::class, 'showArchiveStories']);
 
+    Route::post('create_post',[PostController::class,'createNewPost']);
+
 
 
 

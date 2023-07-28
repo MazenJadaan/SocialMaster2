@@ -47,8 +47,8 @@ class AuthController extends Controller
 
         if ($request->profile_photo) {
             $imageName = time().'.'.$request->profile_photo->extension();
-            $request->profile_photo->storeAs('images/profile_picture', $imageName);
-            $name_path = 'storage/app/images/profile_picture/'.$imageName;
+            $request->profile_photo->storeAs('public/images/profile_picture', $imageName);
+            $name_path = 'storage/images/profile_picture/'.$imageName;
             $user->user_profile()->update(['profile_photo' => $name_path]);
         }
 
