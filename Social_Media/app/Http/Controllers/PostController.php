@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\postInformationResource;
 use App\Models\like;
-use App\Models\post;
+use App\Models\Post;
 use App\Models\savepost;
 use App\Models\userfollowers;
 use App\Traits\Save_MediaTrait;
@@ -56,9 +56,6 @@ class PostController extends Controller
 
 
         elseif ($request->hasFile('image') && empty($request->input('video'))) {
-//            $data = $request->validate([
-//                'post_body' => 'string',
-//            ]);
 
             $post = Post::create([
                 'user_id' => $userID,
@@ -73,15 +70,6 @@ class PostController extends Controller
 
             $images = $request->file('image');
            foreach ($images as $img){
-//                $image_name = time() . '.' . $img->extension();
-//            $img->storeAs('images/posts_pictures/', $image_name);
-//                $name_path = 'storage/app/images/posts_pictures/' . $image_name;
-
-//               $image_name = time() . '.' . $img->extension();
-//               $img->storeAs('public/images/posts_pictures/', $image_name);
-//               $name_path = 'storage/images/posts_pictures/' . $image_name;
-
-
                $save_path = 'images/posts_pictures/' ;
                $pic_name =  $this->save_media($img,$save_path);
                 $post->photo()->create(['post_id'=> $post->id,
@@ -111,27 +99,87 @@ class PostController extends Controller
 
     }
 
-
-
-
-    public function editPost()
+    public function editUpdatePost(Request $request,$post_id)
     {
+        $user_id = Auth::id();
+        $post = Post::find($post_id);
+        if($post->user_id!=$user_id){
+            return response()->json(['you cannot edit or update this post because is not your post ']);
+        }
+        else {
+            $post->photo()->delete();
+            $post->post_video=null;
+               $post->post_body=null;
+
+            if ($request->hasFile('image') && $request->hasFile('video')) {
+                return "the post cannot contain video and image Either a photo or a video";
+            } elseif ($request->hasFile('video') && empty($request->input('image'))) {
+                $data = $request->file('video');
+                $save_path = 'videos/posts_videos/';
+                $video_name = $this->save_media($data, $save_path);
+
+                $post->update([
+                    'post_video' => $video_name
+                ]);
+                if ($request->input('post_body')) {
+                    $newbody = $request->input('post_body');
+                    $post->update([
+                        'post_body' => $newbody
+                    ]);
+                }
+                $post->save();
+                $postResult = ['post' => postInformationResource::make($post),
+                    'post_video' => $video_name];
+                return $this->ApiResponse($postResult, 'post update its successful', 200);
+            } elseif ($request->hasFile('image') && empty($request->input('video'))) {
+
+                if ($request->input('post_body')) {
+                    $newbody = $request->input('post_body');
+                    $post->update(['post_body' => $newbody]);
+                    $post->save();
+                }
+                $images = $request->file('image');
+                foreach ($images as $img) {
+                    $save_path = 'images/posts_pictures/';
+                    $pic_name = $this->save_media($img, $save_path);
+                    $post->photo()->create(['post_id' => $post->id,
+                        'photo_path' => $pic_name]);
+                }
+                $postResult = ['post' => postInformationResource::make($post),
+                    'post_images' => $post->photo];
+                return $this->ApiResponse($postResult, 'post updated its successful', 200);
+
+            } elseif (empty($request->input('video')) && empty($request->input('image'))) {
+                $data = $request->validate([
+                    'post_body' => 'string|required',
+                ]);
+
+                $post->update(['post_body' => $data['post_body']]);
+                $postResult = postInformationResource::make($post);
+                return $this->ApiResponse($postResult, 'post updated its successful', 200);
+            }
+            $post->save();
+
+        }
+
+    }
+    public function deletePost($post_id)
+    {
+        $user_id = Auth::id();
+        $post = Post::find($post_id);
+        if($post->user_id!=$user_id){
+            return response()->json(['you cannot delete this post because is not your post ']);
+        }
+        else {
+          $post->delete();
+            return $this->ApiResponse('null', 'Post has been deleted successfully', 200);
+        }
     }
 
 
-//    public function showAllUserPost()
-//    {
-//        $userID = Auth::user()->id;
-//        $userPosts = DB::table('posts')
-//            ->join('users', 'posts.user_id', '=', 'users.id')
-//            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
-//            ->where('posts.user_id', $userID)
-//            ->get();
-//        if (!$userPosts->count())
-//            return $this->ApiResponse('', 'No posts added yet', 404);
-//        return $this->ApiResponse($userPosts, 'Information returned successfully', 200);
-//    }
-// now we don't use it
+
+
+
     public  function showMyFollowingPosts()
     {
         $userID = Auth::user()->id;
@@ -147,15 +195,7 @@ class PostController extends Controller
         return $this->ApiResponse($finalResult, 'Information returned successfully', 200);
     }
     //done
-    public function deletePost($id)
-    {
-        $userID = Auth::user()->id;
-        $post = post::where([
-            ['user_id', $userID],
-            ['id', $id]
-        ])->delete();
-        return $this->ApiResponse('null', 'Post has been deleted successfully', 200);
-    }
+
     //done
     public function savePost($id)
     {
@@ -207,7 +247,7 @@ class PostController extends Controller
     //not done yet
     public function showAllWorldPosts()
     {
-        $timeline = post::get();
+        $timeline = Post::get();
         $userIds = $timeline->pluck('user_id')->toArray();
         $profileIds = $timeline->pluck('user_profile_id')->toArray();
         $finalResult = DB::table('posts')
@@ -223,7 +263,7 @@ class PostController extends Controller
     public function likePost($id)
     {
         $userID = Auth::user()->id;
-        $postInfo = post::where('id', $id)->first();
+        $postInfo = Post::where('id', $id)->first();
         $postOwner = $postInfo->user_id;
         $check = like::where([
             ['user_id', $userID],
@@ -281,3 +321,18 @@ class PostController extends Controller
 // 'photo_path' => 'image' | 'mimes:jpg,bmp,png,jpeg',
 // 'video_path' => 'mimetypes:video/avi,video/mpeg,video/quicktime'
 // postInformationResource::collection
+
+
+//    public function showAllUserPost()
+//    {
+//        $userID = Auth::user()->id;
+//        $userPosts = DB::table('posts')
+//            ->join('users', 'posts.user_id', '=', 'users.id')
+//            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
+//            ->where('posts.user_id', $userID)
+//            ->get();
+//        if (!$userPosts->count())
+//            return $this->ApiResponse('', 'No posts added yet', 404);
+//        return $this->ApiResponse($userPosts, 'Information returned successfully', 200);
+//    }
+// now we don't use it

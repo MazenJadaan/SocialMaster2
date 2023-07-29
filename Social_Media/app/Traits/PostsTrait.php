@@ -8,7 +8,7 @@ trait PostsTrait {
    public function getProfilePosts($id){
        $posts = User::select('id', 'first_name', 'last_name')->where('id', $id)
            ->with(['post' => function ($query) {
-               $query->orderBy('created_at', 'desc')->with('photo');
+               $query->orderBy('created_at', 'desc')->with('photo')->withCount('like')->withCount('comment')->withCount('sharePost');
            }])
            ->with(['Sharepost'=>function($q){
                $q->orderBy('created_at', 'desc')->with(['post'=>function($q2){

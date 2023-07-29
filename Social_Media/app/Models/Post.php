@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
-class post extends Model
+class Post extends Model
 {
     use HasFactory;
 
@@ -15,8 +16,35 @@ class post extends Model
         'post_body',
         'post_time',
         'post_date',
-        'post_video'
+        'post_video',
+        'reaction',
+        'saved'
     ];
+
+    public function getReactionAttribute($value)
+    {
+        $user_id = Auth::id();
+         $post_id = $this->id;
+              $react= like::where('user_id',$user_id)->where('post_id',$post_id)->get();
+        if(count($react)>0){
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public function getSavedAttribute($value){
+        $user_id = Auth::id();
+        $post_id = $this->id;
+        $saved= savepost::where('user_id',$user_id)->where('post_id',$post_id)->get();
+        if(count($saved)>0){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
 
     public function user(){
         return $this->belongsTo(User::class,'user_id');

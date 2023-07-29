@@ -64,11 +64,11 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('create_post',[PostController::class,'createNewPost']);
 
+    Route::post('updatePost/{id}', [PostController::class, 'editUpdatePost']);
+
+    Route::delete('deletePosts/{id}', [PostController::class, 'deletePost']);
 
 
-
-
-    Route::post('Createnewpost', [PostController::class, 'createNewPost']);
 
     Route::get('returnMyPosts', [PostController::class, 'showAllUserPost']);
 

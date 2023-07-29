@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('post_video')->nullable();
             $table->time('post_time');
             $table->date('post_date');
+            $table->boolean('reaction')->default(0);
+            $table->boolean('saved')->default(0);
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('user_profile_id')->references('id')->on('user_profiles')->onDelete('cascade');

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\showProfileDetails;
 use App\Http\Resources\UserProfileInformationsResource;
 use App\Models\officialaccounts;
-use App\Models\post;
+use App\Models\Post;
 use App\Models\User;
 use App\Models\User_profile;
 use App\Models\userfollowers;
