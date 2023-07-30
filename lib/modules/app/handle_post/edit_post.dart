@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/shared/components/components.dart';
-
+import '../../../models/provider/post/postmodel.dart';
 import '../../../shared/styles/colors.dart';
 
 class EditPost extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/modules/app/home.dart';
 import '../../../models/connection/reset_password.dart';
-import '../../../provider/obscure_model.dart';
+import '../../../models/provider/obscure_model.dart';
 import '../../../shared/components/components.dart';
 import '../../../shared/network/constant/constant.dart';
 import '../../../shared/styles/colors.dart';
@@ -21,7 +21,7 @@ class Reset3 extends StatelessWidget {
 
 
   Future<SetNewResponse?> setNewPassword(SetNewParams params) async {
-    var url = Uri.parse("${AppSetting.baseUrl}api/update-password");
+    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.updatePasswordApi}");
     var response = await http.post(url, body: params.toJson());
     var data = json.decode(response.body);
     if (response.statusCode == 200) {

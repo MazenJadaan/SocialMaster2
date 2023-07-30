@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:social_master/shared/components/components.dart';
 
-Future showPhoto({required BuildContext context, String? image}) {
+import '../../../shared/styles/colors.dart';
+
+Future showPhoto({required BuildContext context, required String image}) {
   return showDialog(
     context: context,
     builder: (context) => Padding(
@@ -9,7 +11,10 @@ Future showPhoto({required BuildContext context, String? image}) {
       child: SizedBox(
         width: 300,
         child: Image(
-            image: NetworkImage(image!),
+            image: NetworkImage(image),
+            errorBuilder: (context,
+                    error,
+                    stackTrace) => myCircularProgressIndicator(),
             loadingBuilder: (context, child, loadingProgress) {
               int? expSize;
               expSize = loadingProgress?.expectedTotalBytes;

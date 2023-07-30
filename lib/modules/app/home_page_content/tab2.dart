@@ -2,11 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/modules/app/home_page_content/story.dart';
 import 'package:social_master/modules/app/home_page_content/story_add.dart';
+import '../../../models/provider/post/postmodel.dart';
 import '../../../shared/components/post_component/post_component.dart';
-
 class Tab2 extends StatefulWidget {
   Tab2(this.scrollController, {Key? key}) : super(key: key);
   ScrollController scrollController;

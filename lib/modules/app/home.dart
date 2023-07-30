@@ -7,13 +7,9 @@ import 'package:social_master/modules/app/pages/home_page.dart';
 import 'package:social_master/modules/app/pages/see_page.dart';
 import 'package:social_master/modules/app/pages/profile_page.dart';
 import 'package:social_master/communicate/chat/chat_page.dart';
-import '../../models/connection/profile.dart';
-import '../../models/usermodel.dart';
-import '../../shared/network/constant/constant.dart';
-import '../../shared/shared_prefrences.dart';
+import '../../models/connection/profile/profile.dart';
+import '../../models/provider/usermodel.dart';
 import '../../shared/styles/colors.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -25,24 +21,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   Data userData = Data();
 
-  Future fetchProfile() async {
-    var url = Uri.parse("${AppSetting.baseUrl}api/showMyProfile");
-    var response = await http
-        .get(url, headers: {"Authorization": "Bearer ${Prefs.getToken()}"});
-
-    if (response.statusCode == 200) {
-      final json = jsonDecode(response.body);
-      if (json['data'] != null) {
-        Data model = Data.fromJson(json['data']);
-        userData = model;
-        print(userData.profileInformation?.firstName);
-
-        // LoginResponse loginResponse = LoginResponse.fromJson(data);
-        // return loginResponse;
-      }
-      // return null;
-    }
-  }
 
   int index = 2;
   final screens = [
@@ -64,7 +42,7 @@ class _HomeState extends State<Home> {
             animationDuration: const Duration(milliseconds: 400),
             color: AppTheme.colors.purple,
             backgroundColor: Colors.transparent,
-            items: [
+            items: const[
               FaIcon(
                 FontAwesomeIcons.magnifyingGlass,
                 color: Colors.white,

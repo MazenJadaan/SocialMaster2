@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:social_master/shared/styles/colors.dart';
-import '../../../models/post/postmodel.dart';
+import '../../../models/provider/post/postmodel.dart';
 import '../../../shared/components/post_component/post_component.dart';
 import '../../../shared/components/post_component/shared_post_component.dart';
 

@@ -4,17 +4,16 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
-import 'package:social_master/shared/shared_prefrences.dart';
+import 'package:social_master/shared/shared_preferences.dart';
 import '../../models/connection/register.dart';
-import '../../provider/obscure_model.dart';
+import '../../models/provider/obscure_model.dart';
 import '../../shared/styles/colors.dart';
 import 'package:http/http.dart' as http;
 import '../../shared/validate/validate.dart';
-import '../app/home.dart';
+
 
 class Signup extends StatefulWidget {
   Signup({Key? key}) : super(key: key);
@@ -26,8 +25,8 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
 
 
-  Future<RegisterResponse?> login(RegisterParams params) async {
-    var url = Uri.parse("${AppSetting.baseUrl}api/register");
+  Future<RegisterResponse?> signup(RegisterParams params) async {
+    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.signupApi}");
     var response = await http.post(url, body: params.toJson());
     var data = json.decode(response.body);
     if (response.statusCode == 200) {
@@ -160,7 +159,7 @@ class _SignupState extends State<Signup> {
                       } else {
                         if (formKey.currentState!.validate()) {
                           setState(() => isLoading = true);
-                          final RegisterResponse? loginResponse = await login(
+                          final RegisterResponse? loginResponse = await signup(
                             RegisterParams(
                                 email: _emailController.text,
                                 firstName: _firstNameController.text,

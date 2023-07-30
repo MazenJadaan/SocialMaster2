@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,11 +9,11 @@ import 'package:social_master/modules/auth/reset_password/reset_password.dart';
 import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../../models/connection/login.dart';
-import '../../provider/obscure_model.dart';
+import '../../models/provider/obscure_model.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/api/google_signin_api.dart';
 import '../../shared/network/constant/constant.dart';
-import '../../shared/shared_prefrences.dart';
+import '../../shared/shared_preferences.dart';
 import '../../shared/validate/validate.dart';
 import '../app/home.dart';
 
@@ -29,7 +28,7 @@ class _LoginState extends State<Login> {
 
 
   Future<LoginResponse?> login(LoginParams params) async {
-    var url = Uri.parse("${AppSetting.baseUrl}api/login");
+    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.loginApi}");
     var response = await http.post(url, body: params.toJson());
     var data = json.decode(response.body);
     if (response.statusCode == 200) {

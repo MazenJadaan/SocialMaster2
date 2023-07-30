@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/shared/styles/colors.dart';
@@ -50,6 +48,7 @@ Widget myTextFormField({
         ),
       ),
     );
+
 
 Widget smallTextFormField({
   required TextEditingController controller,
@@ -186,6 +185,7 @@ Widget myMaterialButton({
             ),
           ),
         ));
+
 
 Widget myCircularProgressIndicator()=>Center(
   child:   CircularProgressIndicator(

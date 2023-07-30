@@ -1,20 +1,21 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:social_master/models/post/postmodel.dart';
-import 'package:social_master/models/usermodel.dart';
 import 'package:social_master/modules/app/handle_post/create_post.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
 import 'package:social_master/shared/styles/colors.dart';
-import '../../../models/connection/profile.dart';
+import '../../../models/connection/profile/profile.dart';
+import '../../../models/provider/post/postmodel.dart';
+import '../../../models/provider/usermodel.dart';
 import '../../../shared/components/post_component/my_post_component.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../../../shared/shared_prefrences.dart';
+import '../../../shared/shared_preferences.dart';
+import '../edit_profile.dart';
+import '../handle_media/show_photo.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -34,8 +35,31 @@ class _ProfilePageState extends State<ProfilePage>
   bool loading = true;
 
 
+  Future<bool> updatePicture({
+    required String api,
+    required String key,
+    required String token,
+  })async{
+    var request = http.MultipartRequest(
+        "POST", Uri.parse("${AppSetting.baseUrl}${api}"));
+    request.headers["Authorization"] = "Bearer $token";
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedImage == null) return false;
+    var pic = await http.MultipartFile.fromPath("${key}", pickedImage.path);
+    request.files.add(pic);
+    var response = await request.send();
+    var responseData = await response.stream.toBytes();
+    var responseString = String.fromCharCodes(responseData);
+    final json = jsonDecode(responseString);
+    if (response.statusCode == 201) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   Future fetchProfile() async {
-    var url = Uri.parse("${AppSetting.baseUrl}api/showMyProfile");
+    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.showMyProfileApi}");
     var response = await http
         .get(url, headers: {"Authorization": "Bearer ${Prefs.getToken()}"});
 
@@ -50,7 +74,8 @@ class _ProfilePageState extends State<ProfilePage>
             // myPostData[j].id = userData.allPosts![i].id;
             myPostData[j].userFName = userData.allPosts![i].firstName;
             myPostData[j].userLName = userData.allPosts![i].lastName;
-            myPostData[j].userImage = userData.profileInformation!.userProfile!.profilePhoto;
+            myPostData[j].userImage =
+                userData.profileInformation!.userProfile!.profilePhoto;
             myPostData[j].postId = userData.allPosts![i].post![j].id;
             myPostData[i].caption = userData.allPosts![i].post![j].postBody;
             myPostData[i].date = userData.allPosts![i].post![j].createdAt;
@@ -65,25 +90,32 @@ class _ProfilePageState extends State<ProfilePage>
                   userData.allPosts![i].post![j].photo![k].photoPath!;
             }
           }
-          for (int j = 0; j < userData.allPosts![i].sharepost!.length; i++){
-
+          for (int j = 0; j < userData.allPosts![i].sharepost!.length; i++) {
             mySharedPostData[j].userFName = userData.allPosts![i].firstName;
             mySharedPostData[j].userLName = userData.allPosts![i].lastName;
-            mySharedPostData[j].userImage = userData.profileInformation!.userProfile!.profilePhoto;
+            mySharedPostData[j].userImage =
+                userData.profileInformation!.userProfile!.profilePhoto;
             mySharedPostData[j].id = userData.allPosts![i].sharepost![j].id;
-            mySharedPostData[i].caption = userData.allPosts![i].sharepost![j].body;
-            mySharedPostData[i].date = userData.allPosts![i].sharepost![j].createdAt;
-            mySharedPostData[i].post!.video = userData.allPosts![i].sharepost![j].post!.video;
-            mySharedPostData[i].userId= userData.allPosts![i].sharepost![j].post!.userId;
-            mySharedPostData[i].post!.caption = userData.allPosts![i].sharepost![j].post!.postBody;
-            mySharedPostData[i].post!.video = userData.allPosts![i].sharepost![j].post!.video;
-            mySharedPostData[i].post!.date = userData.allPosts![i].sharepost![j].post!.createdAt;
+            mySharedPostData[i].caption =
+                userData.allPosts![i].sharepost![j].body;
+            mySharedPostData[i].date =
+                userData.allPosts![i].sharepost![j].createdAt;
+            mySharedPostData[i].post!.video =
+                userData.allPosts![i].sharepost![j].post!.video;
+            mySharedPostData[i].userId =
+                userData.allPosts![i].sharepost![j].post!.userId;
+            mySharedPostData[i].post!.caption =
+                userData.allPosts![i].sharepost![j].post!.postBody;
+            mySharedPostData[i].post!.video =
+                userData.allPosts![i].sharepost![j].post!.video;
+            mySharedPostData[i].post!.date =
+                userData.allPosts![i].sharepost![j].post!.createdAt;
             for (int k = 0;
-            k < userData.allPosts![i].post![j].photo!.length;
-            k++) {
-              mySharedPostData[i].post!.images![k] = userData.allPosts![i].sharepost![j].post!.photo![k].photoPath!;
+                k < userData.allPosts![i].post![j].photo!.length;
+                k++) {
+              mySharedPostData[i].post!.images![k] = userData
+                  .allPosts![i].sharepost![j].post!.photo![k].photoPath!;
             }
-
           }
         }
         user = UserModel(
@@ -113,7 +145,6 @@ class _ProfilePageState extends State<ProfilePage>
         loading = false;
         setState(() {});
         print(user.firstName);
-
       }
       // return null;
     } else {
@@ -121,73 +152,6 @@ class _ProfilePageState extends State<ProfilePage>
     }
   }
 
-  Future uploadImage() async {
-    try {
-      final pickedImage = await picker.pickImage(source: ImageSource.gallery);
-      if (pickedImage == null) return;
-      final image = File(pickedImage.path);
-    } on PlatformException catch (e) {
-      print('Failed to upload image $e');
-    }
-  }
-
-  // UserModel user = UserModel(
-  //   createdAt: '',
-  //   placeStay: '',
-  //   profileId: 1,
-  //   updatedAt: '',
-  //   id: 1,
-  //   firstName: 'mohamad',
-  //   lastName: 'alraie',
-  //   bio: 'habibi come to lebanon',
-  //   followersNumber: 500,
-  //   followingNumber: 1200,
-  //   birthdate: '12/5/2001',
-  //   gender: 'male',
-  //   phoneNumber: 0945587900,
-  //   job: 'facebook',
-  //   studyPlace: 'bab alhara',
-  //   placeBorn: 'Damascus',
-  //   state: 'in relationship',
-  //   coverPhoto:
-  //       'https://img.freepik.com/free-vector/night-ocean-landscape-full-moon-stars-shine_107791-7397.jpg',
-  //   profilePhoto:
-  //       'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-  //   myPosts: [
-  //     MyPostModel(
-  //       isLiked: false,
-  //       isSaved: false,
-  //       likes: 400,
-  //       comments: 12,
-  //       shares: 3,
-  //       caption:
-  //           'my mym my mym my my mym my my my my m my mym my my my my caption',
-  //       date: '30/12/2019',
-  //       userFName: 'Habibi',
-  //       userLName: 'wallah',
-  //       images: [
-  //         'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'
-  //       ],
-  //       userImage:
-  //           'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
-  //     ),
-  //     MyPostModel(
-  //         isLiked: false,
-  //         isSaved: false,
-  //         likes: 400,
-  //         comments: 12,
-  //         shares: 3,
-  //         caption: 'caption',
-  //         date: '30/12/2019',
-  //         userFName: 'Habibi',
-  //         userLName: 'wallah',
-  //         images: [
-  //           'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'
-  //         ],
-  //         userImage:
-  //             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-  //   ],
-  // );
 
   @override
   void initState() {
@@ -200,8 +164,8 @@ class _ProfilePageState extends State<ProfilePage>
   Widget build(BuildContext context) {
     TabController tc = TabController(length: 2, vsync: this);
     return loading
-        ?  myCircularProgressIndicator()
-            : ChangeNotifierProvider<UserModel>.value(
+        ? myCircularProgressIndicator()
+        : ChangeNotifierProvider<UserModel>.value(
             value: user,
             child: Consumer<UserModel>(
               builder: (context, user, child) => Scaffold(
@@ -222,17 +186,24 @@ class _ProfilePageState extends State<ProfilePage>
                                   children: [
                                     Column(
                                       children: [
-                                        Container(
-                                          width: double.infinity,
-                                          height: 220,
-                                          child: Image(
-                                            image: NetworkImage(
-                                                AppSetting.baseUrl +
-                                                    user.coverPhoto!),
-                                            errorBuilder:
-                                                (context, error, stackTrace) =>
-                                                    myCircularProgressIndicator(),
-                                            fit: BoxFit.cover,
+                                        GestureDetector(
+                                          onTap: () {
+                                            showPhoto(
+                                                context: context,
+                                                image:
+                                                    '${AppSetting.baseUrl}${user.coverPhoto!}');
+                                          },
+                                          child: Container(
+                                            width: double.infinity,
+                                            height: 220,
+                                            child: Image(
+                                              image: NetworkImage(
+                                                  '${AppSetting.baseUrl}${user.coverPhoto!}'),
+                                              errorBuilder: (context, error,
+                                                      stackTrace) =>
+                                                  myCircularProgressIndicator(),
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
                                         const SizedBox(
@@ -252,9 +223,22 @@ class _ProfilePageState extends State<ProfilePage>
                                               FontAwesomeIcons.pencil,
                                               size: 17,
                                             ),
-                                            onPressed: () {
-                                              uploadImage();
-                                              // setState(() {});
+                                            onPressed: () async{
+                                              bool done =await updatePicture(token: Prefs.getToken()!,api:AppSetting.updateProfileCoverApi,key: 'cover_photo');
+                                              done ?   Fluttertoast.showToast(
+                                                  msg: "Refresh the Screen to display the photo!",
+                                                  gravity: ToastGravity.BOTTOM,
+                                                  toastLength: Toast.LENGTH_SHORT,
+                                                  backgroundColor: Colors.black,
+                                                  timeInSecForIosWeb: 2,
+                                                  fontSize: 14):
+                                              Fluttertoast.showToast(
+                                                  msg: "Failed to load the photo",
+                                                  gravity: ToastGravity.BOTTOM,
+                                                  toastLength: Toast.LENGTH_SHORT,
+                                                  backgroundColor: Colors.red,
+                                                  timeInSecForIosWeb: 2,
+                                                  fontSize: 14);
                                             }),
                                       ),
                                     ),
@@ -267,46 +251,39 @@ class _ProfilePageState extends State<ProfilePage>
                                             topRight: Radius.circular(30)),
                                         color: AppSetting.darkMode
                                             ? const Color(0xff1d1f2c)
-                                            : const Color(0xffdfdbe9),
+                                            : const Color(0xffe3dfec),
                                       ),
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        uploadImage();
-                                        // setState(() {});
+                                        print(Prefs.getToken());
+                                        showPhoto(
+                                            context: context,
+                                            image:
+                                                '${AppSetting.baseUrl}${user.profilePhoto!}');
                                       },
                                       child: Stack(
                                         alignment:
                                             AlignmentDirectional.bottomEnd,
                                         children: [
                                           CircleAvatar(
-                                            radius: 59,
+                                            radius: 65,
                                             backgroundColor:
                                                 AppTheme.colors.purple,
                                             child: CircleAvatar(
                                               backgroundColor:
                                                   Colors.transparent,
-                                              radius: 55,
+                                              radius: 62,
                                               child: ClipOval(
                                                 child: Image(
                                                     width: 200,
                                                     height: 200,
                                                     image: NetworkImage(
-                                                            'http://192.168.1.7:8000/${user.profilePhoto!}'),
+                                                        '${AppSetting.baseUrl}${user.profilePhoto!}'),
                                                     errorBuilder: (context,
                                                             error,
                                                             stackTrace) =>
-                                                        Center(
-                                                          child:
-                                                              CircularProgressIndicator(
-                                                            color: AppTheme
-                                                                .colors.purple,
-                                                            backgroundColor:
-                                                                AppTheme.colors
-                                                                    .darkPurple,
-                                                            strokeWidth: 2,
-                                                          ),
-                                                        ),
+                                                        myCircularProgressIndicator(),
                                                     fit: BoxFit.cover),
                                               ),
                                             ),
@@ -321,9 +298,22 @@ class _ProfilePageState extends State<ProfilePage>
                                                   FontAwesomeIcons.pencil,
                                                   size: 17,
                                                 ),
-                                                onPressed: () {
-                                                  uploadImage();
-                                                  // setState(() {});
+                                                onPressed:  () async{
+                                                  bool done =await updatePicture(token: Prefs.getToken()!,api:AppSetting.updateProfilePictureApi,key: "profile_photo");
+                                                  done ?   Fluttertoast.showToast(
+                                                      msg: "Refresh the Screen to display the photo!",
+                                                      gravity: ToastGravity.BOTTOM,
+                                                      toastLength: Toast.LENGTH_SHORT,
+                                                      backgroundColor: Colors.black,
+                                                      timeInSecForIosWeb: 2,
+                                                      fontSize: 14):
+                                                  Fluttertoast.showToast(
+                                                      msg: "Failed to load the photo",
+                                                      gravity: ToastGravity.BOTTOM,
+                                                      toastLength: Toast.LENGTH_SHORT,
+                                                      backgroundColor: Colors.red,
+                                                      timeInSecForIosWeb: 2,
+                                                      fontSize: 14);
                                                 }),
                                           ),
                                         ],
@@ -568,8 +558,10 @@ class _ProfilePageState extends State<ProfilePage>
                                   text: 'Edit profile details',
                                   width: double.infinity,
                                   onPressed: () {
-                                    // Navigator.of(context).push(MaterialPageRoute(
-                                    //     builder: (context) => EditProfile(user)));
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                EditProfile(user)));
                                   },
                                   fontSize: 18),
                               myMaterialButton(
@@ -624,14 +616,40 @@ class _ProfilePageState extends State<ProfilePage>
                           physics: const BouncingScrollPhysics(),
                           children: [
                             Container(
-                              child: ListView.builder(
-                                  padding: const EdgeInsets.all(0.0),
-                                  physics: const BouncingScrollPhysics(),
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: user.myPosts!.length,
-                                  itemBuilder: (context, i) =>
-                                      ChangeNotifierProvider<MyPostModel>.value(
+                              child: user.myPosts!.isEmpty
+                                  ? SingleChildScrollView(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                          top: 30.0,
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Icon(
+                                              Icons.camera_alt_outlined,
+                                              size: 100,
+                                              color: AppTheme.colors.darkPurple,
+                                            ),
+                                            Text(
+                                              'No Posts Yet',
+                                              style: TextStyle(
+                                                fontSize: 30,
+                                                color:
+                                                    AppTheme.colors.darkPurple,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                  : ListView.builder(
+                                      padding: const EdgeInsets.all(0.0),
+                                      physics: const BouncingScrollPhysics(),
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: user.myPosts!.length,
+                                      itemBuilder: (context, i) =>
+                                          ChangeNotifierProvider<
+                                              MyPostModel>.value(
                                         value: user.myPosts![i],
                                         child: Consumer<MyPostModel>(
                                           builder: (context, model2, child) =>
@@ -639,25 +657,53 @@ class _ProfilePageState extends State<ProfilePage>
                                                   model: model2,
                                                   context: context),
                                         ),
-                                      )),
+                                      ),
+                                    ),
                             ),
                             Container(
-                              child: ListView.builder(
-                                  padding: const EdgeInsets.all(0.0),
-                                  physics: const BouncingScrollPhysics(),
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: user.myPosts!.length,
-                                  itemBuilder: (context, i) =>
-                                      ChangeNotifierProvider<MyPostModel>.value(
-                                        value: user.myPosts![i],
-                                        child: Consumer<MyPostModel>(
-                                          builder: (context, model2, child) =>
-                                              myPostBuilder(
-                                                  model: model2,
-                                                  context: context),
+                              child: user.myPosts!.isEmpty
+                                  ? SingleChildScrollView(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                          top: 30.0,
                                         ),
-                                      )),
+                                        child: Column(
+                                          children: [
+                                            Icon(
+                                              Icons.camera_alt_outlined,
+                                              size: 100,
+                                              color: AppTheme.colors.darkPurple,
+                                            ),
+                                            Text(
+                                              'No Posts Yet',
+                                              style: TextStyle(
+                                                fontSize: 30,
+                                                color:
+                                                    AppTheme.colors.darkPurple,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                  : ListView.builder(
+                                      padding: const EdgeInsets.all(0.0),
+                                      physics: const BouncingScrollPhysics(),
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: user.myPosts!.length,
+                                      itemBuilder: (context, i) =>
+                                          ChangeNotifierProvider<
+                                              MyPostModel>.value(
+                                            value: user.myPosts![i],
+                                            child: Consumer<MyPostModel>(
+                                              builder:
+                                                  (context, model2, child) =>
+                                                      myPostBuilder(
+                                                          model: model2,
+                                                          context: context),
+                                            ),
+                                          )),
                             ),
                           ]),
                     ),

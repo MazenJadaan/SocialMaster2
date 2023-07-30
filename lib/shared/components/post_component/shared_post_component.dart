@@ -1,10 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/modules/app/handle_post/share_post.dart';
 import 'package:social_master/modules/app/visit_profile.dart';
 import 'package:social_master/shared/components/components.dart';
+import '../../../models/provider/post/postmodel.dart';
+import '../../../modules/app/handle_media/show_photo.dart';
 import '../../../modules/app/handle_media/show_video.dart';
 import '../../styles/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -368,28 +369,3 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
         ],
       ),
     ));
-
-Future showPhoto({required BuildContext context, String? image}) {
-  return showDialog(
-    context: context,
-    builder: (context) => Padding(
-      padding: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 8.0),
-      child: SizedBox(
-        width: 300,
-        child: Image(
-            image: NetworkImage(image!),
-            loadingBuilder: (context, child, loadingProgress) {
-              int? expSize;
-              expSize = loadingProgress?.expectedTotalBytes;
-              if (expSize != null) {
-                return
-                 myCircularProgressIndicator();
-              }
-              else {
-                return child;
-              }
-            }),
-      ),
-    ),
-  );
-}

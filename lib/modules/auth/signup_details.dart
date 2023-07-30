@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:social_master/shared/shared_prefrences.dart';
+import 'package:social_master/shared/shared_preferences.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/constant/constant.dart';
 import '../../shared/styles/colors.dart';
@@ -36,7 +36,7 @@ class _SignupDetailsState extends State<SignupDetails> {
   }) async {
     //create multipart request for POST or PATCH method
     var request = http.MultipartRequest(
-        "POST", Uri.parse("${AppSetting.baseUrl}api/complete_register"));
+        "POST", Uri.parse("${AppSetting.baseUrl}${AppSetting.completeRegisterApi}"));
     //add text fields
     request.fields["phone_num"] = phone_num;
     request.fields["gender"] = gender;
@@ -356,7 +356,6 @@ class _SignupDetailsState extends State<SignupDetails> {
                   text: "Done",
                   onPressed: () async {
                     if (formKey.currentState!.validate()) {
-                      print(token);
                       bool res = await signupDetails(
                         phone_num: _phoneNumberController.text,
                         gender: selectedRadio == 1 ? "male" : "female",

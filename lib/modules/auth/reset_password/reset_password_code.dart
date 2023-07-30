@@ -14,7 +14,7 @@ class Reset2 extends StatelessWidget {
   Reset2(this._email, {super.key});
 
   Future<CodeResponse?> sendCode(CodeParams params) async {
-    var url = Uri.parse("${AppSetting.baseUrl}api/code-check");
+    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.passwordCodeCheckApi}");
     var response = await http.post(url, body: params.toJson());
     var data = json.decode(response.body);
     if (response.statusCode == 200) {

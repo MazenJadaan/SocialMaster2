@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import '../../models/post/postmodel.dart';
-
-import '../../models/usermodel.dart';
+import '../../models/provider/post/postmodel.dart';
+import '../../models/provider/usermodel.dart';
 import '../../shared/components/components.dart';
 import '../../shared/components/post_component/post_component.dart';
 import '../../shared/styles/colors.dart';

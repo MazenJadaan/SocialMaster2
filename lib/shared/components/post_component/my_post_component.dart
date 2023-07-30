@@ -1,8 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:social_master/models/post/postmodel.dart';
 import 'package:social_master/modules/app/handle_post/edit_post.dart';
+import '../../../models/provider/post/postmodel.dart';
+import '../../../modules/app/handle_media/show_photo.dart';
+
 import '../../styles/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -307,33 +309,3 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
         ),
       ),
     );
-
-Future showPhoto({required BuildContext context, String? image}) {
-  return showDialog(
-    context: context,
-    builder: (context) => Padding(
-      padding: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 8.0),
-      child: SizedBox(
-        width: 300,
-        child: Image(
-            image: NetworkImage(image!),
-            loadingBuilder: (context, child, loadingProgress) {
-              int? expSize;
-              expSize = loadingProgress?.expectedTotalBytes;
-              if (expSize != null) {
-                return
-                  Center(
-                      child: CircularProgressIndicator(
-                        color: AppTheme.colors.purple,
-                        backgroundColor: AppTheme.colors.opacityPurple,
-                        strokeWidth: 2,
-                      ));
-              }
-              else {
-                return child;
-              }
-            }),
-      ),
-    ),
-  );
-}

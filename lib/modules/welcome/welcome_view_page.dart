@@ -5,7 +5,7 @@ import 'package:social_master/modules/welcome/intro_page1.dart';
 import 'package:social_master/modules/welcome/intro_page2.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
-import '../../shared/shared_prefrences.dart';
+import '../../shared/shared_preferences.dart';
 import 'intro_page3.dart';
 
 class WelcomePage extends StatefulWidget {

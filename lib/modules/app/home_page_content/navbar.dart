@@ -5,6 +5,8 @@ import 'package:social_master/modules/app/pages/profile_page.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
 import '../../../shared/network/constant/constant.dart';
+import '../../../shared/shared_preferences.dart';
+import '../../auth/login.dart';
 import '../saved_posts.dart';
 
 class NavBar extends StatelessWidget {
@@ -53,23 +55,29 @@ class NavBar extends StatelessWidget {
           const Divider(
             thickness: 1,
           ),
-           ListTile(
+          ListTile(
             leading: Icon(
-             FontAwesomeIcons.solidBookmark,
+              FontAwesomeIcons.solidBookmark,
               color: AppTheme.colors.darkPurple,
             ),
-            title: Text('Saved Posts',style: TextStyle(color: AppTheme.colors.darkPurple),),
+            title: Text(
+              'Saved Posts',
+              style: TextStyle(color: AppTheme.colors.darkPurple),
+            ),
             trailing: Icon(Icons.chevron_right),
           ),
           const Divider(
             thickness: 1,
           ),
-           ListTile(
+          ListTile(
             leading: Icon(
               Icons.archive,
               color: AppTheme.colors.darkPurple,
             ),
-            title: Text('My Story Archive',style: TextStyle(color: AppTheme.colors.darkPurple),),
+            title: Text(
+              'My Story Archive',
+              style: TextStyle(color: AppTheme.colors.darkPurple),
+            ),
             trailing: Icon(Icons.chevron_right),
           ),
           const Divider(
@@ -126,23 +134,80 @@ class NavBar extends StatelessWidget {
           const Divider(
             thickness: 1,
           ),
-          const ListTile(
-            leading: Icon(
-              Icons.logout,
-              color: Colors.purple,
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: (context) => buildLogout(context: context));
+            },
+            child: const ListTile(
+              leading: Icon(
+                Icons.logout,
+                color: Colors.purple,
+              ),
+              title: Text(
+                'Logout',
+              ),
+              trailing: Icon(Icons.chevron_right),
             ),
-            title: Text(
-              'Logout',
-            ),
-            trailing: Icon(Icons.chevron_right),
           ),
-
-          // index: index,
-          // onTap: (index) {
-          //   this.index = index;
-          //   setState(() {});
         ],
       ),
     );
   }
 }
+
+buildLogout({required BuildContext context}) => AlertDialog(
+      content: Container(
+        height: 100,
+        child: Column(
+          children: [
+            Text(
+              'Are you sure to Logout?',
+              style: TextStyle(fontSize: 22, color: AppTheme.colors.darkPurple),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    child: Text(
+                      'yes',
+                      style: TextStyle(
+                          fontSize: 28, color: AppTheme.colors.darkPurple),
+                    ),
+                    onPressed: () {
+                      Prefs.setToken('');
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (context) => Login()),
+                          (route) => false);
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: Container(
+                      height: 40,
+                      width: 1,
+                      color: AppTheme.colors.darkPurple,
+                    ),
+                  ),
+                  TextButton(
+                      child: Text(
+                        'cancel',
+                        style: TextStyle(
+                            fontSize: 28, color: AppTheme.colors.darkPurple),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      })
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );

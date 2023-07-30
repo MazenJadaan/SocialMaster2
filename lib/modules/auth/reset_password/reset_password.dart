@@ -14,7 +14,7 @@ class Reset1 extends StatelessWidget {
 
 
   Future<ResetResponse?> resetPassword(ResetParams params) async {
-    var url = Uri.parse("${AppSetting.baseUrl}api/forget-password");
+    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.forgotPasswordApi}");
     var response = await http.post(url, body: params.toJson());
     var data = json.decode(response.body);
     if (response.statusCode == 200) {
