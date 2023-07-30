@@ -41,7 +41,7 @@ class _ProfilePageState extends State<ProfilePage>
     required String token,
   })async{
     var request = http.MultipartRequest(
-        "POST", Uri.parse("${AppSetting.baseUrl}${api}"));
+        "POST", Uri.parse("${AppSetting.baseUrl}$api"));
     request.headers["Authorization"] = "Bearer $token";
     final pickedImage = await picker.pickImage(source: ImageSource.gallery);
     if (pickedImage == null) return false;
@@ -144,11 +144,9 @@ class _ProfilePageState extends State<ProfilePage>
 
         loading = false;
         setState(() {});
-        print(user.firstName);
       }
       // return null;
     } else {
-      print('error');
     }
   }
 
@@ -256,7 +254,6 @@ class _ProfilePageState extends State<ProfilePage>
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        print(Prefs.getToken());
                                         showPhoto(
                                             context: context,
                                             image:
@@ -399,7 +396,7 @@ class _ProfilePageState extends State<ProfilePage>
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 18.0),
                                 child: Text(
-                                    '${user.bio == null ? '' : user.bio}',
+                                    ' ${user.bio ?? ''}',
                                     style: TextStyle(
                                         fontFamily: 'SignikaNegative',
                                         fontSize: 15,
@@ -410,7 +407,7 @@ class _ProfilePageState extends State<ProfilePage>
                                 height: 8,
                               ),
                               user.placeBorn == null
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 18.0),
@@ -439,7 +436,7 @@ class _ProfilePageState extends State<ProfilePage>
                                 height: 4,
                               ),
                               user.placeStay == null
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 18.0),
@@ -468,7 +465,7 @@ class _ProfilePageState extends State<ProfilePage>
                                 height: 4,
                               ),
                               user.job == null
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 18.0),
@@ -497,7 +494,7 @@ class _ProfilePageState extends State<ProfilePage>
                                 height: 4,
                               ),
                               user.studyPlace == null
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 18.0),
@@ -526,7 +523,7 @@ class _ProfilePageState extends State<ProfilePage>
                                 height: 4,
                               ),
                               user.state == null
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 18.0),
@@ -571,7 +568,7 @@ class _ProfilePageState extends State<ProfilePage>
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                CreatePost()));
+                                                const CreatePost()));
                                   },
                                   fontSize: 18),
                               Padding(
