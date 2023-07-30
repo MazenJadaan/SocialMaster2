@@ -267,13 +267,13 @@ class _ProfilePageState extends State<ProfilePage>
                                             AlignmentDirectional.bottomEnd,
                                         children: [
                                           CircleAvatar(
-                                            radius: 65,
+                                            radius: 60,
                                             backgroundColor:
                                                 AppTheme.colors.purple,
                                             child: CircleAvatar(
                                               backgroundColor:
                                                   Colors.transparent,
-                                              radius: 62,
+                                              radius: 56,
                                               child: ClipOval(
                                                 child: Image(
                                                     width: 200,
