@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class PostModel extends ChangeNotifier {
+  int? userId;
+  int? userProfileId;
   int? id;
+  int? postId;
   String? userImage;
   List<String>? images;
   String? video;
@@ -19,6 +22,9 @@ class PostModel extends ChangeNotifier {
   Color? saveColor;
 
   PostModel({
+    this.postId,
+    this.userId,
+    this.userProfileId,
     this.likes,
      this.comments,
      this.shares,

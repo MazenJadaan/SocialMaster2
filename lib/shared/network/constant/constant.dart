@@ -16,6 +16,7 @@ class AppSetting{
   static String forgotPasswordApi = 'api/forget-password';
   static String passwordCodeCheckApi ='api/code-check';
   static String updatePasswordApi = 'api/update-password';
+  static String showProfileApi = 'api/showProfile/';
 
   // unfinished APIs
 

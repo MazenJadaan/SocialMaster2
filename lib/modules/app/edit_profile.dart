@@ -49,7 +49,7 @@ class _EditProfileState extends State<EditProfile> {
       appBar: AppBar(
         title: const Center(
             child: Text(
-          "Master",
+          "Edit your Profile",
           style: TextStyle(),
         )),
       ),

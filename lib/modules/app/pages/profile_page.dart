@@ -13,6 +13,7 @@ import '../../../models/provider/usermodel.dart';
 import '../../../shared/components/post_component/my_post_component.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../../../shared/components/post_component/shared_post_component.dart';
 import '../../../shared/shared_preferences.dart';
 import '../edit_profile.dart';
 import '../handle_media/show_photo.dart';
@@ -34,14 +35,13 @@ class _ProfilePageState extends State<ProfilePage>
   List<SharedPostModel> mySharedPostData = <SharedPostModel>[];
   bool loading = true;
 
-
   Future<bool> updatePicture({
     required String api,
     required String key,
     required String token,
-  })async{
-    var request = http.MultipartRequest(
-        "POST", Uri.parse("${AppSetting.baseUrl}$api"));
+  }) async {
+    var request =
+        http.MultipartRequest("POST", Uri.parse("${AppSetting.baseUrl}$api"));
     request.headers["Authorization"] = "Bearer $token";
     final pickedImage = await picker.pickImage(source: ImageSource.gallery);
     if (pickedImage == null) return false;
@@ -78,7 +78,16 @@ class _ProfilePageState extends State<ProfilePage>
                 userData.profileInformation!.userProfile!.profilePhoto;
             myPostData[j].postId = userData.allPosts![i].post![j].id;
             myPostData[i].caption = userData.allPosts![i].post![j].postBody;
-            myPostData[i].date = userData.allPosts![i].post![j].createdAt;
+            myPostData[i].date = userData.allPosts![i].post![j].postDate;
+            myPostData[i].likes = userData.allPosts![i].post![j].likes;
+            myPostData[i].comments = userData.allPosts![i].post![j].comments;
+            myPostData[i].shares = userData.allPosts![i].post![j].shares;
+            myPostData[i].isLiked = userData.allPosts![i].post![j].reaction == 0
+                ? myPostData[i].isLiked = false
+                : true;
+            myPostData[i].isLiked = userData.allPosts![i].post![j].saved == 0
+                ? myPostData[i].isSaved = false
+                : true;
             myPostData[i].video = userData.allPosts![i].post![j].video;
             myPostData[i].userId = userData.allPosts![i].post![j].userId;
             myPostData[i].userProfileId =
@@ -146,10 +155,8 @@ class _ProfilePageState extends State<ProfilePage>
         setState(() {});
       }
       // return null;
-    } else {
-    }
+    } else {}
   }
-
 
   @override
   void initState() {
@@ -221,22 +228,35 @@ class _ProfilePageState extends State<ProfilePage>
                                               FontAwesomeIcons.pencil,
                                               size: 17,
                                             ),
-                                            onPressed: () async{
-                                              bool done =await updatePicture(token: Prefs.getToken()!,api:AppSetting.updateProfileCoverApi,key: 'cover_photo');
-                                              done ?   Fluttertoast.showToast(
-                                                  msg: "Refresh the Screen to display the photo!",
-                                                  gravity: ToastGravity.BOTTOM,
-                                                  toastLength: Toast.LENGTH_SHORT,
-                                                  backgroundColor: Colors.black,
-                                                  timeInSecForIosWeb: 2,
-                                                  fontSize: 14):
-                                              Fluttertoast.showToast(
-                                                  msg: "Failed to load the photo",
-                                                  gravity: ToastGravity.BOTTOM,
-                                                  toastLength: Toast.LENGTH_SHORT,
-                                                  backgroundColor: Colors.red,
-                                                  timeInSecForIosWeb: 2,
-                                                  fontSize: 14);
+                                            onPressed: () async {
+                                              bool done = await updatePicture(
+                                                  token: Prefs.getToken()!,
+                                                  api: AppSetting
+                                                      .updateProfileCoverApi,
+                                                  key: 'cover_photo');
+                                              done
+                                                  ? Fluttertoast.showToast(
+                                                      msg:
+                                                          "Refresh the Screen to display the photo!",
+                                                      gravity:
+                                                          ToastGravity.BOTTOM,
+                                                      toastLength:
+                                                          Toast.LENGTH_SHORT,
+                                                      backgroundColor:
+                                                          Colors.black,
+                                                      timeInSecForIosWeb: 2,
+                                                      fontSize: 14)
+                                                  : Fluttertoast.showToast(
+                                                      msg:
+                                                          "Failed to load the photo",
+                                                      gravity:
+                                                          ToastGravity.BOTTOM,
+                                                      toastLength:
+                                                          Toast.LENGTH_SHORT,
+                                                      backgroundColor:
+                                                          Colors.red,
+                                                      timeInSecForIosWeb: 2,
+                                                      fontSize: 14);
                                             }),
                                       ),
                                     ),
@@ -295,22 +315,35 @@ class _ProfilePageState extends State<ProfilePage>
                                                   FontAwesomeIcons.pencil,
                                                   size: 17,
                                                 ),
-                                                onPressed:  () async{
-                                                  bool done =await updatePicture(token: Prefs.getToken()!,api:AppSetting.updateProfilePictureApi,key: "profile_photo");
-                                                  done ?   Fluttertoast.showToast(
-                                                      msg: "Refresh the Screen to display the photo!",
-                                                      gravity: ToastGravity.BOTTOM,
-                                                      toastLength: Toast.LENGTH_SHORT,
-                                                      backgroundColor: Colors.black,
-                                                      timeInSecForIosWeb: 2,
-                                                      fontSize: 14):
-                                                  Fluttertoast.showToast(
-                                                      msg: "Failed to load the photo",
-                                                      gravity: ToastGravity.BOTTOM,
-                                                      toastLength: Toast.LENGTH_SHORT,
-                                                      backgroundColor: Colors.red,
-                                                      timeInSecForIosWeb: 2,
-                                                      fontSize: 14);
+                                                onPressed: () async {
+                                                  bool done = await updatePicture(
+                                                      token: Prefs.getToken()!,
+                                                      api: AppSetting
+                                                          .updateProfilePictureApi,
+                                                      key: "profile_photo");
+                                                  done
+                                                      ? Fluttertoast.showToast(
+                                                          msg:
+                                                              "Refresh the Screen to display the photo!",
+                                                          gravity: ToastGravity
+                                                              .BOTTOM,
+                                                          toastLength: Toast
+                                                              .LENGTH_SHORT,
+                                                          backgroundColor:
+                                                              Colors.black,
+                                                          timeInSecForIosWeb: 2,
+                                                          fontSize: 14)
+                                                      : Fluttertoast.showToast(
+                                                          msg:
+                                                              "Failed to load the photo",
+                                                          gravity: ToastGravity
+                                                              .BOTTOM,
+                                                          toastLength: Toast
+                                                              .LENGTH_SHORT,
+                                                          backgroundColor:
+                                                              Colors.red,
+                                                          timeInSecForIosWeb: 2,
+                                                          fontSize: 14);
                                                 }),
                                           ),
                                         ],
@@ -395,8 +428,7 @@ class _ProfilePageState extends State<ProfilePage>
                               Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 18.0),
-                                child: Text(
-                                    ' ${user.bio ?? ''}',
+                                child: Text(' ${user.bio ?? ''}',
                                     style: TextStyle(
                                         fontFamily: 'SignikaNegative',
                                         fontSize: 15,
@@ -658,7 +690,7 @@ class _ProfilePageState extends State<ProfilePage>
                                     ),
                             ),
                             Container(
-                              child: user.myPosts!.isEmpty
+                              child: user.mySharedPosts!.isEmpty
                                   ? SingleChildScrollView(
                                       child: Padding(
                                         padding: const EdgeInsets.only(
@@ -688,15 +720,15 @@ class _ProfilePageState extends State<ProfilePage>
                                       physics: const BouncingScrollPhysics(),
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
-                                      itemCount: user.myPosts!.length,
+                                      itemCount: user.mySharedPosts!.length,
                                       itemBuilder: (context, i) =>
                                           ChangeNotifierProvider<
-                                              MyPostModel>.value(
-                                            value: user.myPosts![i],
-                                            child: Consumer<MyPostModel>(
+                                              SharedPostModel>.value(
+                                            value: user.mySharedPosts![i],
+                                            child: Consumer<SharedPostModel>(
                                               builder:
                                                   (context, model2, child) =>
-                                                      myPostBuilder(
+                                                      sharedPostBuilder(
                                                           model: model2,
                                                           context: context),
                                             ),

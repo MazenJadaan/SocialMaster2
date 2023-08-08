@@ -30,7 +30,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => VisitProfile()));
+                        builder: (context) => VisitProfile(model.userId)));
                   },
                   child: CircleAvatar(
                     backgroundColor: Colors.transparent,
@@ -102,7 +102,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                         GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => VisitProfile()));
+                                builder: (context) => VisitProfile(model.post!.userId)));
                           },
                           child: CircleAvatar(
                             backgroundColor: Colors.transparent,
@@ -113,6 +113,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                   height: 80,
                                   image:
                                       NetworkImage('${model.post!.userImage}'),
+                                  loadingBuilder: (context, child, loadingProgress) => myCircularProgressIndicator(),
                                   errorBuilder: (context, error, stackTrace) =>
                                       Container(
                                         color: AppTheme.colors.opacityPurple,

@@ -31,7 +31,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => VisitProfile()));
+                          builder: (context) => VisitProfile(model.userProfileId)));
                     },
                     child: CircleAvatar(
                       backgroundColor: Colors.transparent,
