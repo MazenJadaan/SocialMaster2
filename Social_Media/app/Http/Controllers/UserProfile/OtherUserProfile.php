@@ -24,9 +24,10 @@ class OtherUserProfile extends Controller
 
     public function showProfile($id)
     {
-        $profileID = User_profile::find($id);
+//        $profileID = User_profile::find($id);
         //هل نحتاج نهندل حالة عدم وجود بروفايل اصلا ؟؟
-        $user = showProfileDetails::collection(User::with('user_profile')->find($profileID));
+//        $user = showProfileDetails::collection(User::with('user_profile')->find($profileID));
+        $user = User::select('id', 'first_name', 'last_name', 'gender', 'birthdate')->with('user_profile')->find($id);
         $posts = $this->getProfilePosts($id);
 
         $array = [

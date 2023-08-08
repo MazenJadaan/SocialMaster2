@@ -31,9 +31,11 @@ class MyUserProfile extends Controller
         $myid = Auth::id();
         $user = User::select('id', 'first_name', 'last_name', 'gender', 'birthdate')->with('user_profile')->find($myid);
         $posts = $this->getProfilePosts($myid);
-        $arr = ['profile information' => $user,
+
+        $array = ['profile information' => $user,
             'all posts' => $posts];
-        return $this->ApiResponse($arr, ' My Profile Information returned successfully', 200);
+
+        return $this->ApiResponse($array, ' My Profile Information returned successfully', 200);
                 }
 
 
