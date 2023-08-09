@@ -68,18 +68,29 @@ class PostController extends Controller
                 $post->save();
             }
 
-            $images = $request->file('image');
-           foreach ($images as $img){
-               $save_path = 'images/posts_pictures/' ;
-               $pic_name =  $this->save_media($img,$save_path);
-                $post->photo()->create(['post_id'=> $post->id,
-                    'photo_path'=>$pic_name]);
+           $images = array();
+            $files = $request->file('image');
 
-         }
+            foreach ($files as $file) {
+           $image_name = md5(rand(1000,10000));
+           $ext = strtolower($file->getClientOriginalExtension());
+           $image_full_name = $image_name.'.'.$ext;
+           $upload_path = public_path('/images/posts_pictures/');
+           $file->move($upload_path,$image_full_name);
+                $img_url = 'public/images/posts_pictures/'.$image_full_name;
+           $images[]=$img_url;
+            }
+                foreach ($images as $image) {
+                    $post->photo()->create(['post_id' => $post->id,
+                        'photo_path' => $image]);
+                }
+
             $postResult = ['post' => postInformationResource::make($post),
                 'post_images' => $post->photo];
             return $this->ApiResponse($postResult, 'post created its successful', 200);
         }
+
+
         elseif (empty($request->input('video')) && empty($request->input('image'))){
                 $data = $request->validate([
                     'post_body' => 'string|required',
@@ -139,12 +150,21 @@ class PostController extends Controller
                     $post->update(['post_body' => $newbody]);
                     $post->save();
                 }
-                $images = $request->file('image');
-                foreach ($images as $img) {
-                    $save_path = 'images/posts_pictures/';
-                    $pic_name = $this->save_media($img, $save_path);
+                $images = array();
+                $files = $request->file('image');
+
+                foreach ($files as $file) {
+                    $image_name = md5(rand(1000,10000));
+                    $ext = strtolower($file->getClientOriginalExtension());
+                    $image_full_name = $image_name.'.'.$ext;
+                    $upload_path = public_path('/images/posts_pictures/');
+                    $file->move($upload_path,$image_full_name);
+                    $img_url = 'public/images/posts_pictures/'.$image_full_name;
+                    $images[]=$img_url;
+                }
+                foreach ($images as $image) {
                     $post->photo()->create(['post_id' => $post->id,
-                        'photo_path' => $pic_name]);
+                        'photo_path' => $image]);
                 }
                 $postResult = ['post' => postInformationResource::make($post),
                     'post_images' => $post->photo];
@@ -176,24 +196,6 @@ class PostController extends Controller
             return $this->ApiResponse('null', 'Post has been deleted successfully', 200);
         }
     }
-
-    public function showAllWorldPosts()
-    {
-        $timeline = Post::get();
-        $userIds = $timeline->pluck('user_id')->toArray();
-        $profileIds = $timeline->pluck('user_profile_id')->toArray();
-        $finalResult = DB::table('posts')
-            ->join('photos', 'posts.id', '=', 'photos.post_id')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
-            ->select('posts.*','photos.photo_path','users.first_name','users.last_name','user_profiles.profile_photo')
-            ->where('users.id', $userIds)
-            ->where('user_profiles.id', $profileIds)
-            ->get();
-        return $this->ApiResponse($finalResult, 'Posts returned successfully', 200);
-    }
-
-
 
 
 

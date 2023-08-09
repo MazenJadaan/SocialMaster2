@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\GoogleAuthController;
-use App\Http\Controllers\HomePage\SeeController;
+use App\Http\Controllers\HomePage\SeeHomePageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StoriesController;
@@ -69,9 +69,9 @@ Route::middleware('auth:api')->group(function () {
 
     Route::delete('deletePosts/{id}', [PostController::class, 'deletePost']);
 
-    Route::get('see_videos',[SeeController::class,'see_videos']);
+    Route::get('see_videos',[SeeHomePageController::class,'see_videos']);
 
-    Route::get('allWorld',[PostController::class,'showAllWorldPosts']);
+    Route::get('allWorld',[SeeHomePageController::class,'showAllWorldPosts']);
 
 
 //    Route::get('returnMyPosts', [PostController::class, 'showAllUserPost']);
