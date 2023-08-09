@@ -1058,6 +1058,76 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"data\": {\n        \"profile information\": {\n            \"id\": 1,\n            \"first_name\": \"alaa\",\n            \"last_name\": \"ra3i\",\n            \"gender\": \"female\",\n            \"birthdate\": null,\n            \"user_profile\": {\n                \"id\": 1,\n                \"job\": null,\n                \"study_place\": null,\n                \"place_stay\": null,\n                \"place_born\": null,\n                \"bio\": null,\n                \"cover_photo\": \"public/images/cover_picture/default_cover_photo.png\",\n                \"profile_photo\": \"public/images/profile_picture/default_picture.png\",\n                \"followers_number\": 0,\n                \"following_number\": 0,\n                \"state\": null,\n                \"user_id\": 1,\n                \"created_at\": \"2023-07-29T16:26:12.000000Z\",\n                \"updated_at\": \"2023-07-29T16:26:12.000000Z\"\n            }\n        },\n        \"all posts\": [\n            {\n                \"id\": 1,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"ra3i\",\n                \"post\": [\n                    {\n                        \"id\": 3,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \"post 3 user 1\",\n                        \"post_video\": null,\n                        \"post_time\": \"19:27:12\",\n                        \"post_date\": \"2023-07-29\",\n                        \"reaction\": 0,\n                        \"saved\": 0,\n                        \"created_at\": \"2023-07-29T16:27:12.000000Z\",\n                        \"updated_at\": \"2023-07-29T16:27:12.000000Z\",\n                        \"like_count\": 1,\n                        \"comment_count\": 0,\n                        \"share_post_count\": 0,\n                        \"photo\": [\n                            {\n                                \"id\": 1,\n                                \"post_id\": 3,\n                                \"photo_path\": \"images/posts_pictures/1690648032.jpg\",\n                                \"created_at\": \"2023-07-29T16:27:12.000000Z\",\n                                \"updated_at\": \"2023-07-29T16:27:12.000000Z\"\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 2,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \"post 2 user 1\",\n                        \"post_video\": null,\n                        \"post_time\": \"19:27:01\",\n                        \"post_date\": \"2023-07-29\",\n                        \"reaction\": 1,\n                        \"saved\": 0,\n                        \"created_at\": \"2023-07-29T16:27:01.000000Z\",\n                        \"updated_at\": \"2023-07-29T16:27:01.000000Z\",\n                        \"like_count\": 1,\n                        \"comment_count\": 0,\n                        \"share_post_count\": 0,\n                        \"photo\": []\n                    },\n                    {\n                        \"id\": 1,\n                        \"user_id\": 1,\n                        \"user_profile_id\": 1,\n                        \"post_body\": \"post 1 user 1\",\n                        \"post_video\": null,\n                        \"post_time\": \"19:26:56\",\n                        \"post_date\": \"2023-07-29\",\n                        \"reaction\": 0,\n                        \"saved\": 0,\n                        \"created_at\": \"2023-07-29T16:26:56.000000Z\",\n                        \"updated_at\": \"2023-07-29T16:26:56.000000Z\",\n                        \"like_count\": 1,\n                        \"comment_count\": 0,\n                        \"share_post_count\": 0,\n                        \"photo\": []\n                    }\n                ],\n                \"sharepost\": []\n            }\n        ]\n    },\n    \"message\": \" My Profile Information returned successfully\",\n    \"status\": 200\n}"
+						},
+						{
+							"name": "newshow my profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/showMyProfile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"showMyProfile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 09 Aug 2023 16:37:04 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 09 Aug 2023 16:37:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"profile information\": {\n            \"id\": 1,\n            \"first_name\": \"alaa\",\n            \"last_name\": \"ra3i\",\n            \"gender\": \"female\",\n            \"birthdate\": null,\n            \"user_profile\": {\n                \"id\": 1,\n                \"job\": null,\n                \"study_place\": null,\n                \"place_stay\": null,\n                \"place_born\": null,\n                \"bio\": null,\n                \"cover_photo\": \"images/cover_picture/default_cover_photo.png\",\n                \"profile_photo\": \"images/profile_picture/default_picture.png\",\n                \"followers_number\": 0,\n                \"following_number\": 0,\n                \"state\": null,\n                \"user_id\": 1,\n                \"created_at\": \"2023-08-09T16:36:54.000000Z\",\n                \"updated_at\": \"2023-08-09T16:36:54.000000Z\"\n            }\n        },\n        \"all posts\": [\n            {\n                \"id\": 1,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"ra3i\",\n                \"post\": [],\n                \"sharepost\": []\n            }\n        ]\n    },\n    \"message\": \" My Profile Information returned successfully\",\n    \"status\": 200\n}"
 						}
 					]
 				},
@@ -3080,8 +3150,58 @@
 				{
 					"name": "Create Post",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWU1N2U4ZDE0NWMyMmMxYzdhZThlYzhkZTNkMTVjMTZlNDk0Yzg0NzQ5NGE0Zjc3YzZkZjIwZTBmYTNkOGYwOGQ3ZGExZWJlYWM0NjAyNmEiLCJpYXQiOjE2OTE1NTg2OTIuMDcxNjQ5LCJuYmYiOjE2OTE1NTg2OTIuMDcxNjUzLCJleHAiOjE3MjMxODEwOTIuMDY0MTYzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.AzN5lBotpNy0FtBB6MMhSSMHWxUXZJdYF07BSXtiLuKVKlQI-OYmwZBARDo4ZSSwQfm4oOu3ceKkgwQ9YKUMUX-CbXw5tDnC0cWKRH_gRQz1dreOnKyp8VraKFNlrJiRnwZ2JRGhrHDJzCezP3Wz6nJrf7kk4KsbgfEG7rx82qPtQnf5XHzI671SigbWPzST1q0wT42CwLU31QCLukBoj4InNjOFn9YKoCV0wscjmHTijX-muJJOcc3-D5laJhF70JuNUGOML3mtnhKuimrWTZT3ZikJOGEOHZkpONXRgdkhObrTgMwXvDy2kupPq32XFY-B2W7nsxJ4Ho1eqqgNcn1HEtJ9-jNlxBQ73cWmbSmpLTCg0-GpBGUrY_ROmVuEXC9qhMa2dqLCF1KcSgHy0XmGu9keEpxPinl1AUOSGPkEyIekxanCnZaa9QszqGtUI-lW8sVHdsi1dGnN3_I2Qd5LRCaOjEQclN4eRKNsmQMVn6j80jBnZQGabbVtHrIT-R0EK6vy9Yhvxnz6QOdjMw4JFIhCTvth2UtOD-IbvdxpOmA46Emwt3dpqLAkRgfJQEg10VICkqn1gpoJyO4fstg0FHyfIeC8ho42Q7LlauDBPkYu3zxEwfVUk45xK_he5bAGYtJvOEA9hoLt7xrILG3DA7gSw_717xxnWZ8pPp0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "video",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "image[]",
+									"contentType": "",
+									"type": "file",
+									"src": [
+										"/C:/Users/ASUS/Desktop/backgrounds/wp5156508-wallpaper-hd-4k.jpg",
+										"/C:/Users/ASUS/Desktop/backgrounds/wp6826485-hd-4k-desktop-wallpapers.jpg"
+									]
+								},
+								{
+									"key": "post_body",
+									"value": "video 3 user 2 dusk laravel",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/create_post",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"create_post"
+							]
+						}
 					},
 					"response": [
 						{
@@ -3630,6 +3750,98 @@
 							"body": "{\n    \"data\": {\n        \"post\": {\n            \"id\": 9,\n            \"user_id\": 1,\n            \"post_body\": null,\n            \"user_profile_id\": 1,\n            \"post_time\": \"12:10:55\",\n            \"post_date\": \"2023-07-28\",\n            \"created_at\": \"1 second ago\"\n        },\n        \"post_video\": \"storage/app/videos/posts_videos/1690535455.mp4\"\n    },\n    \"message\": \"post created its successful\",\n    \"status\": 200\n}"
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "HomePage",
+			"item": [
+				{
+					"name": "See",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/see_videos",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"see_videos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Aug 2023 18:56:56 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Aug 2023 18:56:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 5,\n            \"post_body\": \"video 3 user 2 dusk laravel\",\n            \"post_video\": \"videos/posts_videos/1691519490.mp4\",\n            \"post_time\": \"21:31:30\",\n            \"post_date\": \"2023-08-08\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"created_at\": \"2023-08-08T18:31:30.000000Z\",\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"user\": {\n                \"id\": 2,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 2,\n                    \"profile_photo\": \"public/images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 4,\n            \"post_body\": \"video 2 user 3\",\n            \"post_video\": \"videos/posts_videos/1691519331.mp4\",\n            \"post_time\": \"21:28:51\",\n            \"post_date\": \"2023-08-08\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"created_at\": \"2023-08-08T18:28:51.000000Z\",\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"user\": {\n                \"id\": 3,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 3,\n                    \"profile_photo\": \"public/images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 3,\n            \"post_body\": \"video 1 user 3\",\n            \"post_video\": \"videos/posts_videos/1691519304.mp4\",\n            \"post_time\": \"21:28:24\",\n            \"post_date\": \"2023-08-08\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"created_at\": \"2023-08-08T18:28:24.000000Z\",\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"user\": {\n                \"id\": 3,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 3,\n                    \"profile_photo\": \"public/images/profile_picture/default_picture.png\"\n                }\n            }\n        }\n    ],\n    \"message\": \"all the videos\",\n    \"status\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "AllWorld",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			]
 		}

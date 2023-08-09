@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('place_stay')->nullable();
             $table->string('place_born')->nullable();
             $table->text('bio')->nullable();
-            $table->string('cover_photo')->default('public/images/cover_picture/default_cover_photo.png');
-            $table->string('profile_photo')->default('public/images/profile_picture/default_picture.png');
+            $table->string('cover_photo')->default('images/cover_picture/default_cover_photo.png');
+            $table->string('profile_photo')->default('images/profile_picture/default_picture.png');
             $table->bigInteger('followers_number')->default(0);
             $table->bigInteger('following_number')->default(0);
             $table->enum('state',['single','engaged','married','in_relationship'])->nullable();

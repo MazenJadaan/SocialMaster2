@@ -93,7 +93,8 @@ class PostController extends Controller
                     'post_date' => Carbon::now()->format('Y-m-d'),
                 ]);
                 $postResult = postInformationResource::make($post);
-                return $this->ApiResponse($postResult, 'post created its successful', 200);
+                $data = [ 'post' => $postResult ] ;
+                return $this->ApiResponse($data, 'post created its successful', 200);
             }
 
 
@@ -176,6 +177,22 @@ class PostController extends Controller
         }
     }
 
+    public function showAllWorldPosts()
+    {
+        $timeline = Post::get();
+        $userIds = $timeline->pluck('user_id')->toArray();
+        $profileIds = $timeline->pluck('user_profile_id')->toArray();
+        $finalResult = DB::table('posts')
+            ->join('photos', 'posts.id', '=', 'photos.post_id')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
+            ->select('posts.*','photos.photo_path','users.first_name','users.last_name','user_profiles.profile_photo')
+            ->where('users.id', $userIds)
+            ->where('user_profiles.id', $profileIds)
+            ->get();
+        return $this->ApiResponse($finalResult, 'Posts returned successfully', 200);
+    }
+
 
 
 
@@ -245,20 +262,7 @@ class PostController extends Controller
     {
     }
     //not done yet
-    public function showAllWorldPosts()
-    {
-        $timeline = Post::get();
-        $userIds = $timeline->pluck('user_id')->toArray();
-        $profileIds = $timeline->pluck('user_profile_id')->toArray();
-        $finalResult = DB::table('posts')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
-            ->where('users.id', $userIds)
-            ->where('user_profiles.id', $profileIds)
-            ->inRandomOrder()
-            ->paginate(100);
-        return $this->ApiResponse($finalResult, 'Posts returned successfully', 200);
-    }
+
 
     public function likePost($id)
     {
