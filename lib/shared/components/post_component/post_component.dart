@@ -7,6 +7,7 @@ import '../../../models/provider/post/postmodel.dart';
 import '../../../modules/app/handle_media/show_video.dart';
 import '../../../modules/app/handle_media/show_photo.dart';
 
+import '../../network/constant/constant.dart';
 import '../../styles/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../components.dart';
@@ -156,36 +157,38 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                   onTap: () {
                                     showPhoto(
                                         context: context,
-                                        image: model.images![index]);
+                                        image: '${AppSetting.baseUrl}${model.images![index]}');
                                   },
-                                  child: Image(
+                                  child: Hero(
+                                    tag: '${AppSetting.baseUrl}${model.images![index]}',
+                                    child: Image(
+                                        image: NetworkImage(
+                                            '${AppSetting.baseUrl}${model.images![index]}'),
+                                        fit: BoxFit.contain,
+                                        errorBuilder: (context, error, stackTrace) =>
+                                            Container(
+                                              height: 150,
+                                              color: AppTheme.colors.opacityPurple,
+                                              child:myCircularProgressIndicator(),
+                                            ),
+                                        loadingBuilder:
+                                            (context, child, loadingProgress) {
+                                          int? expSize;
+                                          expSize =
+                                              loadingProgress?.expectedTotalBytes;
+                                          if (expSize != null) {
+                                            return Container(
+                                              height: 150,
+                                              color:
+                                              AppTheme.colors.opacityPurple,
+                                              child: myCircularProgressIndicator(),
+                                            );
+                                          } else {
+                                            return child;
+                                          }
 
-                                      image: NetworkImage(
-                                          '${model.images![index]}'),
-                                      fit: BoxFit.contain,
-                                      errorBuilder: (context, error, stackTrace) =>
-                                          Container(
-                                            height: 150,
-                                            color: AppTheme.colors.opacityPurple,
-                                            child:myCircularProgressIndicator(),
-                                          ),
-                                      loadingBuilder:
-                                          (context, child, loadingProgress) {
-                                        int? expSize;
-                                        expSize =
-                                            loadingProgress?.expectedTotalBytes;
-                                        if (expSize != null) {
-                                          return Container(
-                                            height: 150,
-                                            color:
-                                            AppTheme.colors.opacityPurple,
-                                            child: myCircularProgressIndicator(),
-                                          );
-                                        } else {
-                                          return child;
-                                        }
-
-                                      }),
+                                        }),
+                                  ),
                                 ),
                               ),
                             ),

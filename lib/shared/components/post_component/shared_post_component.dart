@@ -7,6 +7,7 @@ import 'package:social_master/shared/components/components.dart';
 import '../../../models/provider/post/postmodel.dart';
 import '../../../modules/app/handle_media/show_photo.dart';
 import '../../../modules/app/handle_media/show_video.dart';
+import '../../network/constant/constant.dart';
 import '../../styles/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -240,37 +241,40 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                           showPhoto(
                                               context: context,
                                               image:
-                                                  model.post!.images![index]);
+                                              '${AppSetting.baseUrl}${model.post!.images![index]}');
                                         },
-                                        child: Image(
-                                            image: NetworkImage(
-                                                '${model.post!.images![index]}'),
-                                            errorBuilder:
-                                                (context, error, stackTrace) =>
-                                                    Container(
-                                                      height: 150,
-                                                      color: AppTheme
-                                                          .colors.opacityPurple,
-                                                      child:
-                                                          myCircularProgressIndicator(),
-                                                    ),
-                                            loadingBuilder: (context, child,
-                                                loadingProgress) {
-                                              int? expSize;
-                                              expSize = loadingProgress
-                                                  ?.expectedTotalBytes;
-                                              if (expSize != null) {
-                                                return Container(
-                                                  height: 150,
-                                                  color: AppTheme
-                                                      .colors.opacityPurple,
-                                                  child:
-                                                      myCircularProgressIndicator(),
-                                                );
-                                              } else {
-                                                return child;
-                                              }
-                                            }),
+                                        child: Hero(
+                                          tag: '${AppSetting.baseUrl}${model.post!.images![index]}',
+                                          child: Image(
+                                              image: NetworkImage(
+                                                  '${AppSetting.baseUrl}${model.post!.images![index]}'),
+                                              errorBuilder:
+                                                  (context, error, stackTrace) =>
+                                                      Container(
+                                                        height: 150,
+                                                        color: AppTheme
+                                                            .colors.opacityPurple,
+                                                        child:
+                                                            myCircularProgressIndicator(),
+                                                      ),
+                                              loadingBuilder: (context, child,
+                                                  loadingProgress) {
+                                                int? expSize;
+                                                expSize = loadingProgress
+                                                    ?.expectedTotalBytes;
+                                                if (expSize != null) {
+                                                  return Container(
+                                                    height: 150,
+                                                    color: AppTheme
+                                                        .colors.opacityPurple,
+                                                    child:
+                                                        myCircularProgressIndicator(),
+                                                  );
+                                                } else {
+                                                  return child;
+                                                }
+                                              }),
+                                        ),
                                       ),
                                     ),
                                   ),

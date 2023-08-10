@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 import 'package:social_master/shared/components/components.dart';
@@ -28,7 +29,7 @@ class _CreatePostState extends State<CreatePost> {
 
   Future selectMultipleImages() async {
     final List<XFile> selectedImage =
-        await picker.pickMultiImage(maxHeight: 700,maxWidth: 700);
+    await picker.pickMultiImage(maxHeight: 700, maxWidth: 700);
     if (selectedImage.isEmpty) return;
     for (int i = 0; i < selectedImage.length; i++) {
       selectedImages.add(File(selectedImage[i].path));
@@ -67,13 +68,12 @@ class _CreatePostState extends State<CreatePost> {
       request.files.add(vid);
     }
 
-if(images != null){
-      for(int x=0;x<images.length;x++){
-      var pic = await http.MultipartFile.fromPath("image[]", images[x].path);
-      request.files.add(pic);
-      print(images[x].path);
-      print('hello');
-    }}
+    if (images != null) {
+      for (int x = 0; x < images.length; x++) {
+        var pic = await http.MultipartFile.fromPath("image[]", images[x].path);
+        request.files.add(pic);
+      }
+    }
 
     var response = await request.send();
 
@@ -83,9 +83,9 @@ if(images != null){
     final json = jsonDecode(responseString);
 
     if (response.statusCode == 200) {
-      print('done');
+      // print('done');
     } else {
-      print('object');
+      // print('object');
     }
   }
 
@@ -97,9 +97,9 @@ if(images != null){
       appBar: AppBar(
         title: const Center(
             child: Text(
-          "Create new post",
-          style: TextStyle(),
-        )),
+              "Create new post",
+              style: TextStyle(),
+            )),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -125,7 +125,9 @@ if(images != null){
                 ),
               ),
               captionTextFormField(validate: Validate.emptyValidate,
-                  controller: _captionController, label: 'Caption', maxlines: 2),
+                  controller: _captionController,
+                  label: 'Caption',
+                  maxlines: 2),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text(
@@ -140,53 +142,56 @@ if(images != null){
               GestureDetector(
                 child: selectedImages.isEmpty == false
                     ? Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          color: AppTheme.colors.opacityPurple,
-                          child: MasonryGridView.builder(
-                            mainAxisSpacing: 4,
-                            crossAxisSpacing: 4,
-                            padding: const EdgeInsets.all(5),
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            gridDelegate:
-                                SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: selectedImages.length == 1 ? 1 :selectedImages.length <10? 2:3,
-                            ),
-                            itemCount: selectedImages.length,
-                            itemBuilder: (context, index) => Image(
-                              image: FileImage(selectedImages[index]),
-                              fit: BoxFit.contain,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  Container(
-                                height: 150,
-                                color: AppTheme.colors.opacityPurple,
-                                child: myCircularProgressIndicator(),
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                    : Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 5),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                color: AppTheme.colors.opacityPurple,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Center(
-                                  child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Icon(
-                                  Icons.add_photo_alternate_outlined,
-                                  size: 100,
-                                  color: AppTheme.colors.opacityPurple,
-                                ),
-                              ))),
-                        ),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    color: AppTheme.colors.opacityPurple,
+                    child: MasonryGridView.builder(
+                      mainAxisSpacing: 4,
+                      crossAxisSpacing: 4,
+                      padding: const EdgeInsets.all(5),
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      gridDelegate:
+                      SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: selectedImages.length == 1
+                            ? 1
+                            : selectedImages.length < 10 ? 2 : 3,
                       ),
+                      itemCount: selectedImages.length,
+                      itemBuilder: (context, index) =>
+                          Image(
+                            image: FileImage(selectedImages[index]),
+                            fit: BoxFit.contain,
+                            errorBuilder: (context, error, stackTrace) =>
+                                Container(
+                                  height: 150,
+                                  color: AppTheme.colors.opacityPurple,
+                                  child: myCircularProgressIndicator(),
+                                ),
+                          ),
+                    ),
+                  ),
+                )
+                    : Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10.0, vertical: 5),
+                    child: Container(
+                        decoration: BoxDecoration(
+                          color: AppTheme.colors.opacityPurple,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Icon(
+                                Icons.add_photo_alternate_outlined,
+                                size: 100,
+                                color: AppTheme.colors.opacityPurple,
+                              ),
+                            ))),
+                  ),
+                ),
                 onTap: () {
                   selectMultipleImages();
                   setState(() {});
@@ -211,47 +216,47 @@ if(images != null){
               GestureDetector(
                 child: selectedVideo != null
                     ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        showVideoFromFile(
+                            context: context, vid: selectedVideo!);
+                      },
+                      child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            showVideoFromFile(
-                                context: context, vid: selectedVideo!);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 200,
-                              width: double.infinity,
-                              color: Colors.black,
-                              child: const Icon(
-                                Icons.play_circle_outline,
-                                color: Colors.white,
-                                size: 60,
-                              ),
-                            ),
+                        child: Container(
+                          height: 200,
+                          width: double.infinity,
+                          color: Colors.black,
+                          child: const Icon(
+                            Icons.play_circle_outline,
+                            color: Colors.white,
+                            size: 60,
                           ),
-                        ))
-                    : Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10.0,
-                              vertical: 5),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                color: AppTheme.colors.opacityPurple,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Center(
-                                  child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Icon(
-                                  Icons.video_call_outlined,
-                                  size: 100,
-                                  color: AppTheme.colors.opacityPurple,
-                                ),
-                              ))),
                         ),
                       ),
+                    ))
+                    : Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10.0,
+                        vertical: 5),
+                    child: Container(
+                        decoration: BoxDecoration(
+                          color: AppTheme.colors.opacityPurple,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Icon(
+                                Icons.video_call_outlined,
+                                size: 100,
+                                color: AppTheme.colors.opacityPurple,
+                              ),
+                            ))),
+                  ),
+                ),
                 onTap: () {
                   selectVideo();
                   setState(() {});
@@ -279,10 +284,21 @@ if(images != null){
                   height: 50,
                   text: "Create",
                   onPressed: () async {
-                    if(formKey.currentState!.validate()){
-                    createPost(body:_captionController.text,token: Prefs.getToken(),video: selectedVideo,images: selectedImages );
-                  }
-                    },
+                    if (formKey.currentState!.validate()) {
+                      createPost(body: _captionController.text,
+                          token: Prefs.getToken(),
+                          video: selectedVideo,
+                          images: selectedImages);
+                      Navigator.of(context).pop();
+                      Fluttertoast.showToast(
+                          msg: "your new post has been published",
+                          gravity: ToastGravity.BOTTOM,
+                          toastLength: Toast.LENGTH_SHORT,
+                          backgroundColor: Colors.black54,
+                          timeInSecForIosWeb: 2,
+                          fontSize: 16);
+                    }
+                  },
                 ),
               ),
               const SizedBox(

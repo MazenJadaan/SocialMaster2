@@ -204,28 +204,31 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                                         context: context,
                                         image: '${AppSetting.baseUrl}${model.images![index]}');
                                   },
-                                  child: Image(
-                                    image:
-                                        NetworkImage('${AppSetting.baseUrl}${model.images![index]}'),
-                                      loadingBuilder: (context, child, loadingProgress) {
-                                        int? expSize;
-                                        expSize = loadingProgress?.expectedTotalBytes;
-                                        if (expSize != null) {
-                                          return
-                                            Container(height: 150,
-                                              color: AppTheme.colors.opacityPurple,
-                                              child: Center(
-                                                  child: CircularProgressIndicator(
-                                                    color: AppTheme.colors.purple,
-                                                    backgroundColor: AppTheme.colors.opacityPurple,
-                                                    strokeWidth: 2,
-                                                  )),
-                                            );
+                                  child: Hero(
+                                    tag:'${AppSetting.baseUrl}${model.images![index]}' ,
+                                    child: Image(
+                                      image:
+                                          NetworkImage('${AppSetting.baseUrl}${model.images![index]}'),
+                                        loadingBuilder: (context, child, loadingProgress) {
+                                          int? expSize;
+                                          expSize = loadingProgress?.expectedTotalBytes;
+                                          if (expSize != null) {
+                                            return
+                                              Container(height: 150,
+                                                color: AppTheme.colors.opacityPurple,
+                                                child: Center(
+                                                    child: CircularProgressIndicator(
+                                                      color: AppTheme.colors.purple,
+                                                      backgroundColor: AppTheme.colors.opacityPurple,
+                                                      strokeWidth: 2,
+                                                    )),
+                                              );
+                                          }
+                                          else {
+                                            return child;
+                                          }
                                         }
-                                        else {
-                                          return child;
-                                        }
-                                      }
+                                    ),
                                   ),
                                 ),
                               ),
