@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\GoogleAuthController;
-use App\Http\Controllers\HomePage\SeeHomePageController;
+use App\Http\Controllers\HomePage\SeeAndHomePageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StoriesController;
@@ -57,10 +57,6 @@ Route::middleware('auth:api')->group(function () {
 
     Route::delete('deleteStory/{id}', [StoriesController::class, 'deleteStory']);
 
-    Route::get('showCurrentStory', [StoriesController::class, 'showMyStoryDetail']);
-
-    Route::get('showFollwingStory', [StoriesController::class, 'showStory']);
-
     Route::get('showOldestStory', [StoriesController::class, 'showArchiveStories']);
 
     Route::post('create_post',[PostController::class,'createNewPost']);
@@ -69,14 +65,17 @@ Route::middleware('auth:api')->group(function () {
 
     Route::delete('deletePosts/{id}', [PostController::class, 'deletePost']);
 
-    Route::get('see_videos',[SeeHomePageController::class,'see_videos']);
+    /////////////// Home Page ///////////////////////
+    Route::get('see_videos',[SeeAndHomePageController::class,'see_videos']);
 
-    Route::get('allWorld',[SeeHomePageController::class,'showAllWorldPosts']);
+    Route::get('allWorld',[SeeAndHomePageController::class,'showAllWorldPosts']);
 
+    Route::get('MyfollowingPage', [SeeAndHomePageController::class, 'showMyFollowingPosts']);
 
-//    Route::get('returnMyPosts', [PostController::class, 'showAllUserPost']);
+    Route::get('showCurrentStory', [SeeAndHomePageController::class, 'showMyStoryDetail']);
 
-    Route::get('returnMyFollowingPosts', [PostController::class, 'showMyFollowingPosts']);
+    Route::get('showFollwingStory', [SeeAndHomePageController::class, 'showStory']);
+    //////////////// Home Page //////////////////////
 
 
     Route::post('savePosts/{id}', [PostController::class, 'savePost']);

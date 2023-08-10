@@ -77,7 +77,7 @@ class PostController extends Controller
            $image_full_name = $image_name.'.'.$ext;
            $upload_path = public_path('/images/posts_pictures/');
            $file->move($upload_path,$image_full_name);
-                $img_url = 'public/images/posts_pictures/'.$image_full_name;
+                $img_url = 'images/posts_pictures/'.$image_full_name;
            $images[]=$img_url;
             }
                 foreach ($images as $image) {
@@ -159,7 +159,7 @@ class PostController extends Controller
                     $image_full_name = $image_name.'.'.$ext;
                     $upload_path = public_path('/images/posts_pictures/');
                     $file->move($upload_path,$image_full_name);
-                    $img_url = 'public/images/posts_pictures/'.$image_full_name;
+                    $img_url = 'images/posts_pictures/'.$image_full_name;
                     $images[]=$img_url;
                 }
                 foreach ($images as $image) {
@@ -197,23 +197,6 @@ class PostController extends Controller
         }
     }
 
-
-
-    public  function showMyFollowingPosts()
-    {
-        $userID = Auth::user()->id;
-        $userFollowing = userfollowers::where('user_id', $userID)->get();
-        $ids = $userFollowing->pluck('user_profile_id')->toArray();
-        $finalResult = DB::table('posts')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
-            ->whereIn('user_profiles.id',$ids)
-            ->get();
-        if (!$finalResult->count())
-            return $this->ApiResponse('', "You haven't follow any user yet", 401);
-        return $this->ApiResponse($finalResult, 'Information returned successfully', 200);
-    }
-    //done
 
     //done
     public function savePost($id)

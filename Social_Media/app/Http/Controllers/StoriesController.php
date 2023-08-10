@@ -158,44 +158,6 @@ class StoriesController extends Controller
     }
 
 
-    public function showMyStoryDetail()
-    {
-        $expireTime = Carbon::now();
-        $userID = Auth::user()->id;
-        $user = User::select('id','first_name','last_name')->where('id',$userID)->with(['user_profile'=>function($q){
-            $q->select('id','user_id','profile_photo');
-        }])->get();
-        $user_stories = showStories::collection(Story::where([
-            ['user_id', $userID],
-            ['story_date_expire', '>', $expireTime],
-        ])->get());
-        $data = [
-           'my_info' => $user ,
-          'my_stories' =>  $user_stories
-        ];
-        return $this->ApiResponse($data, 'Information returned susseccfuly', 200);
-    }
-    //done
-
-    public function showStory()
-    {
-     // $expireTime = Carbon::now();
-        $userID = Auth::user()->id;
-        $userFollowing = userfollowers::where('user_id', $userID)->get();
-        $ids = $userFollowing->pluck('user_profile_id')->toArray();
-        $finalResult= User::select('id','first_name','last_name')->whereIn('id',$ids)->with(['user_profile'=>function($q){
-            $q->select('user_id','profile_photo');
-       }])->with(['story'=>function($q1){
-           $expireTime = Carbon::now();
-            $q1 ->where('story_date_expire', '>', $expireTime);
-        }])->get();
-      /* $finalResult = showStories::collection(story::whereIn('user_profile_id', $ids)
-         ->where('story_date_expire', '>', $expireTime)
-            ->get());*/
-      return   $this->ApiResponse($finalResult, 'Information returned susseccfuly', 200);
-    }
-
-    //done
     public function showArchiveStories()
     {
         $userID = Auth::user()->id;
