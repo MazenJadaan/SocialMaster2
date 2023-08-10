@@ -2896,6 +2896,237 @@
 					]
 				},
 				{
+					"name": "showMyStoriesThatAvaliable",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/showCurrentStory",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"showCurrentStory"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "showFullStory",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/showCurrentStory",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"showCurrentStory"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jul 2023 10:27:28 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jul 2023 10:27:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"my_info\": [\n            {\n                \"id\": 1,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"refa3i\",\n                \"user_profile\": {\n                    \"id\": 1,\n                    \"user_id\": 1,\n                    \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n                }\n            }\n        ],\n        \"my_stories\": [\n            {\n                \"id\": 1,\n                \"story_body\": \"story 1 user 1\",\n                \"story_date\": \"2023-07-18\",\n                \"story_time\": \"00:40:00\",\n                \"elapsed_time\": \"12 hours ago\",\n                \"media\": null\n            },\n            {\n                \"id\": 3,\n                \"story_body\": \"story 3 user 1\",\n                \"story_date\": \"2023-07-18\",\n                \"story_time\": \"00:41:00\",\n                \"elapsed_time\": \"12 hours ago\",\n                \"media\": \"storage/app/images/stories_pictures/1689630104.png\"\n            },\n            {\n                \"id\": 5,\n                \"story_body\": \"story 5 user 1\",\n                \"story_date\": \"2023-07-18\",\n                \"story_time\": \"13:17:00\",\n                \"elapsed_time\": \"9 minutes ago\",\n                \"media\": \"storage/app/images/stories_pictures/1689675451.jpg\"\n            }\n        ]\n    },\n    \"message\": \"Information returned susseccfuly\",\n    \"status\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "showMyUserFollowingStories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/showFollwingStory",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"showFollwingStory"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "showFollowingStory",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/showFollwingStory",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"showFollwingStory"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jul 2023 10:43:08 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jul 2023 10:43:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"first_name\": \"alaa\",\n            \"last_name\": \"refa3i\",\n            \"user_profile\": {\n                \"user_id\": 1,\n                \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n            },\n            \"story\": [\n                {\n                    \"id\": 1,\n                    \"user_id\": 1,\n                    \"user_profile_id\": 1,\n                    \"story_body\": \"story 1 user 1\",\n                    \"story_date\": \"2023-07-18\",\n                    \"story_date_expire\": \"13 hours ago\",\n                    \"story_time\": \"00:40:00\",\n                    \"media\": null,\n                    \"created_at\": \"2023-07-17T21:40:58.000000Z\",\n                    \"updated_at\": \"2023-07-17T21:40:58.000000Z\"\n                },\n                {\n                    \"id\": 3,\n                    \"user_id\": 1,\n                    \"user_profile_id\": 1,\n                    \"story_body\": \"story 3 user 1\",\n                    \"story_date\": \"2023-07-18\",\n                    \"story_date_expire\": \"13 hours ago\",\n                    \"story_time\": \"00:41:00\",\n                    \"media\": \"storage/app/images/stories_pictures/1689630104.png\",\n                    \"created_at\": \"2023-07-17T21:41:44.000000Z\",\n                    \"updated_at\": \"2023-07-17T21:41:44.000000Z\"\n                },\n                {\n                    \"id\": 5,\n                    \"user_id\": 1,\n                    \"user_profile_id\": 1,\n                    \"story_body\": \"story 5 user 1\",\n                    \"story_date\": \"2023-07-18\",\n                    \"story_date_expire\": \"25 minutes ago\",\n                    \"story_time\": \"13:17:00\",\n                    \"media\": \"storage/app/images/stories_pictures/1689675451.jpg\",\n                    \"created_at\": \"2023-07-18T10:17:31.000000Z\",\n                    \"updated_at\": \"2023-07-18T10:17:32.000000Z\"\n                }\n            ]\n        }\n    ],\n    \"message\": \"Information returned susseccfuly\",\n    \"status\": 200\n}"
+						}
+					]
+				},
+				{
 					"name": "MyArchiveStories",
 					"request": {
 						"auth": {
@@ -3794,537 +4025,12 @@
 					]
 				},
 				{
-					"name": "All World Post",
+					"name": "AllWorld",
 					"request": {
 						"method": "GET",
 						"header": []
 					},
-					"response": [
-						{
-							"name": "All world Example",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/api/allWorld",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"allWorld"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 10 Aug 2023 09:29:36 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 10 Aug 2023 09:29:36 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.0.28"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "56"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"data\": [\n        {\n            \"id\": 7,\n            \"post_body\": \"post 4 user 2\",\n            \"post_video\": null,\n            \"post_time\": \"12:28:17\",\n            \"post_date\": \"2023-08-10\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"photo\": [\n                {\n                    \"post_id\": 7,\n                    \"photo_path\": \"public/images/posts_pictures/0530e22dea41e24a039563139cdc215e.jpeg\"\n                },\n                {\n                    \"post_id\": 7,\n                    \"photo_path\": \"public/images/posts_pictures/c646a3b8b24cb64c1314c03292fff0fd.jpg\"\n                },\n                {\n                    \"post_id\": 7,\n                    \"photo_path\": \"public/images/posts_pictures/3baa271bc35fe054c86928f7016e8ae6.jpg\"\n                }\n            ],\n            \"user\": {\n                \"id\": 2,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 2,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 6,\n            \"post_body\": \"post 3 user 2\",\n            \"post_video\": null,\n            \"post_time\": \"12:28:01\",\n            \"post_date\": \"2023-08-10\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"photo\": [\n                {\n                    \"post_id\": 6,\n                    \"photo_path\": \"public/images/posts_pictures/cab070d53bd0d200746fb852a922064a.jpg\"\n                }\n            ],\n            \"user\": {\n                \"id\": 2,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 2,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 5,\n            \"post_body\": \"post 2 user 2\",\n            \"post_video\": null,\n            \"post_time\": \"12:27:51\",\n            \"post_date\": \"2023-08-10\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"photo\": [],\n            \"user\": {\n                \"id\": 2,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 2,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 4,\n            \"post_body\": \"post 1 user 2\",\n            \"post_video\": null,\n            \"post_time\": \"12:27:45\",\n            \"post_date\": \"2023-08-10\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"photo\": [],\n            \"user\": {\n                \"id\": 2,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 2,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 3,\n            \"post_body\": \"post 3 user 1\",\n            \"post_video\": null,\n            \"post_time\": \"12:24:47\",\n            \"post_date\": \"2023-08-10\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"photo\": [\n                {\n                    \"post_id\": 3,\n                    \"photo_path\": \"public/images/posts_pictures/be1bc7997695495f756312886f566110.jpeg\"\n                },\n                {\n                    \"post_id\": 3,\n                    \"photo_path\": \"public/images/posts_pictures/74378afe5e8b20910cf1f939e57f0480.jpg\"\n                }\n            ],\n            \"user\": {\n                \"id\": 1,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 1,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 2,\n            \"post_body\": \"post 2 user 1\",\n            \"post_video\": \"videos/posts_videos/1691659476.mp4\",\n            \"post_time\": \"12:24:36\",\n            \"post_date\": \"2023-08-10\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"photo\": [],\n            \"user\": {\n                \"id\": 1,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 1,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 1,\n            \"post_body\": \"post 1 user 1\",\n            \"post_video\": null,\n            \"post_time\": \"12:24:21\",\n            \"post_date\": \"2023-08-10\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"photo\": [],\n            \"user\": {\n                \"id\": 1,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 1,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        }\n    ],\n    \"message\": \"Posts returned successfully\",\n    \"status\": 200\n}"
-						}
-					]
-				},
-				{
-					"name": "Post of Homepage (following user)",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": [
-						{
-							"name": "example show my following post and payed post",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/api/MyfollowingPage",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"MyfollowingPage"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 10 Aug 2023 11:17:53 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 10 Aug 2023 11:17:53 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.0.28"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"data\": [\n        {\n            \"id\": 14,\n            \"user_id\": 4,\n            \"user_profile_id\": 4,\n            \"post_body\": \"post 3 user 4\",\n            \"post_video\": null,\n            \"post_time\": \"12:49:39\",\n            \"post_date\": \"2023-08-10\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"created_at\": \"2023-08-10T09:49:39.000000Z\",\n            \"updated_at\": \"2023-08-10T09:49:39.000000Z\",\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"payed_post\": {\n                \"post_id\": 14,\n                \"promtion_time\": \"12:50:18\"\n            },\n            \"photo\": [\n                {\n                    \"post_id\": 14,\n                    \"photo_path\": \"public/images/posts_pictures/31c0c178a9fc26ffecffd8670e6d746d.jpeg\"\n                }\n            ],\n            \"user\": {\n                \"id\": 4,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 4,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 12,\n            \"user_id\": 4,\n            \"user_profile_id\": 4,\n            \"post_body\": \"post 1 user 4\",\n            \"post_video\": null,\n            \"post_time\": \"12:48:42\",\n            \"post_date\": \"2023-08-10\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"created_at\": \"2023-08-10T09:48:42.000000Z\",\n            \"updated_at\": \"2023-08-10T09:48:42.000000Z\",\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"payed_post\": {\n                \"post_id\": 12,\n                \"promtion_time\": \"12:50:14\"\n            },\n            \"photo\": [],\n            \"user\": {\n                \"id\": 4,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 4,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 4,\n            \"user_id\": 2,\n            \"user_profile_id\": 2,\n            \"post_body\": \"post 1 user 2\",\n            \"post_video\": null,\n            \"post_time\": \"12:27:45\",\n            \"post_date\": \"2023-08-10\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"created_at\": \"2023-08-10T09:27:45.000000Z\",\n            \"updated_at\": \"2023-08-10T09:27:45.000000Z\",\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"payed_post\": {\n                \"post_id\": 4,\n                \"promtion_time\": \"14:14:55\"\n            },\n            \"photo\": [],\n            \"user\": {\n                \"id\": 2,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 2,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        }\n    ],\n    \"message\": \"Information returned successfully\",\n    \"status\": 200\n}"
-						}
-					]
-				},
-				{
-					"name": "MyStoriesInHomePage",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/showCurrentStory",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"showCurrentStory"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "if i don't have stories",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/showCurrentStory",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"showCurrentStory"
-									]
-								}
-							},
-							"status": "Payment Required",
-							"code": 402,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 10 Aug 2023 13:52:13 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 10 Aug 2023 13:52:13 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.0.28"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"data\": \"null\",\n    \"message\": \"You Dont have Stories Active You Can Create One\",\n    \"status\": 402\n}"
-						},
-						{
-							"name": "showFullStory",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/showCurrentStory",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"showCurrentStory"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 10 Aug 2023 13:54:43 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 10 Aug 2023 13:54:43 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.0.28"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "56"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"data\": {\n        \"my_info\": [\n            {\n                \"id\": 3,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"id\": 3,\n                    \"user_id\": 3,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        ],\n        \"my_stories\": [\n            {\n                \"id\": 10,\n                \"story_body\": \"story 1 user 2\",\n                \"story_date\": \"2023-08-10\",\n                \"story_time\": \"16:54:00\",\n                \"elapsed_time\": \"28 seconds ago\",\n                \"media\": null\n            },\n            {\n                \"id\": 11,\n                \"story_body\": \"story 1 user 2\",\n                \"story_date\": \"2023-08-10\",\n                \"story_time\": \"16:54:00\",\n                \"elapsed_time\": \"22 seconds ago\",\n                \"media\": \"images/stories_pictures/1691675661.jpg\"\n            },\n            {\n                \"id\": 12,\n                \"story_body\": \"story 1 user 2\",\n                \"story_date\": \"2023-08-10\",\n                \"story_time\": \"16:54:00\",\n                \"elapsed_time\": \"14 seconds ago\",\n                \"media\": \"videos/stories_videos/1691675669.mp4\"\n            }\n        ]\n    },\n    \"message\": \"My Stories returned successful\",\n    \"status\": 200\n}"
-						}
-					]
-				},
-				{
-					"name": "MyUserFollowingStories Home Page",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTBjOGIxODQzZjFhZjAxNjZiMjczYmRjZDAzODU3ZGFlODE5NWE5ZGRjY2IxZGUzYTVlMmFkZWI5YWE3MzdhMDg5YjQ3OTgwZTJkNzAwNDgiLCJpYXQiOjE2ODgzODUyNTQuMjUyNDQsIm5iZiI6MTY4ODM4NTI1NC4yNTI0NSwiZXhwIjoxNzIwMDA3NjUzLjg4ODgxMiwic3ViIjoiMiIsInNjb3BlcyI6W119.g0LFQPKbPCNrIiTCVaolwhyXeQUHiY4Lv_-g_Jj2OpjPjOG61HLeH-ysZA_ZusaGX-sNUpp-EIAdecTfR9_7he9YMSOZ8xzwinSt-B_OzfCSH6aLBdjvpESZ39uhNo3T5INYNr84v9Oe-H2_fUw7lEgmstW96LQjS9ucRaRgud-HlloVmbQ8-2-Xjf9mbK316nstvvrksdApJmU7vIx3G4z6UjBjc8RciA8sHWQYP6TMmCVX8HibeFyGitn10pnbyETRejqAxNKmNenafAs15KQEkLkAmdPT1WIG-SNAYPkm56CMTE0fD--94dX3mIqTPE-xB9ncCneOc0wUF3KfCPWFI03_EDzS5oLJVDM83I011jeEQw5QUIiH4iRy7CQU-14cpHFVbnEMC4ybMlACL-nClL4K67sGU3O4kjSgG7CI2DkB9LX7PPg7XFbXA8g4-yM5_VKvRT-PpbRC-RHuOLGvac6P0LUVH98qmm9LGHKj9GS-kzR58DcVcR0oF9RR0K-pZVC8YpAKzHS2DRqhWH_jlpMFrtpT5McFNt7pqugjglXwHh-tiexG01bzOsyHH6AQM8FcGIOtiZzb3S8nHgH6o9HkzbOWS9z9ZvQmvZWYb5YWtSHOAKZT2WT-VazcMApb2f92l2GEro1QY0-3TnZ_-ovadhUZTK9UwZyv5y4",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/showFollwingStory",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"showFollwingStory"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "showFollowingStory",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/api/showFollwingStory",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"showFollwingStory"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 10 Aug 2023 13:56:44 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 10 Aug 2023 13:56:44 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.0.28"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "57"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"first_name\": \"alaa1\",\n            \"last_name\": \"ra3i\",\n            \"user_profile\": {\n                \"user_id\": 1,\n                \"profile_photo\": \"images/profile_picture/default_picture.png\"\n            },\n            \"story\": [\n                {\n                    \"id\": 1,\n                    \"user_id\": 1,\n                    \"user_profile_id\": 1,\n                    \"story_body\": \"story 1 user 1\",\n                    \"story_date\": \"2023-08-10\",\n                    \"story_date_expire\": \"46 minutes ago\",\n                    \"story_time\": \"16:10:00\",\n                    \"media\": \"images/stories_pictures/1691673002.jpeg\",\n                    \"created_at\": \"2023-08-10T13:10:02.000000Z\",\n                    \"updated_at\": \"2023-08-10T13:10:02.000000Z\"\n                },\n                {\n                    \"id\": 2,\n                    \"user_id\": 1,\n                    \"user_profile_id\": 1,\n                    \"story_body\": \"story 2 user 1\",\n                    \"story_date\": \"2023-08-10\",\n                    \"story_date_expire\": \"46 minutes ago\",\n                    \"story_time\": \"16:10:00\",\n                    \"media\": null,\n                    \"created_at\": \"2023-08-10T13:10:14.000000Z\",\n                    \"updated_at\": \"2023-08-10T13:10:14.000000Z\"\n                },\n                {\n                    \"id\": 3,\n                    \"user_id\": 1,\n                    \"user_profile_id\": 1,\n                    \"story_body\": \"story 3 user 1\",\n                    \"story_date\": \"2023-08-10\",\n                    \"story_date_expire\": \"46 minutes ago\",\n                    \"story_time\": \"16:10:00\",\n                    \"media\": \"images/stories_pictures/1691673024.jpg\",\n                    \"created_at\": \"2023-08-10T13:10:24.000000Z\",\n                    \"updated_at\": \"2023-08-10T13:10:24.000000Z\"\n                },\n                {\n                    \"id\": 8,\n                    \"user_id\": 1,\n                    \"user_profile_id\": 1,\n                    \"story_body\": \"story 1 user 2\",\n                    \"story_date\": \"2023-08-10\",\n                    \"story_date_expire\": \"3 minutes ago\",\n                    \"story_time\": \"16:53:00\",\n                    \"media\": \"images/stories_pictures/1691675611.jpg\",\n                    \"created_at\": \"2023-08-10T13:53:31.000000Z\",\n                    \"updated_at\": \"2023-08-10T13:53:31.000000Z\"\n                },\n                {\n                    \"id\": 9,\n                    \"user_id\": 1,\n                    \"user_profile_id\": 1,\n                    \"story_body\": \"story 1 user 2\",\n                    \"story_date\": \"2023-08-10\",\n                    \"story_date_expire\": \"3 minutes ago\",\n                    \"story_time\": \"16:53:00\",\n                    \"media\": null,\n                    \"created_at\": \"2023-08-10T13:53:44.000000Z\",\n                    \"updated_at\": \"2023-08-10T13:53:44.000000Z\"\n                }\n            ]\n        },\n        {\n            \"id\": 2,\n            \"first_name\": \"alaa1\",\n            \"last_name\": \"ra3i\",\n            \"user_profile\": {\n                \"user_id\": 2,\n                \"profile_photo\": \"images/profile_picture/default_picture.png\"\n            },\n            \"story\": [\n                {\n                    \"id\": 5,\n                    \"user_id\": 2,\n                    \"user_profile_id\": 2,\n                    \"story_body\": \"story 1 user 2\",\n                    \"story_date\": \"2023-08-10\",\n                    \"story_date_expire\": \"30 minutes ago\",\n                    \"story_time\": \"16:25:00\",\n                    \"media\": \"images/stories_pictures/1691673945.jpg\",\n                    \"created_at\": \"2023-08-10T13:25:45.000000Z\",\n                    \"updated_at\": \"2023-08-10T13:25:45.000000Z\"\n                },\n                {\n                    \"id\": 6,\n                    \"user_id\": 2,\n                    \"user_profile_id\": 2,\n                    \"story_body\": \"story 1 user 2\",\n                    \"story_date\": \"2023-08-10\",\n                    \"story_date_expire\": \"3 minutes ago\",\n                    \"story_time\": \"16:53:00\",\n                    \"media\": \"images/stories_pictures/1691675584.jpg\",\n                    \"created_at\": \"2023-08-10T13:53:04.000000Z\",\n                    \"updated_at\": \"2023-08-10T13:53:04.000000Z\"\n                },\n                {\n                    \"id\": 7,\n                    \"user_id\": 2,\n                    \"user_profile_id\": 2,\n                    \"story_body\": \"story 1 user 2\",\n                    \"story_date\": \"2023-08-10\",\n                    \"story_date_expire\": \"3 minutes ago\",\n                    \"story_time\": \"16:53:00\",\n                    \"media\": \"images/stories_pictures/1691675590.jpg\",\n                    \"created_at\": \"2023-08-10T13:53:10.000000Z\",\n                    \"updated_at\": \"2023-08-10T13:53:10.000000Z\"\n                }\n            ]\n        }\n    ],\n    \"message\": \"All Stories Of Your Following User's returned susseccfuly\",\n    \"status\": 200\n}"
-						},
-						{
-							"name": "if there are no stories",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/api/showFollwingStory",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"showFollwingStory"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 10 Aug 2023 13:59:30 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 10 Aug 2023 13:59:30 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.0.28"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"data\": null,\n    \"message\": \"There are no stories available now. \",\n    \"status\": 200\n}"
-						}
-					]
+					"response": []
 				}
 			]
 		}
