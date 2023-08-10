@@ -3715,85 +3715,6 @@
 			"name": "HomePage",
 			"item": [
 				{
-					"name": "See",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": [
-						{
-							"name": "New Request",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/api/see_videos",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"see_videos"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 08 Aug 2023 18:56:56 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 08 Aug 2023 18:56:56 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.0.28"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"data\": [\n        {\n            \"id\": 5,\n            \"post_body\": \"video 3 user 2 dusk laravel\",\n            \"post_video\": \"videos/posts_videos/1691519490.mp4\",\n            \"post_time\": \"21:31:30\",\n            \"post_date\": \"2023-08-08\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"created_at\": \"2023-08-08T18:31:30.000000Z\",\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"user\": {\n                \"id\": 2,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 2,\n                    \"profile_photo\": \"public/images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 4,\n            \"post_body\": \"video 2 user 3\",\n            \"post_video\": \"videos/posts_videos/1691519331.mp4\",\n            \"post_time\": \"21:28:51\",\n            \"post_date\": \"2023-08-08\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"created_at\": \"2023-08-08T18:28:51.000000Z\",\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"user\": {\n                \"id\": 3,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 3,\n                    \"profile_photo\": \"public/images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 3,\n            \"post_body\": \"video 1 user 3\",\n            \"post_video\": \"videos/posts_videos/1691519304.mp4\",\n            \"post_time\": \"21:28:24\",\n            \"post_date\": \"2023-08-08\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"created_at\": \"2023-08-08T18:28:24.000000Z\",\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"user\": {\n                \"id\": 3,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 3,\n                    \"profile_photo\": \"public/images/profile_picture/default_picture.png\"\n                }\n            }\n        }\n    ],\n    \"message\": \"all the videos\",\n    \"status\": 200\n}"
-						}
-					]
-				},
-				{
 					"name": "All World Post",
 					"request": {
 						"method": "GET",
@@ -4323,6 +4244,90 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"data\": null,\n    \"message\": \"There are no stories available now. \",\n    \"status\": 200\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "See",
+			"item": [
+				{
+					"name": "See",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/see_videos",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"see_videos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Aug 2023 18:56:56 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Aug 2023 18:56:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.28"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 5,\n            \"post_body\": \"video 3 user 2 dusk laravel\",\n            \"post_video\": \"videos/posts_videos/1691519490.mp4\",\n            \"post_time\": \"21:31:30\",\n            \"post_date\": \"2023-08-08\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"created_at\": \"2023-08-08T18:31:30.000000Z\",\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"user\": {\n                \"id\": 2,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 2,\n                    \"profile_photo\": \"public/images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 4,\n            \"post_body\": \"video 2 user 3\",\n            \"post_video\": \"videos/posts_videos/1691519331.mp4\",\n            \"post_time\": \"21:28:51\",\n            \"post_date\": \"2023-08-08\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"created_at\": \"2023-08-08T18:28:51.000000Z\",\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"user\": {\n                \"id\": 3,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 3,\n                    \"profile_photo\": \"public/images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 3,\n            \"post_body\": \"video 1 user 3\",\n            \"post_video\": \"videos/posts_videos/1691519304.mp4\",\n            \"post_time\": \"21:28:24\",\n            \"post_date\": \"2023-08-08\",\n            \"reaction\": 0,\n            \"saved\": 0,\n            \"created_at\": \"2023-08-08T18:28:24.000000Z\",\n            \"like_count\": 0,\n            \"comment_count\": 0,\n            \"share_post_count\": 0,\n            \"user\": {\n                \"id\": 3,\n                \"first_name\": \"alaa\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 3,\n                    \"profile_photo\": \"public/images/profile_picture/default_picture.png\"\n                }\n            }\n        }\n    ],\n    \"message\": \"all the videos\",\n    \"status\": 200\n}"
 						}
 					]
 				}
