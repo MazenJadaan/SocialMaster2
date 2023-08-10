@@ -1,9 +1,3 @@
-// import 'package:social_master/models/usermodel.dart';
-
-// UserModel defaultUser = UserModel();
-
-
-
 class ProfileResponse {
   Data? data;
   String? message;
@@ -323,8 +317,6 @@ class Photo {
     return data;
   }
 }
-
-
 
 class Sharepost {
   int? id;

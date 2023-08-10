@@ -1,10 +1,11 @@
 
 class AppSetting{
+
   // user token
   static String token = "";
 
   // baseurl of the server
-  static String baseUrl ="http://192.168.1.7:8000/";
+  static String baseUrl ="http://192.168.1.6:8000/";
 
   // finished APIs
   static String showMyProfileApi = 'api/showMyProfile';
@@ -16,9 +17,10 @@ class AppSetting{
   static String forgotPasswordApi = 'api/forget-password';
   static String passwordCodeCheckApi ='api/code-check';
   static String updatePasswordApi = 'api/update-password';
-  static String showProfileApi = 'api/showProfile/';
 
   // unfinished APIs
+  static String showProfileApi = 'api/showProfile/';
+  static String createPostApi = 'api/create_post';
 
   //other constants
   static bool darkMode =false;

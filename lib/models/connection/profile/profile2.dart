@@ -31,10 +31,10 @@ class Data {
   Data({this.profileInformation, this.allPosts});
 
   Data.fromJson(Map<String, dynamic> json) {
-    profileInformation = json['profile information'] != null
-        ? new ProfileInformation.fromJson(json['profile information'])
+    profileInformation = json['user information'] != null
+        ? new ProfileInformation.fromJson(json['user information'])
         : null;
-    if (json['all posts'] != null) {
+    if (json['user posts'] != null) {
       allPosts =  <AllPosts>[];
       json['all posts'].forEach((v) {
         allPosts?.add(new AllPosts.fromJson(v));
@@ -45,10 +45,10 @@ class Data {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.profileInformation != null) {
-      data['profile information'] = this.profileInformation?.toJson();
+      data['user information'] = this.profileInformation?.toJson();
     }
     if (this.allPosts != null) {
-      data['all posts'] = this.allPosts?.map((v) => v.toJson()).toList();
+      data['user posts'] = this.allPosts?.map((v) => v.toJson()).toList();
     }
     return data;
   }

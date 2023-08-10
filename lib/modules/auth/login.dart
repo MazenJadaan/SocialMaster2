@@ -11,7 +11,6 @@ import 'package:social_master/shared/styles/colors.dart';
 import '../../models/connection/login.dart';
 import '../../models/provider/obscure_model.dart';
 import '../../shared/components/components.dart';
-import '../../shared/network/api/google_signin_api.dart';
 import '../../shared/network/constant/constant.dart';
 import '../../shared/shared_preferences.dart';
 import '../../shared/validate/validate.dart';
@@ -235,7 +234,7 @@ class _LoginState extends State<Login> {
   }
 
   Future signIn() async {
-    final user = await GoogleSignInApi.login();
+    // final user = await GoogleSignInApi.login();
     // if(user == null){
     //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sign in Failed')));
     // }else {

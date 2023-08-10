@@ -98,41 +98,49 @@ class Tab1 extends StatelessWidget {
     ),
   );
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            RefreshIndicator(
-              onRefresh: refresh,
-              child: ListView.builder(
-                  padding: const EdgeInsets.all(0.0),
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: posts.length,
-                  itemBuilder: (context, i) =>
-                      ChangeNotifierProvider<PostModel>.value(
-                        value: posts[i],
-                        child: Consumer<PostModel>(
-                          builder: (context, model, child) =>
-                              postBuilder(model: model, context: context),
-                        ),
-                      )),
-            ),
-            ChangeNotifierProvider<SharedPostModel>.value(
-              value: s,
-              child: Consumer<SharedPostModel>(
-                builder: (context, model, child) =>
-                    sharedPostBuilder(model: model, context: context),
+      body: RefreshIndicator(
+        onRefresh: () async{
+
+        },
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              RefreshIndicator(
+                onRefresh: ()async{
+
+                },
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(0.0),
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: posts.length,
+                    itemBuilder: (context, i) =>
+                        ChangeNotifierProvider<PostModel>.value(
+                          value: posts[i],
+                          child: Consumer<PostModel>(
+                            builder: (context, model, child) =>
+                                postBuilder(model: model, context: context),
+                          ),
+                        )),
               ),
-            ),
-            const SizedBox(
-              height: 55,
-            ),
-          ],
+              ChangeNotifierProvider<SharedPostModel>.value(
+                value: s,
+                child: Consumer<SharedPostModel>(
+                  builder: (context, model, child) =>
+                      sharedPostBuilder(model: model, context: context),
+                ),
+              ),
+              const SizedBox(
+                height: 55,
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:social_master/modules/app/handle_post/edit_post.dart';
 import 'package:social_master/modules/auth/login.dart';
+import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/modules/welcome/welcome_view_page.dart';
 
 import 'package:social_master/shared/shared_preferences.dart';
 import 'package:social_master/shared/styles/colors.dart';
+import 'models/provider/post/postmodel.dart';
 import 'modules/app/home.dart';
 
 Future main() async {

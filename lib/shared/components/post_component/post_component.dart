@@ -147,7 +147,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                               gridDelegate:
                                   SliverSimpleGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount:
-                                    model.images!.length == 1 ? 1 : 2,
+                                    model.images!.length == 1 ? 1 :model.images!.length<10 ? 2 : 3,
                               ),
                               itemCount: model.images!.length,
                               itemBuilder: (context, index) => ClipRRect(
