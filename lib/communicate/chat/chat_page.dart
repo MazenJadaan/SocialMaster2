@@ -11,14 +11,14 @@ class ChatPage extends StatefulWidget{
 
 class _ChatPageState extends State<ChatPage> {
   List<ChatUsers> chatUsers = [
-    ChatUsers(text: "Jane Russel", secondaryText: "Awesome Setup", image: "images/userImage1.jpeg", time: "Now"),
-    ChatUsers(text: "Glady's Murphy", secondaryText: "That's Great", image: "images/userImage2.jpeg", time: "Yesterday"),
-    ChatUsers(text: "Jorge Henry", secondaryText: "Hey where are you?", image: "images/userImage3.jpeg", time: "31 Mar"),
-    ChatUsers(text: "Philip Fox", secondaryText: "Busy! Call me in 20 mins", image: "images/userImage4.jpeg", time: "28 Mar"),
-    ChatUsers(text: "Debra Hawkins", secondaryText: "Thankyou, It's awesome", image: "images/userImage5.jpeg", time: "23 Mar"),
-    ChatUsers(text: "Jacob Pena", secondaryText: "will update you in evening", image: "images/userImage6.jpeg", time: "17 Mar"),
-    ChatUsers(text: "Andrey Jones", secondaryText: "Can you please share the file?", image: "images/userImage7.jpeg", time: "24 Feb"),
-    ChatUsers(text: "John Wick", secondaryText: "How are you?", image: "images/userImage8.jpeg", time: "18 Feb"),
+    ChatUsers(text: "Ahmad Hafez", secondaryText: "في لعبة طابة اليوم؟", image: "assets/images/calling.png", time: "Now"),
+    ChatUsers(text: "Mohamad alraie", secondaryText: "حبيب القلب", image: "assets/images/profile_image.png", time: "Yesterday"),
+    ChatUsers(text: "Aya al babbile", secondaryText: "نزل اللابتوب معي اليوم", image:  "assets/images/profile_image.png", time: "31 Mar"),
+    ChatUsers(text: "Mazen Gadan", secondaryText: "اتدلى على الاريكة", image:  "assets/images/profile_image.png", time: "28 Mar"),
+    ChatUsers(text: "Alaa raie blha", secondaryText: "جاية بالمسكليتة", image:  "assets/images/profile_image.png", time: "23 Mar"),
+    ChatUsers(text: "bassem yakhor", secondaryText: "will update you in evening", image:  "assets/images/profile_image.png", time: "17 Mar"),
+    ChatUsers(text: "abo abbas", secondaryText: "Can you please share the file?", image:  "assets/images/profile_image.png", time: "24 Feb"),
+    ChatUsers(text: "unknown person", secondaryText: "How are you?", image: "assets/images/profile_image.png" , time: "18 Feb"),
   ];
   @override
   Widget build(BuildContext context) {

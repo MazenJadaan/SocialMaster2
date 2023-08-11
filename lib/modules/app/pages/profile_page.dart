@@ -204,9 +204,9 @@ class _ProfilePageState extends State<ProfilePage>
                                             child: Image(
                                               image: NetworkImage(
                                                   '${AppSetting.baseUrl}${user.coverPhoto!}'),
-                                              errorBuilder: (context, error,
-                                                      stackTrace) =>
-                                                  myCircularProgressIndicator(),
+                                              // errorBuilder: (context, error,
+                                              //         stackTrace) =>
+                                              //     myCircularProgressIndicator(),
                                               fit: BoxFit.cover,
                                             ),
                                           ),

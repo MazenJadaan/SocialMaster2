@@ -49,6 +49,9 @@ dependencies:
   chewie: ^1.7.0
   video_player: ^2.7.0
   lite_rolling_switch: ^1.0.1
+  agora_rtc_engine: ^6.2.2
+  permission_handler:
+
 
 
 

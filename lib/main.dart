@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:social_master/communicate/calling/HomeScreen.dart';
+import 'package:social_master/modules/app/pages/profile_page.dart';
 import 'package:social_master/modules/auth/login.dart';
 import 'package:social_master/modules/welcome/welcome_view_page.dart';
-
 import 'package:social_master/shared/shared_preferences.dart';
 import 'package:social_master/shared/styles/colors.dart';
+import 'communicate/calling/videoCall.dart';
 import 'modules/app/home.dart';
 
 Future main() async {
@@ -28,8 +30,8 @@ class MyApp extends StatelessWidget {
 
         // primarySwatch: Colors.purple,
       ),
-      home:
-      Prefs.getToken() ==null|| Prefs.getToken()=='' ?( Prefs.getFirtTime()==true ? Login(): WelcomePage()) :Home(),
+      home: Home()
+     // Prefs.getToken() ==null|| Prefs.getToken()=='' ?( Prefs.getFirtTime()==true ? Login(): WelcomePage()) :Home(),
     );
   }
 }

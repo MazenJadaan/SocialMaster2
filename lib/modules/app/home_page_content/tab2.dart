@@ -83,9 +83,9 @@ class _Tab2State extends State<Tab2> {
                           MaterialPageRoute(builder: (context) => Story()));
                     },
                     child: CircleAvatar(
-                      radius: 40,
+                      radius: 30,
                       backgroundImage: NetworkImage(
-                          'https://media.licdn.com/dms/image/D4D03AQFOidLqeOofwQ/profile-displayphoto-shrink_800_800/0/1675283623437?e=2147483647&v=beta&t=PWqFmmIcp6DuF2iNY6PlvGIjaBEccf8lrWe7Eb9XOd8'),
+                          'https://cdn.icon-icons.com/icons2/1736/PNG/512/4043260-avatar-male-man-portrait_113269.png'),
                     ),
                   ),
                 ),
@@ -97,9 +97,9 @@ class _Tab2State extends State<Tab2> {
                           MaterialPageRoute(builder: (context) => Story()));
                     },
                     child: CircleAvatar(
-                        radius: 40,
+                        radius:30,
                         backgroundImage: NetworkImage(
-                            'https://media.licdn.com/dms/image/D4E03AQE1K3zESFjOQg/profile-displayphoto-shrink_800_800/0/1680206692324?e=2147483647&v=beta&t=hTHBbcKIECvpy5xjMffpemlLVOZ7X4mInJa3opOrfcI')),
+                            'https://img.freepik.com/vector-premium/perfil-avatar-hombre-icono-redondo_24640-14044.jpg?w=740')),
                   ),
                 ),
                 Padding(
@@ -110,20 +110,7 @@ class _Tab2State extends State<Tab2> {
                           MaterialPageRoute(builder: (context) => Story()));
                     },
                     child: CircleAvatar(
-                        radius: 40,
-                        backgroundImage: NetworkImage(
-                            'https://img.youm7.com/ArticleImgs/2018/8/16/56018-%D8%A8%D8%A7%D8%B3%D9%85-%D9%8A%D8%A7%D8%AE%D9%88%D8%B1-(5).jpg')),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: MaterialButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Story()));
-                    },
-                    child: CircleAvatar(
-                        radius: 40,
+                        radius: 30,
                         backgroundImage: NetworkImage(
                             'https://img.youm7.com/ArticleImgs/2018/8/16/56018-%D8%A8%D8%A7%D8%B3%D9%85-%D9%8A%D8%A7%D8%AE%D9%88%D8%B1-(5).jpg')),
                   ),
@@ -136,7 +123,20 @@ class _Tab2State extends State<Tab2> {
                           MaterialPageRoute(builder: (context) => Story()));
                     },
                     child: CircleAvatar(
-                        radius: 40,
+                        radius: 30,
+                        backgroundImage: NetworkImage(
+                            'https://img.youm7.com/ArticleImgs/2018/8/16/56018-%D8%A8%D8%A7%D8%B3%D9%85-%D9%8A%D8%A7%D8%AE%D9%88%D8%B1-(5).jpg')),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: MaterialButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Story()));
+                    },
+                    child: CircleAvatar(
+                        radius: 30,
                         backgroundImage: NetworkImage(
                             'https://media.licdn.com/dms/image/D4D03AQFOidLqeOofwQ/profile-displayphoto-shrink_800_800/0/1675283623437?e=2147483647&v=beta&t=PWqFmmIcp6DuF2iNY6PlvGIjaBEccf8lrWe7Eb9XOd8')),
                   ),
