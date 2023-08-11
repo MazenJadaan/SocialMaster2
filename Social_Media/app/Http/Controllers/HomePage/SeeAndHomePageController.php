@@ -75,7 +75,7 @@ class SeeAndHomePageController extends Controller
             ->with('user',function($q1){
                 $q1->select(['id','first_name','last_name'])->with('user_profile',function ($query){
                     $query->select(['user_id','profile_photo']);
-                });})->unionAll($AllPosts)->orderBy('created_at','desc')->get();
+                });})->union($AllPosts)->orderBy('created_at','desc')->get();
 //
         if (!$PromtionPosts->count())
             return $this->ApiResponse('', "You haven't follow any user yet and not exits any post", 401);

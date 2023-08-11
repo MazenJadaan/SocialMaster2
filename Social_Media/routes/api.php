@@ -77,16 +77,34 @@ Route::middleware('auth:api')->group(function () {
     Route::get('showFollwingStory', [SeeAndHomePageController::class, 'showStory']);
     //////////////// Home Page //////////////////////
 
-
+    /////////////// Saved Post /////////////////////
     Route::post('savePosts/{id}', [PostController::class, 'savePost']);
-
-    Route::get('showSavedPosts', [PostController::class, 'showSavedPosts']);
 
     Route::delete('cancelSavePost/{id}', [PostController::class, 'removePostsFromSavedLists']);
 
+    Route::get('showSavedPosts', [PostController::class, 'showSavedPosts']);
+    /////////////// Saved Post /////////////////////
+
+    ////////////// React With Posts ///////////////
     Route::post('Like/{id}', [PostController::class, 'likePost']);
 
     Route::delete('removeLike/{id}', [PostController::class, 'removeLikeFromPost']);
+
+    Route::get('showAllReacts/{PostID}',[PostController::class,'showAllReacts']);
+
+    Route::post('writeComment/{PostID}',[PostController::class,'commentOnPost']);
+
+    Route::delete('deleteComment/{CommentID}',[PostController::class,'deleteComment']);
+
+    Route::get('showAllComments/{PostID}',[PostController::class,'showAllComments']);
+
+    Route::post('sharePost/{PostID}',[PostController::class,'sharePost']);
+
+    Route::get('showShares/{PostID}',[PostController::class,'showSharedPosts']);
+
+    Route::delete('deleteSharePost/{SharePostID}',[PostController::class,'deleteSharedPost']);
+////////////// React With Posts ///////////////
+
 });
 
 

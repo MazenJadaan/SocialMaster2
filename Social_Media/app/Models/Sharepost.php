@@ -12,7 +12,9 @@ class sharepost extends Model
     protected $fillable = [
         'user_id',
         'post_id',
-        'body'
+        'body',
+        'share_time',
+        'share_date'
     ];
 
     public function user(){

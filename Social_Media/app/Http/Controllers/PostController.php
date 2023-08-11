@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\postInformationResource;
+use App\Models\comment;
 use App\Models\like;
 use App\Models\Post;
 use App\Models\savepost;
+use App\Models\sharepost;
 use App\Models\userfollowers;
 use App\Traits\Save_MediaTrait;
 use Carbon\Carbon;
@@ -231,16 +233,23 @@ class PostController extends Controller
     public function showSavedPosts()
     {
         $userID = Auth::user()->id;
-        $result = savepost::where('user_id', $userID)->get();
-        $ids = $result->pluck('post_id')->toArray();
-        $finalResult = DB::table('saveposts')
-            ->join('posts', 'saveposts.post_id', '=', 'posts.id') //لحتى نجيب معلومات البوست
-            ->join('users', 'posts.user_id', '=', 'users.id') //لحتى نجيب اسم صاحب البوست
-            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id') //لحتى نجيب صورتو
-            ->where('saveposts.user_id', $userID)
-            ->whereIn('posts.id', $ids)
-            ->get();
-        return $this->ApiResponse($finalResult, 'Information returned successfully', 200);
+        $result = savepost::where('user_id', $userID)
+            ->with('post',function ($q){
+                $q->withCount(['like','comment','sharePost'])
+                    ->with('photo',function ($q){
+                        $q->select('post_id','photo_path');
+                    })
+                    ->with('user',function($q1){
+                        $q1->select(['id','first_name','last_name'])
+                            ->with('user_profile',function ($query){
+                            $query->select(['user_id','profile_photo']);
+            });
+                     });
+                })
+            ->get()->makeHidden(['created_at','updated_at','post_id','user_id']);
+        if(count($result))
+        return $this->ApiResponse($result, 'My Saved Post returned successfully', 200);
+                 return $this->ApiResponse(null, 'You Don\'t Have Any Saved Post ', 200);
     }
 
     public function promotPost()
@@ -265,9 +274,7 @@ class PostController extends Controller
                 'post_owner' => $postOwner
             ]);
         }
-        $likeCount = like::where('post_id', $id)->count();
-
-        return $this->ApiResponse($likeCount, 'Number of likes', 200);
+        return $this->ApiResponse('Done', 'React With Post By Put Like is Successful ', 200);
     }
 
     public function removeLikeFromPost($id)
@@ -277,51 +284,108 @@ class PostController extends Controller
             ['user_id', $userID],
             ['post_id', $id]
         ])->delete();
-        $likeCount = like::where('post_id', $id)->count();
-        if ($postLikeInfo)
-            return $this->ApiResponse($likeCount, 'Number of likes', 200);
-        return $this->ApiResponse('', '', 400);
+            return $this->ApiResponse('Done', 'UnLike for This Post  is Successful', 200);
     }
 
-    public function commentOnPost()
-    {
+    public function showAllReacts($PostID){
+        $Reacts = like::select('id','user_id')->where('post_id',$PostID)->with('user',function ($q){
+            $q->select('id','first_name','last_name')
+                ->with('user_profile',function ($q1){
+                    $q1->select('user_id','profile_photo');
+
+                });
+        })->get()->makeHidden(['user_id']);
+        if(count($Reacts)>0)
+        return $this->ApiResponse($Reacts,'This All Reacts On This Post',200);
+              return $this->ApiResponse(null,'There Are No Reacts Yet ',400);
     }
 
-    public function deleteComment()
+    public function commentOnPost(Request $request , $PostID)
     {
+        $MyID = Auth::id();
+        $owner_id = Post::where('id',$PostID)->value('user_id');
+        $text = $request->validate([
+            'comment'=>'required|String'
+        ]);
+
+        $comment = comment::Create([
+           'user_id' => $MyID,
+            'post_id'=>$PostID,
+            'comment'=>$text['comment'],
+            'post_owner'=>$owner_id
+        ]);
+       return  $this->ApiResponse($comment,'write your comment in this post successfuly',200);
     }
 
-    public function showAllComments()
+    public function deleteComment($CommentID)
     {
+        $myID=Auth::id();
+         $UserIdOfComment= comment::where('id',$CommentID)->value('user_id');
+             $post_owner_id = comment::where('id',$CommentID)->value('post_owner');
+        if($myID != $UserIdOfComment && $myID != $post_owner_id){
+            if($myID != $UserIdOfComment) {
+                return $this->ApiResponse(null, 'this not your comment you can\'t delete him', 400);
+            }
+            return $this->ApiResponse(null,'this comment not in your post you can\'t delete him',400);
+        }
+        else {
+             comment::where('id',$CommentID)->delete();
+          return  $this->ApiResponse(null,'delete comment is successfuly',400);
+        }
     }
 
-    public function sharePost()
+    public function showAllComments($PostID)
     {
+        $AllComments = comment::select('id','comment','user_id','created_at')->where('post_id',$PostID)->with('user',function ($q){
+            $q->select('id','first_name','last_name');
+            $q->with('user_profile',function ($q1){
+                $q1->select('user_id','profile_photo');
+            });
+        })->orderBy('created_at','desc')->get();
+        return $this->ApiResponse($AllComments,'all the comments on this post',200);
     }
 
-    public function showSharedPosts()
+    public function sharePost(Request $request,$PostID)
     {
+        $MyID = Auth::id();
+        $text = $request->validate([
+            'body'=>'required|String'
+        ]);
+
+    $SharePost = Sharepost::create([
+        'user_id' => $MyID,
+        'post_id' => $PostID,
+        'body' => $text['body'],
+        'share_time' => Carbon::now()->format('H:i:s'),
+        'share_date' => Carbon::now()->format('Y-m-d'),
+    ]);
+
+    return $this->ApiResponse($SharePost, 'Share Post Is Successfully', 200);
     }
 
-    public function deleteSharedPost()
+    public function showSharedPosts($PostID)
     {
+       $Shares = sharepost::where('post_id',$PostID)->with('user',function ($q){
+           $q->select('id','first_name','last_name')
+               ->with('user_profile',function ($q1){
+               $q1->select('user_id','profile_photo');
+           });
+       })->orderBy('created_at','desc')->get()->makeHidden(['created_at','updated_at']);
+       return $this->ApiResponse($Shares,'this all shares of this post',200);
+    }
+
+    public function deleteSharedPost($SharePostID)
+    {
+        $MyID = Auth::id();
+       $MySharePost = sharepost::where('id',$SharePostID)->value('user_id');
+       if($MyID != $MySharePost){
+           return $this->ApiResponse('Failed','You Can\'t Delete This Shared Post Because not your post',400);
+       }
+        sharepost::where('id',$SharePostID)->delete();
+        return $this->ApiResponse('Done','The Shared Post Is Deleted',200);
     }
 }
 // 'photo_path' => 'image' | 'mimes:jpg,bmp,png,jpeg',
 // 'video_path' => 'mimetypes:video/avi,video/mpeg,video/quicktime'
 // postInformationResource::collection
 
-
-//    public function showAllUserPost()
-//    {
-//        $userID = Auth::user()->id;
-//        $userPosts = DB::table('posts')
-//            ->join('users', 'posts.user_id', '=', 'users.id')
-//            ->join('user_profiles', 'posts.user_profile_id', '=', 'user_profiles.id')
-//            ->where('posts.user_id', $userID)
-//            ->get();
-//        if (!$userPosts->count())
-//            return $this->ApiResponse('', 'No posts added yet', 404);
-//        return $this->ApiResponse($userPosts, 'Information returned successfully', 200);
-//    }
-// now we don't use it
