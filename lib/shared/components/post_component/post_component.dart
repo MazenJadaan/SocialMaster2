@@ -136,7 +136,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                   child: Container(
                                     height: 200,
                                     color: Colors.black,
-                                    child:Icon( Icons.play_circle_outline,color: Colors.white,size: 60,),
+                                    child:const Icon( Icons.play_circle_outline,color: Colors.white,size: 60,),
                                   ),
                                 ))
                           : MasonryGridView.builder(

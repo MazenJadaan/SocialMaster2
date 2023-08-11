@@ -17,10 +17,12 @@ class AppSetting{
   static String forgotPasswordApi = 'api/forget-password';
   static String passwordCodeCheckApi ='api/code-check';
   static String updatePasswordApi = 'api/update-password';
+  static String createPostApi = 'api/create_post';
 
   // unfinished APIs
   static String showProfileApi = 'api/showProfile/';
-  static String createPostApi = 'api/create_post';
+  static String editPostApi = 'api/updatePost/';
+
 
   //other constants
   static bool darkMode =false;

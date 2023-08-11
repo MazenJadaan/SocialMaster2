@@ -29,7 +29,7 @@ class _CreatePostState extends State<CreatePost> {
 
   Future selectMultipleImages() async {
     final List<XFile> selectedImage =
-    await picker.pickMultiImage(maxHeight: 700, maxWidth: 700);
+    await picker.pickMultiImage(maxHeight: 1000, maxWidth: 1000);
     if (selectedImage.isEmpty) return;
     for (int i = 0; i < selectedImage.length; i++) {
       selectedImages.add(File(selectedImage[i].path));
@@ -39,7 +39,7 @@ class _CreatePostState extends State<CreatePost> {
   }
 
   void selectVideo() async {
-    XFile? video = await picker.pickVideo(source: ImageSource.gallery);
+    XFile? video = await picker.pickVideo(source: ImageSource.gallery,maxDuration: const Duration(minutes: 30));
     if (video == null) return;
     selectedVideo = File(video.path);
     selectedImages = [];
@@ -80,7 +80,8 @@ class _CreatePostState extends State<CreatePost> {
     //Get the response from the server
     var responseData = await response.stream.toBytes();
     var responseString = String.fromCharCodes(responseData);
-    final json = jsonDecode(responseString);
+    // final json =
+    jsonDecode(responseString);
 
     if (response.statusCode == 200) {
       // print('done');
@@ -92,7 +93,7 @@ class _CreatePostState extends State<CreatePost> {
 
   @override
   Widget build(BuildContext context) {
-    var formKey = GlobalKey<FormState>();
+    GlobalKey<FormState> formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
         title: const Center(
@@ -108,7 +109,7 @@ class _CreatePostState extends State<CreatePost> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: Container(
+                child: SizedBox(
                     height: 190,
                     width: 190,
                     child: Lottie.asset("assets/images/postadd.json")),

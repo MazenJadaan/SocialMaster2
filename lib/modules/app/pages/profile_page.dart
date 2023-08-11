@@ -50,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage>
     var response = await request.send();
     var responseData = await response.stream.toBytes();
     var responseString = String.fromCharCodes(responseData);
-    final json = jsonDecode(responseString);
+     jsonDecode(responseString);
     if (response.statusCode == 201) {
       return true;
     } else {
@@ -187,11 +187,7 @@ class _ProfilePageState extends State<ProfilePage>
             value: user,
             child: Consumer<UserModel>(
               builder: (context, user, child) => Scaffold(
-                body: RefreshIndicator(
-                  onRefresh: () async {
-                    await fetchProfile();
-                  },
-                  child: NestedScrollView(
+                body: NestedScrollView(
                     headerSliverBuilder: (context, value) => [
                       SliverList(
                           delegate: SliverChildListDelegate.fixed([
@@ -778,7 +774,7 @@ class _ProfilePageState extends State<ProfilePage>
                   ),
                 ),
               ),
-            ),
+
           );
   }
 }
