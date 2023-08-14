@@ -7,6 +7,7 @@ import 'package:social_master/shared/components/components.dart';
 import '../../../models/provider/post/postmodel.dart';
 import '../../../modules/app/handle_media/show_photo.dart';
 import '../../../modules/app/handle_media/show_video.dart';
+import '../../network/constant/constant.dart';
 import '../../styles/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -43,7 +44,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                           errorBuilder: (context, error, stackTrace) =>
                               Container(
                                 color: AppTheme.colors.opacityPurple,
-                                child:myCircularProgressIndicator(),
+                                child: myCircularProgressIndicator(),
                               ),
                           fit: BoxFit.cover),
                     ),
@@ -102,7 +103,8 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                         GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => VisitProfile(model.post!.userId)));
+                                builder: (context) =>
+                                    VisitProfile(model.post!.userId)));
                           },
                           child: CircleAvatar(
                             backgroundColor: Colors.transparent,
@@ -113,11 +115,13 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                   height: 80,
                                   image:
                                       NetworkImage('${model.post!.userImage}'),
-                                  loadingBuilder: (context, child, loadingProgress) => myCircularProgressIndicator(),
+                                  loadingBuilder:
+                                      (context, child, loadingProgress) =>
+                                          myCircularProgressIndicator(),
                                   errorBuilder: (context, error, stackTrace) =>
                                       Container(
                                         color: AppTheme.colors.opacityPurple,
-                                        child:myCircularProgressIndicator(),
+                                        child: myCircularProgressIndicator(),
                                       ),
                                   fit: BoxFit.cover),
                             ),
@@ -165,7 +169,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Text(model.post!.caption!,
-                        style:  TextStyle(
+                        style: TextStyle(
                           fontFamily: 'SignikaNegative',
                           fontSize: 15,
                           color: AppTheme.colors.darkPurple,
@@ -188,27 +192,31 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             child: model.post!.images!.isEmpty
                                 ? (model.post!.video == null
-                                ? (Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                          bottomRight: Radius.circular(30),
-                                          bottomLeft: Radius.circular(30)),
-                                      color: AppTheme.colors.opacityPurple,
-                                    ),
-                                    height: 30,
-                                  ))
-                                : GestureDetector(
-                              onTap: () {
-                                showVideo(
-                                    context: context,
-                                    vidUrl: model.post!.video!);
-                              },
-                              child: Container(
-                                height: 200,
-                                color: Colors.black,
-                                child:Icon( Icons.play_circle_outline,color: Colors.white,size: 60,),
-                              ),
-                            ))
+                                    ? (Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: const BorderRadius.only(
+                                              bottomRight: Radius.circular(30),
+                                              bottomLeft: Radius.circular(30)),
+                                          color: AppTheme.colors.opacityPurple,
+                                        ),
+                                        height: 30,
+                                      ))
+                                    : GestureDetector(
+                                        onTap: () {
+                                          showVideo(
+                                              context: context,
+                                              vidUrl: model.post!.video!);
+                                        },
+                                        child: Container(
+                                          height: 200,
+                                          color: Colors.black,
+                                          child: Icon(
+                                            Icons.play_circle_outline,
+                                            color: Colors.white,
+                                            size: 60,
+                                          ),
+                                        ),
+                                      ))
                                 : MasonryGridView.builder(
                                     mainAxisSpacing: 4,
                                     crossAxisSpacing: 4,
@@ -221,7 +229,9 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                       crossAxisCount:
                                           model.post!.images!.length == 1
                                               ? 1
-                                              : 2,
+                                              : model.post!.images!.length < 10
+                                                  ? 2
+                                                  : 3,
                                     ),
                                     itemCount: model.post!.images!.length,
                                     itemBuilder: (context, index) => ClipRRect(
@@ -230,31 +240,40 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                         onTap: () {
                                           showPhoto(
                                               context: context,
-                                              image: model.post!.images![index]);
+                                              image:
+                                              '${AppSetting.baseUrl}${model.post!.images![index]}');
                                         },
-                                        child: Image(
-                                          image: NetworkImage(
-                                              '${model.post!.images![index]}'),
-                                            errorBuilder: (context, error, stackTrace) =>
-                                                Container(
-                                                  height: 150,
-                                                  color: AppTheme.colors.opacityPurple,
-                                                  child:myCircularProgressIndicator(),
-                                                ),
-                                            loadingBuilder: (context, child, loadingProgress) {
-                                              int? expSize;
-                                              expSize = loadingProgress?.expectedTotalBytes;
-                                              if (expSize != null) {
-                                                return
-                                                  Container(height: 150,
-                                                    color: AppTheme.colors.opacityPurple,
-                                                    child:myCircularProgressIndicator(),
+                                        child: Hero(
+                                          tag: '${AppSetting.baseUrl}${model.post!.images![index]}',
+                                          child: Image(
+                                              image: NetworkImage(
+                                                  '${AppSetting.baseUrl}${model.post!.images![index]}'),
+                                              errorBuilder:
+                                                  (context, error, stackTrace) =>
+                                                      Container(
+                                                        height: 150,
+                                                        color: AppTheme
+                                                            .colors.opacityPurple,
+                                                        child:
+                                                            myCircularProgressIndicator(),
+                                                      ),
+                                              loadingBuilder: (context, child,
+                                                  loadingProgress) {
+                                                int? expSize;
+                                                expSize = loadingProgress
+                                                    ?.expectedTotalBytes;
+                                                if (expSize != null) {
+                                                  return Container(
+                                                    height: 150,
+                                                    color: AppTheme
+                                                        .colors.opacityPurple,
+                                                    child:
+                                                        myCircularProgressIndicator(),
                                                   );
-                                              }
-                                              else {
-                                                return child;
-                                              }
-                                            }
+                                                } else {
+                                                  return child;
+                                                }
+                                              }),
                                         ),
                                       ),
                                     ),
@@ -270,7 +289,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                   : ImageFilter.blur(sigmaX: 2.5, sigmaY: 4),
                               child: Container(
                                 decoration: const BoxDecoration(
-                                  color:Color(0x2A000000),
+                                  color: Color(0x2A000000),
                                   borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(30),
                                       bottomRight: Radius.circular(30)),

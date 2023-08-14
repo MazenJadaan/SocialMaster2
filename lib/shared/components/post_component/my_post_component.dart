@@ -2,9 +2,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/modules/app/handle_post/edit_post.dart';
+import 'package:social_master/shared/network/constant/constant.dart';
 import '../../../models/provider/post/postmodel.dart';
 import '../../../modules/app/handle_media/show_photo.dart';
 
+import '../../../modules/app/handle_media/show_video.dart';
 import '../../styles/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -159,15 +161,29 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                       ),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: model.images!.isEmpty
-                          ? (Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomRight: Radius.circular(30),
-                                    bottomLeft: Radius.circular(30)),
-                                color: AppTheme.colors.opacityPurple,
-                              ),
-                              height: 30,
-                            ))
+                          ?  model.video == null
+                          ? Container(
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(30),
+                              bottomLeft: Radius.circular(30)),
+                          color: Colors.transparent,
+                        ),
+                        height: 30,
+                      )
+                          : GestureDetector(
+                        onTap: () {
+                          showVideo(
+                              context: context,
+                              vidUrl:'${AppSetting.baseUrl}${model.video!}' );
+                        },
+                        child: Container(
+                          height: 200,
+                          color: Colors.black,
+                          child:Icon( Icons.play_circle_outline,color: Colors.white,size: 60,),
+                        ),
+                      )
+
                           : MasonryGridView.builder(
                               mainAxisSpacing: 4,
                               crossAxisSpacing: 4,
@@ -177,7 +193,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                               gridDelegate:
                                   SliverSimpleGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount:
-                                    model.images!.length == 1 ? 1 : 2,
+                                    model.images!.length == 1 ? 1 : model.images!.length<10 ? 2:3,
                               ),
                               itemCount: model.images!.length,
                               itemBuilder: (context, index) => ClipRRect(
@@ -186,30 +202,33 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                                   onTap: () {
                                     showPhoto(
                                         context: context,
-                                        image: model.images![index]);
+                                        image: '${AppSetting.baseUrl}${model.images![index]}');
                                   },
-                                  child: Image(
-                                    image:
-                                        NetworkImage('${model.images![index]}'),
-                                      loadingBuilder: (context, child, loadingProgress) {
-                                        int? expSize;
-                                        expSize = loadingProgress?.expectedTotalBytes;
-                                        if (expSize != null) {
-                                          return
-                                            Container(height: 150,
-                                              color: AppTheme.colors.opacityPurple,
-                                              child: Center(
-                                                  child: CircularProgressIndicator(
-                                                    color: AppTheme.colors.purple,
-                                                    backgroundColor: AppTheme.colors.opacityPurple,
-                                                    strokeWidth: 2,
-                                                  )),
-                                            );
+                                  child: Hero(
+                                    tag:'${AppSetting.baseUrl}${model.images![index]}' ,
+                                    child: Image(
+                                      image:
+                                          NetworkImage('${AppSetting.baseUrl}${model.images![index]}'),
+                                        loadingBuilder: (context, child, loadingProgress) {
+                                          int? expSize;
+                                          expSize = loadingProgress?.expectedTotalBytes;
+                                          if (expSize != null) {
+                                            return
+                                              Container(height: 150,
+                                                color: AppTheme.colors.opacityPurple,
+                                                child: Center(
+                                                    child: CircularProgressIndicator(
+                                                      color: AppTheme.colors.purple,
+                                                      backgroundColor: AppTheme.colors.opacityPurple,
+                                                      strokeWidth: 2,
+                                                    )),
+                                              );
+                                          }
+                                          else {
+                                            return child;
+                                          }
                                         }
-                                        else {
-                                          return child;
-                                        }
-                                      }
+                                    ),
                                   ),
                                 ),
                               ),

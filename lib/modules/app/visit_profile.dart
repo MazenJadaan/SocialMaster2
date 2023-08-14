@@ -534,9 +534,10 @@ class _VisitProfileState extends State<VisitProfile>
                                       physics: const BouncingScrollPhysics(),
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
-                                      itemCount:postData.length,
+                                      itemCount: postData.length,
                                       itemBuilder: (context, i) =>
-                                          ChangeNotifierProvider<PostModel>.value(
+                                          ChangeNotifierProvider<
+                                              PostModel>.value(
                                         value: postData[i],
                                         child: Consumer<PostModel>(
                                           builder: (context, model2, child) =>

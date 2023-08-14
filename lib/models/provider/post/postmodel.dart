@@ -7,7 +7,7 @@ class PostModel extends ChangeNotifier {
   int? id;
   int? postId;
   String? userImage;
-  List<String>? images;
+  List<String>? images=[];
   String? video;
   String? date = "30/7/2001";
   String? caption = "";
@@ -77,7 +77,7 @@ class MyPostModel extends ChangeNotifier {
   int? id;
   int? postId;
   String? userImage;
-  List<String>? images;
+  List<String>? images=[];
   String? video;
   String? date = "30/7/2001";
   String? caption = "";

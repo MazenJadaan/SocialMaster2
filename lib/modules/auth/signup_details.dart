@@ -25,27 +25,33 @@ class _SignupDetailsState extends State<SignupDetails> {
 
   DateTime date = DateTime.now();
   String? token = Prefs.getToken();
-  File? image;
+  File? image = null;
+  bool isLoading = false;
 
   Future<bool> signupDetails({
     required String phone_num,
     required String gender,
     required String birthdate,
-    required String profile_photo,
+    String? profile_photo = null,
     required String token,
   }) async {
     //create multipart request for POST or PATCH method
-    var request = http.MultipartRequest(
-        "POST", Uri.parse("${AppSetting.baseUrl}${AppSetting.completeRegisterApi}"));
+    var request = http.MultipartRequest("POST",
+        Uri.parse("${AppSetting.baseUrl}${AppSetting.completeRegisterApi}"));
     //add text fields
     request.fields["phone_num"] = phone_num;
     request.fields["gender"] = gender;
     request.fields["birthdate"] = birthdate;
     request.headers["Authorization"] = "Bearer $token";
-    //create multipart using filepath, string or bytes
-    var pic = await http.MultipartFile.fromPath("profile_photo", profile_photo);
-    //add multipart to request
-    request.files.add(pic);
+    if (profile_photo != null) {
+      //create multipart using filepath, string or bytes
+      var pic =
+          await http.MultipartFile.fromPath("profile_photo", profile_photo);
+      //add multipart to request
+      request.files.add(pic);
+    } else {
+      // request.fields["profile_photo"] =profile_photo;
+    }
     var response = await request.send();
 
     //Get the response from the server
@@ -352,31 +358,37 @@ class _SignupDetailsState extends State<SignupDetails> {
               ),
               myMaterialButton(
                   width: 240,
+                  isLoading: isLoading,
                   height: 50,
                   text: "Done",
                   onPressed: () async {
-                    if (formKey.currentState!.validate()) {
-                      bool res = await signupDetails(
-                        phone_num: _phoneNumberController.text,
-                        gender: selectedRadio == 1 ? "male" : "female",
-                        profile_photo: image!.path,
-                        birthdate: '${date.month}/${date.day}/${date.year}',
-                        token: token!,
-                      );
+                    if (isLoading) {
+                      setState(() => isLoading = false);
+                    } else {
+                      if (formKey.currentState!.validate()) {
+                        setState(() => isLoading = true);
+                        bool res = await signupDetails(
+                          phone_num: _phoneNumberController.text,
+                          gender: selectedRadio == 1 ? "male" : "female",
+                          profile_photo: image != null ? image!.path : null,
+                          birthdate: '${date.month}/${date.day}/${date.year}',
+                          token: token!,
+                        );
 
-                      if (res) {
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                                builder: (context) =>  Home()),
-                            (route) => false);
-                      } else {
-                        Fluttertoast.showToast(
-                            msg: "Failed",
-                            gravity: ToastGravity.BOTTOM,
-                            toastLength: Toast.LENGTH_SHORT,
-                            backgroundColor: Colors.pink,
-                            timeInSecForIosWeb: 2,
-                            fontSize: 16);
+                        if (res) {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (context) => Home()),
+                              (route) => false);
+                        } else {
+                          setState(() => isLoading = false);
+                          Fluttertoast.showToast(
+                              msg: "Failed",
+                              gravity: ToastGravity.BOTTOM,
+                              toastLength: Toast.LENGTH_SHORT,
+                              backgroundColor: Colors.pink,
+                              timeInSecForIosWeb: 2,
+                              fontSize: 16);
+                        }
                       }
                     }
                   }),

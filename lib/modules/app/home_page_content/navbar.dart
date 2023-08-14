@@ -159,15 +159,15 @@ class NavBar extends StatelessWidget {
 
 buildLogout({required BuildContext context}) => AlertDialog(
       content: Container(
-        height: 100,
+        height: 80,
         child: Column(
           children: [
             Text(
               'Are you sure to Logout?',
-              style: TextStyle(fontSize: 22, color: AppTheme.colors.darkPurple),
+              style: TextStyle(fontSize: 20, color: AppTheme.colors.darkPurple),
             ),
-            SizedBox(
-              height: 20,
+            const SizedBox(
+              height: 8,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -178,7 +178,7 @@ buildLogout({required BuildContext context}) => AlertDialog(
                     child: Text(
                       'yes',
                       style: TextStyle(
-                          fontSize: 28, color: AppTheme.colors.darkPurple),
+                          fontSize: 22, color: AppTheme.colors.darkPurple),
                     ),
                     onPressed: () {
                       Prefs.setToken('');
@@ -190,7 +190,7 @@ buildLogout({required BuildContext context}) => AlertDialog(
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: Container(
-                      height: 40,
+                      height: 30,
                       width: 1,
                       color: AppTheme.colors.darkPurple,
                     ),
@@ -199,7 +199,7 @@ buildLogout({required BuildContext context}) => AlertDialog(
                       child: Text(
                         'cancel',
                         style: TextStyle(
-                            fontSize: 28, color: AppTheme.colors.darkPurple),
+                            fontSize: 22, color: AppTheme.colors.darkPurple),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
