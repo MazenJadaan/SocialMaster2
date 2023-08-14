@@ -2,9 +2,6 @@ import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'appbrain.dart';
-const appId = "77451303905d463baeae7658a786ce8b";
-const token = "007eJxTYGBi3cO6dn7nhUcCG5ed7831/dq/z72kjZ3t/S/mjE23xCsVGMzNTUwNjQ2MLQ1MU0zMjJMSUxNTzc1MLRLNLcySUy2S2OKupTQEMjIka/AzMEIhiM/BkJyYk5OZl27IwAAAm7EfbQ==";
-const channel = "calling1";
 
 class videocall extends StatefulWidget {
   const videocall({Key? key}) : super(key: key);
@@ -86,6 +83,30 @@ class _MyAppState extends State<videocall> {
         children: [
           Center(
             child: _remoteVideo(),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child:
+            Padding(
+            padding: const EdgeInsets.only(bottom: 25.0),
+              child: Container(
+                height: 50,
+                width: 50,
+                color: Colors.transparent,
+                child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pop(true);
+                      },
+                      icon: Icon(
+                        Icons.call_end,
+                        size: 44,
+                        color: Colors.redAccent,
+                      ))
+                ]),
+              ),
+            ),
           ),
           Align(
             alignment: Alignment.topLeft,

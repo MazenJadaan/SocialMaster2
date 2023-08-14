@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
 
         // primarySwatch: Colors.purple,
       ),
-      home: Home()
+      home: HomeScreen()
      // Prefs.getToken() ==null|| Prefs.getToken()=='' ?( Prefs.getFirtTime()==true ? Login(): WelcomePage()) :Home(),
     );
   }

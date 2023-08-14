@@ -44,9 +44,9 @@ class _StoryAddState extends State<StoryAdd> {
       ),
       body: Column(
         children: [
-          Container(height: 140,
-              width: 140,
-              child: Lottie.asset("assets/images/addstory.json")),
+          Container(height: 110,
+              width: 110,
+              child: Lottie.asset("assets/images/storya.json")),
           SizedBox(height: 10),
           Center(
             child: SingleChildScrollView(

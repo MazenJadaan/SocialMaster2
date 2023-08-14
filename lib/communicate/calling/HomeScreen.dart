@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_master/communicate/calling/videoCall.dart';
 
+import 'audioCall.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -34,10 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
     'Ahmad Hafez',
     style: Theme.of(context).textTheme.headline3,
     ),
-    Text(
-    '+963943430343',
-    style: Theme.of(context).textTheme.headline6,
-    ),
     Padding(
     padding: const EdgeInsets.all(8.0),
     child: Row(
@@ -61,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.push(
     context,
     MaterialPageRoute(
-    builder: (context) => videocall()));
+    builder: (context) => audiocall()));
     },
     icon: Icon(
     Icons.phone,

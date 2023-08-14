@@ -320,8 +320,6 @@ class Photo {
   }
 }
 
-
-
 class Sharepost {
   int? id;
   int? userId;
