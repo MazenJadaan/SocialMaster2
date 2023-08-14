@@ -39,9 +39,11 @@ class _CreatePostState extends State<CreatePost> {
   }
 
   void selectVideo() async {
+
     XFile? video = await picker.pickVideo(source: ImageSource.gallery,maxDuration: const Duration(minutes: 30));
     if (video == null) return;
     selectedVideo = File(video.path);
+
     selectedImages = [];
     setState(() {});
   }
@@ -62,8 +64,7 @@ class _CreatePostState extends State<CreatePost> {
 
     if (video != null) {
       //create multipart using filepath, string or bytes
-      var vid =
-      await http.MultipartFile.fromPath("video", video.path);
+      var vid = await http.MultipartFile.fromPath("video", video.path);
       //add multipart to request
       request.files.add(vid);
     }
@@ -83,11 +84,7 @@ class _CreatePostState extends State<CreatePost> {
     // final json =
     jsonDecode(responseString);
 
-    if (response.statusCode == 200) {
-      // print('done');
-    } else {
-      // print('object');
-    }
+
   }
 
 

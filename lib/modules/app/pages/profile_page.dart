@@ -181,9 +181,11 @@ class _ProfilePageState extends State<ProfilePage>
   @override
   Widget build(BuildContext context) {
     TabController tc = TabController(length: 2, vsync: this);
-    return loading
+    return
+      loading
         ? myCircularProgressIndicator()
-        : ChangeNotifierProvider<UserModel>.value(
+        :
+    ChangeNotifierProvider<UserModel>.value(
             value: user,
             child: Consumer<UserModel>(
               builder: (context, user, child) => Scaffold(

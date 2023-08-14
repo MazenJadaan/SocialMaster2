@@ -12,7 +12,7 @@ class Story extends StatelessWidget {
         StoryPageView(
           itemBuilder: (context, pageIndex, storyIndex) {
             var user = dataUsers[pageIndex];
-            var story = user.stories[storyIndex];
+            var story = user.stories![storyIndex];
             return Stack(
               children: [
                 Positioned.fill(
@@ -24,7 +24,7 @@ class Story extends StatelessWidget {
                       decoration: BoxDecoration(
                           image: DecorationImage(
                             fit: BoxFit.contain,
-                            image: NetworkImage(story.imageUrl),
+                            image: NetworkImage(story.mediaUrl!),
                           )),
                     )),
                 Padding(
@@ -38,13 +38,13 @@ class Story extends StatelessWidget {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: NetworkImage(user.profilUrl)
+                                image: NetworkImage(user.profileUrl!)
                             )
                         ),
                       ),
                       SizedBox(width: 14),
                       Text(
-                        user.name,
+                        user.name!,
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w400,
@@ -57,7 +57,7 @@ class Story extends StatelessWidget {
             );
           },
           pageLength: dataUsers.length,
-          storyLength: (pageIndex) => dataUsers[pageIndex].stories.length,
+          storyLength: (pageIndex) => dataUsers[pageIndex].stories!.length,
         ));
   }
 }

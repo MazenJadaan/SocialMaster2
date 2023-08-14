@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_master/communicate/calling/HomeScreen.dart';
 import 'package:social_master/modules/auth/login.dart';
 import 'package:social_master/modules/welcome/welcome_view_page.dart';
 
@@ -28,8 +29,9 @@ class MyApp extends StatelessWidget {
 
         // primarySwatch: Colors.purple,
       ),
-      home:
-      Prefs.getToken() ==null|| Prefs.getToken()=='' ?( Prefs.getFirtTime()==true ? Login(): WelcomePage()) :Home(),
+       home:
+       // HomeScreen('https://media.istockphoto.com/id/537373196/photo/trees-forming-a-heart.jpg?s=612x612&w=0&k=20&c=onZKNjkycICe4q2ZDnKi39z42Ax9tpZT7pph-2e5Seo=')
+       Prefs.getToken() ==null|| Prefs.getToken()=='' ?( Prefs.getFirtTime()==true ? Login(): WelcomePage()) :Home(),
     );
   }
 }

@@ -7,8 +7,8 @@ import 'package:social_master/communicate/calling/videoCall.dart';
 import 'audioCall.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
+   HomeScreen(this.image,{Key? key}) : super(key: key);
+String? image;
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -25,8 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
       ClipRRect(
       borderRadius: BorderRadius.circular(150.0),
-      child: Image.asset(
-        "assets/images/calling.png",
+      child: Image.network(
+        "${widget.image}",
       height: 200.0,
       width: 200.0,
       fit: BoxFit.cover,
