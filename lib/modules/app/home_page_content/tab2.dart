@@ -1,15 +1,19 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import 'package:social_master/modules/app/home_page_content/story.dart';
 import 'package:social_master/modules/app/home_page_content/story_add.dart';
+import '../../../models/connection/home_page/foryou_posts.dart';
 import '../../../models/provider/post/postmodel.dart';
 import '../../../shared/components/post_component/post_component.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import '../../../shared/network/constant/constant.dart';
+import '../../../shared/shared_preferences.dart';
+
+
 class Tab2 extends StatefulWidget {
   Tab2(this.scrollController, {Key? key}) : super(key: key);
   ScrollController scrollController;
-
 
 
   @override
@@ -34,22 +38,62 @@ class _Tab2State extends State<Tab2> {
         userImage:
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg', isLiked: true,isSaved: false),
   ];
-  File? image;
 
-  final ImagePicker picker = ImagePicker();
+  List<PostModel>? aaposts=<PostModel>[];
+  List<Data>? data;
+  bool loading = true;
 
-  Future uploadImage() async {
-    try {
-      final pickedImage = await picker.pickImage(source: ImageSource.gallery);
-      if (pickedImage == null) return;
-      // if (pickedImage != null) {
-      final image2 = File(pickedImage.path);
-      setState(() {});
-      image = image2;
-    } on PlatformException catch (e) {
-      print('Failed to upload image $e');
+  Future followingPost() async {
+    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.followingPost}");
+    var response = await http
+        .get(url, headers: {"Authorization": "Bearer ${Prefs.getToken()}"});
+
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body);
+
+      if (json['data'] != null) {
+        data = <Data>[];
+        json['data'].forEach((v) {
+          data!.add(new Data.fromJson(v));
+        });
+        loading = false;
+        setState(() {});
+
+
+
+
+        for (int i = 0; i < data!.length; i++) {
+          List<String> images = [];
+          for(int j=0; j<data![i].photo!.length;j++){
+            images.add(data![i].photo![j].photoPath!);
+          }
+          aaposts!.add(PostModel(
+            caption: data![i].postBody,
+            postId: data![i].id,
+            video: data![i].postVideo,
+            date: data![i].postDate,
+            isLiked: data![i].reaction == 0 ? false : true,
+            isSaved: data![i].saved == 0 ? false : true,
+            likes: data![i].likeCount,
+            comments: data![i].commentCount,
+            shares: data![i].sharePostCount,
+            images: images,
+            userId: data![i].user!.id,
+            userFName: data![i].user!.firstName,
+            userLName: data![i].user!.lastName,
+            userImage: data![i].user!.userProfile!.profilePhoto,
+          ));
+        }
+      }
     }
   }
+  @override
+  void initState() {
+    followingPost();
+    super.initState();
+    // Add code after super
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -146,24 +190,37 @@ class _Tab2State extends State<Tab2> {
           ),
           SizedBox(height: 20),
           SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
                 ListView.builder(
-                  padding: const EdgeInsets.all(0.0),
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: posts.length,
-                  itemBuilder: (context, i) =>
-                      postBuilder(model: posts[i], context: context),
+                    padding: const EdgeInsets.all(0.0),
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: aaposts!.length,
+                    itemBuilder: (context, i) =>
+                    ChangeNotifierProvider<PostModel>.value(
+                      value: aaposts![i],
+                      child: Consumer<PostModel>(
+                        builder: (context, model, child) =>
+                            postBuilder(
+                                model: model, context: context),
+                      ),
+                    )),
+                // ChangeNotifierProvider<SharedPostModel>.value(
+                //   value: s,
+                //   child: Consumer<SharedPostModel>(
+                //     builder: (context, model, child) =>
+                //         sharedPostBuilder(model: model, context: context),
+                //   ),
+                // ),
+                const SizedBox(
+                  height: 55,
                 ),
               ],
             ),
-          ),
-          const SizedBox(
-            height: 55,
-          ),
+          )
         ],
       ),
     ));

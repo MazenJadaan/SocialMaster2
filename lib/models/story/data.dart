@@ -1,15 +1,18 @@
 class StoryUserModel {
-  String profilUrl;
-  String name;
-  List<StoryModel> stories;
+  String? profileUrl;
+  String? name;
+  List<StoryModel>? stories;
   StoryUserModel(
-      {required this.profilUrl, required this.name, required this.stories});
+      { this.profileUrl, this.name, this.stories});
 }
 
 class StoryModel {
-  String imageUrl;
+  String? time;
+  String? text;
+  String? mediaUrl;
   StoryModel({
-    required this.imageUrl,
+     this.mediaUrl,
+    this.text,
   });
 }
 
@@ -17,13 +20,14 @@ final dataUsers = [
   StoryUserModel(
       stories: [
         StoryModel(
-            imageUrl:
+
+            mediaUrl:
                 "https://cdn.motor1.com/images/mgl/WBwMO/s1/lanzamiento-toyota-land-cruiser-300-2022.webp"),
         StoryModel(
-            imageUrl:
+            mediaUrl:
                 "https://i.pinimg.com/736x/62/a2/10/62a2106589c6679b0c733f5bd447ded2.jpg")
       ],
-      profilUrl:
+      profileUrl:
           'https://cdn.icon-icons.com/icons2/1736/PNG/512/4043260-avatar-male-man-portrait_113269.png',
       name: 'Ahmad Hafez'),
 ];

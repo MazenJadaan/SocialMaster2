@@ -46,7 +46,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                   color: AppTheme.colors.opacityPurple,
                                   child:myCircularProgressIndicator(),
                                 ),
-                            image: NetworkImage('${model.userImage}'),
+                            image: NetworkImage('${AppSetting.baseUrl}${model.userImage}'),
                             fit: BoxFit.cover),
                       ),
                     ),
@@ -131,7 +131,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                   onTap: () {
                                     showVideo(
                                         context: context,
-                                        vidUrl: model.video!);
+                                        vidUrl: '${AppSetting.baseUrl}${model.video!}');
                                   },
                                   child: Container(
                                     height: 200,
@@ -171,23 +171,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                               color: AppTheme.colors.opacityPurple,
                                               child:myCircularProgressIndicator(),
                                             ),
-                                        loadingBuilder:
-                                            (context, child, loadingProgress) {
-                                          int? expSize;
-                                          expSize =
-                                              loadingProgress?.expectedTotalBytes;
-                                          if (expSize != null) {
-                                            return Container(
-                                              height: 150,
-                                              color:
-                                              AppTheme.colors.opacityPurple,
-                                              child: myCircularProgressIndicator(),
-                                            );
-                                          } else {
-                                            return child;
-                                          }
-
-                                        }),
+                                       ),
                                   ),
                                 ),
                               ),
