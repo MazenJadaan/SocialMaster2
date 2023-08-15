@@ -17,10 +17,12 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   final PageController _pageController = PageController();
+
   bool onLastPage = false;
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Stack(
         children: [

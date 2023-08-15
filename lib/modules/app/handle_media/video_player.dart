@@ -24,23 +24,10 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
 
 
 
-  Future initializeVideo() async {
-
-
-    await _videoPlayerController.initialize();
-
-    setState(()=> _chewieController =ChewieController(
-      videoPlayerController: _videoPlayerController,
-      autoPlay: true,
-      looping: true,
-    ));
-
-  }
 
 
   @override
   void initState() {
-
     // TODO: implement initState
     super.initState();
     _videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(widget.url));
