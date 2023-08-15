@@ -2037,19 +2037,20 @@
 									"formdata": [
 										{
 											"key": "name",
-											"value": "g",
+											"value": "al",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/searchUsers",
+									"raw": "{{url}}/api/searchUsers/",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"searchUsers"
+										"searchUsers",
+										""
 									],
 									"query": [
 										{
@@ -2070,11 +2071,11 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 16 Jul 2023 15:05:44 GMT"
+									"value": "Tue, 15 Aug 2023 17:11:02 GMT"
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 16 Jul 2023 15:05:44 GMT"
+									"value": "Tue, 15 Aug 2023 17:11:02 GMT"
 								},
 								{
 									"key": "Connection",
@@ -2098,7 +2099,7 @@
 								},
 								{
 									"key": "X-RateLimit-Remaining",
-									"value": "59"
+									"value": "58"
 								},
 								{
 									"key": "Access-Control-Allow-Origin",
@@ -2106,7 +2107,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": [\n        {\n            \"first_name\": \"Santos Rohan Jr.\",\n            \"last_name\": \"Prof. Gino Grant\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Reba Brown\",\n            \"last_name\": \"Anne Gutmann\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Reba Brown\",\n            \"last_name\": \"Anne Gutmann\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Reba Brown\",\n            \"last_name\": \"Anne Gutmann\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Reba Brown\",\n            \"last_name\": \"Anne Gutmann\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Reba Brown\",\n            \"last_name\": \"Anne Gutmann\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Wava Hegmann\",\n            \"last_name\": \"Wilfrid Zemlak\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        },\n        {\n            \"first_name\": \"Wava Hegmann\",\n            \"last_name\": \"Wilfrid Zemlak\",\n            \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n        }\n    ],\n    \"message\": \"Users found\",\n    \"status\": 200\n}"
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"first_name\": \"alaa1\",\n            \"last_name\": \"ra3i\",\n            \"profile_photo\": \"images/profile_picture/default_picture.png\"\n        },\n        {\n            \"id\": 2,\n            \"first_name\": \"alaa1\",\n            \"last_name\": \"ra3i\",\n            \"profile_photo\": \"images/profile_picture/default_picture.png\"\n        },\n        {\n            \"id\": 3,\n            \"first_name\": \"alaa1\",\n            \"last_name\": \"ra3i\",\n            \"profile_photo\": \"images/profile_picture/default_picture.png\"\n        },\n        {\n            \"id\": 4,\n            \"first_name\": \"alaa1\",\n            \"last_name\": \"ra3i\",\n            \"profile_photo\": \"images/profile_picture/default_picture.png\"\n        }\n    ],\n    \"message\": \"Users found\",\n    \"status\": 200\n}"
 						}
 					]
 				},
@@ -2148,7 +2149,7 @@
 									"urlencoded": [
 										{
 											"key": "text",
-											"value": "user",
+											"value": "س",
 											"type": "text"
 										}
 									]
@@ -2174,11 +2175,11 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 16 Jul 2023 16:23:02 GMT"
+									"value": "Tue, 15 Aug 2023 17:12:03 GMT"
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 16 Jul 2023 16:23:02 GMT"
+									"value": "Tue, 15 Aug 2023 17:12:03 GMT"
 								},
 								{
 									"key": "Connection",
@@ -2210,7 +2211,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": [\n        {\n            \"id\": 4,\n            \"user_id\": 1,\n            \"post_body\": \"other post user 1 \",\n            \"post_time\": \"18:38:11\",\n            \"post_date\": \"2023-07-15\",\n            \"photo\": [],\n            \"video\": [\n                {\n                    \"post_id\": 4,\n                    \"video_path\": \"storage/app/videos/posts_videos/laravel.mp4\"\n                }\n            ],\n            \"user\": {\n                \"id\": 1,\n                \"first_name\": \"asem\",\n                \"last_name\": \"refa3i\",\n                \"user_profile\": {\n                    \"user_id\": 1,\n                    \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n                }\n            }\n        },\n        {\n            \"id\": 6,\n            \"user_id\": 1,\n            \"post_body\": \" post 2 for user 1 \",\n            \"post_time\": \"13:45:08\",\n            \"post_date\": \"2023-07-16\",\n            \"photo\": [\n                {\n                    \"post_id\": 6,\n                    \"photo_path\": \"storage/app/images/posts_pictures/third_picture.jpg\"\n                }\n            ],\n            \"video\": [],\n            \"user\": {\n                \"id\": 1,\n                \"first_name\": \"asem\",\n                \"last_name\": \"refa3i\",\n                \"user_profile\": {\n                    \"user_id\": 1,\n                    \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n                }\n            }\n        },\n        {\n            \"id\": 7,\n            \"user_id\": 1,\n            \"post_body\": \" post 3 for user 1 \",\n            \"post_time\": \"13:45:20\",\n            \"post_date\": \"2023-07-16\",\n            \"photo\": [],\n            \"video\": [\n                {\n                    \"post_id\": 7,\n                    \"video_path\": \"storage/app/videos/posts_videos/wahda.mp4\"\n                }\n            ],\n            \"user\": {\n                \"id\": 1,\n                \"first_name\": \"asem\",\n                \"last_name\": \"refa3i\",\n                \"user_profile\": {\n                    \"user_id\": 1,\n                    \"profile_photo\": \"storage/app/images/profile_picture/default_photo.png\"\n                }\n            }\n        }\n    ],\n    \"message\": \"Posts found\",\n    \"status\": 200\n}"
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"post_body\": \"بوست 3 مستخدم 2\",\n            \"post_time\": \"23:12:01\",\n            \"post_date\": \"2023-08-11\",\n            \"photo\": [\n                {\n                    \"post_id\": 1,\n                    \"photo_path\": \"images/posts_pictures/4a4526b1ec301744aba9526d78fcb2a6.png\"\n                },\n                {\n                    \"post_id\": 1,\n                    \"photo_path\": \"images/posts_pictures/8466a2b43729c29dcd7cc0fdfa1a9e7a.jpg\"\n                }\n            ],\n            \"user\": {\n                \"id\": 1,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 1,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 2,\n            \"user_id\": 1,\n            \"post_body\": \"بوست 3 مستخدم 2\",\n            \"post_time\": \"23:12:05\",\n            \"post_date\": \"2023-08-11\",\n            \"photo\": [],\n            \"user\": {\n                \"id\": 1,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 1,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        },\n        {\n            \"id\": 3,\n            \"user_id\": 1,\n            \"post_body\": \"بوست 3 مستخدم 2\",\n            \"post_time\": \"23:12:09\",\n            \"post_date\": \"2023-08-11\",\n            \"photo\": [],\n            \"user\": {\n                \"id\": 1,\n                \"first_name\": \"alaa1\",\n                \"last_name\": \"ra3i\",\n                \"user_profile\": {\n                    \"user_id\": 1,\n                    \"profile_photo\": \"images/profile_picture/default_picture.png\"\n                }\n            }\n        }\n    ],\n    \"message\": \"Posts found\",\n    \"status\": 200\n}"
 						}
 					]
 				}

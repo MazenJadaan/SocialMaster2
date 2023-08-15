@@ -27,8 +27,9 @@ class SearchController extends Controller
         $finalResult = DB::table('users')
             ->Join('user_profiles', 'users.id', '=', 'user_id')
             ->whereIn('users.id', $ids)
-            ->select('id','first_name', 'last_name', 'profile_photo')
+            ->select('users.id','first_name', 'last_name', 'profile_photo')
             ->get();
+
         return $this->ApiResponse($finalResult, 'Users found', 200);
     }
 
@@ -41,9 +42,6 @@ class SearchController extends Controller
             ->where('post_body', 'like', '%' . $keyword . '%')
             ->with(['Photo'=>function($q){
                 $q->select('post_id','photo_path');
-            }])
-            ->with(['Video'=>function($q1){
-        $q1->select('post_id','video_path');
             }])
             ->with(['user'=>function($q2){
                 $q2->select('id','first_name','last_name')->with(['user_profile'=>function($q3){
