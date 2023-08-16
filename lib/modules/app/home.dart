@@ -2,7 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:social_master/modules/app/pages/search_page.dart';
+import 'package:social_master/modules/app/pages/search_pages/search_page.dart';
 import 'package:social_master/modules/app/pages/home_page.dart';
 import 'package:social_master/modules/app/pages/see_page.dart';
 import 'package:social_master/modules/app/pages/profile_page.dart';

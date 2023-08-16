@@ -4,7 +4,7 @@ class AppSetting{
   static String token = "";
 
   // baseurl of the server
-  static String baseUrl ="http://192.168.1.6:8000/";
+  static String baseUrl ="http://10.0.2.2:8000/";
 
   // finished APIs
   static String showMyProfileApi = 'api/showMyProfile';
@@ -21,20 +21,11 @@ class AppSetting{
   static String editPostApi = 'api/updatePost/';
   static String forYouPageApi ='api/allWorld';
   static String followingPost ='api/MyfollowingPage';
-  static String seeVideosApi='api/see_videos';
-  static String deletePost ='api/deletePosts/';
-  static String likeAtPost='api/Like/';
-  static String dislikeAtPost='api/removeLike/';
-  static String savePost= 'api/savePosts/';
-
+  static String createStoryApi ='api/addStories';
 
   // unfinished APIs
-  static String createStory ='api/addStories';
-  static String unSavePost='api/cancelSavePost/';
-
-  static String followApi='api/followProfile/';
-  static String unfollowApi='api/unFollow/';
-
+  static String showFollwingStory ='api/showFollwingStory';
+  static String searchUsers ='api/searchUsers';
 
 
   //other constants
