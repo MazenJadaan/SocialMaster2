@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/shared/components/components.dart';
+import 'package:social_master/shared/components/no_posts_yet.dart';
 import '../../../models/connection/home_page/foryou_posts.dart';
 import '../../../models/provider/post/postmodel.dart';
 import '../../../shared/components/post_component/post_component.dart';
@@ -19,32 +20,7 @@ class Tab1 extends StatefulWidget {
 
 class _Tab1State extends State<Tab1> {
 
-
-  SharedPostModel s = SharedPostModel(
-    caption: 'baaad sana',
-    date: '5/5/5',
-    userFName: 'Habibi',
-    userLName: 'wallah',
-    userImage:
-        'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg',
-    post: PostModel(
-      isSaved: true,
-      isLiked: false,
-      likes: 400,
-      comments: 12,
-      shares: 3,
-      caption: 'caption',
-      date: '30/12/2019',
-      userFName: 'Habibi',
-      userLName: 'wallah',
-      images: [
-        'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg'
-      ],
-      userImage:
-          'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg',
-    ),
-  );
-  List<PostModel>? aposts=<PostModel>[];
+  List<PostModel>? posts=<PostModel>[];
   List<Data>? data;
   bool loading = true;
 
@@ -72,7 +48,7 @@ class _Tab1State extends State<Tab1> {
           for(int j=0; j<data![i].photo!.length;j++){
             images.add(data![i].photo![j].photoPath!);
           }
-          aposts!.add(PostModel(
+          posts!.add(PostModel(
             caption: data![i].postBody,
             postId: data![i].id,
             video: data![i].postVideo,
@@ -108,14 +84,13 @@ class _Tab1State extends State<Tab1> {
         : Scaffold(
             body: RefreshIndicator(
               onRefresh: () async {
-
-                aposts=[];
+                posts=[];
                 setState(() {
                   forYouPosts();
                 });
 
               },
-              child: SingleChildScrollView(
+              child:posts!.isEmpty?noPostsYet(): SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
@@ -124,23 +99,16 @@ class _Tab1State extends State<Tab1> {
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
-                        itemCount: aposts!.length,
+                        itemCount: posts!.length,
                         itemBuilder: (context, i) =>
                             ChangeNotifierProvider<PostModel>.value(
-                              value: aposts![i],
+                              value: posts![i],
                               child: Consumer<PostModel>(
                                 builder: (context, model, child) =>
                                     postBuilder(
                                         model: model, context: context),
                               ),
                             )),
-                    // ChangeNotifierProvider<SharedPostModel>.value(
-                    //   value: s,
-                    //   child: Consumer<SharedPostModel>(
-                    //     builder: (context, model, child) =>
-                    //         sharedPostBuilder(model: model, context: context),
-                    //   ),
-                    // ),
                     const SizedBox(
                       height: 55,
                     ),

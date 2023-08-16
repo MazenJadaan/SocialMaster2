@@ -56,7 +56,7 @@ class PostModel extends ChangeNotifier {
   handleSave() {
     this.isSaved = !isSaved!;
     this.isSaved! ? saveColor = Colors.orange : saveColor = Colors.white;
-    this.isSaved! ? savePost(postId: this.postId!):savePost(postId: this.postId!);
+    this.isSaved! ? savePost(postId: this.postId!):unSavePost(postId: this.postId!);
 
     if (this.isSaved!) {
       Fluttertoast.showToast(
@@ -130,6 +130,7 @@ class MyPostModel extends ChangeNotifier {
   handleSave() {
     this.isSaved = !isSaved!;
     this.isSaved! ? saveColor = Colors.orange : saveColor = Colors.white;
+    this.isSaved! ? savePost(postId: this.postId!):unSavePost(postId: this.postId!);
 
     if (this.isSaved!) {
       Fluttertoast.showToast(

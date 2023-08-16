@@ -26,14 +26,17 @@ class AppSetting{
   static String likeAtPost='api/Like/';
   static String dislikeAtPost='api/removeLike/';
   static String savePost= 'api/savePosts/';
+  static String unSavePost='api/cancelSavePost/';
+  static String followApi='api/followProfile/';
+  static String unfollowApi='api/unFollow/';
+  static String savedPosts='api/showSavedPosts';
 
 
   // unfinished APIs
   static String createStory ='api/addStories';
-  static String unSavePost='api/cancelSavePost/';
 
-  static String followApi='api/followProfile/';
-  static String unfollowApi='api/unFollow/';
+
+
 
 
 

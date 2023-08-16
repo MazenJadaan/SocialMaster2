@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/modules/app/handle_post/create_post.dart';
 import 'package:social_master/shared/components/components.dart';
+import 'package:social_master/shared/components/no_posts_yet.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../../../models/connection/profile/profile.dart';
@@ -664,28 +665,7 @@ class _ProfilePageState extends State<ProfilePage>
                             Container(
                               child: user.myPosts!.isEmpty
                                   ? SingleChildScrollView(
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 30.0,
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Icon(
-                                              Icons.camera_alt_outlined,
-                                              size: 100,
-                                              color: AppTheme.colors.darkPurple,
-                                            ),
-                                            Text(
-                                              'No Posts Yet',
-                                              style: TextStyle(
-                                                fontSize: 30,
-                                                color:
-                                                    AppTheme.colors.darkPurple,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                      child: noPostsYet()
                                     )
                                   : ListView.builder(
                                       padding: const EdgeInsets.all(0.0),
@@ -709,28 +689,7 @@ class _ProfilePageState extends State<ProfilePage>
                             Container(
                               child: user.mySharedPosts!.isEmpty
                                   ? SingleChildScrollView(
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 30.0,
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Icon(
-                                              Icons.camera_alt_outlined,
-                                              size: 100,
-                                              color: AppTheme.colors.darkPurple,
-                                            ),
-                                            Text(
-                                              'No Posts Yet',
-                                              style: TextStyle(
-                                                fontSize: 30,
-                                                color:
-                                                    AppTheme.colors.darkPurple,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
+                                      child:noPostsYet()
                                     )
                                   : ListView.builder(
                                       padding: const EdgeInsets.all(0.0),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:social_master/shared/components/no_posts_yet.dart';
 import '../../models/connection/profile/profile2.dart';
 import '../../models/provider/post/postmodel.dart';
 import '../../models/provider/usermodel.dart';
@@ -30,6 +31,7 @@ class _VisitProfileState extends State<VisitProfile>
   OtherUserModel user=OtherUserModel() ;
   List<PostModel> postData = <PostModel>[];
   List<SharedPostModel> sharedPostData = <SharedPostModel>[];
+
   bool loading = true;
 
   Future follow()async {
@@ -62,7 +64,6 @@ class _VisitProfileState extends State<VisitProfile>
 
 
   Future fetchProfile() async {
-    print(Prefs.getToken());
     var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.showProfileApi}${widget.profileId}");
     var response = await http
         .get(url, headers: {"Authorization": "Bearer ${Prefs.getToken()}"});
@@ -95,21 +96,15 @@ class _VisitProfileState extends State<VisitProfile>
               comments: userData.userPosts![i].post![j].comments,
               shares:  userData.userPosts![i].post![j].shares,
               isLiked:  userData.userPosts![i].post![j].reaction == 0
-                  ? postData[i].isLiked = false
+                  ?  false
                   : true,
               isSaved:  userData.userPosts![i].post![j].saved == 0
-                  ? postData[i].isSaved = false
+                  ?  false
                   : true,
               video: userData.userPosts![i].post![j].video,
               images: images,
             ));
           }
-
-
-
-
-
-
           for (int j = 0; j < userData.userPosts![i].sharepost!.length; j++) {
             List<String> images2 = [];
             for (int k = 0;
@@ -172,9 +167,6 @@ class _VisitProfileState extends State<VisitProfile>
         loading = false;
         setState(() {});
       }
-      print('no fuck u');
-    } else {
-      print('fuck u');
     }
   }
 
@@ -552,28 +544,7 @@ class _VisitProfileState extends State<VisitProfile>
                           Container(
                             child: postData.isEmpty
                                 ? SingleChildScrollView(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 50.0,
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Icon(
-                                            Icons.camera_alt_outlined,
-                                            size: 100,
-                                            color: AppTheme.colors.darkPurple,
-                                          ),
-                                          Text(
-                                            'No Posts Yet',
-                                            style: TextStyle(
-                                              fontSize: 30,
-                                              color:
-                                                  AppTheme.colors.darkPurple,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                    child:noPostsYet()
                                   )
                                 : ListView.builder(
                                     padding: const EdgeInsets.all(0.0),
@@ -597,28 +568,7 @@ class _VisitProfileState extends State<VisitProfile>
                           Container(
                             child: sharedPostData.isEmpty
                                 ? SingleChildScrollView(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 50.0,
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Icon(
-                                            Icons.camera_alt_outlined,
-                                            size: 100,
-                                            color: AppTheme.colors.darkPurple,
-                                          ),
-                                          Text(
-                                            'No Posts Yet',
-                                            style: TextStyle(
-                                              fontSize: 30,
-                                              color:
-                                                  AppTheme.colors.darkPurple,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
+                                    child: noPostsYet()
                                   )
                                 : ListView.builder(
                                     padding: const EdgeInsets.all(0.0),
