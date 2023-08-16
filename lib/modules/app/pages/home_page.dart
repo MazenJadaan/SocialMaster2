@@ -4,7 +4,6 @@ import 'package:social_master/modules/app/handle_post/create_post.dart';
 import 'package:social_master/modules/app/home_page_content/navbar.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
 import 'package:social_master/shared/styles/colors.dart';
-import '../../../main.dart';
 import '../home_page_content/tab1.dart';
 import '../home_page_content/tab2.dart';
 import '../notifications.dart';

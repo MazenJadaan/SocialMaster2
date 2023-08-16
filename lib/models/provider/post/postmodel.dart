@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:social_master/modules/app/handle_post/like_at_post.dart';
+import 'package:social_master/modules/app/handle_post/save_post.dart';
 
 class PostModel extends ChangeNotifier {
   int? userId;
@@ -44,6 +47,8 @@ class PostModel extends ChangeNotifier {
 
   handleLike() {
     isLiked == false ? likeColor = Colors.red : likeColor = Colors.white;
+    isLiked==false ? likePost(postId: this.postId!)  :dislikePost(postId: this.postId!);
+    isLiked==false? likes=likes! +1 : likes= likes! -1 ;
     this.isLiked = !isLiked!;
     notifyListeners();
   }
@@ -51,6 +56,7 @@ class PostModel extends ChangeNotifier {
   handleSave() {
     this.isSaved = !isSaved!;
     this.isSaved! ? saveColor = Colors.orange : saveColor = Colors.white;
+    this.isSaved! ? savePost(postId: this.postId!):savePost(postId: this.postId!);
 
     if (this.isSaved!) {
       Fluttertoast.showToast(
@@ -115,6 +121,8 @@ class MyPostModel extends ChangeNotifier {
 
   handleLike() {
     isLiked == false ? likeColor = Colors.red : likeColor = Colors.white;
+    isLiked==false ? likePost(postId: this.postId!):dislikePost(postId: this.postId!);
+    isLiked==false? likes=likes! +1 : likes= likes! -1 ;
     this.isLiked = !isLiked!;
     notifyListeners();
   }

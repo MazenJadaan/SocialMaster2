@@ -40,7 +40,7 @@ class _CreatePostState extends State<CreatePost> {
 
   void selectVideo() async {
 
-    XFile? video = await picker.pickVideo(source: ImageSource.gallery,maxDuration: const Duration(minutes: 30));
+    XFile? video = await picker.pickVideo(source: ImageSource.gallery,maxDuration: const Duration(minutes: 10));
     if (video == null) return;
     selectedVideo = File(video.path);
 
@@ -84,7 +84,9 @@ class _CreatePostState extends State<CreatePost> {
     // final json =
     jsonDecode(responseString);
 
-
+    if(response.statusCode==200){
+      print(2);
+    }
   }
 
 
@@ -287,6 +289,8 @@ class _CreatePostState extends State<CreatePost> {
                           token: Prefs.getToken(),
                           video: selectedVideo,
                           images: selectedImages);
+
+
                       Navigator.of(context).pop();
                       Fluttertoast.showToast(
                           msg: "your new post has been published",

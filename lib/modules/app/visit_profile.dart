@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import '../../models/connection/profile/profile.dart';
+import '../../models/connection/profile/profile2.dart';
 import '../../models/provider/post/postmodel.dart';
 import '../../models/provider/usermodel.dart';
 import '../../shared/components/components.dart';
@@ -26,100 +27,146 @@ class VisitProfile extends StatefulWidget {
 class _VisitProfileState extends State<VisitProfile>
     with TickerProviderStateMixin {
   Data userData = Data();
-  OtherUserModel user = OtherUserModel();
+  OtherUserModel user=OtherUserModel() ;
   List<PostModel> postData = <PostModel>[];
   List<SharedPostModel> sharedPostData = <SharedPostModel>[];
-  bool loading = false;
+  bool loading = true;
+
+  Future follow()async {
+    var url = Uri.parse(
+        "${AppSetting.baseUrl}${AppSetting.followApi}${user.profileId}");
+    var response = await http.post(
+        url, headers: {"Authorization": "Bearer ${Prefs.getToken()}"});
+    if (response.statusCode == 200) {
+      Fluttertoast.showToast(
+          msg: "followed",
+          gravity: ToastGravity.BOTTOM,
+          toastLength: Toast.LENGTH_SHORT,
+          backgroundColor: Colors.black45,
+          fontSize: 16);
+    }else {
+      var url2 = Uri.parse(
+          "${AppSetting.baseUrl}${AppSetting.unfollowApi}${user.profileId}");
+      var response2 = await http.delete(
+          url2, headers: {"Authorization": "Bearer ${Prefs.getToken()}"});
+      if(response2.statusCode == 200){
+        Fluttertoast.showToast(
+            msg: "unfollowed",
+            gravity: ToastGravity.BOTTOM,
+            toastLength: Toast.LENGTH_SHORT,
+            backgroundColor: Colors.black45,
+            fontSize: 16);
+      }
+    }
+  }
+
 
   Future fetchProfile() async {
-    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.showProfileApi}1");
+    print(Prefs.getToken());
+    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.showProfileApi}${widget.profileId}");
     var response = await http
         .get(url, headers: {"Authorization": "Bearer ${Prefs.getToken()}"});
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       if (json['data'] != null) {
-        Data model = Data.fromJson(json['data']);
+
+        Data? model = Data.fromJson(json['data']);
         userData = model;
-        for (int i = 0; i < userData.allPosts!.length; i++) {
-          for (int j = 0; j < userData.allPosts![i].post!.length; i++) {
-            // myPostData[j].id = userData.allPosts![i].id;
-            postData[j].userFName = userData.allPosts![i].firstName;
-            postData[j].userLName = userData.allPosts![i].lastName;
-            postData[j].userImage =
-                userData.profileInformation!.userProfile!.profilePhoto;
-            postData[j].postId = userData.allPosts![i].post![j].id;
-            postData[i].caption = userData.allPosts![i].post![j].postBody;
-            postData[i].date = userData.allPosts![i].post![j].postDate;
-            postData[i].likes = userData.allPosts![i].post![j].likes;
-            postData[i].comments = userData.allPosts![i].post![j].comments;
-            postData[i].shares = userData.allPosts![i].post![j].shares;
-            postData[i].isLiked = userData.allPosts![i].post![j].reaction == 0
-                ? postData[i].isLiked = false
-                : true;
-            postData[i].isLiked = userData.allPosts![i].post![j].saved == 0
-                ? postData[i].isSaved = false
-                : true;
-            postData[i].video = userData.allPosts![i].post![j].video;
-            postData[i].userId = userData.allPosts![i].post![j].userId;
-            postData[i].userProfileId =
-                userData.allPosts![i].post![j].userProfileId;
+        print(userData.userInformation!.lastName);
+        for (int i = 0; i < userData.userPosts!.length; i++) {
+          for (int j = 0; j < userData.userPosts![i].post!.length; j++) {
+            List<String> images = [];
+
             for (int k = 0;
-                k < userData.allPosts![i].post![j].photo!.length;
-                k++) {
-              postData[i].images![k] =
-                  userData.allPosts![i].post![j].photo![k].photoPath!;
+            k < userData.userPosts![i].post![j].photo!.length;
+            k++) {
+              images.add(userData.userPosts![i].post![j].photo![k].photoPath!);
             }
+            postData.add(PostModel(
+              userFName: userData.userPosts![i].firstName,
+              userLName: userData.userPosts![i].lastName,
+              userImage: userData.userInformation!.userProfile!.profilePhoto,
+              userId: userData.userInformation!.id,
+              userProfileId: userData.userInformation!.userProfile!.id,
+              postId:   userData.userPosts![i].post![j].id,
+              caption: userData.userPosts![i].post![j].postBody,
+              date: userData.userPosts![i].post![j].postDate,
+              likes: userData.userPosts![i].post![j].likes,
+              comments: userData.userPosts![i].post![j].comments,
+              shares:  userData.userPosts![i].post![j].shares,
+              isLiked:  userData.userPosts![i].post![j].reaction == 0
+                  ? postData[i].isLiked = false
+                  : true,
+              isSaved:  userData.userPosts![i].post![j].saved == 0
+                  ? postData[i].isSaved = false
+                  : true,
+              video: userData.userPosts![i].post![j].video,
+              images: images,
+            ));
           }
-          for (int j = 0; j < userData.allPosts![i].sharepost!.length; i++) {
-            sharedPostData[j].userFName = userData.allPosts![i].firstName;
-            sharedPostData[j].userLName = userData.allPosts![i].lastName;
-            sharedPostData[j].userImage =
-                userData.profileInformation!.userProfile!.profilePhoto;
-            sharedPostData[j].id = userData.allPosts![i].sharepost![j].id;
-            sharedPostData[i].caption =
-                userData.allPosts![i].sharepost![j].body;
-            sharedPostData[i].date =
-                userData.allPosts![i].sharepost![j].createdAt;
-            sharedPostData[i].post!.video =
-                userData.allPosts![i].sharepost![j].post!.video;
-            sharedPostData[i].userId =
-                userData.allPosts![i].sharepost![j].post!.userId;
-            sharedPostData[i].post!.caption =
-                userData.allPosts![i].sharepost![j].post!.postBody;
-            sharedPostData[i].post!.video =
-                userData.allPosts![i].sharepost![j].post!.video;
-            sharedPostData[i].post!.date =
-                userData.allPosts![i].sharepost![j].post!.createdAt;
+
+
+
+
+
+
+          for (int j = 0; j < userData.userPosts![i].sharepost!.length; j++) {
+            List<String> images2 = [];
             for (int k = 0;
-                k < userData.allPosts![i].post![j].photo!.length;
-                k++) {
-              sharedPostData[i].post!.images![k] = userData
-                  .allPosts![i].sharepost![j].post!.photo![k].photoPath!;
+            k < userData.userPosts![i].post![j].photo!.length;
+            k++) {
+              images2.add(userData
+                  .userPosts![i].sharepost![j].post!.photo![k].photoPath!);
             }
+            sharedPostData.add(SharedPostModel(
+              userFName: userData.userPosts![i].firstName,
+              userLName: userData.userPosts![i].lastName,
+              userId: userData.userPosts![i].sharepost![j].post!.userId,
+              caption: userData.userPosts![i].sharepost![j].body,
+              id: userData.userPosts![i].sharepost![j].id,
+              date: userData.userPosts![i].sharepost![j].createdAt,
+              userImage:
+              userData.userInformation!.userProfile!.profilePhoto,
+              post: PostModel(
+                video: userData.userPosts![i].sharepost![j].post!.video,
+                userId: userData.userPosts![i].sharepost![j].post!.userId,
+                caption: userData.userPosts![i].sharepost![j].post!.postBody,
+                date: userData.userPosts![i].sharepost![j].post!.createdAt,
+                images: images2,
+                likes: userData.userPosts![i].sharepost![j].post!.likes,
+                comments: userData.userPosts![i].sharepost![j].post!.comments,
+                shares: userData.userPosts![i].sharepost![j].post!.shares,
+                postId: userData.userPosts![i].sharepost![j].post!.id,
+                userProfileId: userData.userPosts![i].sharepost![j].post!.userProfileId,
+                userImage:userData.userInformation!.userProfile!.profilePhoto,
+                isSaved: userData.userPosts![i].sharepost![j].post!.saved == 0 ? false : true,
+                isLiked:  userData.userPosts![i].sharepost![j].post!.reaction == 0 ? false : true,
+                // userLName: userData.allPosts![i].sharepost![j].
+              ),
+            ));
           }
+
         }
         user = OtherUserModel(
-          profileId: userData.profileInformation?.id,
-          firstName: userData.profileInformation?.firstName,
-          lastName: userData.profileInformation?.lastName,
-          gender: userData.profileInformation?.gender,
-          birthdate: userData.profileInformation?.birthdate,
-          job: userData.profileInformation?.userProfile?.job,
-          studyPlace: userData.profileInformation?.userProfile?.studyPlace,
-          placeStay: userData.profileInformation?.userProfile?.placeStay,
-          placeBorn: userData.profileInformation?.userProfile?.placeBorn,
-          bio: userData.profileInformation?.userProfile?.bio,
-          coverPhoto: userData.profileInformation?.userProfile?.coverPhoto,
-          state: userData.profileInformation?.userProfile?.state,
+          profileId: userData.userInformation!.id,
+          firstName: userData.userInformation!.firstName,
+          lastName: userData.userInformation!.lastName,
+          gender: userData.userInformation!.gender,
+          birthdate: userData.userInformation!.birthdate,
+          job: userData.userInformation!.userProfile!.job,
+          studyPlace: userData.userInformation!.userProfile!.studyPlace,
+          placeStay: userData.userInformation!.userProfile!.placeStay,
+          placeBorn: userData.userInformation!.userProfile!.placeBorn,
+          bio: userData.userInformation!.userProfile!.bio,
+          coverPhoto: userData.userInformation!.userProfile!.coverPhoto,
+          state: userData.userInformation!.userProfile!.state,
           followingNumber:
-              userData.profileInformation?.userProfile?.followingNumber,
+              userData.userInformation!.userProfile!.followingNumber,
           followersNumber:
-              userData.profileInformation?.userProfile?.followersNumber,
-          // user.phoneNumber=userData.profileInformation?.userProfile?.
-          phoneNumber: 0945587900,
-          profilePhoto: userData.profileInformation?.userProfile?.profilePhoto,
-          posts: postData,
-          sharedPosts: sharedPostData,
+              userData.userInformation!.userProfile!.followersNumber,
+          profilePhoto: userData.userInformation!.userProfile!.profilePhoto,
+          // posts: postData,
+          // sharedPosts: sharedPostData,
         );
 
         loading = false;
@@ -143,7 +190,7 @@ class _VisitProfileState extends State<VisitProfile>
     TabController tc = TabController(length: 2, vsync: this);
     return loading
         ? myCircularProgressIndicator()
-        : ChangeNotifierProvider<OtherUserModel>.value(
+        : ChangeNotifierProvider<OtherUserModel?>.value(
             value: user,
             child: Consumer<OtherUserModel>(
               builder: (context, user, child) => Scaffold(
@@ -461,6 +508,7 @@ class _VisitProfileState extends State<VisitProfile>
                                       width: double.infinity,
                                       text: 'Follow',
                                       onPressed: () {
+                                        follow();
                                         // user.handleFollow();
                                       },
                                       fontSize: 18),
@@ -496,105 +544,101 @@ class _VisitProfileState extends State<VisitProfile>
                   ],
                   body: Container(
                     color: AppTheme.colors.backgroundColor,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 55.0),
-                      child: TabBarView(
-                          // viewportFraction: double.maxFinite,
-                          controller: tc,
-                          physics: const BouncingScrollPhysics(),
-                          children: [
-                            Container(
-                              child: postData.isEmpty
-                                  ? SingleChildScrollView(
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 50.0,
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Icon(
-                                              Icons.camera_alt_outlined,
-                                              size: 100,
-                                              color: AppTheme.colors.darkPurple,
-                                            ),
-                                            Text(
-                                              'No Posts Yet',
-                                              style: TextStyle(
-                                                fontSize: 30,
-                                                color:
-                                                    AppTheme.colors.darkPurple,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                    child: TabBarView(
+                        // viewportFraction: double.maxFinite,
+                        controller: tc,
+                        physics: const BouncingScrollPhysics(),
+                        children: [
+                          Container(
+                            child: postData.isEmpty
+                                ? SingleChildScrollView(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 50.0,
                                       ),
-                                    )
-                                  : ListView.builder(
-                                      padding: const EdgeInsets.all(0.0),
-                                      physics: const BouncingScrollPhysics(),
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: postData.length,
-                                      itemBuilder: (context, i) =>
-                                          ChangeNotifierProvider<
-                                              PostModel>.value(
-                                        value: postData[i],
-                                        child: Consumer<PostModel>(
-                                          builder: (context, model2, child) =>
-                                              postBuilder(
-                                                  model: model2,
-                                                  context: context),
-                                        ),
+                                      child: Column(
+                                        children: [
+                                          Icon(
+                                            Icons.camera_alt_outlined,
+                                            size: 100,
+                                            color: AppTheme.colors.darkPurple,
+                                          ),
+                                          Text(
+                                            'No Posts Yet',
+                                            style: TextStyle(
+                                              fontSize: 30,
+                                              color:
+                                                  AppTheme.colors.darkPurple,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                            ),
-                            Container(
-                              child: sharedPostData.isEmpty
-                                  ? SingleChildScrollView(
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 50.0,
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Icon(
-                                              Icons.camera_alt_outlined,
-                                              size: 100,
-                                              color: AppTheme.colors.darkPurple,
-                                            ),
-                                            Text(
-                                              'No Posts Yet',
-                                              style: TextStyle(
-                                                fontSize: 30,
-                                                color:
-                                                    AppTheme.colors.darkPurple,
-                                              ),
-                                            )
-                                          ],
-                                        ),
+                                  )
+                                : ListView.builder(
+                                    padding: const EdgeInsets.all(0.0),
+                                    physics: const BouncingScrollPhysics(),
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: postData.length,
+                                    itemBuilder: (context, i) =>
+                                        ChangeNotifierProvider<
+                                            PostModel>.value(
+                                      value: postData[i],
+                                      child: Consumer<PostModel>(
+                                        builder: (context, model2, child) =>
+                                            postBuilder(
+                                                model: model2,
+                                                context: context),
                                       ),
-                                    )
-                                  : ListView.builder(
-                                      padding: const EdgeInsets.all(0.0),
-                                      physics: const BouncingScrollPhysics(),
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: sharedPostData.length,
-                                      itemBuilder: (context, i) =>
-                                          ChangeNotifierProvider<
-                                              SharedPostModel>.value(
-                                            value: sharedPostData[i],
-                                            child: Consumer<SharedPostModel>(
-                                              builder:
-                                                  (context, model2, child) =>
-                                                      sharedPostBuilder(
-                                                          model: model2,
-                                                          context: context),
+                                    ),
+                                  ),
+                          ),
+                          Container(
+                            child: sharedPostData.isEmpty
+                                ? SingleChildScrollView(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 50.0,
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Icon(
+                                            Icons.camera_alt_outlined,
+                                            size: 100,
+                                            color: AppTheme.colors.darkPurple,
+                                          ),
+                                          Text(
+                                            'No Posts Yet',
+                                            style: TextStyle(
+                                              fontSize: 30,
+                                              color:
+                                                  AppTheme.colors.darkPurple,
                                             ),
-                                          )),
-                            ),
-                          ]),
-                    ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                : ListView.builder(
+                                    padding: const EdgeInsets.all(0.0),
+                                    physics: const BouncingScrollPhysics(),
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: sharedPostData.length,
+                                    itemBuilder: (context, i) =>
+                                        ChangeNotifierProvider<SharedPostModel>.value(
+                                          value: sharedPostData[i],
+                                          child: Consumer<SharedPostModel>(
+                                            builder:
+                                                (context, model2, child) =>
+                                                    sharedPostBuilder(
+                                                        model: model2,
+                                                        context: context),
+                                          ),
+                                        )),
+                          ),
+                        ]),
                   ),
                 ),
               ),

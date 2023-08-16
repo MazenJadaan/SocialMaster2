@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:social_master/models/provider/post/postmodel.dart';
 
 class UserModel extends ChangeNotifier {

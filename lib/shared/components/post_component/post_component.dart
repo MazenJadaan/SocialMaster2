@@ -217,7 +217,7 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                     width: 8,
                                   ),
                                   Text(
-                                    "${model.isLiked == true ? model.likes! + 1 : model.likes}",
+                                    "${model.likes}",
                                     style: const TextStyle(
                                       fontFamily: 'SignikaNegative',
                                       fontSize: 15,

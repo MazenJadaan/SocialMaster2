@@ -57,7 +57,7 @@ class _SignupDetailsState extends State<SignupDetails> {
     //Get the response from the server
     var responseData = await response.stream.toBytes();
     var responseString = String.fromCharCodes(responseData);
-    final json = jsonDecode(responseString);
+     jsonDecode(responseString);
     if (response.statusCode == 200) {
       return true;
     } else {

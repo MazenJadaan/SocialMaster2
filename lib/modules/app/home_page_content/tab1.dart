@@ -4,7 +4,6 @@ import 'package:social_master/shared/components/components.dart';
 import '../../../models/connection/home_page/foryou_posts.dart';
 import '../../../models/provider/post/postmodel.dart';
 import '../../../shared/components/post_component/post_component.dart';
-import '../../../shared/components/post_component/shared_post_component.dart';
 import '../../../shared/network/constant/constant.dart';
 import '../../../shared/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -19,70 +18,7 @@ class Tab1 extends StatefulWidget {
 }
 
 class _Tab1State extends State<Tab1> {
-  final List<PostModel> posts = [
-    PostModel(
-        isSaved: false,
-        isLiked: false,
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userFName: 'Habibi',
-        userLName: 'wallah',
-        images: [
-          'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg',
-          'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg',
-          'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg',
-          'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
-          'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg'
-        ],
-        video: null,
-        userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-    PostModel(
-        isSaved: false,
-        isLiked: false,
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userFName: 'Habibi',
-        userLName: 'wallah',
-        images: [],
-        video: 'assets/videos/vid.mp4',
-        userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-    PostModel(
-        isSaved: false,
-        isLiked: false,
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userFName: 'Habibi',
-        userLName: 'wallah',
-        images: [
-          'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg'
-        ],
-        userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-    PostModel(
-        isSaved: false,
-        isLiked: false,
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userFName: 'Habibi',
-        userLName: 'wallah',
-        images: [],
-        userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg'),
-  ];
+
 
   SharedPostModel s = SharedPostModel(
     caption: 'baaad sana',
@@ -123,7 +59,7 @@ class _Tab1State extends State<Tab1> {
       if (json['data'] != null) {
         data = <Data>[];
         json['data'].forEach((v) {
-          data!.add(new Data.fromJson(v));
+          data!.add( Data.fromJson(v));
         });
         loading = false;
         setState(() {});
@@ -147,6 +83,7 @@ class _Tab1State extends State<Tab1> {
             comments: data![i].commentCount,
             shares: data![i].sharePostCount,
             images: images,
+            userProfileId: data![i].user!.userProfile!.userId,
             userId: data![i].user!.id,
             userFName: data![i].user!.firstName,
             userLName: data![i].user!.lastName,

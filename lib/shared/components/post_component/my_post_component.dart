@@ -5,10 +5,12 @@ import 'package:social_master/modules/app/handle_post/edit_post.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
 import '../../../models/provider/post/postmodel.dart';
 import '../../../modules/app/handle_media/show_photo.dart';
-
 import '../../../modules/app/handle_media/show_video.dart';
+import '../../../modules/app/handle_post/delete_post.dart';
 import '../../styles/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+
+
 
 Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
@@ -66,7 +68,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                   PopupMenuButton(
                     color: Colors.white,
                     itemBuilder: (context) => [
-                       PopupMenuItem(
+                       const PopupMenuItem(
                         value: 1,
                         child: Row(
                           children: [
@@ -78,7 +80,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                           ],
                         ),
                       ),
-                       PopupMenuItem(
+                       const PopupMenuItem(
                         value: 2,
                         child: Row(
                           children: [
@@ -90,7 +92,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                           ],
                         ),
                       ),
-                       PopupMenuItem(
+                       const PopupMenuItem(
                         value: 3,
                         child: Row(
                           children: [
@@ -110,7 +112,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                               builder: (context) => EditPost(model)));
                           break;
                         case 2:
-                          print('delete');
+                          deletePost(postId: '${model.postId}');
                           break;
                         case 3:
                           print('promote');
@@ -268,7 +270,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                                   width: 8,
                                 ),
                                 Text(
-                                    "${model.isLiked == true ? model.likes! + 1 : model.likes}",
+                                    "${model.likes}",
                                     style: const TextStyle(
                                       fontFamily: 'SignikaNegative',
                                       fontSize: 15,

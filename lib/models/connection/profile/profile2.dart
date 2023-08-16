@@ -25,36 +25,37 @@ class ProfileResponse {
 }
 
 class Data {
-  ProfileInformation? profileInformation;
-  List<AllPosts>? allPosts;
+  UserInformation? userInformation;
+  List<UserPosts>? userPosts;
 
-  Data({this.profileInformation, this.allPosts});
+  Data({this.userInformation, this.userPosts});
 
   Data.fromJson(Map<String, dynamic> json) {
-    profileInformation = json['user information'] != null
-        ? new ProfileInformation.fromJson(json['user information'])
-        : null;
+     userInformation= json['user information'] != null
+          ? new UserInformation.fromJson(json['user information'])
+          : null;
+
     if (json['user posts'] != null) {
-      allPosts =  <AllPosts>[];
-      json['all posts'].forEach((v) {
-        allPosts?.add(new AllPosts.fromJson(v));
+      userPosts =  <UserPosts>[];
+      json['user posts'].forEach((v) {
+        userPosts?.add(new UserPosts.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.profileInformation != null) {
-      data['user information'] = this.profileInformation?.toJson();
+    if (this.userInformation != null) {
+      data['user information'] = this.userInformation?.toJson();
     }
-    if (this.allPosts != null) {
-      data['user posts'] = this.allPosts?.map((v) => v.toJson()).toList();
+    if (this.userPosts != null) {
+      data['user posts'] = this.userPosts?.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class ProfileInformation {
+class UserInformation {
   int? id;
   String? firstName;
   String? lastName;
@@ -62,7 +63,7 @@ class ProfileInformation {
   String? birthdate;
   UserProfile? userProfile;
 
-  ProfileInformation(
+  UserInformation(
       {this.id,
         this.firstName,
         this.lastName,
@@ -70,7 +71,7 @@ class ProfileInformation {
         this.birthdate,
         this.userProfile});
 
-  ProfileInformation.fromJson(Map<String, dynamic> json) {
+  UserInformation.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     firstName = json['first_name'];
     lastName = json['last_name'];
@@ -166,16 +167,16 @@ class UserProfile {
   }
 }
 
-class AllPosts {
+class UserPosts {
   int? id;
   String? firstName;
   String? lastName;
   List<Post>? post;
   List<Sharepost>? sharepost;
 
-  AllPosts({this.id, this.firstName, this.lastName, this.post, this.sharepost});
+  UserPosts({this.id, this.firstName, this.lastName, this.post, this.sharepost});
 
-  AllPosts.fromJson(Map<String, dynamic> json) {
+  UserPosts.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     firstName = json['first_name'];
     lastName = json['last_name'];

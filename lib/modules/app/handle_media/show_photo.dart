@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_master/shared/components/components.dart';
 
-import '../../../shared/styles/colors.dart';
 
 Future showPhoto({required BuildContext context, required String image}) {
   return showDialog(
