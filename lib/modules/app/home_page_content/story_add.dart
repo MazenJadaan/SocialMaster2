@@ -7,7 +7,6 @@ import '../../../shared/components/components.dart';
 import '../../../shared/network/constant/constant.dart';
 import '../../../shared/shared_preferences.dart';
 import '../../../shared/styles/colors.dart';
-import '../../../shared/validate/validate.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -22,7 +21,7 @@ class _StoryAddState extends State<StoryAdd> {
   final TextEditingController _captionController = TextEditingController();
   File? image;
   final ImagePicker picker = ImagePicker();
-  String? token=Prefs.getToken();
+  String? token = Prefs.getToken();
 
   Future uploadImage() async {
     try {
@@ -37,49 +36,52 @@ class _StoryAddState extends State<StoryAdd> {
     }
   }
 
-  Future createStory({
-    String? text,
-    String? mediaPath,
-    required String token
+  Future createStory(
+      {required String text, File? media, required String token}) async {
+print(token);
 
-})async{
-    print(text);
-    var request = http.MultipartRequest("POST",
-        Uri.parse("${AppSetting.baseUrl}${AppSetting.createPostApi}"));
-    request.fields["story_body"] = text!;
-    request.headers["Authorization"] = "Bearer $token}";
+    var request = http.MultipartRequest(
+        "POST", Uri.parse("${AppSetting.baseUrl}${AppSetting.createStoryApi}"));
+    request.fields["story_body"] = text;
+    request.headers["Authorization"] = "Bearer ${token}";
 
-    if (mediaPath != null) {
+    if (media != null) {
       //create multipart using filepath, string or bytes
-      var med = await http.MultipartFile.fromPath("media", mediaPath);
+      var med = await http.MultipartFile.fromPath("media", media.path);
       //add multipart to request
       request.files.add(med);
     }
+
     var response = await request.send();
     //Get the response from the server
     var responseData = await response.stream.toBytes();
     var responseString = String.fromCharCodes(responseData);
     jsonDecode(responseString);
+
+
     if (response.statusCode == 201) {
+
       print('done');
     } else {
       print('object');
     }
-}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Center(
             child: Text(
-              "Create New Story",
-              style: TextStyle(),
-            )),
+          "Create New Story",
+          style: TextStyle(),
+        )),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(height: 110,
+            Container(
+                height: 110,
                 width: 110,
                 child: Lottie.asset("assets/images/storya.json")),
             SizedBox(height: 10),
@@ -99,16 +101,15 @@ class _StoryAddState extends State<StoryAdd> {
               ],
             ),
             captionTextFormField(
-                controller: _captionController,
-                label: 'text',
-                maxlines: 2),
-            const SizedBox(height: 10,),
+                controller: _captionController, label: 'text', maxlines: 2),
+            const SizedBox(
+              height: 10,
+            ),
             Center(
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text('Add photo:',
@@ -121,34 +122,34 @@ class _StoryAddState extends State<StoryAdd> {
                     GestureDetector(
                       child: image != null
                           ? Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.file(
-                          image!,
-                          // height: 165,
-                          // width: 165,
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                          : Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 5),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                color: AppTheme.colors.opacityPurple,
-                                borderRadius: BorderRadius.circular(10),
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.file(
+                                image!,
+                                // height: 165,
+                                // width: 165,
+                                fit: BoxFit.cover,
                               ),
-                              child: Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Icon(
-                                      Icons.add_photo_alternate_outlined,
-                                      size: 150,
+                            )
+                          : Center(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0, vertical: 5),
+                                child: Container(
+                                    decoration: BoxDecoration(
                                       color: AppTheme.colors.opacityPurple,
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
-                                  ))),
-                        ),
-                      ),
+                                    child: Center(
+                                        child: Padding(
+                                      padding: const EdgeInsets.all(20.0),
+                                      child: Icon(
+                                        Icons.add_photo_alternate_outlined,
+                                        size: 150,
+                                        color: AppTheme.colors.opacityPurple,
+                                      ),
+                                    ))),
+                              ),
+                            ),
                       onTap: () {
                         uploadImage();
                         setState(() {});
@@ -176,9 +177,10 @@ class _StoryAddState extends State<StoryAdd> {
                         height: 50,
                         text: "Share",
                         onPressed: () async {
-
-
-                          createStory(text: _captionController.text,mediaPath: image!.path,token: token!);
+                          createStory(
+                              text: _captionController.text,
+                              media: image!,
+                              token: token!);
                         },
                       ),
                     ),
@@ -192,6 +194,6 @@ class _StoryAddState extends State<StoryAdd> {
           ],
         ),
       ),
-        );
+    );
   }
 }

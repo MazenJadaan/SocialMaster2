@@ -2,14 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:social_master/models/story/data.dart';
 import 'package:story/story.dart';
 
-class Story extends StatelessWidget {
-  const Story({Key? key}) : super(key: key);
+
+class ShowStory extends StatefulWidget {
+   ShowStory(this.story,{Key? key}) : super(key: key);
+   StoryData story;
+  @override
+  State<ShowStory> createState() => _ShowStoryState();
+}
+
+class _ShowStoryState extends State<ShowStory> {
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body:
         StoryPageView(
+
           itemBuilder: (context, pageIndex, storyIndex) {
             var user = dataUsers[pageIndex];
             var story = user.stories![storyIndex];
@@ -50,6 +60,9 @@ class Story extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                             fontSize: 16),
                       ),
+                      SizedBox(width: 10,),
+                      Text('${story.time}',style: TextStyle(color: Colors.white,fontSize: 7)),
+
                     ],
                   ),
                 )

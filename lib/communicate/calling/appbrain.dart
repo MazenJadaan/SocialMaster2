@@ -1,3 +1,3 @@
-const appId = "77451303905d463baeae7658a786ce8b";
-const token = "007eJxTYGBi3cO6dn7nhUcCG5ed7831/dq/z72kjZ3t/S/mjE23xCsVGMzNTUwNjQ2MLQ1MU0zMjJMSUxNTzc1MLRLNLcySUy2S2OKupTQEMjIka/AzMEIhiM/BkJyYk5OZl27IwAAAm7EfbQ==";
-const channel = "calling1";
+const appId = "fde7cffcbae649dcb0d20dce32a43c85";
+const token = "007eJxTYJh8pUNp7waXu+8+9fOWPNhmqM/wS//c9NJZwjs7fiwoUfZXYEhLSTVPTktLTkpMNTOxTElOMkgxMkhJTjU2SjQxTrYwvXXtdkpDICODg5MwKyMDBIL4rAyJGbmJKQwMAEAkInE=";
+const channel = "ahmad";

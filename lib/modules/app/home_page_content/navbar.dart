@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
+import 'package:social_master/modules/app/home_page_content/story.dart';
 import 'package:social_master/modules/app/pages/profile_page.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
@@ -52,9 +54,7 @@ class NavBar extends StatelessWidget {
                   .push(MaterialPageRoute(builder: (context) => ProfilePage()));
             },
           ),
-          const Divider(
-            thickness: 1,
-          ),
+          SizedBox(height: 8),
           ListTile(
             leading: Icon(
               FontAwesomeIcons.solidBookmark,
@@ -66,9 +66,7 @@ class NavBar extends StatelessWidget {
             ),
             trailing: Icon(Icons.chevron_right),
           ),
-          const Divider(
-            thickness: 1,
-          ),
+          SizedBox(height: 8),
           ListTile(
             leading: Icon(
               Icons.archive,
@@ -79,11 +77,13 @@ class NavBar extends StatelessWidget {
               style: TextStyle(color: AppTheme.colors.darkPurple),
             ),
             trailing: Icon(Icons.chevron_right),
+            // onTap: (){
+            //   Navigator.of(context)
+            //       .push(MaterialPageRoute(builder: (context) => ShowStory()));
+            // },
           ),
-          const Divider(
-            thickness: 1,
-          ),
-          const ListTile(
+          SizedBox(height: 8),
+           const ListTile(
             leading: Icon(
               Icons.star,
               color: Colors.purple,
@@ -91,9 +91,7 @@ class NavBar extends StatelessWidget {
             title: Text('Account Verification'),
             trailing: Icon(Icons.chevron_right),
           ),
-          const Divider(
-            thickness: 1,
-          ),
+          SizedBox(height: 8),
           const ListTile(
             leading: Icon(
               Icons.language,
@@ -102,9 +100,7 @@ class NavBar extends StatelessWidget {
             title: Text('Language'),
             trailing: Icon(Icons.chevron_right),
           ),
-          const Divider(
-            thickness: 1,
-          ),
+          SizedBox(height: 8),
           ListTile(
               leading: Icon(
                 FontAwesomeIcons.moon,
@@ -131,9 +127,7 @@ class NavBar extends StatelessWidget {
                 onDoubleTap: () {},
                 onSwipe: () {},
               )),
-          const Divider(
-            thickness: 1,
-          ),
+          SizedBox(height: 8),
           GestureDetector(
             onTap: () {
               showDialog(
@@ -158,6 +152,7 @@ class NavBar extends StatelessWidget {
 }
 
 buildLogout({required BuildContext context}) => AlertDialog(
+
       content: Container(
         height: 80,
         child: Column(
