@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:social_master/communicate/calling/HomeScreen.dart';
 import 'package:social_master/shared/components/no_posts_yet.dart';
 import '../../models/connection/profile/profile2.dart';
 import '../../models/provider/post/postmodel.dart';
@@ -509,8 +510,11 @@ class _VisitProfileState extends State<VisitProfile>
                                 Expanded(
                                   child: myMaterialButton(
                                       width: double.infinity,
-                                      text: 'Message',
-                                      onPressed: () {},
+                                      text: 'Call',
+                                      onPressed: () {
+                                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomeScreen(user.profilePhoto,'${user.firstName} ${user.lastName}')));
+
+                                      },
                                       fontSize: 18),
                                 ),
                               ],

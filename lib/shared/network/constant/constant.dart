@@ -31,10 +31,11 @@ class AppSetting{
   static String unfollowApi='api/unFollow/';
   static String savedPostsApi='api/showSavedPosts';
   static String sharePostApi='api/sharePost/';
+  static String createStoryApi='api/addStories';
+  static String searchUsers='api/searchUsers';
 
   // unfinished APIs
-  static String createStory ='api/addStories';
-
+  static String showFollwingStory='';
 
 
 
