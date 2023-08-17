@@ -105,13 +105,14 @@ class _VisitProfileState extends State<VisitProfile>
               images: images,
             ));
           }
+
+
           for (int j = 0; j < userData.userPosts![i].sharepost!.length; j++) {
             List<String> images2 = [];
             for (int k = 0;
-            k < userData.userPosts![i].post![j].photo!.length;
+            k < userData.userPosts![i].sharepost![j].post!.photo!.length;
             k++) {
-              images2.add(userData
-                  .userPosts![i].sharepost![j].post!.photo![k].photoPath!);
+              images2.add(userData.userPosts![i].sharepost![j].post!.photo![k].photoPath!);
             }
             sharedPostData.add(SharedPostModel(
               userFName: userData.userPosts![i].firstName,

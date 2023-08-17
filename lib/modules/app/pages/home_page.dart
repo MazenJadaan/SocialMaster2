@@ -32,12 +32,19 @@ class HomePage extends StatelessWidget {
                 floating: true,
                 elevation: 0.0,
                 pinned: true,
-                title: Image(
+                title: AppSetting.darkMode?
+                const Image(
                     image: AssetImage(
-                      AppSetting.darkMode
-                          ? 'assets/images/logo_name_3.png'
-                          : 'assets/images/logo_name.png',
-                    ),
+
+                           'assets/images/logo_name_3.png',
+                    ),)
+                    :
+                    const Image(
+                image: AssetImage(
+
+
+                'assets/images/logo_name.png',
+                ),
                     width: 120),
                 actions: [
                   IconButton(

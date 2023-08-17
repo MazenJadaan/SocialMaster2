@@ -25,7 +25,7 @@ class _SavedPostsState extends State<SavedPosts> {
   bool loading = true;
 
   Future fetchSavedPosts() async {
-    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.savedPosts}");
+    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.savedPostsApi}");
     var response = await http
         .get(url, headers: {"Authorization": "Bearer ${Prefs.getToken()}"});
 

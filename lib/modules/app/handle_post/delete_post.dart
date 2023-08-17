@@ -5,7 +5,7 @@ import '../../../shared/network/constant/constant.dart';
 import '../../../shared/shared_preferences.dart';
 
 Future deletePost({required String postId})async{
-  var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.deletePost}$postId");
+  var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.deletePostApi}$postId");
   var response = await http.delete(url,headers:  {"Authorization": "Bearer ${Prefs.getToken()}"});
 
   if (response.statusCode == 200) {

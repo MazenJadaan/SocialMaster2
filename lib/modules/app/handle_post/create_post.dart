@@ -81,11 +81,11 @@ class _CreatePostState extends State<CreatePost> {
     //Get the response from the server
     var responseData = await response.stream.toBytes();
     var responseString = String.fromCharCodes(responseData);
-    // final json =
+
     jsonDecode(responseString);
 
     if(response.statusCode==200){
-      print(2);
+      print('done');
     }
   }
 

@@ -22,15 +22,15 @@ class AppSetting{
   static String forYouPageApi ='api/allWorld';
   static String followingPost ='api/MyfollowingPage';
   static String seeVideosApi='api/see_videos';
-  static String deletePost ='api/deletePosts/';
-  static String likeAtPost='api/Like/';
-  static String dislikeAtPost='api/removeLike/';
-  static String savePost= 'api/savePosts/';
-  static String unSavePost='api/cancelSavePost/';
+  static String deletePostApi ='api/deletePosts/';
+  static String likeAtPostApi='api/Like/';
+  static String dislikeAtPostApi='api/removeLike/';
+  static String savePostApi= 'api/savePosts/';
+  static String unSavePostApi='api/cancelSavePost/';
   static String followApi='api/followProfile/';
   static String unfollowApi='api/unFollow/';
-  static String savedPosts='api/showSavedPosts';
-
+  static String savedPostsApi='api/showSavedPosts';
+  static String sharePostApi='api/sharePost/';
 
   // unfinished APIs
   static String createStory ='api/addStories';

@@ -5,14 +5,14 @@ import '../../../shared/shared_preferences.dart';
 
 
 Future likePost({required int postId})async{
-  var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.likeAtPost}$postId");
+  var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.likeAtPostApi}$postId");
   var response = await http.post(url,headers:  {"Authorization": "Bearer ${Prefs.getToken()}"});
   if (response.statusCode == 200) {
     print('like');
   }}
 
 Future dislikePost({required int postId})async{
-  var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.dislikeAtPost}$postId");
+  var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.dislikeAtPostApi}$postId");
   var response = await http.delete(url,headers:  {"Authorization": "Bearer ${Prefs.getToken()}"});
   if (response.statusCode == 200) {
     print('dislike');

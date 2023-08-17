@@ -101,41 +101,44 @@ class _ProfilePageState extends State<ProfilePage>
               images: images,
             ));
 
-            for (int j = 0; j < userData.allPosts![i].sharepost!.length; j++) {
-              List<String> images2 = [];
-              for (int k = 0;
-              k < userData.allPosts![i].post![j].photo!.length;
-              k++) {
-                images2.add(userData
-                    .allPosts![i].sharepost![j].post!.photo![k].photoPath!);
-              }
-              mySharedPostData.add(SharedPostModel(
-                userFName: userData.allPosts![i].firstName,
-                userLName: userData.allPosts![i].lastName,
-                userId: userData.allPosts![i].sharepost![j].post!.userId,
-                caption: userData.allPosts![i].sharepost![j].body,
-                id: userData.allPosts![i].sharepost![j].id,
-                date: userData.allPosts![i].sharepost![j].createdAt,
-                userImage:
-                    userData.profileInformation!.userProfile!.profilePhoto,
-                post: PostModel(
-                  video: userData.allPosts![i].sharepost![j].post!.video,
-                  userId: userData.allPosts![i].sharepost![j].post!.userId,
-                  caption: userData.allPosts![i].sharepost![j].post!.postBody,
-                  date: userData.allPosts![i].sharepost![j].post!.createdAt,
-                  images: images2,
-                  likes: userData.allPosts![i].sharepost![j].post!.likes,
-                  comments: userData.allPosts![i].sharepost![j].post!.comments,
-                  shares: userData.allPosts![i].sharepost![j].post!.shares,
-                  postId: userData.allPosts![i].sharepost![j].post!.id,
-                  userProfileId: userData.allPosts![i].sharepost![j].post!.userProfileId,
-                  userImage:userData.profileInformation!.userProfile!.profilePhoto,
-                  isSaved: userData.allPosts![i].sharepost![j].post!.saved == 0 ? false : true,
-                  isLiked:  userData.allPosts![i].sharepost![j].post!.reaction == 0 ? false : true,
-                  // userLName: userData.allPosts![i].sharepost![j].
-                ),
-              ));
+
+          }
+          for (int j = 0; j < userData.allPosts![i].sharepost!.length; j++) {
+            List<String> images2 = [];
+            for (int k = 0;
+            k < userData.allPosts![i].sharepost![j].post!.photo!.length;
+            k++) {
+              images2.add(userData
+                  .allPosts![i].sharepost![j].post!.photo![k].photoPath!);
             }
+            mySharedPostData.add(SharedPostModel(
+              userFName: userData.allPosts![i].firstName,
+              userLName: userData.allPosts![i].lastName,
+              userId: userData.allPosts![i].sharepost![j].userId,
+              caption: userData.allPosts![i].sharepost![j].body,
+              id: userData.allPosts![i].sharepost![j].id,
+              date: userData.allPosts![i].sharepost![j].createdAt,
+              userImage:
+              userData.profileInformation!.userProfile!.profilePhoto,
+              post: PostModel(
+                video: userData.allPosts![i].sharepost![j].post!.video,
+                userId: userData.allPosts![i].sharepost![j].post!.userId,
+                caption: userData.allPosts![i].sharepost![j].post!.postBody,
+                date: userData.allPosts![i].sharepost![j].post!.createdAt,
+                images: images2,
+                likes: userData.allPosts![i].sharepost![j].post!.likes,
+                comments: userData.allPosts![i].sharepost![j].post!.comments,
+                shares: userData.allPosts![i].sharepost![j].post!.shares,
+                postId: userData.allPosts![i].sharepost![j].post!.id,
+                userProfileId: userData.allPosts![i].sharepost![j].post!.userProfileId,
+                userImage:userData.profileInformation!.userProfile!.profilePhoto,
+                isSaved: userData.allPosts![i].sharepost![j].post!.saved == 0 ? false : true,
+                isLiked:  userData.allPosts![i].sharepost![j].post!.reaction == 0 ? false : true,
+                userLName: userData.allPosts![i].sharepost![j].body,
+                userFName: 'edede,'
+
+              ),
+            ));
           }
         }
 
@@ -156,6 +159,8 @@ class _ProfilePageState extends State<ProfilePage>
               userData.profileInformation?.userProfile?.followingNumber,
           followersNumber:
               userData.profileInformation?.userProfile?.followersNumber,
+          // user.phoneNumber=userData.profileInformation?.userProfile?.
+          phoneNumber: 0945587900,
           profilePhoto: userData.profileInformation?.userProfile?.profilePhoto,
           myPosts: myPostData,
           mySharedPosts: mySharedPostData,
@@ -665,7 +670,7 @@ class _ProfilePageState extends State<ProfilePage>
                             Container(
                               child: user.myPosts!.isEmpty
                                   ? SingleChildScrollView(
-                                      child: noPostsYet()
+                                      child:noPostsYet()
                                     )
                                   : ListView.builder(
                                       padding: const EdgeInsets.all(0.0),
