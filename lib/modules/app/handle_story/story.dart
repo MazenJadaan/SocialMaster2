@@ -21,7 +21,7 @@ class _SmallStoryState extends State<SmallStory> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 15),
+      padding: const EdgeInsets.only(top: 15,left: 5,right: 5),
       child: GestureDetector(
         onTap: (){
           Navigator.push(

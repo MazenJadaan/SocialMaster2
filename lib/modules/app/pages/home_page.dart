@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
                     image: AssetImage(
 
                            'assets/images/logo_name_3.png',
-                    ),)
+                    ), width: 120)
                     :
                     const Image(
                 image: AssetImage(

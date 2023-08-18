@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_master/communicate/calling/videoCall.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
+import 'package:social_master/shared/styles/colors.dart';
 
 import 'audioCall.dart';
 
@@ -18,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white12,
       appBar: AppBar(
         title: Text('Master Calling'),
       ),
@@ -25,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           ClipRRect(
+
             borderRadius: BorderRadius.circular(150.0),
             child: Image.network(
               "${AppSetting.baseUrl}${widget.image}",
@@ -35,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Text(
             '${widget.name}',
-            style: Theme.of(context).textTheme.headline3,
+            style: TextStyle(color: Colors.white,fontSize: 40),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

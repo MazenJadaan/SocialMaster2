@@ -50,6 +50,7 @@ class SearchUser extends SearchDelegate {
           print(data!.length);
 
           return ListView.builder(
+            scrollDirection: Axis.vertical,
               itemCount: data?.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
@@ -64,7 +65,7 @@ class SearchUser extends SearchDelegate {
                           width: 60,
                           height: 60,
                           decoration: BoxDecoration(
-                            color: AppTheme.colors.purple,
+                            color: Colors.black,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Center(

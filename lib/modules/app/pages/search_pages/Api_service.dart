@@ -13,7 +13,6 @@ class FetchUserList {
 
   Future<List<Data>> getuserList({String? query}) async {
     var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.searchUsers}");
-
     final headers = {
       HttpHeaders.contentTypeHeader: 'application/json',
       "Authorization": "Bearer ${Prefs.getToken()}"

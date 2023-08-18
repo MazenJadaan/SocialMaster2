@@ -6,6 +6,7 @@ import 'package:social_master/shared/network/constant/constant.dart';
 import '../../../models/provider/post/postmodel.dart';
 import '../../../modules/app/handle_media/show_photo.dart';
 import '../../../modules/app/handle_media/show_video.dart';
+import '../../../modules/app/handle_post/comments.dart';
 import '../../../modules/app/handle_post/delete_post.dart';
 import '../../styles/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -68,7 +69,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                   PopupMenuButton(
                     color: Colors.white,
                     itemBuilder: (context) => [
-                       const PopupMenuItem(
+                        PopupMenuItem(
                         value: 1,
                         child: Row(
                           children: [
@@ -80,7 +81,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                           ],
                         ),
                       ),
-                       const PopupMenuItem(
+                        PopupMenuItem(
                         value: 2,
                         child: Row(
                           children: [
@@ -92,18 +93,7 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                           ],
                         ),
                       ),
-                       const PopupMenuItem(
-                        value: 3,
-                        child: Row(
-                          children: [
-                            FaIcon(FontAwesomeIcons.dollarSign),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text('post promotion'),
-                          ],
-                        ),
-                      ),
+
                     ],
                     onSelected: (value) {
                       switch (value) {
@@ -280,7 +270,12 @@ Widget myPostBuilder({required MyPostModel model, required context}) => Padding(
                                   width: 18,
                                 ),
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                      return commentsScreen(postId:model.postId!);
+
+                                    },));
+                                  },
                                   child: const FaIcon(
                                       FontAwesomeIcons.solidCommentDots,
                                       size: 21,

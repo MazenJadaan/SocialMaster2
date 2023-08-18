@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/models/provider/post/postmodel.dart';
 import 'package:video_player/video_player.dart';
+import '../../modules/app/handle_post/comments.dart';
 import '../../modules/app/pages/profile_page/visit_profile.dart';
 import '../network/constant/constant.dart';
 import '../styles/colors.dart';
@@ -98,7 +99,12 @@ class _SeePostState extends State<SeePost> {
                                         height: 8,
                                       ),
                                       IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                              return commentsScreen(postId:postModel.postId!);
+                                            },));
+                                          },
                                           icon: const Icon(
                                             FontAwesomeIcons.commentDots,
                                             color: Colors.white,

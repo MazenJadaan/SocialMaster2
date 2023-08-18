@@ -88,19 +88,19 @@ class NavBar extends StatelessWidget {
             },
           ),
           const SizedBox(height: 8),
-          const ListTile(
+           ListTile(
             leading: Icon(
               Icons.star,
-              color: Colors.purple,
+              color: AppTheme.colors.darkPurple,
             ),
             title: Text('Account Verification'),
             trailing: Icon(Icons.chevron_right),
           ),
           const SizedBox(height: 8),
-          const ListTile(
+           ListTile(
             leading: Icon(
               Icons.language,
-              color: Colors.purple,
+              color: AppTheme.colors.darkPurple,
             ),
             title: Text('Language'),
             trailing: Icon(Icons.chevron_right),
@@ -177,7 +177,7 @@ buildLogout({required BuildContext context}) => AlertDialog(
                     child: Text(
                       'yes',
                       style: TextStyle(
-                          fontSize: 22, color: AppTheme.colors.darkPurple),
+                          fontSize: 18, color: AppTheme.colors.darkPurple),
                     ),
                     onPressed: () {
                       Prefs.setToken('');
@@ -198,7 +198,7 @@ buildLogout({required BuildContext context}) => AlertDialog(
                       child: Text(
                         'cancel',
                         style: TextStyle(
-                            fontSize: 22, color: AppTheme.colors.darkPurple),
+                            fontSize: 18, color: AppTheme.colors.darkPurple),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();

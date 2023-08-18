@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:social_master/models/provider/post/postmodel.dart';
 import 'package:social_master/modules/auth/login.dart';
 import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/modules/welcome/welcome_view_page.dart';
 import 'package:social_master/shared/shared_preferences.dart';
 import 'package:social_master/shared/styles/colors.dart';
+import 'modules/app/handle_post/comments.dart';
 import 'modules/app/home.dart';
 
 Future main() async {

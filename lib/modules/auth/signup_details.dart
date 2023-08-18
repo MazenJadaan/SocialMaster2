@@ -114,7 +114,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               const SizedBox(
                 height: 10,
               ),
-               const Row(
+                Row(
                 children: [
                   SizedBox(
                     width: 10,
@@ -197,7 +197,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               const SizedBox(
                 height: 10,
               ),
-               const Row(
+                Row(
                 children: [
                   SizedBox(
                     width: 10,
@@ -217,7 +217,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                 height: 10,
               ),
               RadioListTile(
-                  title:  const Row(
+                  title:   Row(
                     children: [
                       Text(
                         'Male',
@@ -234,7 +234,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                     setSelectedRadio(val!);
                   }),
               RadioListTile(
-                  title:  const Row(
+                  title:   Row(
                     children: [
                       Text(
                         'Female',
@@ -253,7 +253,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               const SizedBox(
                 height: 10,
               ),
-               const Row(children: [
+                Row(children: [
                 SizedBox(
                   width: 10,
                 ),
