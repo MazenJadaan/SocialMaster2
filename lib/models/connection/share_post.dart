@@ -1,5 +1,5 @@
 class ShareParams {
- late String body;
+  late String body;
 
   ShareParams({required this.body});
 

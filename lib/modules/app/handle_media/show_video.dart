@@ -13,7 +13,6 @@ Future showVideo({required BuildContext context, required String vidUrl}) async{
             padding: const EdgeInsets.symmetric(vertical: 50.0),
             child: VideoPlayerWidget(vidUrl),
           ),
-
     );
 }
 

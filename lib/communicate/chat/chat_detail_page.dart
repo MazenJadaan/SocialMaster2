@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'chat_message.dart';
-import '../../models/edit_profile/send_menu_items.dart';
+import '../edit_profile/send_menu_items.dart';
 import '../../shared/components/chat_bubble.dart';
 import '../../shared/components/chat_detail_page_appbar.dart';
 

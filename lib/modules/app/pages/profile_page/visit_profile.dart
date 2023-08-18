@@ -4,19 +4,19 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/communicate/calling/HomeScreen.dart';
 import 'package:social_master/shared/components/no_posts_yet.dart';
-import '../../models/connection/profile/profile2.dart';
-import '../../models/provider/post/postmodel.dart';
-import '../../models/provider/usermodel.dart';
-import '../../shared/components/components.dart';
-import '../../shared/components/post_component/post_component.dart';
-import '../../shared/components/post_component/shared_post_component.dart';
-import '../../shared/network/constant/constant.dart';
-import '../../shared/shared_preferences.dart';
-import '../../shared/styles/colors.dart';
+import '../../../../models/connection/profile/profile2.dart';
+import '../../../../models/provider/post/postmodel.dart';
+import '../../../../models/provider/usermodel.dart';
+import '../../../../shared/components/components.dart';
+import '../../../../shared/components/post_component/post_component.dart';
+import '../../../../shared/components/post_component/shared_post_component.dart';
+import '../../../../shared/network/constant/constant.dart';
+import '../../../../shared/shared_preferences.dart';
+import '../../../../shared/styles/colors.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'handle_media/show_photo.dart';
+import '../../handle_media/show_photo.dart';
 
 class VisitProfile extends StatefulWidget {
   VisitProfile(this.profileId, {Key? key}) : super(key: key);

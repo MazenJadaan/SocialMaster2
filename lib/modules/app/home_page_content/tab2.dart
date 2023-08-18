@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:social_master/modules/app/home_page_content/story.dart';
-import 'package:social_master/modules/app/home_page_content/story_add.dart';
+import 'package:social_master/modules/app/handle_story/story_add.dart';
 import 'package:social_master/shared/components/components.dart';
-import 'package:social_master/shared/components/story_component/story.dart';
 import '../../../models/connection/home_page/foryou_posts.dart';
 import '../../../models/provider/post/postmodel.dart';
-import '../../../models/story/data.dart';
+import '../../../models/story/all_following_stories.dart';
+import '../../../models/story/story_archive.dart';
 import '../../../shared/components/post_component/post_component.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../handle_story/story.dart';
 import '../../../shared/network/constant/constant.dart';
 import '../../../shared/shared_preferences.dart';
 
@@ -22,29 +22,13 @@ class Tab2 extends StatefulWidget {
 }
 
 class _Tab2State extends State<Tab2> {
-  List<PostModel> posts = [
-    PostModel(
-        likes: 400,
-        comments: 12,
-        shares: 3,
-        caption: 'caption',
-        date: '30/12/2019',
-        userFName: 'Habibi',
-        userLName: 'wallah',
-        images: [
-          'https://mymodernmet.com/wp/wp-content/uploads/2021/12/kristina-makeeva-eoy-photo-1.jpeg'
-        ],
-        userImage:
-            'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
-        isLiked: true,
-        isSaved: false),
-  ];
 
-  List<PostModel>? aaposts = <PostModel>[];
+
+  List<PostModel>? posts = <PostModel>[];
   List<Data>? data;
   bool loading = true;
 
-  Future followingPost() async {
+  Future fetchFollowingPost() async {
     var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.followingPost}");
     var response = await http
         .get(url, headers: {"Authorization": "Bearer ${Prefs.getToken()}"});
@@ -57,15 +41,14 @@ class _Tab2State extends State<Tab2> {
         json['data'].forEach((v) {
           data!.add(new Data.fromJson(v));
         });
-        loading = false;
-        setState(() {});
+
 
         for (int i = 0; i < data!.length; i++) {
           List<String> images = [];
           for (int j = 0; j < data![i].photo!.length; j++) {
             images.add(data![i].photo![j].photoPath!);
           }
-          aaposts!.add(PostModel(
+          posts!.add(PostModel(
             caption: data![i].postBody,
             postId: data![i].id,
             video: data![i].postVideo,
@@ -82,38 +65,40 @@ class _Tab2State extends State<Tab2> {
             userImage: data![i].user!.userProfile!.profilePhoto,
           ));
         }
+        loading = false;
+        setState(() {});
       }
     }
   }
 
 
 
-  List<StoryData>? storyData = <StoryData>[];
+  List<UserData>? usersData = <UserData>[];
 
 
-  List<SmallStory> sStory = <SmallStory>[];
+  List<SmallStory> stories = <SmallStory>[];
 
   bool loadingStory = true;
 
   Future showFollowingStory() async {
-    print(Prefs.getToken());
-    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.showFollwingStory}");
+    var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.showFollwingStoryApi}");
     var response = await http
         .get(url, headers: {"Authorization": "Bearer ${Prefs.getToken()}"});
 
     if (response.statusCode == 200) {
+      print('yes');
       final json = jsonDecode(response.body);
 
       if (json['data'] != null) {
-        storyData = <StoryData>[];
+        usersData = <UserData>[];
         json['data'].forEach((v) {
-          storyData!.add(new StoryData.fromJson(v));
+          usersData!.add(new UserData.fromJson(v));
         });
 
 
 
-        for(int i=0 ;i<storyData!.length;i++){
-          sStory.add(SmallStory(storyData![i]));
+        for(int i=0 ;i<usersData!.length;i++){
+          stories.add(SmallStory(usersData!,i));
         }
 
         loadingStory = false;
@@ -125,7 +110,7 @@ class _Tab2State extends State<Tab2> {
   @override
   void initState() {
     showFollowingStory();
-    // followingPost();
+    fetchFollowingPost();
     super.initState();
     // Add code after super
   }
@@ -133,27 +118,41 @@ class _Tab2State extends State<Tab2> {
   @override
   Widget build(BuildContext context) {
     return
-      // loading &&loadingStory
-      //   ?
-      //   myCircularProgressIndicator()
-        // :
+      loading && loadingStory
+        ?
+        myCircularProgressIndicator()
+        :
     Scaffold(
             body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 15),
+                        padding: const EdgeInsets.only(top: 15.0),
                         child: MaterialButton(
-                          child: Icon(
-                            Icons.add,
-                            size: 60,
+                          child:Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xffe0e0e0),
+                              borderRadius: BorderRadius.circular(20)
+                            ),
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            height: 140,width: 90,
+                            child: const Center(
+                              child: Icon(
+                                Icons.add,
+                                size: 60,
+                              ),
+                            ),
                           ),
                           onPressed: () {
                             Navigator.push(
@@ -165,12 +164,12 @@ class _Tab2State extends State<Tab2> {
                         ),
                       ),
                       Row(
-                        children: sStory,
-                      )
+                        children:stories,
+                      ),
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: Column(
@@ -180,23 +179,17 @@ class _Tab2State extends State<Tab2> {
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          itemCount: aaposts!.length,
+                          itemCount: posts!.length,
                           itemBuilder: (context, i) =>
                               ChangeNotifierProvider<PostModel>.value(
-                                value: aaposts![i],
+                                value: posts![i],
                                 child: Consumer<PostModel>(
                                   builder: (context, model, child) =>
                                       postBuilder(
                                           model: model, context: context),
                                 ),
                               )),
-                      // ChangeNotifierProvider<SharedPostModel>.value(
-                      //   value: s,
-                      //   child: Consumer<SharedPostModel>(
-                      //     builder: (context, model, child) =>
-                      //         sharedPostBuilder(model: model, context: context),
-                      //   ),
-                      // ),
+
                       const SizedBox(
                         height: 55,
                       ),

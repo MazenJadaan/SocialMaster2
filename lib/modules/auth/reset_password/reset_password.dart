@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:social_master/modules/auth/reset_password/reset_password_code.dart';
 import 'package:social_master/shared/components/components.dart';
-import '../../../models/connection/reset_password.dart';
+import '../../../models/connection/auth/reset_password.dart';
 import '../../../shared/network/constant/constant.dart';
 import '../../../shared/styles/colors.dart';
 import '../../../shared/validate/validate.dart';

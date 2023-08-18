@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:social_master/models/connection/profile/edit_profile.dart';
 import 'package:social_master/shared/validate/validate.dart';
 import '../../models/provider/usermodel.dart';
+import '../../shared/network/constant/constant.dart';
+import '../../shared/shared_preferences.dart';
 import '../../shared/styles/colors.dart';
 import '../../shared/components/components.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class EditProfile extends StatefulWidget {
   EditProfile(this.user, {Key? key}) : super(key: key);
@@ -14,9 +20,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
 
-  DateTime date = DateTime.now();
-  String? chosenDate = 'mm/dd/yyyy';
-  late int selectedRadio;
+
 
   late final TextEditingController _firstNameController =
       TextEditingController(text: widget.user.firstName);
@@ -24,22 +28,53 @@ class _EditProfileState extends State<EditProfile> {
   late final TextEditingController _lastNameController =
       TextEditingController(text: widget.user.lastName);
 
-  late final TextEditingController _phoneNumberController =
-      TextEditingController(text: '${widget.user.phoneNumber}');
+  late final TextEditingController _studyController = TextEditingController(
+      text: widget.user.studyPlace
+  );
+  late final TextEditingController _placeOfLivingController = TextEditingController(
+      text: widget.user.placeStay
+  );
+  late final TextEditingController _placeOfBirthController = TextEditingController(
+      text: widget.user.placeBorn
+  );
+  late final TextEditingController _bioController = TextEditingController(
+      text: widget.user.bio
+  );
+  late final TextEditingController _jobController = TextEditingController(
+      text: widget.user.job
+  );
+  late final TextEditingController _stateController = TextEditingController(
+      text: widget.user.state
+  );
+
+
+
+  Future editProfileFunc({
+    required EditProfileParams params,
+}) async {
+    var url =
+    Uri.parse("${AppSetting.baseUrl}${AppSetting.editProfileInfoApi}");
+    var response =await http.post(url, headers: {"Authorization": "Bearer ${Prefs.getToken()}"},
+        body: params.toJson());
+    jsonDecode(response.body);
+
+    if (response.statusCode == 200) {
+      print('done');
+    } else {
+      print('d');
+    }
+
+}
+
+
 
 
 
   @override
   void initState() {
     super.initState();
-    widget.user.gender == 'male' ? selectedRadio = 1 : selectedRadio = 2;
   }
 
-  setSelectedRadio(int val) {
-    setState(() {
-      selectedRadio = val;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +94,6 @@ class _EditProfileState extends State<EditProfile> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 15,
-              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text('Edit your profile information:',
@@ -71,7 +103,7 @@ class _EditProfileState extends State<EditProfile> {
                         color: AppTheme.colors.darkPurple,
                         fontWeight: FontWeight.bold)),
               ),
-              const SizedBox(height: 20),
+
               Row(
                 children: [
                   Expanded(
@@ -90,84 +122,69 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              captionTextFormField(controller: _bioController, label: 'write your bio',maxlines: 2),
+
               myTextFormField(
+                validate: Validate.nullValidate,
                   suffixOnPressed: () {},
                   prefixIcon: Icon(
-                    Icons.phone,
+                    Icons.work,
                     color: AppTheme.colors.purple,
                   ),
-                  controller: _phoneNumberController,
-                  validate: Validate.emptyValidate,
-                  label: "Phone Number",
-                  inputType: TextInputType.number),
-              const SizedBox(
-                height: 40,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                    '-Your current birthdate is ${widget.user.birthdate} Set a new one if you want to change it.',
-                    style: TextStyle(
-                      fontFamily: 'SignikaNegative',
-                      fontSize: 15,
-                      color: AppTheme.colors.darkPurple,
-                    )),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: AppTheme.colors.opacityPurple,
+                  controller: _jobController,
+                  label: "Job",
                   ),
-                  height: 65,
-                  child: Row(
-                    children: [
-                      myMaterialButton(
-                          text: 'Select birthday',
-                          height: 50,
-                          width: 140,
-                          fontSize: 16,
-                          onPressed: () async {
-                            DateTime? newDate = await showDatePicker(
-                              context: context,
-                              initialDate: DateTime(2001, 7, 30),
-                              firstDate: DateTime(1950),
-                              lastDate: DateTime(2010),
-                            );
-                            if (newDate == null) return;
-                            date = newDate;
-                            chosenDate =
-                                '${date.month}/${date.day}/${date.year}';
-                            setState(() {});
-                          }),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Text(chosenDate!,
-                          style: TextStyle(
-                              fontFamily: 'SignikaNegative',
-                              fontSize: 22,
-                              color: AppTheme.colors.darkPurple,
-                              fontWeight: FontWeight.bold)),
-                    ],
-                  ),
+
+              myTextFormField(
+                validate: Validate.nullValidate,
+                suffixOnPressed: () {},
+                prefixIcon: Icon(
+                  Icons.work,
+                  color: AppTheme.colors.purple,
                 ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
+                controller: _placeOfBirthController,
+                label: "place of birth",
+                ),
+
+              myTextFormField(
+                validate: Validate.nullValidate,
+                suffixOnPressed: () {},
+                prefixIcon: Icon(
+                  Icons.work,
+                  color: AppTheme.colors.purple,
+                ),
+                controller: _placeOfLivingController,
+                label: "place of living",
+                 ),
+
+              myTextFormField(
+                validate: Validate.nullValidate,
+                suffixOnPressed: () {},
+                prefixIcon: Icon(
+                  FontAwesomeIcons.solidHeart,
+                  color: AppTheme.colors.purple,
+                ),
+                controller: _studyController,
+                label: "study place",
+                 ),
+
+              myTextFormField(
+                validate: Validate.nullValidate,
+                suffixOnPressed: () {},
+                prefixIcon: Icon(
+                  FontAwesomeIcons.solidHeart,
+                  color: AppTheme.colors.purple,
+                ),
+                controller: _stateController,
+                label: "relationship state",
+                 ),
 
 
-              const SizedBox(
-                height: 50,
+
+
+
+          const SizedBox(
+                height: 10,
               ),
               Center(
                 child: myMaterialButton(
@@ -176,7 +193,17 @@ class _EditProfileState extends State<EditProfile> {
                     text: "Confirm Changes",
                     fontSize: 22,
                     onPressed: () {
-                      if(formKey.currentState!.validate()){}
+                      if(formKey.currentState!.validate()){
+                        editProfileFunc(params: EditProfileParams(bio: _bioController.text,
+                          // fName: _firstNameController.text,
+                          // lName: _lastNameController.text,
+                            job: _jobController.text,
+                          place_born: _placeOfBirthController.text,
+                          place_stay: _placeOfLivingController.text,
+                          state: _stateController.text,
+                          study_place: _studyController.text
+                        ));
+                      }
                     }),
               ),
             ],

@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:social_master/modules/auth/reset_password/reset_password.dart';
 import 'package:social_master/modules/auth/signup.dart';
 import 'package:social_master/shared/styles/colors.dart';
-import '../../models/connection/login.dart';
+import '../../models/connection/auth/login.dart';
 import '../../models/provider/obscure_model.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/constant/constant.dart';

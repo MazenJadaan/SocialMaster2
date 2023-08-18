@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/modules/app/handle_post/share_post.dart';
-import 'package:social_master/modules/app/visit_profile.dart';
+import 'package:social_master/modules/app/pages/profile_page/visit_profile.dart';
 import '../../../models/provider/post/postmodel.dart';
 import '../../../modules/app/handle_media/show_video.dart';
 import '../../../modules/app/handle_media/show_photo.dart';
@@ -228,7 +228,9 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                     width: 18,
                                   ),
                                   GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+
+                                    },
                                     child: const FaIcon(
                                         FontAwesomeIcons.solidCommentDots,
                                         size: 21,

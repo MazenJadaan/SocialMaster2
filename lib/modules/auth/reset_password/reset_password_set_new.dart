@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/modules/app/home.dart';
-import '../../../models/connection/reset_password.dart';
+import '../../../models/connection/auth/reset_password.dart';
 import '../../../models/provider/obscure_model.dart';
 import '../../../shared/components/components.dart';
 import '../../../shared/network/constant/constant.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_master/models/provider/post/postmodel.dart';
+import 'package:social_master/shared/components/no_posts_yet.dart';
 import '../../../models/connection/home_page/foryou_posts.dart';
 import '../../../shared/components/components.dart';
 import '../../../shared/components/see_component.dart';
@@ -155,7 +156,7 @@ class _SeePageState extends State<SeePage> {
   //   ),
   // ];
 
-  List<SeePost>? allSees= [];
+  List<SeePost>? allSees = [];
   List<Data>? data;
   bool loading = true;
 
@@ -173,8 +174,6 @@ class _SeePageState extends State<SeePage> {
         json['data'].forEach((v) {
           data!.add(Data.fromJson(v));
         });
-
-
 
         loading = false;
         setState(() {});
@@ -196,7 +195,6 @@ class _SeePageState extends State<SeePage> {
             userImage: data![i].user!.userProfile!.profilePhoto,
           )));
         }
-
       }
     }
   }
@@ -213,15 +211,16 @@ class _SeePageState extends State<SeePage> {
     return loading
         ? myCircularProgressIndicator()
         : Scaffold(
-            body:
-            PageView(
-              scrollDirection: Axis.vertical,
-              onPageChanged: (index) {
-                setState(() {});
-              },
-              controller: _pageController,
-              children: allSees!,
-            ),
+            body: allSees!.isEmpty
+                ?  noPostsYet()
+                : PageView(
+                    scrollDirection: Axis.vertical,
+                    onPageChanged: (index) {
+                      setState(() {});
+                    },
+                    controller: _pageController,
+                    children: allSees!,
+                  ),
           );
   }
 }

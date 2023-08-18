@@ -16,4 +16,7 @@ class Validate {
       return null;
     }
   }
+  static String? nullValidate(String? value){
+    return null;
+  }
 }

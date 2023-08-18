@@ -11,36 +11,39 @@ Widget noPostsYet() => Center(
 
         ),
 
-        child: Column(
+        child: Container(
+          height: 160,
+          child: Column(
 
-          children: [
+            children: [
 
-            Icon(
+              Icon(
 
-              Icons.camera_alt_outlined,
+                Icons.camera_alt_outlined,
 
-              size: 100,
-
-              color: AppTheme.colors.darkPurple,
-
-            ),
-
-            Text(
-
-              'No Posts Yet',
-
-              style: TextStyle(
-
-                fontSize: 30,
+                size: 100,
 
                 color: AppTheme.colors.darkPurple,
 
               ),
 
-            ),
+              Text(
 
-          ],
+                'No Posts Yet',
 
+                style: TextStyle(
+
+                  fontSize: 30,
+
+                  color: AppTheme.colors.darkPurple,
+
+                ),
+
+              ),
+
+            ],
+
+          ),
         ),
 
       ),

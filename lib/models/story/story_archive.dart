@@ -1,44 +1,13 @@
-class StoryUserModel {
-  String? profileUrl;
-  String? name;
-  List<StoryModel>? stories;
-  StoryUserModel(
-      { this.profileUrl, this.name, this.stories});
-}
 
-class StoryModel {
-  String? time;
-  String? text;
-  String? mediaUrl;
-  StoryModel({
-     this.mediaUrl,
-    this.text,
-    this.time
-  });
-}
 
-final dataUsers = [
-  StoryUserModel(
-      stories: [
-        StoryModel(
-            mediaUrl:
-                "https://cdn.motor1.com/images/mgl/WBwMO/s1/lanzamiento-toyota-land-cruiser-300-2022.webp",time: '10:45'),
-        StoryModel(
-            mediaUrl:
-                "https://i.pinimg.com/736x/62/a2/10/62a2106589c6679b0c733f5bd447ded2.jpg",time: '15:12'),
-      ],
-      profileUrl:
-          'https://cdn.icon-icons.com/icons2/1736/PNG/512/4043260-avatar-male-man-portrait_113269.png',
-      name: 'Ahmad Hafez'),
-];
-class StoryModelResponse {
+class StoryArchiveResponse {
   List<StoryData>? data;
   String? message;
   int? status;
 
-  StoryModelResponse({this.data, this.message, this.status});
+  StoryArchiveResponse({this.data, this.message, this.status});
 
-  StoryModelResponse.fromJson(Map<String, dynamic> json) {
+  StoryArchiveResponse.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
       data = <StoryData>[];
       json['data'].forEach((v) {
@@ -77,7 +46,7 @@ class StoryData {
         ? new UserProfile.fromJson(json['user_profile'])
         : null;
     if (json['story'] != null) {
-      story = <Story>[];
+      story =<Story>[];
       json['story'].forEach((v) {
         story!.add(new Story.fromJson(v));
       });
@@ -170,3 +139,4 @@ class Story {
     return data;
   }
 }
+

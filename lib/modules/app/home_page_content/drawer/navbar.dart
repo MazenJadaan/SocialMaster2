@@ -2,22 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
-import 'package:social_master/modules/app/home_page_content/story.dart';
-import 'package:social_master/modules/app/pages/profile_page.dart';
+import 'package:social_master/modules/app/handle_story/story_archive.dart';
+import 'package:social_master/modules/app/pages/profile_page/profile_page.dart';
 import 'package:social_master/shared/styles/colors.dart';
 
-import '../../../shared/network/constant/constant.dart';
-import '../../../shared/shared_preferences.dart';
-import '../../auth/login.dart';
-import '../saved_posts.dart';
+import '../../../../shared/network/constant/constant.dart';
+import '../../../../shared/shared_preferences.dart';
+import '../../../auth/login.dart';
+import 'saved_posts.dart';
 
 class NavBar extends StatelessWidget {
   NavBar({super.key});
-
-  final screens = [
-    ProfilePage(),
-    SavedPosts(),
-  ];
 
   get index => 2;
 
@@ -27,12 +22,18 @@ class NavBar extends StatelessWidget {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName: const Text('Aya'),
-            accountEmail: const Text('yoyo@gmail.com'),
+            accountName: Text('${Prefs.getUserName()}'),
+            accountEmail: null,
             currentAccountPicture: CircleAvatar(
+              radius: 40,
               backgroundColor: Colors.transparent,
               child: ClipOval(
-                child: Image.asset('assets/images/user-profile.png'),
+                child: Image(
+                  fit: BoxFit.cover,
+                  image: NetworkImage('${AppSetting.baseUrl}${Prefs.getProfileImage()}'),
+                  width: 200,
+                  height: 200,
+                )
               ),
             ),
             decoration: BoxDecoration(
@@ -48,13 +49,13 @@ class NavBar extends StatelessWidget {
               'My Profile',
               style: TextStyle(color: AppTheme.colors.darkPurple),
             ),
-            trailing: Icon(Icons.chevron_right),
+            trailing: const Icon(Icons.chevron_right),
             onTap: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => ProfilePage()));
             },
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           ListTile(
             leading: Icon(
               FontAwesomeIcons.solidBookmark,
@@ -64,9 +65,13 @@ class NavBar extends StatelessWidget {
               'Saved Posts',
               style: TextStyle(color: AppTheme.colors.darkPurple),
             ),
-            trailing: Icon(Icons.chevron_right),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => SavedPosts()));
+            },
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           ListTile(
             leading: Icon(
               Icons.archive,
@@ -76,14 +81,14 @@ class NavBar extends StatelessWidget {
               'My Story Archive',
               style: TextStyle(color: AppTheme.colors.darkPurple),
             ),
-            trailing: Icon(Icons.chevron_right),
-            // onTap: (){
-            //   Navigator.of(context)
-            //       .push(MaterialPageRoute(builder: (context) => ShowStory()));
-            // },
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => ShowStoryArchive()));
+            },
           ),
-          SizedBox(height: 8),
-           const ListTile(
+          const SizedBox(height: 8),
+          const ListTile(
             leading: Icon(
               Icons.star,
               color: Colors.purple,
@@ -91,7 +96,7 @@ class NavBar extends StatelessWidget {
             title: Text('Account Verification'),
             trailing: Icon(Icons.chevron_right),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           const ListTile(
             leading: Icon(
               Icons.language,
@@ -100,7 +105,7 @@ class NavBar extends StatelessWidget {
             title: Text('Language'),
             trailing: Icon(Icons.chevron_right),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           ListTile(
               leading: Icon(
                 FontAwesomeIcons.moon,
@@ -118,7 +123,7 @@ class NavBar extends StatelessWidget {
                 colorOff: Colors.amber,
                 iconOn: FontAwesomeIcons.moon,
                 iconOff: FontAwesomeIcons.sun,
-                onChanged: (bool State) {
+                onChanged: (bool state) {
                   // setState(() {});
                 },
                 onTap: () {
@@ -127,7 +132,7 @@ class NavBar extends StatelessWidget {
                 onDoubleTap: () {},
                 onSwipe: () {},
               )),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           GestureDetector(
             onTap: () {
               showDialog(
@@ -152,7 +157,6 @@ class NavBar extends StatelessWidget {
 }
 
 buildLogout({required BuildContext context}) => AlertDialog(
-
       content: Container(
         height: 80,
         child: Column(

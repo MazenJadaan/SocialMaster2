@@ -8,16 +8,16 @@ import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/components/no_posts_yet.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
 import 'package:social_master/shared/styles/colors.dart';
-import '../../../models/connection/profile/profile.dart';
-import '../../../models/provider/post/postmodel.dart';
-import '../../../models/provider/usermodel.dart';
-import '../../../shared/components/post_component/my_post_component.dart';
+import '../../../../models/connection/profile/profile.dart';
+import '../../../../models/provider/post/postmodel.dart';
+import '../../../../models/provider/usermodel.dart';
+import '../../../../shared/components/post_component/my_post_component.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../../../shared/components/post_component/shared_post_component.dart';
-import '../../../shared/shared_preferences.dart';
-import '../edit_profile.dart';
-import '../handle_media/show_photo.dart';
+import '../../../../shared/components/post_component/shared_post_component.dart';
+import '../../../../shared/shared_preferences.dart';
+import '../../edit_profile.dart';
+import '../../handle_media/show_photo.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -117,26 +117,28 @@ class _ProfilePageState extends State<ProfilePage>
               userId: userData.allPosts![i].sharepost![j].userId,
               caption: userData.allPosts![i].sharepost![j].body,
               id: userData.allPosts![i].sharepost![j].id,
-              date: userData.allPosts![i].sharepost![j].createdAt,
+              date: userData.allPosts![i].sharepost![j].shareDate,
               userImage:
               userData.profileInformation!.userProfile!.profilePhoto,
               post: PostModel(
-                video: userData.allPosts![i].sharepost![j].post!.video,
+                video: userData.allPosts![i].sharepost![j].post!.postVideo,
                 userId: userData.allPosts![i].sharepost![j].post!.userId,
                 caption: userData.allPosts![i].sharepost![j].post!.postBody,
-                date: userData.allPosts![i].sharepost![j].post!.createdAt,
+                date: userData.allPosts![i].sharepost![j].post!.postDate,
                 images: images2,
-                likes: userData.allPosts![i].sharepost![j].post!.likes,
-                comments: userData.allPosts![i].sharepost![j].post!.comments,
-                shares: userData.allPosts![i].sharepost![j].post!.shares,
+                likes: 43,
+                // userData.allPosts![i].sharepost![j].post!.likes,
+                comments:34,
+                // userData.allPosts![i].sharepost![j].post!.comments,
+                shares: 6,
+                // userData.allPosts![i].sharepost![j].post!.shares,
                 postId: userData.allPosts![i].sharepost![j].post!.id,
                 userProfileId: userData.allPosts![i].sharepost![j].post!.userProfileId,
-                userImage:userData.profileInformation!.userProfile!.profilePhoto,
+                userImage: userData.allPosts![i].sharepost![j].post!.user!.userProfile!.profilePhoto,
                 isSaved: userData.allPosts![i].sharepost![j].post!.saved == 0 ? false : true,
                 isLiked:  userData.allPosts![i].sharepost![j].post!.reaction == 0 ? false : true,
-                userLName: userData.allPosts![i].sharepost![j].body,
-                userFName: 'edede,'
-
+                userLName: userData.allPosts![i].sharepost![j].post!.user!.lastName,
+                userFName: userData.allPosts![i].sharepost![j].post!.user!.firstName,
               ),
             ));
           }
@@ -169,8 +171,11 @@ class _ProfilePageState extends State<ProfilePage>
         loading = false;
         setState(() {});
       }
+      Prefs.setUserName('${user.firstName} ${user.lastName}');
+      Prefs.setProfileImage(user.profilePhoto);
       // return null;
     }
+
   }
 
   @override

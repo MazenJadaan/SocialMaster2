@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:social_master/models/connection/share_post.dart';
+import 'package:social_master/modules/app/home.dart';
 import 'package:social_master/shared/components/post_component/post_component.dart';
+import 'package:social_master/shared/validate/validate.dart';
 import '../../../models/provider/post/postmodel.dart';
 import '../../../shared/components/components.dart';
 import '../../../shared/network/constant/constant.dart';
@@ -20,10 +23,8 @@ class SharePost extends StatelessWidget {
     print(post.postId);
     var url =
         Uri.parse("${AppSetting.baseUrl}${AppSetting.sharePostApi}${post.postId}");
-    var response =await http.post(url, headers: {"Authorization": "Bearer ${Prefs.getToken()}"
-    }, body: params.toJson());
-
-
+    var response =await http.post(url, headers: {"Authorization": "Bearer ${Prefs.getToken()}"},
+        body: params.toJson());
     jsonDecode(response.body);
     if (response.statusCode == 200) {
       print('done');
@@ -34,6 +35,7 @@ class SharePost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var formKey =GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
         title: const Center(
@@ -42,43 +44,56 @@ class SharePost extends StatelessWidget {
           style: TextStyle(),
         )),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                children: [
-                  Text('-Write a Caption:',
-                      style: TextStyle(
-                        fontFamily: 'SignikaNegative',
-                        fontSize: 16,
-                        color: AppTheme.colors.darkPurple,
-                      )),
-                ],
+      body: Form(
+        key: formKey,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Text('-Write a Caption:',
+                        style: TextStyle(
+                          fontFamily: 'SignikaNegative',
+                          fontSize: 16,
+                          color: AppTheme.colors.darkPurple,
+                        )),
+                  ],
+                ),
               ),
-            ),
-            captionTextFormField(
-                controller: _captionController, label: 'Caption', maxlines: 3),
-            postBuilder(model: post,context: context),
-            const SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: myMaterialButton(
-                width: 240,
-                height: 50,
-                text: "Share",
-                onPressed: () async {
-                  sharePost( params: ShareParams(body: _captionController.text),);
-                },
+              captionTextFormField(
+                  controller: _captionController, label: 'Caption', maxlines: 3,validate: Validate.emptyValidate),
+              postBuilder(model: post,context: context),
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-          ],
+              Center(
+                child: myMaterialButton(
+                  width: 240,
+                  height: 50,
+                  text: "Share",
+                  onPressed: () async {
+                    if(formKey.currentState!.validate()){
+                    sharePost( params: ShareParams(body: _captionController.text),);
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Home()));
+                    Fluttertoast.showToast(
+                        msg: "done",
+                        gravity: ToastGravity.BOTTOM,
+                        toastLength: Toast.LENGTH_SHORT,
+                        backgroundColor: Colors.black54,
+                        timeInSecForIosWeb: 2,
+                        fontSize: 16);
+                    }
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
         ),
       ),
     );

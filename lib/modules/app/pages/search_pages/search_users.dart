@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:social_master/models/story/data.dart';
+import 'package:social_master/models/story/story_archive.dart';
 import 'package:social_master/shared/styles/colors.dart';
 import '../../../../shared/network/constant/constant.dart';
 import '../../../../shared/shared_preferences.dart';
-import '../../visit_profile.dart';
+import '../profile_page/visit_profile.dart';
 import 'Api_service.dart';
 import 'user_model.dart';
 

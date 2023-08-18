@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:social_master/shared/components/no_posts_yet.dart';
-import '../../models/connection/saved_posts.dart';
-import '../../models/provider/post/postmodel.dart';
-import '../../shared/components/components.dart';
-import '../../shared/components/post_component/post_component.dart';
-import '../../shared/network/constant/constant.dart';
-import '../../../shared/shared_preferences.dart';
+import '../../../../models/connection/saved_posts.dart';
+import '../../../../models/provider/post/postmodel.dart';
+import '../../../../shared/components/components.dart';
+import '../../../../shared/components/post_component/post_component.dart';
+import '../../../../shared/network/constant/constant.dart';
+import '../../../../../shared/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -37,8 +37,6 @@ class _SavedPostsState extends State<SavedPosts> {
         json['data'].forEach((v) {
           data!.add(Data.fromJson(v));
         });
-
-
         for (int i = 0; i < data!.length; i++) {
           List<String> images = [];
           for (int j = 0; j < data![i].post!.photo!.length; j++) {
@@ -62,9 +60,10 @@ class _SavedPostsState extends State<SavedPosts> {
             userImage: data![i].post!.user!.userProfile!.profilePhoto,
           ));
         }
-        loading = false;
-        setState(() {});
+
       }
+      loading = false;
+      setState(() {});
     }
   }
 
@@ -73,55 +72,54 @@ class _SavedPostsState extends State<SavedPosts> {
     // TODO: implement initState
     super.initState();
     fetchSavedPosts();
-
   }
+
   @override
   Widget build(BuildContext context) {
-    return
-      loading
+    return loading
         ? myCircularProgressIndicator()
-        :
-      Scaffold(
+        : Scaffold(
             appBar: AppBar(
-              title: const Center(
-                  child: Text(
+              title: const Text(
                 "Saved Posts",
                 style: TextStyle(),
-              )),
+              ),
             ),
-            body:posts!.isEmpty? noPostsYet(): RefreshIndicator(
-              onRefresh: () async {
-                posts = [];
-                setState(() {
-                  fetchSavedPosts();
-                });
-              },
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    ListView.builder(
-                        padding: const EdgeInsets.all(0.0),
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: posts!.length,
-                        itemBuilder: (context, i) =>
-                            ChangeNotifierProvider<PostModel>.value(
+            body: posts!.isEmpty
+                ? noPostsYet()
+                : RefreshIndicator(
+                    onRefresh: () async {
+                      posts = [];
+                      setState(() {
+                        fetchSavedPosts();
+                      });
+                    },
+                    child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      child: Column(
+                        children: [
+                          ListView.builder(
+                            padding: const EdgeInsets.all(0.0),
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: posts!.length,
+                            itemBuilder: (context, i) =>
+                                ChangeNotifierProvider<PostModel>.value(
                               value: posts![i],
                               child: Consumer<PostModel>(
                                 builder: (context, model, child) =>
                                     postBuilder(model: model, context: context),
                               ),
                             ),
+                          ),
+                          const SizedBox(
+                            height: 55,
+                          ),
+                        ],
+                      ),
                     ),
-                    const SizedBox(
-                      height: 55,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+                  ),
           );
   }
 }

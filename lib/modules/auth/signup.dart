@@ -8,7 +8,7 @@ import 'package:social_master/modules/auth/signup_details.dart';
 import 'package:social_master/shared/components/components.dart';
 import 'package:social_master/shared/network/constant/constant.dart';
 import 'package:social_master/shared/shared_preferences.dart';
-import '../../models/connection/register.dart';
+import '../../models/connection/auth/register.dart';
 import '../../models/provider/obscure_model.dart';
 import '../../shared/styles/colors.dart';
 import 'package:http/http.dart' as http;

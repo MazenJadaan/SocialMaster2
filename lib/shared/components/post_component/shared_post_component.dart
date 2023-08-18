@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/modules/app/handle_post/share_post.dart';
-import 'package:social_master/modules/app/visit_profile.dart';
+import 'package:social_master/modules/app/pages/profile_page/visit_profile.dart';
 import 'package:social_master/shared/components/components.dart';
 import '../../../models/provider/post/postmodel.dart';
 import '../../../modules/app/handle_media/show_photo.dart';
@@ -28,26 +28,20 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
             child: Row(
               children: [
                 //profile image
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => VisitProfile(model.userId)));
-                  },
-                  child: CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    radius: 22,
-                    child: ClipOval(
-                      child: Image(
-                          width: 80,
-                          height: 80,
-                          image: NetworkImage('${model.userImage}'),
-                          errorBuilder: (context, error, stackTrace) =>
-                              Container(
-                                color: AppTheme.colors.opacityPurple,
-                                child: myCircularProgressIndicator(),
-                              ),
-                          fit: BoxFit.cover),
-                    ),
+                CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  radius: 22,
+                  child: ClipOval(
+                    child: Image(
+                        width: 80,
+                        height: 80,
+                        image: NetworkImage('${AppSetting.baseUrl}${model.userImage}'),
+                        errorBuilder: (context, error, stackTrace) =>
+                            Container(
+                              color: AppTheme.colors.opacityPurple,
+                              child: myCircularProgressIndicator(),
+                            ),
+                        fit: BoxFit.cover),
                   ),
                 ),
 
@@ -114,10 +108,8 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                   width: 80,
                                   height: 80,
                                   image:
-                                      NetworkImage('${model.post!.userImage}'),
-                                  loadingBuilder:
-                                      (context, child, loadingProgress) =>
-                                          myCircularProgressIndicator(),
+                                      NetworkImage('${AppSetting.baseUrl}${model.post!.userImage}'),
+
                                   errorBuilder: (context, error, stackTrace) =>
                                       Container(
                                         color: AppTheme.colors.opacityPurple,
@@ -180,6 +172,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                     child: GestureDetector(
                       onDoubleTap: () {
                         model.post!.handleLike();
+                        model.doSomething();
                       },
                       child: Stack(
                         alignment: AlignmentDirectional.bottomCenter,
@@ -210,7 +203,7 @@ Widget sharedPostBuilder({required SharedPostModel model, context}) => Padding(
                                         child: Container(
                                           height: 200,
                                           color: Colors.black,
-                                          child: Icon(
+                                          child: const Icon(
                                             Icons.play_circle_outline,
                                             color: Colors.white,
                                             size: 60,

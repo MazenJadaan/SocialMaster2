@@ -318,49 +318,6 @@ class Photo {
   }
 }
 
-class Sharepost {
-  int? id;
-  int? userId;
-  int? postId;
-  String? body;
-  String? createdAt;
-  String? updatedAt;
-  Post? post;
-
-  Sharepost(
-      {this.id,
-        this.userId,
-        this.postId,
-        this.body,
-        this.createdAt,
-        this.updatedAt,
-        this.post});
-
-  Sharepost.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    userId = json['user_id'];
-    postId = json['post_id'];
-    body = json['body'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    post = json['post'] != null ? new Post.fromJson(json['post']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['user_id'] = this.userId;
-    data['post_id'] = this.postId;
-    data['body'] = this.body;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.post != null) {
-      data['post'] = this.post?.toJson();
-    }
-    return data;
-  }
-}
-
 class User {
   int? id;
   String? firstName;
@@ -382,3 +339,181 @@ class User {
     return data;
   }
 }
+
+class Sharepost {
+  int? id;
+  int? userId;
+  int? postId;
+  String? shareTime;
+  String? shareDate;
+  String? body;
+  String? createdAt;
+  String? updatedAt;
+  Post2? post;
+
+  Sharepost(
+      {this.id,
+        this.userId,
+        this.postId,
+        this.shareTime,
+        this.shareDate,
+        this.body,
+        this.createdAt,
+        this.updatedAt,
+        this.post});
+
+  Sharepost.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    userId = json['user_id'];
+    postId = json['post_id'];
+    shareTime = json['share_time'];
+    shareDate = json['share_date'];
+    body = json['body'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    post = json['post'] != null ? new Post2.fromJson(json['post']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['user_id'] = this.userId;
+    data['post_id'] = this.postId;
+    data['share_time'] = this.shareTime;
+    data['share_date'] = this.shareDate;
+    data['body'] = this.body;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    if (this.post != null) {
+      data['post'] = this.post!.toJson();
+    }
+    return data;
+  }
+}
+
+class Post2 {
+  int? id;
+  int? userId;
+  int? userProfileId;
+  String? postBody;
+  String? postVideo;
+  String? postTime;
+  String? postDate;
+  int? reaction;
+  int? saved;
+  int likes=0;
+  int comments=0;
+  int shares=0;
+  String? createdAt;
+  String? updatedAt;
+  User2? user;
+  List<Photo>? photo;
+
+  Post2(
+      {this.id,
+        this.userId,
+        this.userProfileId,
+        this.postBody,
+        this.postVideo,
+        this.postTime,
+        this.postDate,
+        this.reaction,
+        this.saved,
+        this.createdAt,
+        this.updatedAt,
+        this.user,
+        this.photo});
+
+  Post2.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    userId = json['user_id'];
+    userProfileId = json['user_profile_id'];
+    postBody = json['post_body'];
+    postVideo = json['post_video'];
+    postTime = json['post_time'];
+    postDate = json['post_date'];
+    reaction = json['reaction'];
+    saved = json['saved'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    user = json['user'] != null ? new User2.fromJson(json['user']) : null;
+    if (json['photo'] != null) {
+      photo = <Photo>[];
+      json['photo'].forEach((v) {
+        photo!.add(new Photo.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['user_id'] = this.userId;
+    data['user_profile_id'] = this.userProfileId;
+    data['post_body'] = this.postBody;
+    data['post_video'] = this.postVideo;
+    data['post_time'] = this.postTime;
+    data['post_date'] = this.postDate;
+    data['reaction'] = this.reaction;
+    data['saved'] = this.saved;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    if (this.user != null) {
+      data['user'] = this.user!.toJson();
+    }
+    if (this.photo != null) {
+      data['photo'] = this.photo!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+class User2 {
+  int? id;
+  String? firstName;
+  String? lastName;
+  UserProfile2? userProfile;
+
+  User2({this.id, this.firstName, this.lastName, this.userProfile});
+
+  User2.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    firstName = json['first_name'];
+    lastName = json['last_name'];
+    userProfile = json['user_profile'] != null
+        ? new UserProfile2.fromJson(json['user_profile'])
+        : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['first_name'] = this.firstName;
+    data['last_name'] = this.lastName;
+    if (this.userProfile != null) {
+      data['user_profile'] = this.userProfile!.toJson();
+    }
+    return data;
+  }
+}
+
+class UserProfile2 {
+  int? userId;
+  String? profilePhoto;
+
+  UserProfile2({this.userId, this.profilePhoto});
+
+  UserProfile2.fromJson(Map<String, dynamic> json) {
+    userId = json['user_id'];
+    profilePhoto = json['profile_photo'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['user_id'] = this.userId;
+    data['profile_photo'] = this.profilePhoto;
+    return data;
+  }
+}
+
+
+

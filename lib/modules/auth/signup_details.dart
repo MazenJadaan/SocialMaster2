@@ -101,12 +101,10 @@ class _SignupDetailsState extends State<SignupDetails> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Center(
-            child: Text(
+        title: const Text(
           "Master",
           style: TextStyle(),
-        )),
-      ),
+        ),),
       body: Form(
         autovalidateMode: AutovalidateMode.always,
         key: formKey,
@@ -116,7 +114,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               const SizedBox(
                 height: 10,
               ),
-               Row(
+               const Row(
                 children: [
                   SizedBox(
                     width: 10,
@@ -199,7 +197,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               const SizedBox(
                 height: 10,
               ),
-               Row(
+               const Row(
                 children: [
                   SizedBox(
                     width: 10,
@@ -219,7 +217,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                 height: 10,
               ),
               RadioListTile(
-                  title:  Row(
+                  title:  const Row(
                     children: [
                       Text(
                         'Male',
@@ -236,7 +234,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                     setSelectedRadio(val!);
                   }),
               RadioListTile(
-                  title:  Row(
+                  title:  const Row(
                     children: [
                       Text(
                         'Female',
@@ -255,7 +253,7 @@ class _SignupDetailsState extends State<SignupDetails> {
               const SizedBox(
                 height: 10,
               ),
-               Row(children: [
+               const Row(children: [
                 SizedBox(
                   width: 10,
                 ),
