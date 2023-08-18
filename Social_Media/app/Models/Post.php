@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Notifications\Notifiable;
+
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'user_id',
@@ -24,61 +26,68 @@ class Post extends Model
     public function getReactionAttribute($value)
     {
         $user_id = Auth::id();
-         $post_id = $this->id;
-              $react= like::where('user_id',$user_id)->where('post_id',$post_id)->get();
-        if(count($react)>0){
+        $post_id = $this->id;
+        $react = like::where('user_id', $user_id)->where('post_id', $post_id)->get();
+        if (count($react) > 0) {
             return 1;
-        }
-        else {
+        } else {
             return 0;
         }
     }
 
-    public function getSavedAttribute($value){
+    public function getSavedAttribute($value)
+    {
         $user_id = Auth::id();
         $post_id = $this->id;
-        $saved= savepost::where('user_id',$user_id)->where('post_id',$post_id)->get();
-        if(count($saved)>0){
+        $saved = savepost::where('user_id', $user_id)->where('post_id', $post_id)->get();
+        if (count($saved) > 0) {
             return 1;
-        }
-        else{
+        } else {
             return 0;
         }
     }
 
-    public function user(){
-        return $this->belongsTo(User::class,'user_id');
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function like (){
+    public function like()
+    {
         return $this->hasMany(like::class);
     }
 
-    public function comment(){
+    public function comment()
+    {
         return $this->hasMany(Comment::class);
     }
 
-    public function savePost(){
+    public function savePost()
+    {
         return $this->hasMany(Savepost::class);
     }
 
-    public function payedPost(){
+    public function payedPost()
+    {
         return $this->hasOne(payedposts::class);
     }
 
-    public function photo(){
+    public function photo()
+    {
         return $this->hasMany(Photo::class);
     }
 
-    public function sharePost(){
+    public function sharePost()
+    {
         return $this->hasMany(sharepost::class);
     }
 
-//    public function video(){
-//        return $this->hasMany(Video::class);
-//    }
+    //    public function video(){
+    //        return $this->hasMany(Video::class);
+    //    }
 
-    public function user_profile(){
+    public function user_profile()
+    {
         return $this->belongsTo(User_profile::class);
     }
 }

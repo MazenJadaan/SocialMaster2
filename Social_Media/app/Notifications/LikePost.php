@@ -7,13 +7,16 @@ use App\Models\User;
 use App\Models\Post;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class LikePost extends Notification implements ShouldBroadcast
 {
     use Queueable;
-
+    protected $user;
+    protected $messege;
+    protected $post;
     /**
      * Create a new notification instance.
      *
