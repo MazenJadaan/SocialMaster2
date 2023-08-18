@@ -3,14 +3,22 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use App\Models\User;
+use App\Models\Post;
+use App\Models\comment;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class CommoentOnPost extends Notification implements ShouldBroadcast
 {
     use Queueable;
+    protected $user;
+    protected $post;
+    protected $comment;
+    protected $messeg;
 
     /**
      * Create a new notification instance.

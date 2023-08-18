@@ -8,7 +8,10 @@ use App\Models\like;
 use App\Models\Post;
 use App\Models\savepost;
 use App\Models\sharepost;
+use App\Models\User;
 use App\Models\userfollowers;
+use App\Notifications\LikePost;
+use App\Notifications\CommoentOnPost;
 use App\Traits\Save_MediaTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -317,7 +320,7 @@ class PostController extends Controller
         ]);
         $postOwner = User::find($owner_id);
         $userAuthenticated = User::find($MyID);
-        $postOwner->notify(new CommentOnPost($userAuthenticated->first_name, 'Comment on your post', $postInfo->post_body, $comment->comment));
+        $postOwner->notify(new CommoentOnPost($userAuthenticated->first_name, 'Comment on your post', $postInfo->post_body, $comment->comment));
         return  $this->ApiResponse($comment, 'write your comment in this post successfuly', 200);
     }
 
