@@ -38,11 +38,11 @@ class MyUserProfile extends Controller
         return $this->ApiResponse($array, ' My Profile Information returned successfully', 200);
                 }
 
-
-
     public function addInformations(Request $request)
     {
         $data = $request->validate([
+            'first_name'=> 'required|max:125',
+            'last_name'=> 'required|max:125',
             'job' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u',
             'study_place' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u',
             'place_stay' => 'nullable|regex:/^[A-Za-zأ-ي\s]+$/u',
@@ -68,7 +68,6 @@ class MyUserProfile extends Controller
             $data = $request->file('profile_photo');
             $save_path = 'images/profile_picture/' ;
             $pic_name =  $this->save_media($data,$save_path);
-
             $user_profile->profile_photo = $pic_name;
             $user_profile->save();
         }
@@ -84,7 +83,7 @@ class MyUserProfile extends Controller
         $user_profile = User_profile::find($userID);
         if ($request->hasFile('cover_photo')) {
             $data = $request->file('cover_photo');
-            $save_path = 'images/cover_picture/' ;
+            $save_path = 'images/cover_picture/';
             $pic_name =  $this->save_media($data,$save_path);
             $user_profile->cover_photo = $pic_name;
             $user_profile->save();
