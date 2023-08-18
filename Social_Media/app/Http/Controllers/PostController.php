@@ -9,11 +9,13 @@ use App\Models\Post;
 use App\Models\savepost;
 use App\Models\sharepost;
 use App\Models\User;
+use App\Models\User_profile;
 use App\Models\userfollowers;
 use App\Notifications\LikePost;
-use App\Notifications\CommoentOnPost;
+use App\Notifications\CommentOnPost;
 use App\Traits\Save_MediaTrait;
 use Carbon\Carbon;
+use Database\Factories\User_profileFactory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -306,6 +308,8 @@ class PostController extends Controller
     public function commentOnPost(Request $request, $PostID)
     {
         $MyID = Auth::id();
+        $user = User::select('first_name','last_name')->find($MyID);
+        $user_profile = User_profile::select('profile_photo')->find($MyID);
         $postInfo = post::where('id', $PostID)->first();
         $owner_id = Post::where('id', $PostID)->value('user_id');
         $text = $request->validate([
@@ -320,8 +324,13 @@ class PostController extends Controller
         ]);
         $postOwner = User::find($owner_id);
         $userAuthenticated = User::find($MyID);
-        $postOwner->notify(new CommoentOnPost($userAuthenticated->first_name, 'Comment on your post', $postInfo->post_body, $comment->comment));
-        return  $this->ApiResponse($comment, 'write your comment in this post successfuly', 200);
+        $postOwner->notify(new CommentOnPost($userAuthenticated->first_name, 'Comment on your post', $postInfo->post_body,$comment->comment));
+        $info = [
+            'user_name' => $user,
+            'profile_photo' => $user_profile,
+            'comment_info' => $comment
+        ];
+        return  $this->ApiResponse($info, 'write your comment in this post successfuly', 200);
     }
 
     public function deleteComment($CommentID)

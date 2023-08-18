@@ -12,7 +12,7 @@ trait PostsTrait {
            }])
            ->with(['Sharepost'=>function($q){
                $q->orderBy('created_at', 'desc')->with(['post'=>function($q2){
-                   $q2->with(['user'=>function($q3){
+                   $q2->withCount(['like','comment','sharePost'])->with(['user'=>function($q3){
                        $q3->select('id','first_name','last_name')
                        ->with('user_profile',function ($q4){
                            $q4->select('user_id','profile_photo');
