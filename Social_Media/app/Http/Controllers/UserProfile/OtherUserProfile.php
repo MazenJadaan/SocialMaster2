@@ -75,14 +75,21 @@ class OtherUserProfile extends Controller
             $userUnFollow = Userfollowers::where([
                 ['user_id', $userID],
                 ['user_profile_id', $profileID]
-            ])->delete();
-            $userProfile = User_profile::find($id);
-            $user_visitor = User_profile::find($userID);
-            $userProfile->decrement('followers_number', 1);
-            $user_visitor->decrement('following_number',1);
-            $userProfile->save();
+            ])->first();
+            if(!$userUnFollow){
+                return $this->ApiResponse('null', 'you already unfollow this user', 200);
+            }
+            else {
+                $userUnFollow->delete();
+                $userProfile = User_profile::find($id);
+                $user_visitor = User_profile::find($userID);
+                $userProfile->decrement('followers_number', 1);
+                $user_visitor->decrement('following_number', 1);
+                $userProfile->save();
+                return $this->ApiResponse('null', 'unfollowing its done ', 200);
+            }
         }
-        return $this->ApiResponse('null', 'unfollowing its done ', 200);
+
     }
 
 }

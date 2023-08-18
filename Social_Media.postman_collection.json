@@ -1224,6 +1224,16 @@
 									"mode": "formdata",
 									"formdata": [
 										{
+											"key": "first_name",
+											"value": "alosh5",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "mohamed",
+											"type": "text"
+										},
+										{
 											"key": "job",
 											"value": "engineer",
 											"type": "text"
@@ -1250,7 +1260,7 @@
 										},
 										{
 											"key": "state",
-											"value": "single",
+											"value": "married",
 											"type": "text"
 										}
 									]
@@ -1276,11 +1286,11 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 04 Jul 2023 19:38:19 GMT"
+									"value": "Fri, 18 Aug 2023 07:10:43 GMT"
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 04 Jul 2023 19:38:19 GMT"
+									"value": "Fri, 18 Aug 2023 07:10:43 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1304,7 +1314,7 @@
 								},
 								{
 									"key": "X-RateLimit-Remaining",
-									"value": "56"
+									"value": "55"
 								},
 								{
 									"key": "Access-Control-Allow-Origin",
@@ -1312,7 +1322,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": {\n        \"job\": \"engineer\",\n        \"study_place\": \"damascus university\",\n        \"place_stay\": \"damascus\",\n        \"place_born\": \"midan\",\n        \"bio\": \"listen george wassouf\",\n        \"cover_photo\": \"storage/app/images/cover_picture/1688493857.jpg\",\n        \"profile_photo\": \"storage/app/images/profile_picture/1688493692.jpg\",\n        \"followers_number\": 0,\n        \"state\": \"single\",\n        \"user_id\": 4\n    },\n    \"message\": \"Information updated successfully\",\n    \"status\": 201\n}"
+							"body": "{\n    \"data\": \"Information updated successfully\",\n    \"message\": \"Information updated successfully\",\n    \"status\": 201\n}"
 						}
 					]
 				},

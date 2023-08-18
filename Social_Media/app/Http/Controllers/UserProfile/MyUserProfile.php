@@ -51,10 +51,12 @@ class MyUserProfile extends Controller
             'state' => 'nullable|in:single,engaged,married,in_relationship',
         ]);
         $userID = Auth::id();
+        $user = User::find($userID);
         $user_profile = User_profile::find($userID);
+        $user->update($data);
         $user_profile->update($data);
-        $user = UserProfileInformationsResource::make(User_profile::find($userID));
-        return $this->ApiResponse($user, 'Information updated successfully', 201);
+//        $UserProfileUpdated = UserProfileInformationsResource::make(User_profile::find($userID));
+        return $this->ApiResponse("Information updated successfully", 'Information updated successfully', 201);
     }
 
     public function editProfilePhoto(Request $request)
