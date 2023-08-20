@@ -154,16 +154,14 @@ class _commentsScreenState extends State<commentsScreen> {
                                 ),
                               ),
                               subtitle: Text('${data![index].comment}',
-                                  style: TextStyle(
-                                      fontSize: 22, color: Colors.black),
+                                  style: const TextStyle(
+                                      fontSize: 15, color: Colors.black),
                                   maxLines: 1),
                             ),
-                            Divider(
+                            const Divider(
                             color: Colors.grey,
                             thickness: 0.2,height: 4,),
-                            SizedBox(
-                              height: 12,
-                            )
+
                           ],
                         ),
                       );

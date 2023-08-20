@@ -1,10 +1,9 @@
-
 class AppSetting{
   // user token
   static String token = "";
 
   // baseurl of the server
-  static String baseUrl ="http://192.168.1.2:8000/";
+  static String baseUrl ="http://192.168.4.21:8000/";
 
   // finished APIs
   static String showMyProfileApi = 'api/showMyProfile';
@@ -34,11 +33,20 @@ class AppSetting{
   static String createStoryApi='api/addStories';
   static String searchUsers='api/searchUsers';
   static String showReactsApi='api/showAllReacts/';
+  static String storyArchiveApi='api/showOldestStory';
+  static String showFollwingStoryApi='api/showFollwingStory';
+  static String deleteStoryApi='api/deleteStory/';
+  static String sowMyStoryApi='api/showCurrentStory';
+  static String writeComment ='api/writeComment/';
+  static String showAllComments ='api/showAllComments/';
+  static String deleteComment ='api/deleteComment/';
+  static String myStoryApi='api/showCurrentStory';
+  static String allShares='api/showShares/';
 
   // unfinished APIs
-  static String showFollwingStoryApi='api/showFollwingStory';
+
   static String editProfileInfoApi='api/addProfileInformations';
-  static String storyArchiveApi='api/showOldestStory';
+
 
 
 

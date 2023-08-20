@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_master/modules/app/handle_post/comments.dart';
 import 'package:social_master/modules/app/handle_post/share_post.dart';
+import 'package:social_master/modules/app/handle_post/shares.dart';
 
 import '../../../models/provider/post/postmodel.dart';
 import '../../../modules/app/handle_media/show_video.dart';
 import '../../../modules/app/handle_media/show_photo.dart';
 
+import '../../../modules/app/handle_post/likes.dart';
 import '../../../modules/app/pages/profile_page/visit_profile.dart';
 import '../../network/constant/constant.dart';
 import '../../styles/colors.dart';
@@ -212,6 +214,9 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                     onTap: () {
                                       model.handleLike();
                                     },
+                                    onLongPress: (){
+Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LikesScreen(postId: model.postId!,)));
+                                    },
                                     child: FaIcon(FontAwesomeIcons.solidHeart,
                                         size: 21, color: model.likeColor),
                                   ),
@@ -258,6 +263,9 @@ Widget postBuilder({required PostModel model, context}) => Padding(
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   SharePost(model)));
+                                    },
+                                    onLongPress: (){
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SharesScreen(postId: model.postId!)));
                                     },
                                     child: const FaIcon(
                                       FontAwesomeIcons.solidPaperPlane,

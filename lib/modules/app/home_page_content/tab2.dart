@@ -77,8 +77,9 @@ class _Tab2State extends State<Tab2> {
 
 
   List<SmallStory> stories = <SmallStory>[];
-
+  UserData? myData;
   bool loadingStory = true;
+
 
   Future showFollowingStory() async {
     var url = Uri.parse("${AppSetting.baseUrl}${AppSetting.showFollwingStoryApi}");

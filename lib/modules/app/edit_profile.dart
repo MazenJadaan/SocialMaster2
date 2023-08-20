@@ -139,7 +139,7 @@ class _EditProfileState extends State<EditProfile> {
                 validate: Validate.nullValidate,
                 suffixOnPressed: () {},
                 prefixIcon: Icon(
-                  Icons.work,
+                  Icons.edit_location_sharp,
                   color: AppTheme.colors.purple,
                 ),
                 controller: _placeOfBirthController,
@@ -150,7 +150,7 @@ class _EditProfileState extends State<EditProfile> {
                 validate: Validate.nullValidate,
                 suffixOnPressed: () {},
                 prefixIcon: Icon(
-                  Icons.work,
+                  Icons.place,
                   color: AppTheme.colors.purple,
                 ),
                 controller: _placeOfLivingController,
@@ -161,27 +161,12 @@ class _EditProfileState extends State<EditProfile> {
                 validate: Validate.nullValidate,
                 suffixOnPressed: () {},
                 prefixIcon: Icon(
-                  FontAwesomeIcons.solidHeart,
+                  Icons.school,
                   color: AppTheme.colors.purple,
                 ),
                 controller: _studyController,
                 label: "study place",
                  ),
-
-              myTextFormField(
-                validate: Validate.nullValidate,
-                suffixOnPressed: () {},
-                prefixIcon: Icon(
-                  FontAwesomeIcons.solidHeart,
-                  color: AppTheme.colors.purple,
-                ),
-                controller: _stateController,
-                label: "relationship state",
-                 ),
-
-
-
-
 
           const SizedBox(
                 height: 10,
@@ -195,14 +180,15 @@ class _EditProfileState extends State<EditProfile> {
                     onPressed: () {
                       if(formKey.currentState!.validate()){
                         editProfileFunc(params: EditProfileParams(bio: _bioController.text,
-                          // fName: _firstNameController.text,
-                          // lName: _lastNameController.text,
+                          firstName: _firstNameController.text,
+                          lastName: _lastNameController.text,
                             job: _jobController.text,
                           place_born: _placeOfBirthController.text,
                           place_stay: _placeOfLivingController.text,
                           state: _stateController.text,
                           study_place: _studyController.text
                         ));
+                        Navigator.of(context).pop();
                       }
                     }),
               ),
